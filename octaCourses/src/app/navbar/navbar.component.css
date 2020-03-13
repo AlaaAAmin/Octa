@@ -1,0 +1,9 @@
+.navBarSearch{
+    justify-content: center;
+}
+.searchField{
+    padding-right: 100px;
+    margin-left: 30px;
+    border: none;
+    background-color: transparent;
+}
