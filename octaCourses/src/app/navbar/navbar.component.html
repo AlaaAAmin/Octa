@@ -1,31 +1,13 @@
-<nav class="navbar navbar-expand-sm bg-light">
-    <!-- Links -->
-        <a class="navbar-brand" href="#">OctaCourses</a>
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item">
-        <a class="nav-link" href="#">Categories</a>
-      </li>
-      <li>
-        <form class="input-group">
-            <input type="text" class="form-control searchField" placeholder="What would you learn?">
-            <div class="input-group-append">
-              <button class="btn btn-primary" type="button">Search</button>
-            </div>
-        </form>
-      </li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-      <li class="nav-item">
-        <a class="nav-link" href="#">For Course Provider</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Log in</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Join Us</a>
-      </li>
-    </ul>
-  
-  </nav>
-
-<p>navbar works halaloya!</p>
+<mat-grid-list cols="12" rowHeight="55px" class="customNavbar">
+<mat-grid-tile><a href="#">OctaCourses</a></mat-grid-tile>
+<mat-grid-tile><a href="#">Categories</a></mat-grid-tile>
+<mat-grid-tile colspan="4">
+  <input type="text" class="form-control searchField" placeholder="What would you learn!">
+  <button class="btn btn-primary">Search</button>
+</mat-grid-tile>
+<mat-grid-tile></mat-grid-tile>
+<mat-grid-tile colspan="2"><a href="#">For course provider</a></mat-grid-tile>
+<mat-grid-tile></mat-grid-tile>
+<mat-grid-tile><a href="#" style="color: #f47f2f;">Login</a></mat-grid-tile>
+<mat-grid-tile class="joisUsBtn"><a href="#" style="color: white;">Join us</a></mat-grid-tile>
+</mat-grid-list>

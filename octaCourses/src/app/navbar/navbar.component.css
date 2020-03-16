@@ -1,9 +1,19 @@
-.navBarSearch{
-    justify-content: center;
+.customNavbar{
+    background-color: #fcfcfc;
+    font-size: 17px;
 }
+
+a{
+    text-decoration: none;
+    color: #404040;
+}
+
 .searchField{
-    padding-right: 100px;
-    margin-left: 30px;
     border: none;
-    background-color: transparent;
+    background-color: #e5e5e5;
+}
+
+.joisUsBtn{
+    background-color: #f47f2f;
+    border-radius: 2%;
 }
