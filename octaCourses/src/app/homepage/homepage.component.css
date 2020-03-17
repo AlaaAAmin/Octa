@@ -1,0 +1,29 @@
+.topPicks{
+    margin: 5% 0% 5% 0%;
+    text-align: center;
+}
+.topPicksH1{
+    font-size: 210%;
+}
+.courseName{
+    margin-bottom: 0px;
+}
+
+.topPicksContainer{
+    margin: 5%;
+}
+.courseCard{
+    box-shadow: 0px 0px 8px #a6a6a6;
+    height: 400px;
+    width: 100%;
+}
+
+.enrollNowLink{
+    text-decoration: none;
+    color: white;
+    background-color: #f47f2f;
+    padding: 4%;
+    border-radius: 5%;
+    font-size: 105%;
+    box-shadow: 0px 0px 5px #ccc;
+}
