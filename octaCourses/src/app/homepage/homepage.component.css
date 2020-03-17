@@ -27,3 +27,31 @@
     font-size: 105%;
     box-shadow: 0px 0px 5px #ccc;
 }
+
+.whyUsContainer{
+    background-color: #f47f2f;
+    color: white;
+    text-align: center;
+}
+
+.whyUsIcon{
+    font-size: 250%;
+}
+
+.whyUsP{
+    font-size: 140%;
+}
+
+.whyUs{
+    margin: 5% 0% 5% 0%;
+    text-align: center;
+}
+.whyUsH1{
+    font-size: 210%;
+}
+
+.homeFooter{
+    box-shadow: 0px 0px 10px #ccc;
+    margin: 1% 0% 0% 0%;
+    padding-top: 2%;
+}
