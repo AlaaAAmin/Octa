@@ -11,6 +11,8 @@ import { CoursesComponent } from './courses/courses.component';
 import { CategoriesComponent } from './categories/categories.component';
 import { UserProfileModule } from './user-profile/user-profile.module';
 import { SharedModule } from './shared/shared.module';
+import { LoginComponent } from './login/login.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -19,12 +21,15 @@ import { SharedModule } from './shared/shared.module';
     HomepageComponent,
     CoursesComponent,
     CategoriesComponent
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     SharedModule,
     UserProfileModule
+    MaterialModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
