@@ -17,3 +17,8 @@ a{
     background-color: #f47f2f;
     border-radius: 2%;
 }
+
+.active {
+    /* will be changed*/
+    color: red;
+}
