@@ -68,16 +68,6 @@
             <input id="address" name="address" type="text" class="form-control" ngModel #address="ngModel">
         </div>
 
-        <!--birthdate or initiation date section-->
-        <div class="formgroup">
-            <label for="birthdate">Birthdate or initiation date (for academies)</label>
-            <input required id="birthdate" name="birthdate" type="date" class="form-control" 
-            ngModel #birthdate="ngModel" [class.is-invalid]="birthdate.invalid && birthdate.touched">
-            <small class="text-danger" [class.d-none]="birthdate.valid || birthdate.untouched">
-                Please provide your birthdate or initiation date
-            </small>
-        </div>
-
         <!--password section-->
         <div class="formgroup">
             <label for="password">Password</label>
