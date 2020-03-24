@@ -13,7 +13,8 @@ import { UserProfileModule } from './user-profile/user-profile.module';
 import { SharedModule } from './shared/shared.module';
 import { LoginComponent } from './login/login.component';
 import { FormsModule } from '@angular/forms';
-import { StudentRegistrationComponent } from './student-registration/student-registration.component';
+import { StudentRegistrationComponent } from './registeration/student-registration/student-registration.component';
+import { CourseProviderRegisterationComponent } from './registeration/course-provider-registeration/course-provider-registeration.component';
 
 @NgModule({
   declarations: [
@@ -21,16 +22,17 @@ import { StudentRegistrationComponent } from './student-registration/student-reg
     NavbarComponent,
     HomepageComponent,
     LoginComponent,
-    StudentRegistrationComponent
+    StudentRegistrationComponent,
     CoursesComponent,
-    CategoriesComponent
-    LoginComponent
+    CategoriesComponent,
+    LoginComponent,
+    CourseProviderRegisterationComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     SharedModule,
-    UserProfileModule
+    UserProfileModule,
     MaterialModule,
     FormsModule
   ],
