@@ -9,13 +9,15 @@ import { MaterialModule } from './material/material.module';
 import { HomepageComponent } from './homepage/homepage.component';
 import { LoginComponent } from './login/login.component';
 import { FormsModule } from '@angular/forms';
+import { StudentRegistrationComponent } from './student-registration/student-registration.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     HomepageComponent,
-    LoginComponent
+    LoginComponent,
+    StudentRegistrationComponent
   ],
   imports: [
     BrowserModule,
