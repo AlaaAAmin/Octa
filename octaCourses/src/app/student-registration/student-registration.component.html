@@ -11,7 +11,7 @@
     <!-- #studentRegistration is a template reference variable that holds a reference to the ngForm directive of this form
     so we can access its values -->
     <div class="row justify-content-center">
-    <form class="col-sm-8" #studentRegisteration="ngForm">
+    <form class="col-sm-8" #studentRegisteration="ngForm" (ngSubmit)="register(studentRegisteration.value)">
         <!--name section-->
         <div class="formgroup">
             <label for="name">Name</label>

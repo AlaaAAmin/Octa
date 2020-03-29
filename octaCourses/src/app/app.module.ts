@@ -4,16 +4,15 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MaterialModule } from './shared/material/material.module';
 import { HomepageComponent } from './homepage/homepage.component';
-import { CoursesComponent } from './courses/courses.component';
 import { CategoriesComponent } from './categories/categories.component';
 import { UserProfileModule } from './user-profile/user-profile.module';
 import { SharedModule } from './shared/shared.module';
 import { LoginComponent } from './login/login.component';
 import { FormsModule } from '@angular/forms';
 import { StudentRegistrationComponent } from './student-registration/student-registration.component';
+import { HttpClientModule } from '@angular/common/http';
+import { UserService } from './services/user.service';
 
 @NgModule({
   declarations: [
@@ -21,20 +20,18 @@ import { StudentRegistrationComponent } from './student-registration/student-reg
     NavbarComponent,
     HomepageComponent,
     LoginComponent,
-    StudentRegistrationComponent
-    CoursesComponent,
+    StudentRegistrationComponent,
     CategoriesComponent
-    LoginComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     SharedModule,
-    UserProfileModule
-    MaterialModule,
-    FormsModule
+    UserProfileModule,
+    FormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,5 +1,5 @@
 <mat-grid-list cols="12" rowHeight="55px" class="customNavbar">
-<mat-grid-tile><a href="#">OctaCourses</a></mat-grid-tile>
+<mat-grid-tile><a [routerLink]="['']" routerLinkActive="router-link-active" >OctaCourses</a></mat-grid-tile>
 <mat-grid-tile><a [routerLink]="['categories']" routerLinkActive="active" >Categories</a></mat-grid-tile>
 <mat-grid-tile colspan="4">
   <input type="text" class="form-control searchField" placeholder="What would you learn!">
@@ -8,6 +8,6 @@
 <mat-grid-tile></mat-grid-tile>
 <mat-grid-tile colspan="2"><a href="#">For course provider</a></mat-grid-tile>
 <mat-grid-tile></mat-grid-tile>
-<mat-grid-tile><a href="#" style="color: #f47f2f;">Login</a></mat-grid-tile>
-<mat-grid-tile class="joisUsBtn"><a href="#" style="color: white;">Join us</a></mat-grid-tile>
+<mat-grid-tile><a [routerLink]="['/login']" routerLinkActive="router-link-active"  style="color: #f47f2f;">Login</a></mat-grid-tile>
+<mat-grid-tile class="joisUsBtn"><a [routerLink]="['/register']" routerLinkActive="router-link-active"  style="color: white;">Join us</a></mat-grid-tile>
 </mat-grid-list>
