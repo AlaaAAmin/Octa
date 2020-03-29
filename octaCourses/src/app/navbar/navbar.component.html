@@ -1,13 +1,13 @@
 <mat-grid-list cols="12" rowHeight="55px" class="customNavbar">
-<mat-grid-tile><a [routerLink]="['']" routerLinkActive="router-link-active" >OctaCourses</a></mat-grid-tile>
+<mat-grid-tile><a [routerLink]="['']">OctaCourses</a></mat-grid-tile>
 <mat-grid-tile><a [routerLink]="['categories']" routerLinkActive="active" >Categories</a></mat-grid-tile>
 <mat-grid-tile colspan="4">
   <input type="text" class="form-control searchField" placeholder="What would you learn!">
   <button class="btn btn-primary">Search</button>
 </mat-grid-tile>
 <mat-grid-tile></mat-grid-tile>
-<mat-grid-tile colspan="2"><a href="#">For course provider</a></mat-grid-tile>
+<mat-grid-tile colspan="2"><a [routerLink]="['/courseproviderregisteration']">For course provider</a></mat-grid-tile>
 <mat-grid-tile></mat-grid-tile>
-<mat-grid-tile><a [routerLink]="['/login']" routerLinkActive="router-link-active"  style="color: #f47f2f;">Login</a></mat-grid-tile>
-<mat-grid-tile class="joisUsBtn"><a [routerLink]="['/register']" routerLinkActive="router-link-active"  style="color: white;">Join us</a></mat-grid-tile>
+<mat-grid-tile><a [routerLink]="['/login']" style="color: #f47f2f;">Login</a></mat-grid-tile>
+<mat-grid-tile class="joisUsBtn"><a [routerLink]="['/studentregisteration']" style="color: white;">Join us</a></mat-grid-tile>
 </mat-grid-list>

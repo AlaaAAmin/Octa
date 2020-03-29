@@ -10,7 +10,8 @@ import { UserProfileModule } from './user-profile/user-profile.module';
 import { SharedModule } from './shared/shared.module';
 import { LoginComponent } from './login/login.component';
 import { FormsModule } from '@angular/forms';
-import { StudentRegistrationComponent } from './student-registration/student-registration.component';
+import { StudentRegistrationComponent } from './registeration/student-registration/student-registration.component';
+import { CourseProviderRegisterationComponent } from './registeration/course-provider-registeration/course-provider-registeration.component';
 import { HttpClientModule } from '@angular/common/http';
 import { UserService } from './services/user.service';
 
@@ -21,13 +22,17 @@ import { UserService } from './services/user.service';
     HomepageComponent,
     LoginComponent,
     StudentRegistrationComponent,
-    CategoriesComponent
+    CoursesComponent,
+    CategoriesComponent,
+    LoginComponent,
+    CourseProviderRegisterationComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     SharedModule,
     UserProfileModule,
+    MaterialModule,
     FormsModule,
     HttpClientModule
   ],

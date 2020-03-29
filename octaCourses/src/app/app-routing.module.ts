@@ -4,8 +4,9 @@ import { HomepageComponent } from './homepage/homepage.component';
 import { CategoriesComponent } from './categories/categories.component';
 import { CoursesComponent } from './courses/courses.component';
 import { UserProfileRoutingModule } from './user-profile/user-profile-routing.module';
+import { StudentRegistrationComponent } from './registeration/student-registration/student-registration.component';
 import { LoginComponent } from './login/login.component';
-import { StudentRegistrationComponent } from './student-registration/student-registration.component';
+import { CourseProviderRegisterationComponent } from './registeration/course-provider-registeration/course-provider-registeration.component';
 
 
 const routes: Routes = [
@@ -13,7 +14,8 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: StudentRegistrationComponent },
   { path: 'categories', component: CategoriesComponent },
-  { path: 'categories/:id', component: CoursesComponent }
+  { path: 'categories/:id', component: CoursesComponent },
+  { path: 'courseproviderregisteration', component: CourseProviderRegisterationComponent }
 ];
 
 @NgModule({
