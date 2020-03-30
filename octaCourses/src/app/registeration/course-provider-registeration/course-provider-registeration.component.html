@@ -1,20 +1,12 @@
 <div class="container">
-    <div class="row justify-content-center">
-        <h1 class="col-sm-2 registerH1">Register</h1>
-    </div>
 
-    <div class="row justify-content-center">
-        <pre class="col-sm-6">
-        {{courseProviderRegisteration.value | json}}
-        </pre>
-    </div>
-    <!-- #courseProviderRegisteration is a template reference variable that holds a reference to the ngForm directive of this form
+    <!-- #studentRegistration is a template reference variable that holds a reference to the ngForm directive of this form
     so we can access its values -->
-    <div class="row justify-content-center">
-    <form class="col-sm-8" #courseProviderRegisteration="ngForm">
+    <div class="row justify-content-center formRow">
+    <form class="col-sm-3 registerationForm" #courseProviderRegisteration="ngForm">
+        <h1 class="registerH1">Register</h1>
         <!--name section-->
         <div class="formgroup">
-            <label for="name">Name</label>
             <!--ngModel directive specifies to th engForm directive which form controls to track-->
             <!--ngModel only works when we specifies a name attribute for the form control-->
             <!--ngModel can also be used with a property binding to bind the data to the form
@@ -22,74 +14,58 @@
             <!--it can also be used to transfer the data bidirectional to the model using the 2 way data binding-->
             <!--#name is a template ref variable that holds a reference to the ngModel of that particular
             form control-->
-            <input required id="name" name="name" type="text" class="form-control" ngModel #name="ngModel"
-            [class.is-invalid]="name.invalid && name.touched">
+            <input required id="name" name="name" type="text" class="form-control form-control-sm" ngModel #name="ngModel"
+            [class.is-invalid]="name.invalid && name.touched" placeholder="Name">
             <!--class d-none is a bootstrap class that hides elements-->
             <small class="text-danger" [class.d-none]="name.valid || name.untouched">
                 Your name is required
             </small>
         </div>
-
         <!--email section-->
         <div class="formgroup">
-            <label for="email">E-Mail</label>
-            <input required id="email" name="email" type="email" class="form-control" ngModel #email="ngModel"
+            <input required id="email" name="email" type="email" class="form-control form-control-sm" ngModel #email="ngModel"
             [class.is-invalid]="email.invalid && email.touched"
-            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" >
+            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" placeholder="E-Mail">
             <small class="text-danger" [class.d-none]="email.valid || email.untouched">
                 E-Mail must be in the following order: characters@characters.domain
             </small>
         </div>
-
-        <!--phone number section-->
+        <!--phone section-->
         <div class="formgroup">
-            <label for="phone">Phone</label>
-            <input required id="phone" name="phone" type="tel" class="form-control" ngModel #phone="ngModel"
-            [class.is-invalid]="phone.invalid && phone.touched" pattern="[0]{1}[1]{1}(0|1|2|5)\d{8}">
+            <input required id="phone" name="phone" type="tel" class="form-control form-control-sm" ngModel #phone="ngModel"
+            [class.is-invalid]="phone.invalid && phone.touched" pattern="[0]{1}[1]{1}(0|1|2|5)\d{8}"
+            placeholder="Phone">
             <small class="text-danger" [class.d-none]="phone.valid || phone.untouched">
                 Your phone number should start with 01 and be an 11 digits number
             </small>
         </div>
 
-        <!--facebook account link section-->
         <div class="formgroup">
-            <label for="facebookAccount">Facebook account</label>
-            <input required id="facebookAccount" name="facebookAccount" type="url" class="form-control" 
-            ngModel #facebookAccount="ngModel" [class.is-invalid]="facebookAccount.invalid && facebookAccount.touched"
-            pattern="http://www\.facebook\.com\/(.+)|https://www\.facebook\.com\/(.+)" >
-            <small class="text-danger" [class.d-none]="facebookAccount.valid || facebookAccount.untouched">
-               Enter a valid facebook account
-            </small>
-        </div>
-
-        <!--address section-->
-        <div class="formgroup">
-            <label for="address">Address <small>(optional)</small></label>
-            <input id="address" name="address" type="text" class="form-control" ngModel #address="ngModel">
-        </div>
-
-        <!--password section-->
-        <div class="formgroup">
-            <label for="password">Password</label>
-            <input required id="password" name="password" type="password" class="form-control" 
+            <input required id="password" name="password" type="password" class="form-control form-control-sm" 
             ngModel #password="ngModel" [class.is-invalid]="password.invalid && password.touched" 
-            pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}">
+            pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" placeholder="Password">
             <small class="text-danger" [class.d-none]="password.valid || password.untouched">
                 Password must contain 8 or more characters that are of at least one number, and one uppercase and lowercase letter
             </small>
         </div>
-        <!--confirm password section-->
         <div class="formgroup">
-            <label for="confirmPassword">Confirm password</label>
-            <input required id="confirmPassword" name="confirmPassword" type="password" class="form-control" 
-            ngModel #confirmPassword="ngModel" 
+            <input required id="confirmPassword" name="confirmPassword" type="password" class="form-control form-control-sm" 
+            ngModel #confirmPassword="ngModel" placeholder="Confirm password"
             [class.is-invalid]="confirmPassword.touched && password.value != confirmPassword.value">
             <small class="text-danger" [class.d-none]="password.value == confirmPassword.value || confirmPassword.untouched">
                 Password doesn't match
             </small>
         </div>
 
-        <button [disabled]="courseProviderRegisteration.form.invalid" class="btn btn-primary registerButton" type="submit">Register</button>
+        <button [disabled]="courseProviderRegisteration.form.invalid || password.value != confirmPassword.value" 
+        class="btn btn-primary registerButton btn-sm btn-block" type="submit">Register</button>
     </form>
+
+    <div class="col-sm-3 haveAccountDiv">
+        <h3 class="vAlign">Already have an account!<br>
+            <a [routerLink]="['/login']">login</a>
+        </h3>
+    </div>
 </div>
+<br>
 </div>

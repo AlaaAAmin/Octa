@@ -1,0 +1,55 @@
+.infoFields{
+    font-size: 140%;
+    margin-top: 7px;
+    margin-left: 3%;
+}
+
+.joiningDate{
+    color: gray;
+    font-size: 68%;
+}
+.facebookAccountInfoFields{
+    font-size: 110%;
+    margin-top: 8px;
+    margin-left: 3%;
+}
+
+.facebookAccountInfoFields :hover{
+    color: teal;
+}
+
+/*image section*/
+.imageRow{
+    margin-top: 1%;
+}
+.imageContainer {
+    position: relative;
+    width: 50%;
+    max-width: 300px;
+    margin-left: 2%;
+  }
+  
+  .image {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+  
+  .overlay {
+    position: absolute; 
+    bottom: 0; 
+    background: rgb(0, 0, 0);
+    background: rgba(0, 0, 0, 0.5); /* Black see-through */
+    color: #f1f1f1; 
+    width: 100%;
+    transition: .5s ease;
+    opacity:0;
+    color: white;
+    font-size: 20px;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .imageContainer:hover .overlay {
+    opacity: 1;
+  }
