@@ -14,6 +14,7 @@ import { StudentRegistrationComponent } from './registeration/student-registrati
 import { CourseProviderRegisterationComponent } from './registeration/course-provider-registeration/course-provider-registeration.component';
 import { HttpClientModule } from '@angular/common/http';
 import { UserService } from './services/user.service';
+import { CoursesComponent } from './courses/courses.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,6 @@ import { UserService } from './services/user.service';
     AppRoutingModule,
     SharedModule,
     UserProfileModule,
-    MaterialModule,
     FormsModule,
     HttpClientModule
   ],
