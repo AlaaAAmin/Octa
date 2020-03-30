@@ -1,6 +1,218 @@
-<div class="container mt-3">
-    <p>
-        <b>Name</b>: {{user.name}}
-    </p>
-    <p><b>Email</b>: {{user.email}}</p>
+<div class="container">
+
+    <div class="row imageRow">
+    <!--profile image-->
+        <div class="imageContainer">
+            <!--the profile image-->
+            <img src="../../../assets/img/homeCourse.jpg" alt="Avatar" class="image rounded">
+            <!--update profile image button
+            this button should make me choose image then upload it to the server as the new profile image-->
+            <button class="overlay btn">Update</button>
+        </div>
+    </div>
+    <!--end of profile image-->
+
+    <!--name section-->
+    <div class="row" style="margin-top: 3%;">
+        <!--displaying personal info column-->
+        <div class="col-sm-4" class="infoFields">
+            <div>student name</div>
+            <small class="joiningDate">Member since: registration date</small>
+        </div>
+
+        <!--edit info buttons column-->
+        <div class="col-sm-2">
+            <button class="btn btn-link" (click)="nameEdit()">edit</button>
+        </div>
+
+        <!--editing forms column-->
+        <div class="col-sm-6">
+            <form class="form-inline" #nameForm="ngForm">
+                <span [class.d-none]="editName">
+                    <input placeholder="new name" type="text" name="newName" id="newName" class="form-control" 
+                    ngModel #newName="ngModel" required [class.is-invalid]="newName.invalid && newName.touched">
+                    <button type="submit" class="btn btn-primary" (click)="submitName()"
+                    [disabled]="nameForm.invalid">Submit</button>
+                </span>
+            </form>
+            <small class="text-danger" [class.d-none]="newName.valid || newName.untouched">
+                Your name is required
+            </small>
+        </div>
+    </div>
+<hr>
+    <!--email section-->
+    <div class="row" style="margin-top: 3%;">
+        <!--displaying personal info column-->
+        <div class="col-sm-4" class="infoFields">
+            <label for="email">Email: &nbsp;</label>
+            <span id="email">chars@chars.com</span>
+        </div>
+
+        <!--edit info buttons column-->
+        <div class="col-sm-2">
+            <button class="btn btn-link" (click)="emailEdit()">edit</button>
+        </div>
+
+        <!--editing forms column-->
+        <div class="col-sm-6">
+            <form class="form-inline" #emailForm="ngForm">
+                <span [class.d-none]="editEmail">
+                    <input placeholder="new email" type="email" name="newEmail" class="form-control" 
+                    ngModel #newEmail="ngModel" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+                    [class.is-invalid]="newEmail.invalid && newEmail.touched">
+                    <button type="submit" class="btn btn-primary" (click)="submitEmail()"
+                    [disabled]="nameForm.invalid">Submit</button>
+                </span>
+            </form>
+            <small class="text-danger" [class.d-none]="newEmail.valid || newEmail.untouched">
+                E-Mail must be characters@characters.domain
+            </small>
+        </div>
+    </div>
+<hr>
+    <!--phone section-->
+    <div class="row" style="margin-top: 3%;">
+        <!--displaying personal info column-->
+        <div class="col-sm-4" class="infoFields">
+            <label for="phone">Phone: &nbsp;</label>
+            <span id="phone">01066569848</span>
+        </div>
+
+        <!--edit info buttons column-->
+        <div class="col-sm-2">
+            <button class="btn btn-link" (click)="phoneEdit()">edit</button>
+        </div>
+
+        <!--editing forms column-->
+        <div class="col-sm-6">
+            <form class="form-inline" #phoneForm="ngForm">
+                <span [class.d-none]="editPhone">
+                    <input placeholder="new phone number" type="tel" name="newPhone" class="form-control" 
+                    ngModel #newPhone="ngModel" required pattern="[0]{1}[1]{1}(0|1|2|5)\d{8}"
+                    [class.is-invalid]="newPhone.invalid && newPhone.touched">
+                    <button type="submit" class="btn btn-primary" (click)="submitPhone()"
+                    [disabled]="phoneForm.invalid">Submit</button>
+                </span>
+            </form>
+            <small class="text-danger" [class.d-none]="newPhone.valid || newPhone.untouched">
+                Your phone number should start with 01 and be an 11 digits number
+            </small>
+        </div>
+    </div>
+<hr>
+    <!--facebook account section-->
+    <div class="row" style="margin-top: 3%;">
+        <!--displaying personal info column-->
+        <div class="col-sm-4" class="facebookAccountInfoFields">
+            <label for="facebook">Facebook: &nbsp;</label>
+            <span id="facebook">https://www.facebook.com/alaa.amin.7169</span>
+        </div>
+
+        <!--edit info buttons column-->
+        <div class="col-sm-2">
+            <button class="btn btn-link" (click)="facebookAccountEdit()">edit</button>
+        </div>
+
+        <!--editing forms column-->
+        <div class="col-sm-4">
+            <form class="form-inline" #facebookAccountForm="ngForm">
+                <span [class.d-none]="editFacebookAccount">
+                    <input placeholder="facebook account" type="url" name="newFacebookAccount" class="form-control" 
+                    ngModel #newFacebookAccount="ngModel" required pattern="http://www\.facebook\.com\/(.+)|https://www\.facebook\.com\/(.+)"
+                    [class.is-invalid]="newFacebookAccount.invalid && newFacebookAccount.touched">
+                    <button type="submit" class="btn btn-primary" (click)="submitFacebookAccount()"
+                    [disabled]="facebookAccountForm.invalid">Submit</button>
+                </span>
+            </form>
+            <small class="text-danger" [class.d-none]="newFacebookAccount.valid || newFacebookAccount.untouched">
+                Enter a valid facebook account
+            </small>
+        </div>
+    </div>
+<hr>
+    <!--birthdate section-->
+    <div class="row" style="margin-top: 3%;">
+        <!--displaying personal info column-->
+        <div class="col-sm-4" class="infoFields">
+            <label for="birthdate">Birthdate: &nbsp;</label>
+            <span id="birthdate">6/1/1998</span>
+        </div>
+
+        <!--edit info buttons column-->
+        <div class="col-sm-2">
+            <button class="btn btn-link" (click)="birthdateEdit()">edit</button>
+        </div>
+
+        <!--editing forms column-->
+        <div class="col-sm-6">
+            <form class="form-inline" #birthdateForm="ngForm">
+                <span [class.d-none]="editBirthdate">
+                    <input placeholder="birthdate" type="date" name="newBirthdate" class="form-control" 
+                    ngModel #newBirthdate="ngModel" required [class.is-invalid]="newBirthdate.invalid && newBirthdate.touched">
+                    <button type="submit" class="btn btn-primary" (click)="submitBirthdate()"
+                    [disabled]="birthdateForm.invalid">Submit</button>
+                </span>
+            </form>
+            <small class="text-danger" [class.d-none]="newBirthdate.valid || newBirthdate.untouched">
+                birthdate is required
+            </small>
+        </div>
+    </div>
+<hr>
+    <!--password section-->
+    <div class="row" style="margin-top: 3%;">
+        <!--displaying personal info column-->
+        <div class="col-sm-2" class="infoFields">
+            <label for="password">Password</label>
+        </div>
+
+        <!--edit info buttons column-->
+        <div class="col-sm-2">
+            <button class="btn btn-link" (click)="passwordEdit()">change</button>
+        </div>
+
+        <!--editing forms column-->
+        <div class="col-sm-5" [class.d-none]="changePassword">
+            <form #passwordForm="ngForm">
+                <!--current password-->
+                <div class="formgroup">
+                    <label for="currentPass">Current</label>
+                    <input id="currentPass" type="password" name="currentPassword" 
+                    class="form-control" ngModel #currentPassword="ngModel" required>
+                </div>
+                    <!--end of current password-->
+
+                    <!--new password-->
+                <div class="formgroup">
+                    <label for="newPass">New</label>
+                    <input id="newPass" type="password" name="newPassword" 
+                    class="form-control" ngModel #newPassword="ngModel" required
+                    [class.is-invalid]="newPassword.invalid && newPassword.touched" 
+                    pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}">
+                    <small class="text-danger" [class.d-none]="newPassword.valid || newPassword.untouched">
+                        Password must contain 8 or more characters that are of at least one number, and one uppercase and lowercase letter
+                    </small>
+                </div>
+                    <!--end of new password-->
+
+                    <!--confirm password-->
+                <div class="formgroup">
+                    <label for="confirmPass">Confirm new password</label>
+                    <input id="confirmPass" type="password" name="confirmPassword" 
+                    class="form-control" ngModel #confirmPassword="ngModel" required
+                    [class.is-invalid]="confirmPassword.touched && newPassword.value != confirmPassword.value">
+                    <small class="text-danger" [class.d-none]="newPassword.value == confirmPassword.value || confirmPassword.untouched">
+                        Password doesn't match
+                    </small>
+                </div>
+                    <!--end of confirm password-->
+                    <button type="submit" class="btn btn-primary" (click)="submitPassword()"
+                    [disabled]="passwordForm.invalid" style="margin-top: 1%;">Submit</button>
+            </form>
+            <small class="text-danger" [class.d-none]="newBirthdate.valid || newBirthdate.untouched">
+                birthdate is required
+            </small>
+        </div>
+    </div>
 </div>

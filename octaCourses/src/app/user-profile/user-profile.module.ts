@@ -9,6 +9,7 @@ import { CertificatesComponent } from './certificates/certificates.component';
 import { MaterialModule } from '../shared/material/material.module';
 import { SharedModule } from '../shared/shared.module';
 import { CourseCardComponent } from './components/course-card/course-card.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { CourseCardComponent } from './components/course-card/course-card.compon
   imports: [
     CommonModule,
     UserProfileRoutingModule,
-    SharedModule
+    SharedModule,
+    FormsModule
   ]
 })
 export class UserProfileModule { }
