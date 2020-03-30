@@ -12,7 +12,7 @@ import { CourseProviderRegisterationComponent } from './registeration/course-pro
 const routes: Routes = [
   { path: '', component: HomepageComponent, pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
-  { path: 'studentregisteration', component: StudentRegistrationComponent },
+  { path: 'register', component: StudentRegistrationComponent },
   { path: 'categories', component: CategoriesComponent },
   { path: 'categories/:id', component: CoursesComponent },
   { path: 'courseproviderregisteration', component: CourseProviderRegisterationComponent }
