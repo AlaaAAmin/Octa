@@ -14,16 +14,24 @@ export class ProfileComponent implements OnInit {
   constructor(private router: Router) {
     this.navLinks = [
       {
-        label: 'Personal Information',
-        path: '/user/profile/personal%20information',
+        label: 'Overview',
+        path: '/user/profile/overview',
         index: 0
       }, {
-        label: 'Courses',
-        path: '/user/profile/courses',
+        label: 'Enrolled in',
+        path: '/user/profile/enrolledInCourses',
+        index: 1
+      }, {
+        label: 'Wishlist',
+        path: '/user/profile/wishlist',
         index: 1
       }, {
         label: 'Certificates',
         path: '/user/profile/certificates',
+        index: 1
+      }, {
+        label: 'Finished courses',
+        path: '/user/profile/finishedCourses',
         index: 1
       }
       
