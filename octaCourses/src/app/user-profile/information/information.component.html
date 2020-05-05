@@ -2,36 +2,45 @@
 
     <div class="row imageRow">
     <!--profile image-->
-        <div class="imageContainer">
-            <!--the profile image-->
-            <img src="../../../assets/img/homeCourse.jpg" alt="Avatar" class="image rounded">
-            <!--update profile image button
-            this button should make me choose image then upload it to the server as the new profile image-->
-            <button class="overlay btn">Update</button>
+    <div class="col-sm-3">
+        <div class="newImageContainer">
+            <img src="../../../assets/img/profile.jpg" alt="Avatar" class="image img-thumbnail" style="width:100%">
+            <div class="middle">
+            <button class="text btn"><mat-icon>edit</mat-icon></button>
+            </div>
         </div>
     </div>
-    <!--end of profile image-->
+
+    <!--user name-->
+    <div class="col-sm-4 nameDiv">
+        <div class="col-sm-4" class="infoFields">
+            <div>Alaa Ahmed Amin</div>
+            <small class="joiningDate">Member since: registration date</small>
+        </div>
+    </div>
+    </div>
+    <!--end of user name-->
+    <!--end of profile image & name-->
 
     <!--name section-->
     <div class="row" style="margin-top: 3%;">
         <!--displaying personal info column-->
         <div class="col-sm-4" class="infoFields">
             <div>student name</div>
-            <small class="joiningDate">Member since: registration date</small>
         </div>
 
         <!--edit info buttons column-->
         <div class="col-sm-2">
-            <button class="btn btn-link" (click)="nameEdit()">edit</button>
+            <button class="btn btn-link" (click)="nameEdit()"><mat-icon class="editIcon">edit</mat-icon></button>
         </div>
 
         <!--editing forms column-->
-        <div class="col-sm-6">
+        <div class="col-sm-4">
             <form class="form-inline" #nameForm="ngForm">
                 <span [class.d-none]="editName">
-                    <input placeholder="new name" type="text" name="newName" id="newName" class="form-control" 
+                    <input placeholder="new name" type="text" name="newName" id="newName" class="form-control form-control form-control-sm" 
                     ngModel #newName="ngModel" required [class.is-invalid]="newName.invalid && newName.touched">
-                    <button type="submit" class="btn btn-primary" (click)="submitName()"
+                    <button type="submit" class="btn btn-primary btn-sm" (click)="submitName()"
                     [disabled]="nameForm.invalid">Submit</button>
                 </span>
             </form>
@@ -51,17 +60,17 @@
 
         <!--edit info buttons column-->
         <div class="col-sm-2">
-            <button class="btn btn-link" (click)="emailEdit()">edit</button>
+            <button class="btn btn-link" (click)="emailEdit()"><mat-icon class="editIcon">edit</mat-icon></button>
         </div>
 
         <!--editing forms column-->
-        <div class="col-sm-6">
+        <div class="col-sm-4">
             <form class="form-inline" #emailForm="ngForm">
                 <span [class.d-none]="editEmail">
-                    <input placeholder="new email" type="email" name="newEmail" class="form-control" 
+                    <input placeholder="new email" type="email" name="newEmail" class="form-control  form-control-sm" 
                     ngModel #newEmail="ngModel" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
                     [class.is-invalid]="newEmail.invalid && newEmail.touched">
-                    <button type="submit" class="btn btn-primary" (click)="submitEmail()"
+                    <button type="submit" class="btn btn-primary btn-sm" (click)="submitEmail()"
                     [disabled]="nameForm.invalid">Submit</button>
                 </span>
             </form>
@@ -81,17 +90,17 @@
 
         <!--edit info buttons column-->
         <div class="col-sm-2">
-            <button class="btn btn-link" (click)="phoneEdit()">edit</button>
+            <button class="btn btn-link" (click)="phoneEdit()"><mat-icon class="editIcon">edit</mat-icon></button>
         </div>
 
         <!--editing forms column-->
         <div class="col-sm-6">
             <form class="form-inline" #phoneForm="ngForm">
                 <span [class.d-none]="editPhone">
-                    <input placeholder="new phone number" type="tel" name="newPhone" class="form-control" 
+                    <input placeholder="new phone number" type="tel" name="newPhone" class="form-control form-control-sm" 
                     ngModel #newPhone="ngModel" required pattern="[0]{1}[1]{1}(0|1|2|5)\d{8}"
                     [class.is-invalid]="newPhone.invalid && newPhone.touched">
-                    <button type="submit" class="btn btn-primary" (click)="submitPhone()"
+                    <button type="submit" class="btn btn-primary btn-sm" (click)="submitPhone()"
                     [disabled]="phoneForm.invalid">Submit</button>
                 </span>
             </form>
@@ -105,23 +114,25 @@
     <div class="row" style="margin-top: 3%;">
         <!--displaying personal info column-->
         <div class="col-sm-4" class="facebookAccountInfoFields">
-            <label for="facebook">Facebook: &nbsp;</label>
-            <span id="facebook">https://www.facebook.com/alaa.amin.7169</span>
+            <label>Facebook: &nbsp;</label>
+            <!--facebookAccountLink is a template reference variable that holds a reference to the a element
+            so i can use the text of the anchor as the href attribute-->
+            <a target="_blank" #facebookAccountLink href="{{facebookAccountLink.textContent}}">https://www.facebook.com/alaa.amin.7169</a>
         </div>
 
         <!--edit info buttons column-->
         <div class="col-sm-2">
-            <button class="btn btn-link" (click)="facebookAccountEdit()">edit</button>
+            <button class="btn btn-link" (click)="facebookAccountEdit()"><mat-icon class="editIcon">edit</mat-icon></button>
         </div>
 
         <!--editing forms column-->
         <div class="col-sm-4">
             <form class="form-inline" #facebookAccountForm="ngForm">
                 <span [class.d-none]="editFacebookAccount">
-                    <input placeholder="facebook account" type="url" name="newFacebookAccount" class="form-control" 
+                    <input placeholder="facebook account" type="url" name="newFacebookAccount" class="form-control form-control-sm" 
                     ngModel #newFacebookAccount="ngModel" required pattern="http://www\.facebook\.com\/(.+)|https://www\.facebook\.com\/(.+)"
                     [class.is-invalid]="newFacebookAccount.invalid && newFacebookAccount.touched">
-                    <button type="submit" class="btn btn-primary" (click)="submitFacebookAccount()"
+                    <button type="submit" class="btn btn-primary btn-sm" (click)="submitFacebookAccount()"
                     [disabled]="facebookAccountForm.invalid">Submit</button>
                 </span>
             </form>
@@ -141,16 +152,16 @@
 
         <!--edit info buttons column-->
         <div class="col-sm-2">
-            <button class="btn btn-link" (click)="birthdateEdit()">edit</button>
+            <button class="btn btn-link" (click)="birthdateEdit()"><mat-icon class="editIcon">edit</mat-icon></button>
         </div>
 
         <!--editing forms column-->
         <div class="col-sm-6">
             <form class="form-inline" #birthdateForm="ngForm">
                 <span [class.d-none]="editBirthdate">
-                    <input placeholder="birthdate" type="date" name="newBirthdate" class="form-control" 
+                    <input placeholder="birthdate" type="date" name="newBirthdate" class="form-control form-control-sm" 
                     ngModel #newBirthdate="ngModel" required [class.is-invalid]="newBirthdate.invalid && newBirthdate.touched">
-                    <button type="submit" class="btn btn-primary" (click)="submitBirthdate()"
+                    <button type="submit" class="btn btn-primary btn-sm" (click)="submitBirthdate()"
                     [disabled]="birthdateForm.invalid">Submit</button>
                 </span>
             </form>
@@ -161,7 +172,7 @@
     </div>
 <hr>
     <!--password section-->
-    <div class="row" style="margin-top: 3%;">
+    <div class="row" style="margin-top: 3%; margin-bottom: 3%;">
         <!--displaying personal info column-->
         <div class="col-sm-2" class="infoFields">
             <label for="password">Password</label>
@@ -169,7 +180,7 @@
 
         <!--edit info buttons column-->
         <div class="col-sm-2">
-            <button class="btn btn-link" (click)="passwordEdit()">change</button>
+            <button class="btn btn-link" (click)="passwordEdit()"><mat-icon class="editIcon">edit</mat-icon></button>
         </div>
 
         <!--editing forms column-->
@@ -179,7 +190,7 @@
                 <div class="formgroup">
                     <label for="currentPass">Current</label>
                     <input id="currentPass" type="password" name="currentPassword" 
-                    class="form-control" ngModel #currentPassword="ngModel" required>
+                    class="form-control form-control-sm" ngModel #currentPassword="ngModel" required>
                 </div>
                     <!--end of current password-->
 
@@ -187,7 +198,7 @@
                 <div class="formgroup">
                     <label for="newPass">New</label>
                     <input id="newPass" type="password" name="newPassword" 
-                    class="form-control" ngModel #newPassword="ngModel" required
+                    class="form-control  form-control-sm" ngModel #newPassword="ngModel" required
                     [class.is-invalid]="newPassword.invalid && newPassword.touched" 
                     pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}">
                     <small class="text-danger" [class.d-none]="newPassword.valid || newPassword.untouched">
@@ -200,19 +211,16 @@
                 <div class="formgroup">
                     <label for="confirmPass">Confirm new password</label>
                     <input id="confirmPass" type="password" name="confirmPassword" 
-                    class="form-control" ngModel #confirmPassword="ngModel" required
+                    class="form-control form-control-sm" ngModel #confirmPassword="ngModel" required
                     [class.is-invalid]="confirmPassword.touched && newPassword.value != confirmPassword.value">
                     <small class="text-danger" [class.d-none]="newPassword.value == confirmPassword.value || confirmPassword.untouched">
                         Password doesn't match
                     </small>
                 </div>
                     <!--end of confirm password-->
-                    <button type="submit" class="btn btn-primary" (click)="submitPassword()"
+                    <button type="submit" class="btn btn-primary btn-sm" (click)="submitPassword()"
                     [disabled]="passwordForm.invalid" style="margin-top: 1%;">Submit</button>
             </form>
-            <small class="text-danger" [class.d-none]="newBirthdate.valid || newBirthdate.untouched">
-                birthdate is required
-            </small>
         </div>
     </div>
 </div>
