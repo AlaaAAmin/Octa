@@ -35,6 +35,12 @@
 
         <button [disabled]="studentRegisteration.form.invalid" 
         class="btn btn-primary registerButton btn-sm btn-block" type="submit">Register</button>
+
+        <!--forgot password section-->
+        <div>
+            <a [routerLink]="['/forgotpassword']">Forgotten password!</a>
+        </div>
+        <!-- end of forgot password section-->
     </form>
 
     <div class="col-sm-3 haveAccountDiv">

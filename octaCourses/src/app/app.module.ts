@@ -15,6 +15,7 @@ import { CourseProviderRegisterationComponent } from './registeration/course-pro
 import { HttpClientModule } from '@angular/common/http';
 import { UserService } from './services/user.service';
 import { CoursesComponent } from './courses/courses.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { CoursesComponent } from './courses/courses.component';
     CoursesComponent,
     CategoriesComponent,
     LoginComponent,
-    CourseProviderRegisterationComponent
+    CourseProviderRegisterationComponent,
+    ForgotPasswordComponent
   ],
   imports: [
     BrowserModule,
