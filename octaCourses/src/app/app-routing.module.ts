@@ -7,6 +7,7 @@ import { UserProfileRoutingModule } from './user-profile/user-profile-routing.mo
 import { StudentRegistrationComponent } from './registeration/student-registration/student-registration.component';
 import { LoginComponent } from './login/login.component';
 import { CourseProviderRegisterationComponent } from './registeration/course-provider-registeration/course-provider-registeration.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 
 
 const routes: Routes = [
@@ -16,7 +17,8 @@ const routes: Routes = [
   { path: 'register', component: StudentRegistrationComponent },
   { path: 'categories', component: CategoriesComponent },
   { path: 'categories/:id', component: CoursesComponent },
-  { path: 'courseproviderregisteration', component: CourseProviderRegisterationComponent }
+  { path: 'courseproviderregisteration', component: CourseProviderRegisterationComponent },
+  { path: 'forgotpassword', component: ForgotPasswordComponent }
 ];
 
 @NgModule({
