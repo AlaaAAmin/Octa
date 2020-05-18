@@ -15,6 +15,7 @@ import { CourseProviderRegisterationComponent } from './registeration/course-pro
 import { HttpClientModule } from '@angular/common/http';
 import { UserService } from './services/user.service';
 import { CoursesComponent } from './courses/courses.component';
+import { CourseProviderModule } from './course-provider/course-provider.module';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { CoursesComponent } from './courses/courses.component';
     SharedModule,
     UserProfileModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    CourseProviderModule
   ],
   providers: [UserService],
   bootstrap: [AppComponent]

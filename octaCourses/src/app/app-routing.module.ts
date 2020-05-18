@@ -10,6 +10,7 @@ import { CourseProviderRegisterationComponent } from './registeration/course-pro
 
 
 const routes: Routes = [
+  { path: 'profile', loadChildren: ()=>  import('./course-provider/course-provider.module')},
   { path: '', component: HomepageComponent, pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: StudentRegistrationComponent },
