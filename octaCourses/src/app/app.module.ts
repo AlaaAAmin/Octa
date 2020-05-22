@@ -38,7 +38,6 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
     UserProfileModule,
     FormsModule,
     HttpClientModule,
-    CourseProviderModule
   ],
   providers: [UserService],
   bootstrap: [AppComponent]

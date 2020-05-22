@@ -11,7 +11,8 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
 
 
 const routes: Routes = [
-  { path: 'course-provider', loadChildren: ()=>  import('./course-provider/course-provider.module').then( m => m.CourseProviderModule)},
+  { path: 'course-provider', loadChildren: () => import('./course-provider/course-provider.module').then(m => m.CourseProviderModule) },
+  { path: 'student', loadChildren: ()=> import('./user-profile/user-profile.module').then(m => m.UserProfileModule)},
   { path: '', component: HomepageComponent, pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: StudentRegistrationComponent },
@@ -22,8 +23,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes),
-    UserProfileRoutingModule],
+  imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
