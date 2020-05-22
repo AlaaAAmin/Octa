@@ -11,7 +11,7 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
 
 
 const routes: Routes = [
-  { path: 'profile', loadChildren: ()=>  import('./course-provider/course-provider.module')},
+  { path: 'course-provider', loadChildren: ()=>  import('./course-provider/course-provider.module').then( m => m.CourseProviderModule)},
   { path: '', component: HomepageComponent, pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: StudentRegistrationComponent },
