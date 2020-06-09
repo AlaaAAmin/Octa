@@ -1,1 +1,13 @@
-<p>profile works!</p>
+<mat-sidenav-container>
+    <mat-sidenav opened disableClose mode="side" class="sideNav">
+        <div>
+            <p class="sideNavP position-relative w-100" routerLinkActive="active-link" 
+            *ngFor="let link of navLinks; let first = first;" [ngClass]="{ first: first}">
+                <a class="sideNavLinks stretched-link" [routerLink]="link.path">{{link.label}}</a>
+            </p>
+        </div>
+    </mat-sidenav>
+    <mat-sidenav-content class="col-sm-11 col-xs-5">
+        <router-outlet></router-outlet>
+    </mat-sidenav-content>
+</mat-sidenav-container>

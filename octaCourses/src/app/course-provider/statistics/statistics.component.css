@@ -1,0 +1,28 @@
+.card-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+}
+.devider {
+    height: 10px;
+    width: 100%;
+    background-color: #f47f2f;
+    position: absolute;
+    top: 185px;
+    left: 0px;
+}
+.banner-icon {
+    font-size: 35px;
+    position: absolute;
+    right: 30px;
+    top: -10px;
+    color: #2fa4fa;
+}
+.footer-text {
+    padding: 5px;
+}
+
+.publishingDate{
+    color: #262626;
+}

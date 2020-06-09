@@ -1,10 +1,21 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ProfileComponent } from './profile/profile.component';
+import { InformationComponent } from './information/information.component';
+import { BillingComponent } from './billing/billing.component';
+import { StatisticsComponent } from './statistics/statistics.component';
+import { CreateCourseComponent } from './create-course/create-course.component';
 
 
 const routes: Routes = [
-  { path: 'profile', component: ProfileComponent }
+  { 
+    path: 'profile', component: ProfileComponent, children: [
+      { path: 'overview', component: InformationComponent },
+      { path: 'billing', component: BillingComponent },
+      { path: 'statistics', component: StatisticsComponent },
+      { path: 'create-course', component: CreateCourseComponent }
+    ]
+  }
 ];
 
 @NgModule({

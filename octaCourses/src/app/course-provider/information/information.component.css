@@ -1,0 +1,106 @@
+.nameField{
+    font-size: 180%;
+    margin-left: 3%;
+    width: 100%;
+  }
+  
+  .infoFields{
+      font-size: 140%;
+      margin-top: 7px;
+      margin-left: 3%;
+  }
+  
+  .joiningDate{
+      color: gray;
+      font-size: 60%;
+  }
+  .facebookAccountInfoFields{
+      font-size: 110%;
+      margin-top: 8px;
+      margin-left: 3%;
+  }
+  
+  
+  /*image section*/
+  .imageRow{
+      margin-top: 1%;
+  }
+  .imageContainer {
+      position: relative;
+      width: 50%;
+      max-width: 300px;
+      margin-left: 2%;
+    }
+    
+    .image {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+    
+    .overlay {
+      position: absolute; 
+      bottom: 0; 
+      background: rgb(0, 0, 0);
+      background: rgba(0, 0, 0, 0.5); /* Black see-through */
+      color: #f1f1f1; 
+      width: 100%;
+      transition: .5s ease;
+      opacity:0;
+      color: white;
+      font-size: 20px;
+      padding: 20px;
+      text-align: center;
+    }
+    
+    .imageContainer:hover .overlay {
+      opacity: 1;
+    }
+  
+  /* new image stylying*/ 
+  
+  .newImageContainer {
+    position: relative;
+    width: 100%;
+  }
+  
+  .image {
+    opacity: 1;
+    display: block;
+    width: 100%;
+    height: 100%;
+    transition: .5s ease;
+    backface-visibility: hidden;
+  }
+  
+  .middle {
+    transition: .5s ease;
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%)
+  }
+  
+  .newImageContainer:hover .image {
+    opacity: 0.3;
+  }
+  
+  .newImageContainer:hover .middle {
+    opacity: 1;
+  }
+  
+  .text {
+    background-color: transparent;
+    color: black;
+    font-size: 130%;
+  }
+  
+  .nameDiv{
+    margin-top: 10%;
+  }
+  
+  .editIcon{
+    font-size: 100%;
+  }

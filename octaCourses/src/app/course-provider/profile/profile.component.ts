@@ -7,7 +7,30 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfileComponent implements OnInit {
 
-  constructor() { }
+  navLinks: any[];
+  constructor() { 
+
+    this.navLinks = [
+      {
+        label: 'Overview',
+        path: '/course-provider/profile/overview',
+        index: 0
+      }, {
+        label: 'Billing',
+        path: '/course-provider/profile/billing',
+        index: 1
+      }, {
+        label: 'Statistics',
+        path: '/course-provider/profile/statistics',
+        index: 1
+      }, {
+        label: 'Create course',
+        path: '/course-provider/profile/create-course',
+        index: 1
+      }
+      
+    ];
+   }
 
   ngOnInit(): void {
   }
