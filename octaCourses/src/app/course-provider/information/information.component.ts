@@ -7,21 +7,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InformationComponent implements OnInit {
 
-  user = {
-    name: 'Alaa A Amin',
-    email: 'alaaamin@gmail.com'
-  }
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  // the below functions used to display and hide the editing forms for the input fields
-
   editName:boolean = true;
   editEmail:boolean = true;
   editPhone:boolean = true;
   editFacebookAccount:boolean = true;
+  editTwitterAccount:boolean = true;
   editBirthdate:boolean = true;
   changePassword:boolean = true;
 
@@ -62,6 +57,15 @@ export class InformationComponent implements OnInit {
     this.editFacebookAccount = true;
   }
 
+  //twitter account section
+  twitterAccountEdit(){
+    this.editTwitterAccount = false;
+  }
+  // submitTwitterAccount should submit the name to the database then hides the input fields
+  submitTwitterAccount(){
+    this.editTwitterAccount = true;
+  }
+
   //birthdate section
   birthdateEdit(){
     this.editBirthdate = false;
@@ -79,4 +83,5 @@ export class InformationComponent implements OnInit {
   submitPassword(){
     this.changePassword = true;
   }
+
 }

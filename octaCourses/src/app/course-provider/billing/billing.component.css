@@ -1,0 +1,28 @@
+.billingInfo{
+    margin-top: 1%;
+}
+.earnings{
+    font-size: larger;
+}
+.actionButton{
+    margin-top: 1%;
+}
+
+.inactiveLink {
+    pointer-events: none;
+    cursor: default;
+ }
+
+ .editIcon{
+    font-size: 80%;
+  }
+
+.threshold{
+    width: 22%;
+}
+
+.thresholdBtn{
+    margin-top: 2%;
+    margin-bottom: 5%;
+    width: 30%;
+}

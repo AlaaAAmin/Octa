@@ -1,0 +1,24 @@
+<div class="container card-container">
+    <div class="col-sm-6 col-md-4 col-lg-3 p-3" *ngFor="let item of courses">
+        <mat-card>
+            <img mat-card-image src="../../assets/img/homeCourse.jpg" alt="c">
+            <div class="w-100 devider">
+                <mat-icon class="banner-icon">bookmark</mat-icon>
+            </div>
+            <mat-card-header>
+                <mat-card-subtitle>
+                    Place X
+                </mat-card-subtitle>
+                <mat-card-title>
+                    Course ABC
+                </mat-card-title>
+            </mat-card-header>
+            <mat-card-content class="publishingDate">
+                Published <div>6/1/2016</div>
+            </mat-card-content>
+            <mat-card-actions>
+                <a href="#" class="btn btn-primary btn-sm stretched-link">Get insights</a>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+</div>

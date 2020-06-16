@@ -1,0 +1,44 @@
+<div class="container">
+<div class="card billingInfo">
+    <h1 class="card-header">
+      Billing details
+    </h1>
+    <div class="card-body">
+      <h4 class="card-title">Money threshold: {{moneyThreshold}} EGP</h4>
+
+      <!-- start of money threshold update form -->
+      <!-- #newMoneyThreshold is a template reference variable that holds a reference to the ngForm directive of this form
+      so we can access its values -->
+      <form #moneyThresholdForm="ngForm" [class.d-none]="thresholdEdit">
+        <div class="formgroup threshold">
+          <input required id="newThresholdValue" name="newThresholdValue" type="number" min="1000" max="5000" step="1"
+          class="form-control form-control-sm" ngModel #newThresholdValue="ngModel"
+          [class.is-invalid]="newThresholdValue.invalid && newThresholdValue.touched">
+
+          <small class="text-danger" [class.d-none]="newThresholdValue.valid || newThresholdValue.untouched">
+            Invalid money threshold
+        </small>
+
+        <button [disabled]="moneyThresholdForm.form.invalid" (click)="updateThreshold()"
+        class="btn btn-primary btn-sm btn-block thresholdBtn" type="submit">Update</button>
+        </div>
+      </form>
+      <!-- end of money threshold update form -->
+
+      <span class="card-text earnings"><b>Earnings: </b>{{earnings}} EGP</span>
+      <br>
+      <span class="card-text earnings"><b>Payment holds: </b>{{paymentHolds}} EGP</span>
+      <br>
+      <a class="btn btn-primary btn-sm actionButton"
+      [class.inactiveLink]="earnings < moneyThreshold && paymentHolds == 0" 
+      [routerLink]='destination'>{{action}}</a>
+      <br>
+      <small class="text-info" [class.d-none]="earnings >= moneyThreshold || paymentHolds > 0">Your earnings should exceed or equal to the money threshold in order to be able
+        to get paid
+        or you can edit the threshold
+        <button class="btn btn-link" (click)="editThreshold()"><mat-icon class="editIcon">edit</mat-icon></button>
+      </small>
+      <br>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,41 @@
+.sideNav{
+    width: 11%;
+    margin-left: 3%;
+    height: 48%;
+    margin-top: 1%;
+}
+
+mat-sidenav-container{
+    height: 100%;
+    background-color: white;
+}
+
+mat-sidenav{
+    box-shadow: 0px 0px 5px #a6a6a6;
+}
+.sideNavLinks{
+    text-decoration: none;
+    font-size: 120%;
+    color: black;
+}
+
+.sideNavLinks:hover{
+    color: cornflowerblue;
+}
+.sideNavP{
+    text-align: center;
+    padding: 4% 0% 4% 0%;
+}
+
+.active-link{
+    color: white;
+    background-color: #f47f2f;
+}
+
+.active-link > a{
+    color: white;
+}
+
+.first{
+    margin-top: 10%;
+}
