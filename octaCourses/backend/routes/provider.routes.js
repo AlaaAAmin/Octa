@@ -41,6 +41,3 @@ router.post('/provider/:id/confirmation/resend', [
 ])
 
 module.exports = router;
-
-
-

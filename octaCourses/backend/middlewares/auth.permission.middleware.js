@@ -24,7 +24,6 @@ const sameUserCantDoThisAction = (req, res, next) => {
     else return res.status(400).send();
 };
 
-
 module.exports.minimumPermissionLevelRequired = minimumPermissionLevelRequired;
 module.exports.onlySameUserOrAdminCanDoThisAction = onlySameUserOrAdminCanDoThisAction;
 module.exports.sameUserCantDoThisAction = sameUserCantDoThisAction;

@@ -26,7 +26,7 @@ const studentSchema = new Schema({
     password: { required: true, type: String },
     verified: { required: true, type: Boolean, default: false },
     timestamp: { required: false, type: Number, default: Date.now() },
-    permissionLevel: {required: true, default: 1, type: Number}
+    permissionLevel: { required: true, default: 1, type: Number }
 })
 
 mongoose.plugin(uniqueValidator);
@@ -38,7 +38,7 @@ studentSchema.set('toJSON', {
 });
 
 studentSchema.findById = (cb) => {
-    return this.model('students').find({id: this.id}, cb);
+    return this.model('students').find({ id: this.id }, cb);
 }
 
 const Student = mongoose.model('students', studentSchema)
@@ -51,29 +51,25 @@ const createStudent = (studentData) => {
 
 const getStudentById = (id) => {
     return new Promise((resolve, reject) => {
-        Student.findById(id)
-            .then(user => {
-                let data = user.toJSON();
+        Student.findById(id, (err, user) => {
+            if(err) reject(err)
+            if(!user) reject('User not found')
+            let data = user.toJSON();
                 delete data.__v;
                 resolve(data)
-            })
-            .catch(err => {
-                reject(err);
-            });
+        })
     })
 }
 
 const getStudentByEmail = (email) => {
     return new Promise((resolve, reject) => {
-        Student.findOne({ email: email })
-            .then(user => {
-                let data = user.toJSON();
-                delete data.__v;
-                resolve(data);
-            })
-            .catch(err => {
-                reject(err)
-            })
+        Student.findOne({ email: email }, (err, user) => {
+            if (err) reject(err)
+            if (!user) return reject({ message: 'User not found!' });
+            let data = user.toJSON();
+            delete data.__v;
+            resolve(data);
+        })
     })
 }
 

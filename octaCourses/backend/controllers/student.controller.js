@@ -147,6 +147,59 @@ const resendVerificationEmail = (req, res) => {
     })
 }
 
+const SendPasswordReset = (req, res) => {
+    Token.generateToken(req.body.user._id, 'password-reset')
+        .then(token => {
+            let data = {
+                token: token.get('token'),
+                userId: req.body.user.id
+            }
+            let code = jwt.sign(data, EMAIL_SECRET);
+            const url = `http://${req.get('host')}/student/reset/${code}`;
+            const html = `
+                        <h1>Reset your password</h1>
+                        <p>your password has been reset, just follow this link:<br>
+                        <a href='${url}'>Reset password</a>
+                        </p>
+                        `
+            const text = `Reset your password through this link: \n ${url}`
+            const options = {
+                recievers: req.body.email,
+                subject: 'OctaCourses Support',
+                text: text,
+                html: html
+            }
+            return mailer.sendMail(options);
+        })
+        .then(() => {
+            res.status(200).send({ message: 'Email has been sent.' });
+        })
+        .catch(err => {
+            console.log(err)
+            res.status(400).send({ success: false, error: err })
+        })
+}
+
+const resetPassword = (req, res) => {
+    Token.Token.findOne({ token: req.jwt.token }, (err, token) => {
+        if (err) return res.status(500).send({ success: false, error: err })
+        if (!token) return res.status(400).send({ success: false, message: 'Unable to find token, token my have expired.' });
+        StudentModel.Student.findOne({ _id: token._userId }, (err, user) => {
+            if (err) return res.status(500).send({ success: false, error: err })
+            if (!user) return res.status(400).send({ message: 'Unable to find a user for this token.' });
+
+            let salt = crypto.randomBytes(16).toString('base64');
+            let hash = crypto.createHmac('sha512', salt).update(req.body.password).digest('base64');
+            req.body.password = salt + '$' + hash;
+            user.password = req.body.password;
+            user.save((err) => {
+                if (err) return res.status(500).send({ success: false, error: err })
+                res.status(200).send({ message: "Password has been reset." });
+            });
+        });
+    })
+}
+
 
 module.exports.studentRegister = register;
 module.exports.updateAccount = updateStudentAccount;
@@ -155,3 +208,5 @@ module.exports.updateById = updateById;
 module.exports.removeById = removeById;
 module.exports.verifyEmailToken = verifyEmailToken;
 module.exports.resendVerificationEmail = resendVerificationEmail;
+module.exports.SendPasswordReset = SendPasswordReset;
+module.exports.resetPassword = resetPassword;

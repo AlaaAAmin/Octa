@@ -44,11 +44,12 @@ const isPasswordAndProviderMatch = (req, res, next) => {
             req.body = {
                 _id: user._id,
                 email: user.email,
-                firstName: user.firstname,
-                lastName: user.lastname,
+                name: user.name,
                 phone: user.phone,
-                permissionLevel: user.permissionLevel
+                permissionLevel: user.permissionLevel,
+                verified: user.verified
             };
+            
             return next();
         })
 }

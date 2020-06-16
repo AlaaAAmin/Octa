@@ -89,9 +89,9 @@ const updateProvider = (id, providerData) => {
 
 const deleteById = (id) => {
     return new Promise((resolve, reject) => {
-        Provider.remove({_id: id}, (err) => {
-            if(err) reject(err);
-            resolve({success: true, message: 'Course provider deleted.'});
+        Provider.remove({ _id: id }, (err) => {
+            if (err) reject(err);
+            resolve({ success: true, message: 'Course provider deleted.' });
         })
     })
 }
@@ -101,4 +101,4 @@ module.exports.getProviderById = getProviderById;
 module.exports.getProviderByEmail = getProviderByEmail;
 module.exports.updateProvider = updateProvider;
 module.exports.deleteById = deleteById;
-module.exports.Provider =Provider;
+module.exports.Provider = Provider;
