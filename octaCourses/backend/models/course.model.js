@@ -1,6 +1,4 @@
 const mongoose = require('../services/mongodb.service').mongoose;
-const uniqueValidator = require('mongoose-unique-validator');
-const { raw } = require('body-parser');
 var Schema = mongoose.Schema;
 
 const fileSchema = new Schema({
@@ -19,7 +17,6 @@ const moduleSchema = new Schema({
     files: [fileSchema]
 })
 
-
 const courseSchema = new Schema({
     name: { required: true, type: String },
     ownerId: { required: true, type: mongoose.Types.ObjectId, ref: 'providers' },
@@ -27,10 +24,9 @@ const courseSchema = new Schema({
     modules: [moduleSchema],
     description: { required: true, type: String },
     price: { required: true, type: Number },
-    enrolled: { required: true, type: Number, default: 0 },
+    enrolled: { required: true, type: Number, default: 0 }, // try to get value using pre hook
     duration: { required: true, type: Number },
-    // ratings: []
-    //    attachmentId: { required: true, type: mongoose.Types.ObjectId, default: null }
+    type: { required: true, type: Boolean }
 })
 
 courseSchema.findById = (cb) => {
@@ -50,19 +46,7 @@ const getCourseById = (id) => {
     return new Promise((resolve, reject) => {
         Course.findById(id, (err, course) => {
             if (err) reject(err)
-            if (!course) reject('Course not found')
-            let data = course.toJSON();
-            delete data.__v;
-            resolve(data)
-        })
-    })
-}
-
-const getCourseByOwner = (ownerId) => {
-    return new Promise((resolve, reject) => {
-        Course.find({ ownerId: ownerId }, (err, course) => {
-            if (err) reject(err)
-            if (!course) reject('Course not found')
+            if (!course) return reject('Course not found')
             let data = course.toJSON();
             delete data.__v;
             resolve(data)
@@ -73,11 +57,39 @@ const getCourseByOwner = (ownerId) => {
 const updateCourseById = (id, courseData) => {
     return new Promise((resolve, reject) => {
         Course.updateOne({ _id: id }, courseData)
-        .then(result => {
-            resolve({success: true,result: result})
+            .then(result => {
+                resolve(result)
+            })
+            .catch(err => {
+                reject(err)
+            })
+    })
+}
+
+const getOwnerIdByCourseId = (id) => {
+    return new Promise((resolve, reject) => {
+        Course.findById(id, (err, doc) => {
+            if (err) return reject(err)
+            resolve(doc.toJSON().ownerId)
         })
-        .catch(err => {
-            reject({success:false, error: err})
+    })
+}
+
+const isOwnerOfCourse = (ownerId, courseId) => {
+    return new Promise((resolve, reject) => {
+        Course.findOne({ _id: courseId }, (err, doc) => {
+            if (err) return reject(err)
+            if (!doc) return reject('Course does not exist.')
+            doc.toJSON().ownerId == ownerId ? resolve(true) : resolve(false)
+        })
+    })
+}
+
+const filterCourses = (filter) => {
+    return new Promise((resolve, reject) => {
+        Course.find(filter, (err, res) => {
+            if(err) return reject(err)
+            resolve(res)
         })
     })
 }
@@ -85,4 +97,7 @@ const updateCourseById = (id, courseData) => {
 module.exports.createCourse = createCourse;
 module.exports.getCourseById = getCourseById;
 module.exports.updateCourseById = updateCourseById
-
+module.exports.getOwnerIdByCourseId = getOwnerIdByCourseId
+module.exports.isOwnerOfCourse = isOwnerOfCourse
+module.exports.filterCourses = filterCourses
+module.exports.Course = Course;

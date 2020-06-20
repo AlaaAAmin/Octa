@@ -69,6 +69,9 @@ const getStudentById = (req, res) => {
             delete user.permissionLevel;
             res.status(200).send(user)
         })
+        .catch(error => {
+            res.status(400).send({ success: false, error: error });
+        })
 }
 
 const updateById = (req, res) => {
@@ -82,12 +85,18 @@ const updateById = (req, res) => {
         .then((result) => {
             res.status(204).send();
         })
+        .catch(error => {
+            res.status(400).send({ success: false, error: error });
+        })
 }
 
 const removeById = (req, res) => {
     StudentModel.deleteById(req.params.userId)
         .then((result) => {
             res.status(204).send();
+        })
+        .catch(error => {
+            res.status(400).send({ success: false, error: error });
         })
 }
 

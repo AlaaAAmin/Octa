@@ -1,4 +1,3 @@
-const GridFS = require('../services/mongodb.service').gridFS
 const fs = require('fs');
 const crypto = require('crypto');
 const { gridFS, mongoose } = require('./mongodb.service');
@@ -8,7 +7,7 @@ const chunkSize = 261120;
 const uploadMedia = (file, options = { noCursorTimeout: true }) => {
     return new Promise((resolve, reject) => {
         fs.createReadStream(file.path)
-            .pipe(GridFS().openUploadStream(crypto.randomBytes(16).toString('base64'), options))
+            .pipe(gridFS().openUploadStream(crypto.randomBytes(16).toString('base64'), options))
             .on('finish', (result) => {
                 resolve({
                     success: true, info: {
@@ -33,31 +32,20 @@ const deleteMedia = (fileId, options = { noCursorTimeout: true }) => {
     })
 }
 
-const getMedia = async (req, res, next) => {
-    try {
-        let file = await GridFS().find({ filename: req.body.name }).toArray()
-        const range = req.headers["range"]
-        if (range && typeof range === "string") {
-
-        } else {
-            res.header('Content-Length', file[0].length)
-            res.header('Content-Type', file[0].contentType)
-            let downloadStream = b.openDownloadStream(file[0]._id)
-            downloadStream.pipe(res)
-            downloadStream.on('error', () => {
-                res.sendStatus(404)
-            })
-            downloadStream.on('end', () => {
-                res.end()
-            })
+const getMediaById = (id, options = { noCursorTimeout: true }) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            let media = await gridFS().find({ _id: new mongoose.mongo.ObjectId(id) }, options).toArray()
+            if (!media[0]) reject({ success: false, message: 'no video found.' })
+            resolve(media[0])
+        } catch (err) {
+            reject({ success: false, message: 'could not retrieve media file.' })
         }
-    } catch (e) {
-
-    }
+    })
 }
 
 
 
 module.exports.uploadMedia = uploadMedia
-module.exports.getMedia = getMedia
 module.exports.deleteMedia = deleteMedia
+module.exports.getMediaById = getMediaById

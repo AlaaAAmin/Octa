@@ -31,7 +31,12 @@ const isPasswordAndStudentMatch = (req, res, next) => {
             };
             return next();
         })
+        .catch(err => {
+            res.status(400).send({ success: false, error: err })
+        })
 }
+
+
 
 const isPasswordAndProviderMatch = (req, res, next) => {
     ProviderModel.getProviderByEmail(req.body.email)
@@ -49,12 +54,14 @@ const isPasswordAndProviderMatch = (req, res, next) => {
                 permissionLevel: user.permissionLevel,
                 verified: user.verified
             };
-            
+
             return next();
+        })
+        .catch(err => {
+            res.status(400).send({ success: false, error: err })
         })
 }
 
-
-module.exports.hasValidFields = hasValidFields;
-module.exports.isPasswordAndStudentMatch = isPasswordAndStudentMatch;
-module.exports.isPasswordAndProviderMatch = isPasswordAndProviderMatch;
+module.exports.hasValidFields = hasValidFields
+module.exports.isPasswordAndStudentMatch = isPasswordAndStudentMatch
+module.exports.isPasswordAndProviderMatch = isPasswordAndProviderMatch

@@ -62,6 +62,7 @@ const getProviderByEmail = (email) => {
     return new Promise((resolve, reject) => {
         Provider.findOne({ email: email })
             .then(user => {
+                if(!user) reject('Provider not found')
                 let data = user.toJSON();
                 delete data.__v;
                 resolve(data);

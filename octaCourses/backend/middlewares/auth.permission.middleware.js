@@ -1,3 +1,6 @@
+const StudentModel = require('../models/student.model');
+const ProviderModel = require('../models/provider.model');
+const CourseModel = require('../models/course.model');
 const ADMIN_PERMISSION_LEVEL = 1945464;
 
 const minimumPermissionLevelRequired = (required_permission_level) => {
@@ -27,4 +30,3 @@ const sameUserCantDoThisAction = (req, res, next) => {
 module.exports.minimumPermissionLevelRequired = minimumPermissionLevelRequired;
 module.exports.onlySameUserOrAdminCanDoThisAction = onlySameUserOrAdminCanDoThisAction;
 module.exports.sameUserCantDoThisAction = sameUserCantDoThisAction;
-

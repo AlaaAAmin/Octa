@@ -15,7 +15,7 @@ const studentSchema = new Schema({
         },
     },
     phone: {
-        required: true, type: String, validate: {
+        required: true, unique: true, type: String, validate: {
             validator: (phone) => {
                 var re = new RegExp(/^[+]?(\d{1,2})?[\s.-]?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$/);
                 return re.test(String(phone).toLowerCase());
@@ -52,11 +52,11 @@ const createStudent = (studentData) => {
 const getStudentById = (id) => {
     return new Promise((resolve, reject) => {
         Student.findById(id, (err, user) => {
-            if(err) reject(err)
-            if(!user) reject('User not found')
+            if (err) reject(err)
+            if (!user) reject('User not found')
             let data = user.toJSON();
-                delete data.__v;
-                resolve(data)
+            delete data.__v;
+            resolve(data)
         })
     })
 }
