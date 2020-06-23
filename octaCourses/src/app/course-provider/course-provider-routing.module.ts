@@ -5,14 +5,16 @@ import { InformationComponent } from './information/information.component';
 import { BillingComponent } from './billing/billing.component';
 import { StatisticsComponent } from './statistics/statistics.component';
 import { CreateCourseComponent } from './create-course/create-course.component';
+import { StatisticsInfoComponent } from './statistics-info/statistics-info.component';
 
 
 const routes: Routes = [
-  { 
+  {
     path: 'profile', component: ProfileComponent, children: [
       { path: 'overview', component: InformationComponent },
       { path: 'billing', component: BillingComponent },
       { path: 'statistics', component: StatisticsComponent },
+      { path: 'statistics/:id', component: StatisticsInfoComponent },
       { path: 'create-course', component: CreateCourseComponent }
     ]
   }

@@ -17,7 +17,7 @@
                 Published <div>6/1/2016</div>
             </mat-card-content>
             <mat-card-actions>
-                <a href="#" class="btn btn-primary btn-sm stretched-link">Get insights</a>
+                <a [routerLink]="'/course-provider/profile/statistics/' + item.id" routerLinkActive="router-link-active"  class="btn btn-primary btn-sm stretched-link">Get insights</a>
             </mat-card-actions>
         </mat-card>
     </div>
