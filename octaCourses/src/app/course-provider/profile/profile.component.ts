@@ -23,10 +23,6 @@ export class ProfileComponent implements OnInit {
         label: 'Statistics',
         path: '/course-provider/profile/statistics',
         index: 1
-      }, {
-        label: 'Create course',
-        path: '/course-provider/profile/create-course',
-        index: 1
       }
       
     ];

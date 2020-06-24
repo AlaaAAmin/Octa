@@ -1,0 +1,22 @@
+<img style="width: 100%;" src="assets/img/gp create course form2.png" alt="">
+<mat-tab-group mat-align-tabs="center" animationDuration="300ms">
+    <mat-tab label="Create course">
+        <!-- ng-template with the matTabContent attribute us used to lazy load the components-->
+        <ng-template matTabContent>
+            <app-create-course></app-create-course>
+        </ng-template>
+    </mat-tab>
+
+    <mat-tab label="Update course">
+        <ng-template matTabContent>
+            The second Content
+        </ng-template>
+    </mat-tab>
+
+    <mat-tab label="Close enrollment">
+        <ng-template matTabContent>
+            The third Content
+        </ng-template>
+    </mat-tab>
+
+</mat-tab-group>

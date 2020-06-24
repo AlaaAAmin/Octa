@@ -1,0 +1,89 @@
+<div class="container">
+    <div class="row justify-content-center mb-5 formDiv">
+        <!--createCourseForm represents the form as a model in the component class-->
+        <form [formGroup]="createCourseForm" class="col-sm-7 courseForm border rounded">
+            <h2 class="text-center mt-4">Create course</h2>
+
+            <pre>{{createCourseForm.value | json}}</pre>
+
+            <!-- start of course name section -->
+            <div class="form-group">
+                <label>Course name</label>
+
+            <!--formControlName links the input fields to the formControl values in the component class-->
+            <!--userName is a getter function defined in the component class that holds a reference to the username-->
+                <input formControlName="courseName" type="text" class="form-control form-control-sm w-75"
+                [class.is-invalid]="courseNameRef.invalid && courseNameRef.touched">
+
+                <!--course name is required error message-->
+                <small class="text-danger" [class.d-none]="courseNameRef.valid || courseNameRef.untouched">
+                  Course name is required
+                </small>
+            </div>
+            <!-- start of course name section -->
+
+            <!-- start of description section -->
+            <div class="form-group">
+                <label>Description</label>
+                <textarea formControlName="description" type="text" class="form-control form-control-lg"
+                [class.is-invalid]="descriptionRef.invalid && descriptionRef.touched"></textarea>
+                
+                <!--description is required error message-->
+                <div *ngIf="descriptionRef.invalid && descriptionRef.touched">
+                  <small *ngIf="descriptionRef.errors?.required" class="text-danger">Description is required</small>
+                  <small *ngIf="descriptionRef.errors?.minlength" class="text-danger">Description must be longer than 50 characters</small>
+                </div>
+            </div>
+            <!-- end of description section -->
+
+            <!-- start of hours section -->
+            <div class="row">
+                <div class="col">
+                  <input formControlName="hours" type="number" class="form-control form-control-sm" placeholder="Hours"
+                  [class.is-invalid]="hoursRef.invalid && hoursRef.touched">
+
+                <!--hours is required error message-->
+                <small class="text-danger" [class.d-none]="hoursRef.valid || hoursRef.untouched">
+                  Course hours are required
+                </small>
+                </div>
+                <!-- end of hours section -->
+
+                <!-- start of price section -->
+                <div class="col">
+                  <input formControlName="price" type="number" class="form-control form-control-sm" placeholder="Price"
+                  [class.is-invalid]="priceRef.invalid && priceRef.touched">
+
+                <!--price is required error message-->
+                <small class="text-danger" [class.d-none]="priceRef.valid || priceRef.untouched">
+                  Price is required
+                </small>
+                </div>
+              </div> <br>
+              <!-- end of price section -->
+
+              <!-- start of course objectives section -->
+            <div class="form-group">
+              <!--addCourseObj method is used to push a new course objective control into the form array courseObjectives-->
+              <label>Course objectives 
+                <button type="button" class="btn btn-link btn-sm" (click)="addCourseObj()">
+                  add<mat-icon class="addObjIcon">add</mat-icon>
+                </button>
+            </label>
+
+            <!--on the containing element which is the div tag we need to bind the formArrayName directive
+            to our form array "courseObjectives" to help us keep track of the form array values-->
+            <!--courseObjectivesRef.controls access the controls in the form array to display that 
+            number of controls present-->
+            <!--because the array is dynamic we need to make use of the index value i
+              to bind to the formControlName property-->
+              <div formArrayName="courseObjectives"
+               *ngFor="let objective of courseObjectivesRef.controls; let i=index">
+                <input type="text" class="form-control form-control-sm my-2" [formControlName]=i
+                placeholder="{{i+1}}.">
+              </div>
+            </div>
+            <!-- end of course objectives section -->
+        </form>
+    </div>
+</div>
