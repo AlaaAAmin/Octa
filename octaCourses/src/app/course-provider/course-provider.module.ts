@@ -8,13 +8,18 @@ import { InformationComponent } from './information/information.component';
 import { FormsModule } from '@angular/forms';
 import { BillingComponent } from './billing/billing.component';
 import { StatisticsComponent } from './statistics/statistics.component';
+import { StatisticsInfoComponent } from './statistics-info/statistics-info.component';
+import { ChartsModule } from 'ng2-charts';
+
+
 @NgModule({
-  declarations: [ProfileComponent, InformationComponent, BillingComponent, StatisticsComponent],
+  declarations: [ProfileComponent, InformationComponent, BillingComponent, StatisticsComponent, StatisticsInfoComponent],
   imports: [
     CommonModule,
     CourseProviderRoutingModule,
     MaterialModule,
-    FormsModule
+    FormsModule,
+    ChartsModule
   ]
 })
 export class CourseProviderModule { }

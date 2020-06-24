@@ -88,7 +88,7 @@ const isOwnerOfCourse = (ownerId, courseId) => {
 const filterCourses = (filter) => {
     return new Promise((resolve, reject) => {
         Course.find(filter, (err, res) => {
-            if(err) return reject(err)
+            if (err) return reject(err)
             resolve(res)
         })
     })

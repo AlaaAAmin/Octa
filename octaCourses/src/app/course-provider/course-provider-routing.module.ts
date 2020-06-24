@@ -4,13 +4,15 @@ import { ProfileComponent } from './profile/profile.component';
 import { InformationComponent } from './information/information.component';
 import { BillingComponent } from './billing/billing.component';
 import { StatisticsComponent } from './statistics/statistics.component';
+import { StatisticsInfoComponent } from './statistics-info/statistics-info.component';
 
 const routes: Routes = [
-  { 
+  {
     path: 'profile', component: ProfileComponent, children: [
       { path: 'overview', component: InformationComponent },
       { path: 'billing', component: BillingComponent },
-      { path: 'statistics', component: StatisticsComponent }
+      { path: 'statistics', component: StatisticsComponent },
+      { path: 'statistics/:id', component: StatisticsInfoComponent }
     ]
   }
 ];

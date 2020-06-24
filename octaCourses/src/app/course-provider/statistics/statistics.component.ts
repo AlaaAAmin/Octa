@@ -7,7 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StatisticsComponent implements OnInit {
 
-  courses: string[] = ['IT', 'IOT','IT', 'IOT','IT'];
+  courses= [
+    {name: 'IT', id: 1234},
+    {name: 'IOT', id: 4567},
+    {name: 'Network', id: 5678}
+  ];
 
   constructor() { }
 
