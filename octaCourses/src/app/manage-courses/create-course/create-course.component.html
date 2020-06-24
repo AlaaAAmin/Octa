@@ -20,7 +20,7 @@
                   Course name is required
                 </small>
             </div>
-            <!-- start of course name section -->
+            <!-- end of course name section -->
 
             <!-- start of description section -->
             <div class="form-group">
@@ -35,6 +35,32 @@
                 </div>
             </div>
             <!-- end of description section -->
+
+            <!-- start of requirments section -->
+            <div class="form-group">
+              <label>Course requirments</label>
+
+          <!--formControlName links the input fields to the formControl values in the component class-->
+          <!--userName is a getter function defined in the component class that holds a reference to the username-->
+              <input formControlName="courseRequirments" type="text" class="form-control form-control-sm"
+              [class.is-invalid]="courseRequirmentsRef.invalid && courseRequirmentsRef.touched">
+
+              <!--course name is required error message-->
+              <small class="text-danger" [class.d-none]="courseRequirmentsRef.valid || courseRequirmentsRef.untouched">
+                Course requirments are required
+              </small>
+          </div>
+          <!-- end of requirments section -->
+
+          <!--start of course thumbnail section-->
+          <div class="form-group">
+            <label>Course thumbnail</label>
+            <input formControlName="thumbnail" type="file" accept="image/*" class="form-control-file">
+            <small class="text-danger" [class.d-none]="thumbnailRef.valid || thumbnailRef.untouched">
+              thumbnail is required
+            </small>
+          </div>
+          <!--end of course thumbnail section-->
 
             <!-- start of hours section -->
             <div class="row">
@@ -84,6 +110,14 @@
               </div>
             </div>
             <!-- end of course objectives section -->
+
+            <div class="form-group">
+              <label>Start of enrollment</label>
+              <input formControlName="startOfEnrollmentDate" type="date" class="form-control form-control-sm">
+              <small class="text-danger" [class.d-none]="dateRef.valid || dateRef.untouched">
+                Start of enrollment date is required
+              </small>
+            </div>
         </form>
     </div>
 </div>

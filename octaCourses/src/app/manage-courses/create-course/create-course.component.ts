@@ -17,11 +17,14 @@ export class CreateCourseComponent implements OnInit {
   /* the second element in every form control is for validators
      note: if you want more that one validator then you will make it an array*/
      createCourseForm = this.fb.group({
-      courseName: ['', [Validators.required]],
+      courseName: ['', Validators.required],
       description: ['', [Validators.required, Validators.minLength(50)]],
+      courseRequirments: ['', Validators.required],
       hours: [, Validators.required],
       price: [, Validators.required],
-      courseObjectives: this.fb.array([''])
+      thumbnail: [, Validators.required],
+      courseObjectives: this.fb.array(['']),
+      startOfEnrollmentDate: [,Validators.required]
 /*       address: this.fb.group({
         city: [''],
         state: [],
@@ -35,8 +38,18 @@ export class CreateCourseComponent implements OnInit {
     };
   
     //coursenameRef is a getter function that a reference to the form control of the courseName
+    get thumbnailRef(){
+      return this.createCourseForm.get('thumbnail');
+    };
+  
+    //coursenameRef is a getter function that a reference to the form control of the courseName
     get descriptionRef(){
       return this.createCourseForm.get('description');
+    };
+  
+    //courseRequirmentsRef is a getter function that a reference to the form control of the courseName
+    get courseRequirmentsRef(){
+      return this.createCourseForm.get('courseRequirments');
     };
   
     //coursenameRef is a getter function that a reference to the form control of the courseName
@@ -58,6 +71,11 @@ export class CreateCourseComponent implements OnInit {
     addCourseObj(){
       this.courseObjectivesRef.push(this.fb.control(''));
     }
+
+    //dateRef is a getter function that a reference to the form control of the startOfEnrollmentDate
+    get dateRef(){
+      return this.createCourseForm.get('startOfEnrollmentDate');
+    };
 
   ngOnInit(): void {
   }
