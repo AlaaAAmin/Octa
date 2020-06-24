@@ -24,7 +24,7 @@ export class CreateCourseComponent implements OnInit {
       price: [, Validators.required],
       thumbnail: [, Validators.required],
       courseObjectives: this.fb.array(['']),
-      startOfEnrollmentDate: [,Validators.required]
+      startOfEnrollmentDate: []
 /*       address: this.fb.group({
         city: [''],
         state: [],

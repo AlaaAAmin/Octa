@@ -9,3 +9,37 @@
 .addObjIcon{
     font-size: medium;
 }
+
+.submitBtn{
+    margin-bottom: 5%;
+}
+
+.moduleNameDiv{
+    border: 1px #E0E0E0 solid;
+    padding: 2%;
+}
+
+.moduleNameBtn{
+    width: 10%;
+}
+
+.moduleContent{
+    border: 1px #E0E0E0 solid;
+    padding: 2%;
+    margin-top: 1%;
+}
+
+.lec-quizBtn{
+    color: white;
+    background-color: #f47f2f;
+}
+
+.addLec-quizDiv{
+    border: 1px solid #E0E0E0;
+    padding: 2%;
+}
+
+.lecContents{
+    border: 1px #E0E0E0 solid;
+    padding: 2%;
+}
