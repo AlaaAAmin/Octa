@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-lecture-form',
@@ -7,6 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LectureFormComponent implements OnInit {
 
+  // 1 way data binding to pass form controls to this component
+  @Input() videoController: FormControl
+  @Input() fileController: FormControl
+  @Input() nameController: FormControl
   constructor() { }
 
   ngOnInit(): void {
