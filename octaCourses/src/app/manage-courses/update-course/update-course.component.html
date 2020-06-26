@@ -1,0 +1,30 @@
+<div class="container">
+    <!--update course page heade-->
+    <div class="row text-center justify-content-around">
+        <h2 class="update">Update course</h2>
+    </div>
+    <!-- end of update course page header-->
+
+    <!--courses container-->
+    <div class="row justify-content-around">
+        <!-- the div below should display the courses' cards that course provider have-->
+        <div class="col-sm-3 courseCardDiv" *ngFor="let course of courses">
+
+            <!--course card-->
+            <div class="card text-center courseCard">
+                <img src="assets/img/homeCourse.jpg" class="card-img-top" alt="Course image">
+                <div class="card-body">
+                    <h2 class="card-title">{{course.name}}</h2>
+                  <p class="card-text">{{course.description}}</p>
+                  <p><small>Published: {{course.date}}</small></p>
+                  <!--the update button below should take the course provider to a page similar to
+                the create course page but with the form's inputs prefilled with data that can be updated-->
+                  <a class="btn btn-outline-primary stretched-link" role="button" href="#">Update</a>
+                </div>
+              </div>
+              <!--end of course card-->
+              
+        </div>
+    </div>
+    <br><br>
+</div>

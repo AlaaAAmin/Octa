@@ -1,0 +1,38 @@
+<div class="container">
+    <!--close course enrollment page header-->
+    <div class="row text-center justify-content-around">
+        <h2 class="update">Close course enrollment</h2>
+    </div>
+    <!-- close course enrollment page header-->
+
+    <!--courses container-->
+    <div class="row justify-content-around">
+        <!-- the div below should display the courses' cards that course provider have-->
+        <div class="col-sm-3 courseCardDiv" *ngFor="let course of courses">
+
+            <!--course card-->
+            <div class="card text-center courseCard">
+                <img src="assets/img/homeCourse.jpg" class="card-img-top" alt="Course image">
+                <div class="card-body">
+                    <h2 class="card-title">{{course.name}}</h2>
+                  <p class="card-text">{{course.description}}</p>
+                  <p><small>Published: {{course.date}}</small></p>
+
+                  <!--the close enrollment button below should close the course enrollment-->
+                  <!-- close enrollment btn should be hidden in case of an already closed enrollment class-->
+                  <button class="btn btn-outline-dark"
+                  (click)="closeEnrollment()" [class.d-none]="closedEnrollment">Close enrollment</button>
+
+                  <!-- the open enrollment button should be visible for the courses that the enrollments
+                is currently closed for-->
+                <!--open erollment should open the course enrollment for an already closed enrollment course-->
+                  <button class="btn btn-success stretched-link"
+                  (click)="closeEnrollment()" [class.d-none]="!closedEnrollment">Open enrollment</button>
+                </div>
+              </div>
+              <!--end of course card-->
+              
+        </div>
+    </div>
+    <br><br>
+</div>

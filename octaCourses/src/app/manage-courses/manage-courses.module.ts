@@ -8,10 +8,12 @@ import { ManageCoursesComponent } from './manage-courses.component';
 import { CreateCourseComponent } from './create-course/create-course.component';
 import { LectureFormComponent } from './lecture-form/lecture-form.component';
 import { QuizFormComponent } from './quiz-form/quiz-form.component';
+import { UpdateCourseComponent } from './update-course/update-course.component';
+import { CloseCourseEnrollmentComponent } from './close-course-enrollment/close-course-enrollment.component';
 
 
 @NgModule({
-  declarations: [ManageCoursesComponent, CreateCourseComponent, LectureFormComponent, QuizFormComponent],
+  declarations: [ManageCoursesComponent, CreateCourseComponent, LectureFormComponent, QuizFormComponent, UpdateCourseComponent, CloseCourseEnrollmentComponent],
   imports: [
     CommonModule,
     ManageCoursesRoutingModule,
