@@ -178,6 +178,8 @@
                 <span>&nbsp; OR &nbsp;</span>
 
                 <!--start of add quiz button-->
+                <!-- showQuiz() should be deleted after the form is working as it controls the displaying
+                and hiding of the quiz form-->
                 <button class="btn btn-sm lec-quizBtn" (click)="showQuiz()">
                   Add quiz
                   <!--the below svg is just an icon-->
@@ -201,9 +203,12 @@
                 <!-- end of lecture contents ( aka video and/or a file)-->
             </div>
 
-              <!--testing quiz form-->
+              <!--start of quiz form-->
+              <!--when the form is working fine you should delete the calss.d-none that can show
+              and hide the form alon with the showQuiz() from the add quiz button and the component class-->
               <app-quiz-form [class.d-none]="showQuizForm"></app-quiz-form>
-              <!--testing quiz form-->
+              <!--end of quiz form-->
+
               </div>
           </div>
         </div>
