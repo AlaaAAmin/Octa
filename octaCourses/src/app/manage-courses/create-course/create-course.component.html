@@ -123,22 +123,6 @@
       </div>
       <!--end of start enrollment date section-->
 
-      <div class="form-group">
-        <!--this button creates an input field where you can enter the module name-->
-        <button type="button" class="btn btn-link btn-sm" (click)="newModuleStateSetter = !isNewModule">
-          Add course module<mat-icon class="addObjIcon">add</mat-icon>
-        </button>
-
-        <!--start of the module name input field section that the above button created-->
-        <div class="moduleNameDiv" *ngIf="isNewModule">
-          <input type="text" class="form-control form-control-sm moduleNameIn" placeholder="Write module name"
-            #modulename>
-          <!--after thhe course provider enter the name and hit ok button
-                the module name will be registered and then the module name section will disappear-->
-          <button class="btn btn-sm btn-primary mt-2 moduleNameBtn"
-            (click)="addCourseModule(modulename.value)">ok</button>
-        </div>
-        <!--end of module name section-->
 
         <!--start of module contents
               below is the div that enables you to add a lecture or a quiz and add more if you want-->
@@ -194,7 +178,7 @@
                 <span>&nbsp; OR &nbsp;</span>
 
                 <!--start of add quiz button-->
-                <button class="btn btn-sm lec-quizBtn">
+                <button class="btn btn-sm lec-quizBtn" (click)="showQuiz()">
                   Add quiz
                   <!--the below svg is just an icon-->
                   <svg class="bi bi-file-post" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
@@ -215,13 +199,33 @@
                 [nameController]="content.get('name')"
                 ></app-lecture-form>
                 <!-- end of lecture contents ( aka video and/or a file)-->
-              </div>
-
             </div>
+
+              <!--testing quiz form-->
+              <app-quiz-form [class.d-none]="showQuizForm"></app-quiz-form>
+              <!--testing quiz form-->
+              </div>
           </div>
         </div>
 
-      </div>
+
+        <div class="form-group">
+          <!--this button creates an input field where you can enter the module name-->
+          <button type="button" class="btn btn-link btn-sm" (click)="newModuleStateSetter = !isNewModule">
+            Add course module<mat-icon class="addObjIcon">add</mat-icon>
+          </button>
+        </div>
+
+        <!--start of the module name input field section that the add course button above created-->
+        <div class="moduleNameDiv" *ngIf="isNewModule">
+          <input type="text" class="form-control form-control-sm moduleNameIn" placeholder="Write module name"
+            #modulename>
+          <!--after thhe course provider enter the name and hit ok button
+                the module name will be registered and then the module name section will disappear-->
+          <button class="btn btn-sm btn-primary mt-2 moduleNameBtn"
+            (click)="addCourseModule(modulename.value)">ok</button>
+        </div>
+        <!--end of module name section-->
 
       <button [disabled]="createCourseForm.invalid" class="btn btn-primary btn-sm submitBtn"
         (click)="submitForm()">Submit for review</button>

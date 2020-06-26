@@ -7,6 +7,20 @@ import { FormBuilder, Validators, FormArray, FormGroup, FormControl } from '@ang
   styleUrls: ['./create-course.component.css']
 })
 export class CreateCourseComponent implements OnInit {
+
+  // >>>>>>>>>>>> delete this quiz form section after done <<<<<<<<<<<<<
+  // start of quiz form section
+  // showQuizForm is just for testing to hide and show the quiz form
+  showQuizForm: boolean = true;
+  //  and should be deleted after the form is working fine
+  // test function for showing the quiz form
+    showQuiz(){
+      this.showQuizForm = !this.showQuizForm;
+    }
+    // the function above should also be deleted
+  // end of quiz form section
+
+
   private newModule: boolean
   private newContent: boolean
   private newLecture: boolean
@@ -144,6 +158,7 @@ export class CreateCourseComponent implements OnInit {
       description: null,
       content: this.fb.array([])
     }))
+
 
   }
   ngOnInit(): void {
