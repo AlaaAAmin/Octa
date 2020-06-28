@@ -13,11 +13,15 @@
 
   </div>
 
-  <div class="quizContents" formArrayName="choices">
+  <div class="quizContents">
     <label for="right-answer">Correct answer!</label> <br>
-    <select name="right-answer" id="right-answer">
-      <option *ngFor="let c of choices['controls']; let j=index" [value]="c?.value" [formControlName]="j">
-        Option {{j + 1}}</option>
-    </select>
+    <mat-form-field>
+      <mat-label>Correct Answer!</mat-label>
+      <mat-select formArrayName="choices" formControlName="correctAnswer"> 
+        <mat-option *ngFor="let choice of choices?.controls; let i = index" [value]="choice.value">
+          Option {{i + 1}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
   </div>
 </div>

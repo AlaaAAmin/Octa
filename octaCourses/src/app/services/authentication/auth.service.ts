@@ -13,7 +13,7 @@ export class AuthService {
   }
 
   loginForProvider(credentials: { email: String, password: String }) {
-    this.http.post('http://localhost:3000/provider/auth', credentials)
+    return this.http.post('http://localhost:3000/provider/auth', credentials).toPromise()
   }
 
   registerForProvider() {
