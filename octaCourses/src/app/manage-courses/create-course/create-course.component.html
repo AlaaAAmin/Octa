@@ -111,13 +111,11 @@
       <!-- end of course objectives section -->
 
       <!-- start of online/offline course switch -->
-      
-      <mat-slide-toggle [checked]="isChecked" (change)="toggleOnlineOffline($event)">Slide Toggle Checked: {{isChecked}}</mat-slide-toggle>
+
+      <mat-slide-toggle [checked]="isChecked" (change)="toggleOnlineOffline($event)">Course type:
+        {{isChecked? "Online" : "Offline"}}</mat-slide-toggle>
 
       <!-- end of online/offline course switch -->
-
-
-
 
       <!--start of enrollment date section-->
       <!-- note that this if a date is picked then the course is an offline course
@@ -133,12 +131,19 @@
       <!--end of start enrollment date section-->
 
       <!--start of Addresses section-->
-      <label>Addresses</label><br>
-      <button (click)="addNewAddress()">add address</button>
-      <div formArrayName="addressList" *ngFor="let address of addressListRef.controls; let i = index">
-        <input type="text" [formControlName]=i> 
+
+
+      <div class="form-group">
+        <label>Address
+          <button type="button" class="btn btn-link btn-sm" (click)="addNewAddress()" [disabled]="isChecked">
+            add<mat-icon class="addObjIcon">add</mat-icon>
+          </button>
+        </label>
+        <div formArrayName="addressList" *ngFor="let address of addressListRef.controls; let i = index">
+          <input type="text" class="form-control form-control-sm my-2" [formControlName]=i placeholder="{{i+1}}.">
+        </div>
       </div>
-      <!--start of Addresses section-->
+      <!--end of Addresses section-->
 
       <!--start of module contents
               below is the div that enables you to add a lecture or a quiz and add more if you want-->
@@ -196,7 +201,7 @@
               <!--start of add quiz button-->
               <!-- showQuiz() should be deleted after the form is working as it controls the displaying
                 and hiding of the quiz form-->
-              <button class="btn btn-sm lec-quizBtn" (click)="showQuiz()">
+              <button class="btn btn-sm lec-quizBtn" (click)="addNewQuiz(i)">
                 Add quiz
                 <!--the below svg is just an icon-->
                 <svg class="bi bi-file-post" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
@@ -211,18 +216,25 @@
             </div>
             <br>
             <div formArrayName="content" *ngFor="let content of module.get('content')['controls']; let j = index">
-              <!-- start of lecture name and contents ( aka video and/or a file)-->
-              <app-lecture-form [videoController]="content.get('video')" [fileController]="content.get('file')"
-                [nameController]="content.get('name')"></app-lecture-form>
-              <!-- end of lecture contents ( aka video and/or a file)-->
-            </div>
 
-            <!--start of quiz form-->
-            <!--when the form is working fine you should delete the calss.d-none that can show
+              <ng-container *ngIf="content.name ; then lectureBlock; else quizBlock"></ng-container>
+              
+              <ng-template #lectureBlock>
+                <!-- start of lecture name and contents ( aka video and/or a file)-->
+                <app-lecture-form [lectureContent]="content"></app-lecture-form>
+                <!-- end of lecture contents ( aka video and/or a file)-->
+              </ng-template>
+
+              <ng-template #quizBlock>
+                <!--start of quiz form-->
+                <!--when the form is working fine you should delete the calss.d-none that can show
               and hide the form alon with the showQuiz() from the add quiz button and the component class-->
-            <app-quiz-form [class.d-none]="showQuizForm"></app-quiz-form>
-            <!--end of quiz form-->
+                <app-quiz-form [quizContent]="content" [choices]="content.get('choices')"></app-quiz-form>
+                <!--end of quiz form-->
+              </ng-template>
+              
 
+            </div>
           </div>
         </div>
       </div>
@@ -230,7 +242,8 @@
 
       <div class="form-group">
         <!--this button creates an input field where you can enter the module name-->
-        <button type="button" class="btn btn-link btn-sm" (click)="newModuleStateSetter = !isNewModule">
+        <button type="button" class="btn btn-link btn-sm" (click)="newModuleStateSetter = !isNewModule"
+          [disabled]="!isChecked">
           Add course module<mat-icon class="addObjIcon">add</mat-icon>
         </button>
       </div>
@@ -246,8 +259,8 @@
       </div>
       <!--end of module name section-->
 
-      <button [disabled]="createCourseForm.invalid" class="btn btn-primary btn-sm submitBtn"
-        (click)="submitForm()">Submit for review</button>
+      <!-- [disabled]="createCourseForm.invalid" -->
+      <button class="btn btn-primary btn-sm submitBtn" (click)="submitForm()">Submit for review</button>
 
 
 

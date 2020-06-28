@@ -1,7 +1,7 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { FormBuilder, Validators, FormArray, FormGroup, FormControl } from '@angular/forms';
-import { on } from 'process';
 import { MatSlideToggleChange } from '@angular/material/slide-toggle';
+import { objectToFormData } from 'object-to-formdata';
 
 @Component({
   selector: 'app-create-course',
@@ -43,7 +43,7 @@ export class CreateCourseComponent implements OnInit {
     courseRequirments: ['', Validators.required],
     price: [null, Validators.required],
 
-    addressList: this.fb.array([]),
+    addressList: this.fb.array(['']),
     startOfEnrollmentDate: [],
     hours: [null, Validators.required],
 
@@ -93,6 +93,15 @@ export class CreateCourseComponent implements OnInit {
     }))
   }
 
+  // add new quiz to content array in module
+  addNewQuiz(moduleIndex) {
+    this.newContentStateSetter = !this.isNewContent
+    this.moduleContentRef(moduleIndex).push(this.fb.group({
+      question: null,
+      choices: this.fb.array([null,null,null,null]),
+      correctAnswer: null
+    }))
+  }
   // getter for video
   getVideoControlRef(moduleIndex, contentIndex): FormControl {
     return this.moduleContentRef(moduleIndex).at(contentIndex).get('video') as FormControl
@@ -210,6 +219,9 @@ export class CreateCourseComponent implements OnInit {
       // online features
       this.modulesRef.enable()
 
+      // change checked value
+      this.isChecked = true
+
     } else {
       // offline features
       this.hoursRef.enable()
@@ -218,14 +230,36 @@ export class CreateCourseComponent implements OnInit {
 
       // online features
       this.modulesRef.disable()
+      this.isChecked = false
+    }
+  }
 
+  addVideoLength2Form(form: any) {
+    form.duration = 0
+    if (this.isChecked) {
+      for (let m in form.modules) {
+        form.modules[m].duration = 0
+        for(let l in form.modules[m].content) {
+          if (form.modules[m].content[l].videoFile as File) {
+            form.modules[m].duration = form.modules[m].duration + form.modules[m].content[l].duration
+          }
+        }
+        form.duration = form.duration + form.modules[m].duration
+      }
     }
   }
 
   submitForm() {
-    console.log(this.createCourseForm.value)
 
+    this.addVideoLength2Form(this.createCourseForm.value)
+    let options = {
+      indices: true,
+      nullsAsUndefineds: true
+    }
+    let data = objectToFormData(this.createCourseForm.value, options)
 
   }
+
+
 
 }
