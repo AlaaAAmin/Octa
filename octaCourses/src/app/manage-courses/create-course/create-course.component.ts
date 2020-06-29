@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { FormBuilder, Validators, FormArray, FormGroup, FormControl } from '@angular/forms';
+import { MatSlideToggleChange } from '@angular/material/slide-toggle';
+import { objectToFormData } from 'object-to-formdata';
 
 @Component({
   selector: 'app-create-course',
@@ -12,12 +14,13 @@ export class CreateCourseComponent implements OnInit {
   // start of quiz form section
   // showQuizForm is just for testing to hide and show the quiz form
   showQuizForm: boolean = true;
+  isChecked: boolean = true // true online false offline
   //  and should be deleted after the form is working fine
   // test function for showing the quiz form
-    showQuiz(){
-      this.showQuizForm = !this.showQuizForm;
-    }
-    // the function above should also be deleted
+  showQuiz() {
+    this.showQuizForm = !this.showQuizForm;
+  }
+  // the function above should also be deleted
   // end of quiz form section
 
 
@@ -38,18 +41,27 @@ export class CreateCourseComponent implements OnInit {
     courseName: ['', Validators.required],
     description: ['', [Validators.required, Validators.minLength(50)]],
     courseRequirments: ['', Validators.required],
-    hours: [null, Validators.required],
     price: [null, Validators.required],
+
+    addressList: this.fb.array(['']),
+    startOfEnrollmentDate: [],
+    hours: [null, Validators.required],
+
     thumbnail: [null, Validators.required],
     courseObjectives: this.fb.array(['']),
-    startOfEnrollmentDate: [],
     modules: this.fb.array([])
+
+
     /*       address: this.fb.group({
             city: [''],
             state: [],
             postalCode: []
           }) */
   })
+
+  get addressListRef() {
+    return this.createCourseForm.get('addressList') as FormArray
+  }
 
   // getter for variable that controls showing and hiding module name section
   get isNewModule(): boolean {
@@ -81,6 +93,15 @@ export class CreateCourseComponent implements OnInit {
     }))
   }
 
+  // add new quiz to content array in module
+  addNewQuiz(moduleIndex) {
+    this.newContentStateSetter = !this.isNewContent
+    this.moduleContentRef(moduleIndex).push(this.fb.group({
+      question: null,
+      choices: this.fb.array([null,null,null,null]),
+      correctAnswer: null
+    }))
+  }
   // getter for video
   getVideoControlRef(moduleIndex, contentIndex): FormControl {
     return this.moduleContentRef(moduleIndex).at(contentIndex).get('video') as FormControl
@@ -147,8 +168,8 @@ export class CreateCourseComponent implements OnInit {
   }
 
   // getter for modules controls for ngFor in html file to be iterated
-  get modulesControllerRef() {
-    return this.createCourseForm.get('modules')['controls']
+  get modulesRef() {
+    return this.createCourseForm.get('modules')
   }
   // addCourseModule is a method to generate new module  
   addCourseModule(moduleName: string) {
@@ -162,10 +183,83 @@ export class CreateCourseComponent implements OnInit {
 
   }
   ngOnInit(): void {
+    if (this.isChecked) {
+      // offline features
+      this.hoursRef.disable()
+      this.addressListRef.disable()
+      this.dateRef.disable()
+
+      // online features
+      this.modulesRef.enable()
+
+    } else {
+      // offline features
+      this.hoursRef.enable()
+      this.addressListRef.enable()
+      this.dateRef.enable()
+
+      // online features
+      this.modulesRef.disable()
+
+    }
+  }
+
+  addNewAddress() {
+    this.addressListRef.push(this.fb.control(''))
+  }
+
+  // toggleOnlineOffline is a function that toggle offline and online features
+  toggleOnlineOffline(event: MatSlideToggleChange): void {
+    if (event.checked) {
+      // offline features
+      this.hoursRef.disable()
+      this.addressListRef.disable()
+      this.dateRef.disable()
+
+      // online features
+      this.modulesRef.enable()
+
+      // change checked value
+      this.isChecked = true
+
+    } else {
+      // offline features
+      this.hoursRef.enable()
+      this.addressListRef.enable()
+      this.dateRef.enable()
+
+      // online features
+      this.modulesRef.disable()
+      this.isChecked = false
+    }
+  }
+
+  addVideoLength2Form(form: any) {
+    form.duration = 0
+    if (this.isChecked) {
+      for (let m in form.modules) {
+        form.modules[m].duration = 0
+        for(let l in form.modules[m].content) {
+          if (form.modules[m].content[l].videoFile as File) {
+            form.modules[m].duration = form.modules[m].duration + form.modules[m].content[l].duration
+          }
+        }
+        form.duration = form.duration + form.modules[m].duration
+      }
+    }
   }
 
   submitForm() {
-    console.log(this.createCourseForm.value)
+
+    this.addVideoLength2Form(this.createCourseForm.value)
+    let options = {
+      indices: true,
+      nullsAsUndefineds: true
+    }
+    let data = objectToFormData(this.createCourseForm.value, options)
+
   }
+
+
 
 }

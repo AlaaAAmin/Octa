@@ -6,6 +6,10 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import {MatSelectModule} from '@angular/material/select';
+import { MatFormFieldModule } from '@angular/material/form-field';
+
 @NgModule({
   exports: [
     MatIconModule,
@@ -14,7 +18,11 @@ import {MatTooltipModule} from '@angular/material/tooltip';
     MatButtonModule,
     MatTabsModule,
     MatSidenavModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatSlideToggleModule,
+    MatSelectModule,
+    MatFormFieldModule,
+    
   ]
 })
 export class MaterialModule { }

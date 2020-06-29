@@ -38,3 +38,13 @@
     border: 1px solid #E0E0E0;
     padding: 2%;
 }
+
+::ng-deep .mat-slide-toggle.mat-checked:not(.mat-disabled) .mat-slide-toggle-thumb {
+    background-color: #007bff; /*replace with your color*/
+}
+
+::ng-deep .mat-slide-toggle.mat-checked:not(.mat-disabled) .mat-slide-toggle-bar {
+    background-color: #194370;  /*replace with your color*/
+}
+
+

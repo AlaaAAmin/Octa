@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { FormGroup, FormArray } from '@angular/forms';
 
 @Component({
   selector: 'app-quiz-form',
@@ -7,6 +8,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class QuizFormComponent implements OnInit {
 
+  @Input() quizContent: FormGroup
+  @Input() choices: FormArray
   constructor() { }
 
   ngOnInit(): void {
