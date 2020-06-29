@@ -1,0 +1,19 @@
+nav > a{
+    border-top: 1px solid #edf1f7;
+}
+
+.dashboardContents{
+    background-color: #edf1f7;
+    border-radius: 1%;
+}
+
+.icon{
+    color: white;
+}
+
+.sideBarLink{
+    padding-left: 12%;
+    padding-top: 6%;
+    padding-bottom: 6%;
+    text-decoration: none;
+}
