@@ -12,11 +12,12 @@ import { LoginComponent } from './login/login.component';
 import { FormsModule } from '@angular/forms';
 import { StudentRegistrationComponent } from './registeration/student-registration/student-registration.component';
 import { CourseProviderRegisterationComponent } from './registeration/course-provider-registeration/course-provider-registeration.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { UserService } from './services/user.service';
 import { CoursesComponent } from './courses/courses.component';
 import { CourseProviderModule } from './course-provider/course-provider.module';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { IntercepterService } from './services/authentication/intercepter.service';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
     FormsModule,
     HttpClientModule,
   ],
-  providers: [UserService],
+  providers: [UserService,
+    { provide: HTTP_INTERCEPTORS, useClass: IntercepterService, multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

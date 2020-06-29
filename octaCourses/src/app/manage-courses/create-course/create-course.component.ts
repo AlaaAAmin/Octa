@@ -2,6 +2,7 @@ import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { FormBuilder, Validators, FormArray, FormGroup, FormControl } from '@angular/forms';
 import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 import { objectToFormData } from 'object-to-formdata';
+import { CourseService } from 'src/app/services/course.service';
 
 @Component({
   selector: 'app-create-course',
@@ -27,7 +28,7 @@ export class CreateCourseComponent implements OnInit {
   private newModule: boolean
   private newContent: boolean
   private newLecture: boolean
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private service: CourseService) {
     this.newModule, this.newContent, this.newLecture = false
   }
 
@@ -42,7 +43,7 @@ export class CreateCourseComponent implements OnInit {
     description: ['', [Validators.required, Validators.minLength(50)]],
     courseRequirments: ['', Validators.required],
     price: [null, Validators.required],
-
+    type: [this.isChecked],
     addressList: this.fb.array(['']),
     startOfEnrollmentDate: [],
     hours: [null, Validators.required],
@@ -87,9 +88,11 @@ export class CreateCourseComponent implements OnInit {
   addNewLecture(moduleIndex) {
     this.newContentStateSetter = !this.isNewContent
     this.moduleContentRef(moduleIndex).push(this.fb.group({
-      name: '',
-      video: null,
-      file: null
+      lecture: this.fb.group({
+        name: '',
+        video: null,
+        file: null
+      })
     }))
   }
 
@@ -97,9 +100,11 @@ export class CreateCourseComponent implements OnInit {
   addNewQuiz(moduleIndex) {
     this.newContentStateSetter = !this.isNewContent
     this.moduleContentRef(moduleIndex).push(this.fb.group({
-      question: null,
-      choices: this.fb.array([null,null,null,null]),
-      correctAnswer: null
+      quiz: this.fb.group({
+        question: null,
+        choices: this.fb.array([null, null, null, null]),
+        correctAnswer: null
+      })
     }))
   }
   // getter for video
@@ -239,9 +244,10 @@ export class CreateCourseComponent implements OnInit {
     if (this.isChecked) {
       for (let m in form.modules) {
         form.modules[m].duration = 0
-        for(let l in form.modules[m].content) {
-          if (form.modules[m].content[l].videoFile as File) {
-            form.modules[m].duration = form.modules[m].duration + form.modules[m].content[l].duration
+        for (let l in form.modules[m].content) {
+          if (form.modules[m].content[l].quiz) continue
+          if (form.modules[m].content[l].lecture.videoFile as File) {
+            form.modules[m].duration = form.modules[m].duration + form.modules[m].content[l].lecture.duration
           }
         }
         form.duration = form.duration + form.modules[m].duration
@@ -257,7 +263,14 @@ export class CreateCourseComponent implements OnInit {
       nullsAsUndefineds: true
     }
     let data = objectToFormData(this.createCourseForm.value, options)
+    this.service.createCourse(data)
+      .then(res => {
+        console.log(res)
+      })
+      .catch(err => {
+        console.log(err)
 
+      })
   }
 
 

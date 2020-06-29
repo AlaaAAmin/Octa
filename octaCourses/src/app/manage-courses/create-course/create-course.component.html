@@ -112,7 +112,7 @@
 
       <!-- start of online/offline course switch -->
 
-      <mat-slide-toggle [checked]="isChecked" (change)="toggleOnlineOffline($event)">Course type:
+      <mat-slide-toggle [checked]="isChecked" (change)="toggleOnlineOffline($event)" formControlName="type">Course type:
         {{isChecked? "Online" : "Offline"}}</mat-slide-toggle>
 
       <!-- end of online/offline course switch -->
@@ -217,11 +217,11 @@
             <br>
             <div formArrayName="content" *ngFor="let content of module.get('content')['controls']; let j = index">
 
-              <ng-container *ngIf="content.name ; then lectureBlock; else quizBlock"></ng-container>
+              <ng-container *ngIf="content.get('lecture') ; then lectureBlock; else quizBlock"></ng-container>
               
               <ng-template #lectureBlock>
                 <!-- start of lecture name and contents ( aka video and/or a file)-->
-                <app-lecture-form [lectureContent]="content"></app-lecture-form>
+                <app-lecture-form [lectureContent]="content.get('lecture')"></app-lecture-form>
                 <!-- end of lecture contents ( aka video and/or a file)-->
               </ng-template>
 
@@ -229,7 +229,7 @@
                 <!--start of quiz form-->
                 <!--when the form is working fine you should delete the calss.d-none that can show
               and hide the form alon with the showQuiz() from the add quiz button and the component class-->
-                <app-quiz-form [quizContent]="content" [choices]="content.get('choices')"></app-quiz-form>
+                <app-quiz-form [quizContent]="content.get('quiz')" [choices]="content.get('quiz').get('choices')"></app-quiz-form>
                 <!--end of quiz form-->
               </ng-template>
               
@@ -258,12 +258,8 @@
           (click)="addCourseModule(modulename.value)">ok</button>
       </div>
       <!--end of module name section-->
-
-      <!-- [disabled]="createCourseForm.invalid" -->
-      <button class="btn btn-primary btn-sm submitBtn" (click)="submitForm()">Submit for review</button>
-
-
-
+      
+      <button [disabled]="createCourseForm.invalid" class="btn btn-primary btn-sm submitBtn" (click)="submitForm()">Submit for review</button>
 
     </form>
   </div>
