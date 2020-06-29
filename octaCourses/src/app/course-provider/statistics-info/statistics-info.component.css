@@ -1,0 +1,17 @@
+.statDiv{
+    background-color: #edf1f7;
+}
+
+.chartCanvas{
+    box-shadow: 0px 0px 8px #edf1f7;
+    border: 2px solid #edf1f7;
+    margin-top: 2%;
+}
+
+.noOfStudentsDiv{
+    margin-top: 1%;
+    box-shadow: 0px 0px 8px #edf1f7;
+    border: 2px solid #edf1f7;
+    padding-top: 3%;
+    padding-bottom: 2%;
+}
