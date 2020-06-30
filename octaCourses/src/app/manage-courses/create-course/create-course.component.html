@@ -63,6 +63,13 @@
       </div>
       <!--end of course thumbnail section-->
 
+      <!-- start of online/offline course switch -->
+
+      <mat-slide-toggle [checked]="isChecked" (change)="toggleOnlineOffline($event)" formControlName="type" class="mb-2">Course type:
+        {{isChecked? "Online" : "Offline"}}</mat-slide-toggle>
+
+      <!-- end of online/offline course switch -->
+
       <!-- start of hours section -->
       <div class="row">
         <div class="col">
@@ -109,13 +116,6 @@
         </div>
       </div>
       <!-- end of course objectives section -->
-
-      <!-- start of online/offline course switch -->
-
-      <mat-slide-toggle [checked]="isChecked" (change)="toggleOnlineOffline($event)" formControlName="type">Course type:
-        {{isChecked? "Online" : "Offline"}}</mat-slide-toggle>
-
-      <!-- end of online/offline course switch -->
 
       <!--start of enrollment date section-->
       <!-- note that this if a date is picked then the course is an offline course

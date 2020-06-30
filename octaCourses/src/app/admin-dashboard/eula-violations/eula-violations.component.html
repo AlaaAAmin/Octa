@@ -1,1 +1,23 @@
-<p>eula-violations works!</p>
+<div class="container">
+        <!--courses' providers container-->
+        <div class="row justify-content-around">
+            <!-- the div below should display the courses' providers cards that have 3 strikes-->
+            <div class="col-sm-3 courseProviderCardDiv card-group" *ngFor="let instructor of instructors">
+    
+                <!--course provider card-->
+                <div class="card text-center courseProviderCard text-capitalize">
+                    <img src="assets/img/person.jpg" class="card-img-top" alt="Course provider image">
+                    <div class="card-body">
+                        <h2 class="card-title">{{instructor.name}}</h2>
+                      <p class="card-text">{{instructor.bio}}</p>
+                      <p><small>Joined: {{instructor.joiningDate}}</small></p>
+                      <!--the ban button below should ban the course provider-->
+                      <button class="btn btn-danger">Ban</button>
+                    </div>
+                  </div>
+                  <!--end of course provider card-->
+                  
+            </div>
+        </div>
+        <br><br>
+</div>

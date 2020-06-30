@@ -24,8 +24,8 @@ export class AdminDashboardComponent implements OnInit {
         path: "/admin-dashboard/eula-violations"
       },
       {
-        title: "Students review",
-        path: "/admin-dashboard/students-review"
+        title: "Students violations",
+        path: "/admin-dashboard/students-violations"
       },
       {
         title: "Inquiries review",

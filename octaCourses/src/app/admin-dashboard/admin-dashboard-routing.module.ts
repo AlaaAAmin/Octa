@@ -5,8 +5,8 @@ import { AdminDashboardComponent } from './admin-dashboard.component';
 import { EulaViolationsComponent } from './eula-violations/eula-violations.component';
 import { InquiriesReviewComponent } from './inquiries-review/inquiries-review.component';
 import { PlatformStatisticsComponent } from './platform-statistics/platform-statistics.component';
-import { StudentsReviewComponent } from './students-review/students-review.component';
 import { CoursesReviewComponent } from './courses-review/courses-review.component';
+import { StudentsViolationsComponent } from './students-violations/students-violations.component';
 
 const routes: Routes = [
   { path: '', component: AdminDashboardComponent, children:[
@@ -15,7 +15,7 @@ const routes: Routes = [
     {path: 'inquiries-review', component: InquiriesReviewComponent},
     {path: 'platform-statistics', component: PlatformStatisticsComponent},
     {path: 'courses-review', component: CoursesReviewComponent},
-    {path: 'students-review', component: StudentsReviewComponent}
+    {path: 'students-violations', component: StudentsViolationsComponent}
   ] }
 ];
 

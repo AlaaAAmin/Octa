@@ -1,0 +1,23 @@
+<div class="container">
+    <!--students container-->
+    <div class="row justify-content-around">
+        <!-- the div below should display the student' cards that made 3 have 3 strikes-->
+        <div class="col-sm-3 studentCardDiv card-group" *ngFor="let student of students">
+
+            <!--student card-->
+            <div class="card text-center courseCard text-capitalize">
+                <img src="assets/img/student.jpg" class="card-img-top" alt="Student image">
+                <div class="card-body">
+                    <h2 class="card-title">{{student.name}}</h2>
+                  <p class="card-text">{{student.email}}</p>
+                  <p><small>Joined: {{student.joiningDate}}</small></p>
+                  <!--the Block button below should block the student-->
+                  <button class="btn btn-danger">Block</button>
+                </div>
+              </div>
+              <!--end of student card-->
+              
+        </div>
+    </div>
+    <br><br>
+</div>
