@@ -1,0 +1,15 @@
+<!--baseChart is a directive form the ng2-charts library the enables me to turn this canvas into a chart-->
+<div class="container">
+    <div class="row text-center justify-content-around text-capitalize">
+            <div class="col-sm-10 chartDiv">
+                    <canvas baseChart 
+                    [chartType]='lineChartType'
+                    [labels]='lineChartLabels'
+                    [datasets]='lineChartData'
+                    [options]='lineChartOptions'
+                    [legend]='lineChartLegend'
+                    [colors]='chartColors'></canvas>
+                    <h3 class="mt-2">Average daily active users</h3>
+            </div>
+    </div>
+</div>
