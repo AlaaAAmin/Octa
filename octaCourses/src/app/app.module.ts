@@ -14,10 +14,9 @@ import { StudentRegistrationComponent } from './registeration/student-registrati
 import { CourseProviderRegisterationComponent } from './registeration/course-provider-registeration/course-provider-registeration.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { UserService } from './services/user.service';
-import { CoursesComponent } from './courses/courses.component';
-import { CourseProviderModule } from './course-provider/course-provider.module';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { IntercepterService } from './services/authentication/intercepter.service';
+import { CategorySearchResultComponent } from './category-search-result/category-search-result.component';
 
 @NgModule({
   declarations: [
@@ -26,11 +25,11 @@ import { IntercepterService } from './services/authentication/intercepter.servic
     HomepageComponent,
     LoginComponent,
     StudentRegistrationComponent,
-    CoursesComponent,
     CategoriesComponent,
     LoginComponent,
     CourseProviderRegisterationComponent,
-    ForgotPasswordComponent
+    ForgotPasswordComponent,
+    CategorySearchResultComponent
   ],
   imports: [
     BrowserModule,
