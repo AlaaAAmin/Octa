@@ -1,0 +1,45 @@
+<div class="row commonCSS">
+    <div class="col-sm-12">
+
+        <!--courseProviderReviewForm represents the form as a model in the component class-->
+        <form [formGroup]="courseProviderReviewForm">
+
+            <!-- start of rate input section -->
+            <div class="form-group">
+                <label>Rate</label>
+                <!--formControlName links the input fields to the formControl values in the component class-->
+                <input [class.is-invalid]="courseProviderRate.invalid && courseProviderRate.touched"
+                formControlName="rate" type="number" class="form-control form-control-sm w-50">
+
+                <!-- start of error messages -->
+                <div *ngIf="courseProviderRate.invalid && courseProviderRate.touched">
+                    <small *ngIf="courseProviderRate.errors?.min" class="text-danger">Rate must be greater than or equal 0</small>
+                    <small *ngIf="courseProviderRate.errors?.max" class="text-danger">Rate must be smaller than or equal 5</small>
+                </div>
+                <!-- end of error messages -->
+                <!-- end of rate input section -->
+            </div>
+
+            <!-- start of review input section -->
+            <div class="form-group">
+                <label>Review</label>
+
+                <!--formControlName links the input fields to the formControl values in the component class-->
+                <textarea [class.is-invalid]="courseProviderReview.invalid && courseProviderReview.touched" 
+                formControlName="review" type="text" class="form-control form-control-sm" rows=2></textarea>
+
+                <!-- start of error messages -->
+                <div *ngIf="courseProviderReview.invalid && courseProviderReview.touched">
+                    <small *ngIf="courseProviderReview.errors?.required" class="text-danger">Your review is required</small>
+                    <small *ngIf="courseProviderReview.errors?.minlength" class="text-danger">Your review must be longer than 8 characters</small>
+                </div>
+                <!-- end of error messages -->
+            </div>
+            <!-- end of review input section -->
+            <button [disabled]="courseProviderReviewForm.invalid" 
+            class="btn btn-primary submitButton btn-sm" type="submit">Submit</button>
+
+        </form>
+
+    </div>
+</div>

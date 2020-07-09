@@ -20,7 +20,8 @@ const routes: Routes = [
   { path: 'courseproviderregisteration', component: CourseProviderRegisterationComponent },
   { path: 'forgotpassword', component: ForgotPasswordComponent },
   { path: 'manage-courses', loadChildren: () => import('./manage-courses/manage-courses.module').then(m => m.ManageCoursesModule) },
-  { path: 'admin-dashboard', loadChildren: () => import('./admin-dashboard/admin-dashboard.module').then(m => m.AdminDashboardModule) }
+  { path: 'admin-dashboard', loadChildren: () => import('./admin-dashboard/admin-dashboard.module').then(m => m.AdminDashboardModule) },
+  { path: 'course', loadChildren: () => import('./course/course.module').then(m => m.CourseModule) }
 ];
 
 @NgModule({
