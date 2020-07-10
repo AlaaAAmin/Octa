@@ -1,0 +1,40 @@
+<div class="row studentReview" *ngFor="let question of questions">
+
+    <!-- student profile photo-->
+    <div class="col-sm-2 StuProfile">
+        <img src="{{question.profilePhotoSrc}}" class="img-thumbnail  w-75" alt="student profile">
+    </div>
+
+    <div class="col-sm-2 stu">
+        <!-- student name -->
+        <h3 class="text-capitalize"><b>{{question.studentName}}</b></h3>
+
+        <!-- question date -->
+        <small style="color: grey;">{{question.date}}</small>
+
+    </div>
+
+    <div class="col-sm-6 review">
+        <!-- start question body -->
+        {{question.question}}
+        <!-- end of question body -->
+
+        <br>
+        <!-- this answer button should only be visible to the course provider when logged in-->
+        <!-- when pressed it should bring up the answer form and when the answer is submitted the button
+        itself should disappear -->
+        <button class="btn btn-sm btn-link" (click)="showAsnwer()">Answer</button>
+        <!-- end of asnwer button -->
+        <br>
+        <!-- start of answer form -->
+        <!-- this should disappear after the answer is submitted -->
+        <app-course-answer-form [class.d-none]="displayAnswerForm"></app-course-answer-form>
+        <!-- end of answer form -->
+
+        <!-- start of answer card -->
+        <!-- this should contain the data that was previously entered in the answer form above -->
+        <!-- it should be hidden if there is an answer -->
+        <app-course-answer-card></app-course-answer-card>
+        <!-- end of answer card -->
+    </div>
+</div>

@@ -7,13 +7,15 @@ import { MaterialModule } from '../shared/material/material.module';
 import {Ng2PageScrollModule} from 'ng2-page-scroll';
 import { CourseProviderCardComponent } from './course-provider-card/course-provider-card.component';
 import { StudentReviewCardComponent } from './student-review-card/student-review-card.component';
-import { CourseProviderReviewCardComponent } from './course-provider-review-card/course-provider-review-card.component';
-import { CourseReviewFormComponent } from './course-review-form/course-review-form.component';
-import { CourseProviderReviewFormComponent } from './course-provider-review-form/course-provider-review-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { CourseReviewFormComponent } from './course-review-form/course-review-form.component';
+import { CourseQuestionFormComponent } from './course-question-form/course-question-form.component';
+import { CourseQuestionCardComponent } from './course-question-card/course-question-card.component';
+import { CourseAnswerFormComponent } from './course-answer-form/course-answer-form.component';
+import { CourseAnswerCardComponent } from './course-answer-card/course-answer-card.component';
 
 @NgModule({
-  declarations: [CourseComponent, CourseProviderCardComponent, StudentReviewCardComponent, CourseProviderReviewCardComponent, CourseReviewFormComponent, CourseProviderReviewFormComponent],
+  declarations: [CourseComponent, CourseProviderCardComponent, StudentReviewCardComponent, CourseReviewFormComponent, CourseQuestionFormComponent, CourseQuestionCardComponent, CourseAnswerFormComponent, CourseAnswerCardComponent],
   imports: [
     CommonModule,
     CourseRoutingModule,

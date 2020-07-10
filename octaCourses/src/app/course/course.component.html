@@ -54,6 +54,13 @@
             so the student can go and see the course videos -->
             <button class="btn btn-sm btn-block enrollBtn w-75">Enroll Now</button>
             <!-- end of enroll button -->
+
+            <!--go to course button link -->
+            <!-- this button is shown to the logged in student -->
+            <!-- if the student is already enrolled in that course it should redirect him to 
+            the course-insights page so the student can go and see the course videos in case of online course-->
+            <a class="btn btn-sm btn-block enrollBtn w-75">Go to course</a>
+            <!-- end of enroll button -->
         </div>
     </div>
 
@@ -79,6 +86,7 @@
     <!-- end of course objectives section -->
 
     <!--start of course contents section. aka modules and lectures-->
+    <!-- this section sould be hidden in case of an offline course as it doesn't have modules -->
     <div class="row">
         <div class="col-sm-8 courseContent">
             <h2><b>Course contents</b></h2>
@@ -135,25 +143,26 @@
     <app-course-provider-card></app-course-provider-card>
     <!-- end of course provider info -->
 
-    <!-- start of course review form -->
+    <!-- start of course review form and question for,-->
     <!-- note this should be visible only when a student is enrolled in this course -->
     <div class="row commonCSS">
         <div class="col-sm-5">
             <h2 class="mt-2 mb-0"><b>Leave your review for the course</b></h2>
         </div>
 
-        <div class="col-sm-5 text-right providerReview">
-            <h2 class="mt-2 mb-0"><b>Leave your review for the course provider</b></h2>
+        <div class="col-sm-5 question">
+            <h2 class="mt-2 mb-0"><b>Have a question!</b></h2>
         </div>
     </div>
     <hr>
     <div class="row">
         <div class="col-sm-6">
+            <!-- course review form -->
             <app-course-review-form></app-course-review-form>
         </div>
-
         <div class="col-sm-6">
-            <app-course-provider-review-form></app-course-provider-review-form>
+            <!-- course question form -->
+            <app-course-question-form></app-course-question-form>
         </div>
     </div>
     <!-- end of course review form -->
@@ -172,19 +181,19 @@
     </div>
     <!-- end of course reviews -->
 
-    <!-- start of course prvider reviews made by students -->
+    <!-- start of course questions -->
     <div class="row commonCSS">
-        <div class="col-sm-5">
-            <h2 class="mt-2 mb-0"><b>Course provider reviews</b></h2>
+        <div class="col-sm-2">
+            <h2 class="mt-2 mb-0"><b>Course questions</b></h2>
         </div>
     </div>
     <hr>
     <div class="row">
         <div class="col-sm-12">
-            <app-course-provider-review-card></app-course-provider-review-card>
+            <app-course-question-card></app-course-question-card>
         </div>
     </div>
-    <!-- end of course prvider reviews made by students -->
+    <!-- end of course reviews -->
 
     <br><br><br><br><br>
 </div>

@@ -1,0 +1,31 @@
+<div class="row commonCSS" [class.d-none]="!displayAnswerForm">
+    <div class="col-sm-12">
+
+        <!--courseAnswerForm represents the form as a model in the component class-->
+        <form [formGroup]="courseAnswerForm">
+
+            <!-- start of answer input section -->
+            <div class="form-group">
+                <label>Answer</label>
+
+                <!--formControlName links the input fields to the formControl values in the component class-->
+                <textarea [class.is-invalid]="courseAnswer.invalid && courseAnswer.touched" 
+                formControlName="answer" type="text" class="form-control form-control-sm" rows=1></textarea>
+
+                <!-- start of error messages -->
+                <div *ngIf="courseAnswer.invalid && courseAnswer.touched">
+                    <small *ngIf="courseAnswer.errors?.required" class="text-danger">Your answer is required</small>
+                    <small *ngIf="courseAnswer.errors?.minlength" class="text-danger">Your answer must be longer than 8 characters</small>
+                </div>
+                <!-- end of error messages -->
+            </div>
+            <!-- end of answer input section -->
+            <!-- this button should submit the answer and then hides the answer form -->
+            <!-- it should also show the answer card to the question -->
+            <button [disabled]="courseAnswerForm.invalid"
+            class="btn btn-primary submitButton btn-sm" type="submit"
+            (click)="hideAnswerForm()">Submit</button>
+
+        </form>
+    </div>
+</div>

@@ -21,7 +21,8 @@ const routes: Routes = [
   { path: 'forgotpassword', component: ForgotPasswordComponent },
   { path: 'manage-courses', loadChildren: () => import('./manage-courses/manage-courses.module').then(m => m.ManageCoursesModule) },
   { path: 'admin-dashboard', loadChildren: () => import('./admin-dashboard/admin-dashboard.module').then(m => m.AdminDashboardModule) },
-  { path: 'course', loadChildren: () => import('./course/course.module').then(m => m.CourseModule) }
+  { path: 'course', loadChildren: () => import('./course/course.module').then(m => m.CourseModule) },
+  { path: 'course-insight', loadChildren: () => import('./course-insight/course-insight.module').then(m => m.CourseInsightModule) }
 ];
 
 @NgModule({
