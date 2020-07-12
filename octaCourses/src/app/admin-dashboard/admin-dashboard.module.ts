@@ -15,14 +15,21 @@ import { AverageDailyActiveUsersComponent } from './charts/traffic/average-daily
 import { HighestNumberOfVisitorsComponent } from './charts/traffic/highest-number-of-visitors/highest-number-of-visitors.component';
 import { LowestNumberOfVisitorsComponent } from './charts/traffic/lowest-number-of-visitors/lowest-number-of-visitors.component';
 import { FinancialStatisticsComponent } from './charts/financial-statistics/financial-statistics.component';
+import { CoursePublishingComponent } from './course-publishing/course-publishing.component';
+import { MaterialModule } from '../shared/material/material.module';
+import {Ng2PageScrollModule} from 'ng2-page-scroll';
+import { CoursePreviewComponent } from './course-publishing/course-preview/course-preview.component';
+import { CourseProviderCardPreviewComponent } from './course-publishing/course-provider-card-preview/course-provider-card-preview.component';
 
 
 @NgModule({
-  declarations: [AdminDashboardComponent, EulaViolationsComponent, InquiriesReviewComponent, PlatformStatisticsComponent, CoursesReviewComponent, StudentsViolationsComponent, CategoryPerformanceComponent, AverageDailyActiveUsersComponent, HighestNumberOfVisitorsComponent, LowestNumberOfVisitorsComponent, FinancialStatisticsComponent],
+  declarations: [AdminDashboardComponent, EulaViolationsComponent, InquiriesReviewComponent, PlatformStatisticsComponent, CoursesReviewComponent, StudentsViolationsComponent, CategoryPerformanceComponent, AverageDailyActiveUsersComponent, HighestNumberOfVisitorsComponent, LowestNumberOfVisitorsComponent, FinancialStatisticsComponent, CoursePublishingComponent, CoursePreviewComponent, CourseProviderCardPreviewComponent],
   imports: [
     CommonModule,
     AdminDashboardRoutingModule,
-    ChartsModule
+    ChartsModule,
+    MaterialModule,
+    Ng2PageScrollModule
   ]
 })
 export class AdminDashboardModule { }

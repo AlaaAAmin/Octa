@@ -10,10 +10,11 @@ import { LectureFormComponent } from './lecture-form/lecture-form.component';
 import { QuizFormComponent } from './quiz-form/quiz-form.component';
 import { UpdateCourseComponent } from './update-course/update-course.component';
 import { CloseCourseEnrollmentComponent } from './close-course-enrollment/close-course-enrollment.component';
+import { FinalCourseTestComponent } from './final-course-test/final-course-test.component';
 
 
 @NgModule({
-  declarations: [ManageCoursesComponent, CreateCourseComponent, LectureFormComponent, QuizFormComponent, UpdateCourseComponent, CloseCourseEnrollmentComponent],
+  declarations: [ManageCoursesComponent, CreateCourseComponent, LectureFormComponent, QuizFormComponent, UpdateCourseComponent, CloseCourseEnrollmentComponent, FinalCourseTestComponent],
   imports: [
     CommonModule,
     ManageCoursesRoutingModule,

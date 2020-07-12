@@ -1,0 +1,37 @@
+<div class="container">
+    <div class="row justify-content-center text-center mt-1">
+
+        <!-- start of the top bar wherer the admin can choose the category and publish the course or reject it-->
+        <div class="col-sm-12 topBar text-capitalize">
+
+            <!-- start of the dropdown menu for categories -->
+            <mat-form-field>
+                <mat-label>Select course category</mat-label>
+                <mat-select [(value)]="selectedValue">
+                    <mat-option *ngFor="let category of categories" value="{{category.name}}">{{category.name}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <!-- end of the dropdown menu for categories -->
+
+            <!-- start of publish button 
+            this button should assign the course to a category and make the course available to the students -->
+                <button class="btn btn-sm publishBtn">Publish</button>
+            <!-- start of publish button -->
+
+            <!-- start of reject button 
+            this button should reject the course aka delete the course and give the course provider a strike
+            as the course will be rejected only in case of eula violation -->
+                <button class="btn btn-danger btn-sm">Reject</button>
+            <!-- end of reject button -->
+        
+        </div>
+        <!-- end of the top bar wherer the admin can choose the category and publish the course or reject it-->
+    
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12">
+            <app-course-preview></app-course-preview>
+        </div>
+    </div>
+</div>

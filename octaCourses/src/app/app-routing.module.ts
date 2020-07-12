@@ -7,6 +7,7 @@ import { LoginComponent } from './login/login.component';
 import { CourseProviderRegisterationComponent } from './registeration/course-provider-registeration/course-provider-registeration.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { CategorySearchResultComponent } from './category-search-result/category-search-result.component';
+import { ContactUsFormComponent } from './contact-us-form/contact-us-form.component';
 
 
 const routes: Routes = [
@@ -15,6 +16,7 @@ const routes: Routes = [
   { path: '', component: HomepageComponent, pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: StudentRegistrationComponent },
+  { path: 'contact-us', component: ContactUsFormComponent },
   { path: 'categories', component: CategoriesComponent },
   { path: 'categories/:id', component: CategorySearchResultComponent },
   { path: 'courseproviderregisteration', component: CourseProviderRegisterationComponent },

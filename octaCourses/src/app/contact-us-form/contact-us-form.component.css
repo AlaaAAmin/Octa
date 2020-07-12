@@ -1,0 +1,51 @@
+input{
+    margin-top: 5%;
+}
+
+textarea{
+    margin-top: 5%;
+}
+.formRow{
+    margin-top: 5%;
+}
+
+.loginH1{
+    text-align: center;
+    margin-top: 5%;
+    font-size: 210%;
+    margin-bottom: 10%;
+}
+
+.submitButton{
+    margin-top: 9%;
+    margin-bottom: 5%;
+}
+
+.contactForm{
+    box-shadow: -1px 0px 5px #a6a6a6;
+    padding-top: 4%;
+    padding-bottom: 4%;
+    border-radius: 3% 0% 0% 3%;
+    padding-left: 2%;
+    padding-right: 2%;
+}
+
+.happyToHear{
+    box-shadow: 1px 0px 5px #a6a6a6;
+    background-color: #f47f2f;
+    color: white;
+    padding-top: 4%;
+    padding-bottom: 4%;
+    border-radius: 0% 3% 3% 0%;
+}
+
+.vAlign{
+    position: absolute;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    margin-left: 3%;
+    margin-right: 4%;
+    text-align: center;
+    font-size: 140%;
+}

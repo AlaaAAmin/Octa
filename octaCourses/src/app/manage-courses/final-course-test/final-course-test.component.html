@@ -1,0 +1,117 @@
+<div class="container">
+<div [class.d-none]="hideCoursesSection">
+
+    <!--create final course test page heade-->
+    <div class="row text-center justify-content-around">
+        <h2 class="update">Choose a course</h2>
+    </div>
+    <!-- end of create final course test page header-->
+
+    <!-- start of courses container-->
+    <div class="row justify-content-around">
+        <!-- the div below should display the courses' cards belonging to the course provider
+             that have been published by the admin and don't have a final test -->
+        <div class="col-sm-3 courseCardDiv" *ngFor="let course of courses">
+
+            <!--course card-->
+            <div class="card text-center courseCard">
+                <img src="assets/img/course.jpg" class="card-img-top" alt="Course image">
+                <div class="card-body">
+                    <h2 class="card-title">{{course.name}}</h2>
+                  <p class="card-text">{{course.description}}</p>
+                  <p><small>Published: {{course.date}}</small></p>
+                  <!--the create the final test button below should take the info or the id
+                    of the course that course provider choose
+                    then hides the courses aka the entire course container and the create course final test header
+                    and show him the final test section -->
+                  <button class="btn btn-outline-primary stretched-link" (click)="displayTestSection()">
+                      Create the final test
+                    </button>
+                </div>
+              </div>
+              <!--end of course card-->
+              
+        </div>
+    </div>
+    <!-- end of courses container-->
+</div>
+    <!-- start of final test section -->
+
+    <!--final test header-->
+    <div class="row text-center justify-content-around" [class.d-none]="hideFinalQuestionsSection">
+        <!-- in this header you should show the name of the course the instructor choose to create the 
+        test for it -->
+        <h2 class="update">
+            (Course name) final test
+        </h2>
+    </div>
+    <!-- end of final test page header-->
+
+    <!-- start of final test form -->
+    <!-- aka questions and time of test -->
+    <div class="row justify-content-center mb-5 commonCSS" [class.d-none]="hideFinalQuestionsSection">
+        <div class="col-sm-8 testForm">
+    
+            <!--coursefinalTestForm represents the form as a model in the component class-->
+            <form [formGroup]="coursefinalTestForm">
+    
+                <!-- start of test time input section -->
+                <div class="form-group mt-5">
+                    <label>Time of test <small class="text-primary">in minutes</small></label>
+                    <!--formControlName links the input fields to the formControl values in the component class-->
+                    <input [class.is-invalid]="testTime.invalid && testTime.touched"
+                    formControlName="time" type="number" class="form-control form-control-sm w-50">
+    
+                    <!-- start of error messages -->
+                    <div *ngIf="testTime.invalid && testTime.touched">
+                        <small *ngIf="testTime.errors?.required" class="text-danger">Test time is required</small>
+                        <small *ngIf="testTime.errors?.min" class="text-danger">Test time must be greater than or equal 5 minutes</small>
+                        <small *ngIf="testTime.errors?.max" class="text-danger">Test time must be smaller than or equal 180 minutes</small>
+                    </div>
+                    <!-- end of error messages -->
+                    <!-- end of test time input section -->
+                </div>
+    
+                <!-- start of number of test questions input section -->
+                <div class="form-group">
+                    <label>Number of questions</label>
+    
+                    <!--formControlName links the input fields to the formControl values in the component class-->
+                    <input [class.is-invalid]="numberOfTestQuestions.invalid && numberOfTestQuestions.touched" 
+                    formControlName="numberOfQuestions" type="number" class="form-control form-control-sm">
+    
+                    <!-- start of error messages -->
+                    <div *ngIf="numberOfTestQuestions.invalid && numberOfTestQuestions.touched">
+                        <small *ngIf="numberOfTestQuestions.errors?.required" class="text-danger">The number of the test questions is required</small>
+                        <small *ngIf="numberOfTestQuestions.errors?.min" class="text-danger">number of the test questions must be longer than or equal to 10 questions</small>
+                    </div>
+                    <!-- end of error messages -->
+                </div>
+                <!-- end of number of test questions input section -->
+
+                <!-- the button below should create a number of questions aka quiz forms
+                equal to the number of questions that the course provider entered above -->
+                <button [disabled]="coursefinalTestForm.invalid" 
+                class="btn btn-primary submitButton btn-sm">Ok</button>
+    
+            <!-- course quiz form will be reused as questions to the final test -->
+            <div>
+                <hr>
+                <p>Question 1</p>
+                <app-quiz-form></app-quiz-form>
+                <hr>
+            </div>
+            <!-- end of course quiz form aka test questions -->
+            <button class="btn btn-primary submitButton btn-sm">Submit test</button>
+
+            </form>
+            
+            <pre>{{coursefinalTestForm.value | json}}</pre>
+            
+        </div>
+    </div>
+    <!-- end of final test form -->
+    <!-- end of final test section -->
+
+    <br><br>
+</div>

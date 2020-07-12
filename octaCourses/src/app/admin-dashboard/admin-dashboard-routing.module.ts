@@ -7,6 +7,7 @@ import { InquiriesReviewComponent } from './inquiries-review/inquiries-review.co
 import { PlatformStatisticsComponent } from './platform-statistics/platform-statistics.component';
 import { CoursesReviewComponent } from './courses-review/courses-review.component';
 import { StudentsViolationsComponent } from './students-violations/students-violations.component';
+import { CoursePublishingComponent } from './course-publishing/course-publishing.component';
 
 const routes: Routes = [
   { path: '', component: AdminDashboardComponent, children:[
@@ -15,7 +16,8 @@ const routes: Routes = [
     {path: 'inquiries-review', component: InquiriesReviewComponent},
     {path: 'platform-statistics', component: PlatformStatisticsComponent},
     {path: 'courses-review', component: CoursesReviewComponent},
-    {path: 'students-violations', component: StudentsViolationsComponent}
+    {path: 'students-violations', component: StudentsViolationsComponent},
+    {path: 'course-publishing', component: CoursePublishingComponent}
   ] }
 ];
 

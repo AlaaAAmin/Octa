@@ -17,6 +17,7 @@ import { UserService } from './services/user.service';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { IntercepterService } from './services/authentication/intercepter.service';
 import { CategorySearchResultComponent } from './category-search-result/category-search-result.component';
+import { ContactUsFormComponent } from './contact-us-form/contact-us-form.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { CategorySearchResultComponent } from './category-search-result/category
     LoginComponent,
     CourseProviderRegisterationComponent,
     ForgotPasswordComponent,
-    CategorySearchResultComponent
+    CategorySearchResultComponent,
+    ContactUsFormComponent
   ],
   imports: [
     BrowserModule,

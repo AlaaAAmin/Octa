@@ -22,3 +22,9 @@ a{
     /* will be changed*/
     color: red;
 }
+
+.websiteLogo{
+    width: 105px;
+    margin-left: 1%;
+    margin-bottom: 5px;
+}
