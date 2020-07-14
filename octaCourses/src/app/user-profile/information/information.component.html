@@ -80,6 +80,37 @@
         </div>
     </div>
 <hr>
+
+    <!--start of interests section-->
+    <div class="row" style="margin-top: 3%;">
+        <!--displaying interests-->
+        <div class="col-sm-4" class="infoFields">
+            Interests: 
+            <span>intrest 1</span>
+            <span>intrest 2</span>
+        </div>
+
+        <!--edit interests button -->
+        <div class="col-sm-2">
+            <button class="btn btn-link" (click)="interestEdit()"><mat-icon class="editIcon">edit</mat-icon></button>
+        </div>
+
+        <!-- editing interests form -->
+        <div class="col-sm-4" [class.d-none]="editInterests">
+            <!-- start of the dropdown menu for interests  -->
+            <mat-form-field>
+                <mat-label>Select your interests</mat-label>
+                <mat-select [(value)]="selectedValue" multiple>
+                    <mat-option *ngFor="let category of categories" value="{{category.name}}">{{category.name}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <!-- end of the dropdown menu for categories -->
+
+            <!-- submit interests button should submit the interests to the database -->
+            <button type="submit" class="btn btn-primary btn-sm ml-1" (click)="submitInterests()">Save</button>
+        </div>
+    </div>
+<hr>
     <!--phone section-->
     <div class="row" style="margin-top: 3%;">
         <!--displaying personal info column-->
@@ -223,4 +254,3 @@
             </form>
         </div>
     </div>
-</div>

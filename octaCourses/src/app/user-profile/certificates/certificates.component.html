@@ -1,1 +1,37 @@
-<p>certificates works!</p>
+<div class="container">
+
+    <!--choose course header-->
+    <div class="row text-center justify-content-around">
+        <h2 class="cert">Choose the course</h2>
+    </div>
+    <!-- choose course header-->
+<hr>
+    <!-- start of the student's finished courses that he can download a certificate for -->    
+        <div class="row justify-content-center">
+            <!-- the div below should display the courses' cards-->
+            <div class="col-sm-3 courseCardDiv" *ngFor="let course of finishedCourses">
+    
+                <!-- start of course card-->
+                <div class="card text-center courseCard">
+                    <img src="assets/img/course.jpg" class="card-img-top" alt="Course image">
+                    <div class="card-body">
+                        <h2 class="card-title">{{course.name}}</h2>
+                      <p class="card-text">{{course.description}}</p>
+                      <p><small>Published: {{course.date}}</small></p>
+                      <!--the show certificate button below should take the student to the certificate-canvas
+                        page to view the certificate of that course and be able to download it -->
+                      <a class="btn btn-outline-primary stretched-link" role="button" 
+                      [routerLink]="'/user/profile/certificates/' + course.id" routerLinkActive="router-link-active">
+                      Show certificate
+                        </a>
+                    </div>
+                  </div>
+                  <!--end of course card-->
+                  
+            </div>
+        </div>
+        <br><br>
+    <!-- end of the student's finished courses that he can download a certificate for -->
+
+    <br>
+</div>
