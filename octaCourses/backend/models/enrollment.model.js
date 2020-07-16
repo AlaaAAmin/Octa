@@ -3,75 +3,73 @@ const uniqueValidator = require('mongoose-unique-validator');
 
 var Schema = mongoose.Schema;
 
+// subdocument of enrollment
 const enrolledStudentSchema = new Schema({
     studentId: { required: true, type: mongoose.Types.ObjectId, ref: 'students' },
     timestamp: { required: true, type: Date, default: Date.now() }
 })
 
+// generating new collection schema for enrollment 
+// collection schema here is like when we create database tables schema in sql database
 const enrollmentSchema = new Schema({
     courseId: { required: true, type: mongoose.Types.ObjectId, ref: 'courses', unique: true },
-    providerId: { required: true, type: mongoose.Types.ObjectId, ref: 'providers' },
     students: [enrolledStudentSchema]
 })
 
 mongoose.plugin(uniqueValidator);
+
+// this line means the mongodb realizes this is a model and gives it a name which is 'enrollments'
 const Enrollment = mongoose.model('enrollments', enrollmentSchema)
 
-const enrollStudentToCourse = (studentId, courseId, providerId) => {
+// enrollStudentToCourse is a method that enrolls a student to spcefic course
+const enrollStudentToCourse = (studentId, courseId) => {
     return new Promise((resolve, reject) => {
         Enrollment.findOne({ courseId: courseId }, (err, doc) => {
-            if (err) reject(err)
-            if (doc) {
-                let exists = false
-                doc.toJSON().students.forEach(e => e.studentId == studentId ? exists = true : exists = false)
-                if (exists) reject('this student already enrolled to this course.')
-                else {
-                    doc.toJSON().students.push({ studentId: new mongoose.mongo.ObjectId(studentId) })
-                    resolve(doc.save())
-                }
-            } else {
-                let data = {
-                    courseId: courseId,
-                    providerId: providerId,
-                    students: []
-                }
-                data.students.push({ studentId: new mongoose.mongo.ObjectId(studentId) })
-                let enrollDoc = new Enrollment(data)
-                resolve(enrollDoc.save())
+            if (err) return reject(err)
+            if (!doc) return reject('Course does not exist')
+            let exists = false
+            doc.toJSON().students.forEach(e => e.studentId == studentId ? exists = true : exists = false)
+            if (exists) return reject('this student already enrolled to this course.')
+            else {
+                doc.toJSON().students.push({ studentId: new mongoose.mongo.ObjectId(studentId) })
+                resolve(doc.save())
             }
+
         })
     })
 }
 
+// getEnrollmentsOfCourse is a method that gets enrollment of a course
 const getEnrollmentsOfCourse = (courseId) => {
     return new Promise((resolve, reject) => {
         Enrollment.findOne({ courseId: courseId }, (err, doc) => {
-            if (err) reject(err)
+            if (err) return reject(err)
             doc ? resolve(doc.toJSON().students) : reject('Course has no enrollments.')
         })
     })
 }
 
+// isStudentEnrolledOrNot is a method that checks a student is enrolled in course or not
 const isStudentEnrolledOrNot = (studentId, courseId) => {
     return new Promise((resolve, reject) => {
         Enrollment.findOne({ courseId: courseId }, (err, doc) => {
-            if (err) reject(err)
-            if (!doc) reject('Course has no enrollments.')
-            else {
-                let enrolled = false
-                doc.toJSON().students.forEach(e => e.studentId == studentId ? enrolled = true : enrolled = false)
-                resolve(enrolled)
-            }
+            if (err) return reject(err)
+            if (!doc) return reject('Course has no enrollments.')
+            let enrolled = false
+            doc.toJSON().students.forEach(e => e.studentId == studentId ? enrolled = true : enrolled = false)
+            resolve(enrolled)
+
         })
     })
 }
 
+// getStudents is a method that gets a students of course 
 const getStudents = (courseId) => {
     return new Promise((resolve, reject) => {
         Enrollment.findOne({ courseId: courseId }, (err, doc) => {
-            if (err) reject(err)
-            if (!doc) reject('Course has no enrollments.')
-            else resolve(doc.toJSON().students)
+            if (err) return reject(err)
+            if (!doc) return reject('Course has no enrollments.')
+            resolve(doc.toJSON().students)
         })
     })
 }
@@ -80,3 +78,4 @@ module.exports.enrollStudentToCourse = enrollStudentToCourse
 module.exports.isStudentEnrolledOrNot = isStudentEnrolledOrNot
 module.exports.getEnrollmentsOfCourse = getEnrollmentsOfCourse
 module.exports.getStudents = getStudents
+module.exports.Enrollment = Enrollment

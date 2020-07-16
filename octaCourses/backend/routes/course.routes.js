@@ -3,38 +3,47 @@ const router = express.Router();
 const StorageMiddleware = require('../middlewares/storage.middleware');
 const PermissionMiddleware = require('../middlewares/auth.permission.middleware')
 const TokenValidationMiddleware = require('../middlewares/token.validation.middleware')
-const PROVIDER = require('../config.json').permissionLevels.NORMAL_PROVIDER
-const FREE = require('../config.json').permissionLevels.NORMAL_USER
+const { NORMAL_PROVIDER, NORMAL_USER } = require('../config/config.json').permissionLevels
 const CourseController = require('../controllers/course.controller');
 const CourseAuthorizationMiddleware = require('../middlewares/course.authorization.middleware')
 
+// route for search 
+// should be fetched with rate data *review*
 router.get('/courses/search', [
     CourseController.searchForCourse
 ])
 
+// route for course page
 router.get('/courses/:id', [
-    // TokenValidationMiddleware.validJWTRequired,
-    // PermissionMiddleware.minimumPermissionLevelRequired(FREE),
-    // CourseAuthorizationMiddleware.isStudentEnrolled,
     CourseController.getCourseById
 ])
 
+// route to get full course info for enrolled students
+router.post('/courses/:id', [
+    // valid jwt req
+    TokenValidationMiddleware.validJWTRequired,
+    PermissionMiddleware.minimumPermissionLevelRequired(NORMAL_USER),
+    CourseAuthorizationMiddleware.onlyEnrolledStudentsAuthorized,
+    CourseController.getFullCourseInfo
+])
+
+// route to add new course 
 router.post('/courses/add', [
     TokenValidationMiddleware.validJWTRequired,
-    PermissionMiddleware.minimumPermissionLevelRequired(PROVIDER),
+    PermissionMiddleware.minimumPermissionLevelRequired(NORMAL_PROVIDER),
     StorageMiddleware.fetchFormData,
     StorageMiddleware.reshapeFormDataFields,
     StorageMiddleware.reshapeFormDataFiles,
     CourseController.createCourse
 ])
 
+// route for update course
 router.patch('/courses/:id', [
     TokenValidationMiddleware.validJWTRequired,
-    PermissionMiddleware.minimumPermissionLevelRequired(PROVIDER),
-    PermissionMiddleware.onlySameUserOrAdminCanDoThisAction,
+    PermissionMiddleware.minimumPermissionLevelRequired(NORMAL_PROVIDER),
+    CourseAuthorizationMiddleware.onlyOwnerOfCourseCanEdit,
     StorageMiddleware.fetchFormData,
     StorageMiddleware.reshapeFormDataFields,
-    CourseAuthorizationMiddleware.onlyOwnerOfCourseCanEdit,
     StorageMiddleware.reshapeFormDataFiles,
     CourseController.updateCourse
 ])

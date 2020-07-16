@@ -5,11 +5,11 @@ const CourseValidationMiddleware = require('../middlewares/media.validation.midd
 const MediaController = require('../controllers/media.controller')
 const TokenValidationMiddleware = require('../middlewares/token.validation.middleware')
 const PermissionMiddleware = require('../middlewares/auth.permission.middleware')
-const FREE = require('../config.json').permissionLevels.NORMAL_USER;
+const { NORMAL_USER, NORMAL_PROVIDER } = require('../config/config.json').permissionLevels;
 
 router.get('/courses/:id/:moduleId', [
     TokenValidationMiddleware.validJWTRequired,
-    PermissionMiddleware.minimumPermissionLevelRequired(FREE),
+    PermissionMiddleware.minimumPermissionLevelRequired(NORMAL_USER || NORMAL_PROVIDER),
     CourseValidationMiddleware.checkModuleExistsOrNot,
     CourseAuthorizationMiddleware.ownerIsAuthorized,
     CourseAuthorizationMiddleware.onlyEnrolledStudentsAuthorized,
@@ -18,7 +18,7 @@ router.get('/courses/:id/:moduleId', [
 
 router.get('/courses/:id/:moduleId/:videoId', [
     TokenValidationMiddleware.validJWTRequired,
-    PermissionMiddleware.minimumPermissionLevelRequired(FREE),
+    PermissionMiddleware.minimumPermissionLevelRequired(NORMAL_USER || NORMAL_PROVIDER),
     CourseAuthorizationMiddleware.onlyEnrolledStudentsAuthorized,
     CourseValidationMiddleware.checkModuleExistsOrNot,
     CourseValidationMiddleware.checkVideoExistsOrNot,

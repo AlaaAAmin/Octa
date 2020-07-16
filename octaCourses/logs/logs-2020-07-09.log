@@ -1,0 +1,10 @@
+undefined
+undefined
+undefined
+[object Promise]
+[object Promise]
+[object Promise]
+[object Promise]
+2020-07-09 12:15:12:1512 [info] HTTP POST /admin/check | /admin/check | [404] [6 ms] [localhost:3000]
+2020-07-09 12:15:24:1524 [info] HTTP GET /admin/check | /admin/check | [404] [2 ms] [localhost:3000]
+2020-07-09 12:16:26:1626 [info] HTTP GET /admin | /admin | [404] [7 ms] [localhost:3000]

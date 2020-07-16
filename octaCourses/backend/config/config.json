@@ -1,0 +1,22 @@
+{
+    "mailer": {
+        "auth": {
+            "email": "SE.Ahmed.A.Youssef.98@gmail.com",
+            "password": "Anam4kla"
+        }
+    },
+    "JWT_SECRET": "WImRfITrFni3903O",
+    "EMAIL_SECRET": "9ba863b3a469385a7a9136243897b89c",
+    "SECRET_2": "",
+    "permissionLevels": {
+        "NORMAL_USER": 1,
+        "NORMAL_PROVIDER": 10,
+        "ADMIN": 999999
+    },
+    "EXP_PER_LEVEL": 1000,
+    "EXP_PER_VIDEO": 50,
+    "REDIS_INFO": {
+        "HOST": "localhost",
+        "PORT": 6379
+    }
+}

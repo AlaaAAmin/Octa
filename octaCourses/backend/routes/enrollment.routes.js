@@ -2,8 +2,8 @@ const express = require('express');
 const router = express.Router();
 const TokenValidationMiddleware = require('../middlewares/token.validation.middleware')
 const PermissionMiddleware = require('../middlewares/auth.permission.middleware')
-const FREE = require('../config.json').permissionLevels.NORMAL_USER;
-const PROVIDER = require('../config.json').permissionLevels.NORMAL_PROVIDER;
+const FREE = require('../config/config.json').permissionLevels.NORMAL_USER;
+const PROVIDER = require('../config/config.json').permissionLevels.NORMAL_PROVIDER;
 const EnrollmentController = require('../controllers/enrollment.controller')
 const CourseAuthorizationMiddleware = require('../middlewares/course.authorization.middleware')
 router.post('/courses/:id/enroll', [

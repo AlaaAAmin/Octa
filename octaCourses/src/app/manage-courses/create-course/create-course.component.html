@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row justify-content-center mb-5 formDiv">
     <!--createCourseForm represents the form as a model in the component class-->
-    <form [formGroup]="createCourseForm" class="col-sm-7 courseForm border rounded">
+    <form [formGroup]="createCourseForm" class="col-sm-7 courseForm border rounded" enctype="multipart/form-data">
       <h2 class="text-center mt-4">Create course</h2>
 
       <pre>{{createCourseForm.value | json}}</pre>
@@ -56,7 +56,7 @@
       <!--start of course thumbnail section-->
       <div class="form-group">
         <label>Course thumbnail</label>
-        <input formControlName="thumbnail" type="file" accept="image/*" class="form-control-file">
+        <input type="file" accept="image/*" class="form-control-file" (change)="readThumbnailFile($event)">
         <small class="text-danger" [class.d-none]="thumbnailRef.valid || thumbnailRef.untouched">
           thumbnail is required
         </small>
@@ -217,11 +217,11 @@
             <br>
             <div formArrayName="content" *ngFor="let content of module.get('content')['controls']; let j = index">
 
-              <ng-container *ngIf="content.get('lecture') ; then lectureBlock; else quizBlock"></ng-container>
+              <ng-container *ngIf="content.get('name') ; then lectureBlock; else quizBlock"></ng-container>
               
               <ng-template #lectureBlock>
                 <!-- start of lecture name and contents ( aka video and/or a file)-->
-                <app-lecture-form [lectureContent]="content.get('lecture')"></app-lecture-form>
+                <app-lecture-form [lectureContent]="content"></app-lecture-form>
                 <!-- end of lecture contents ( aka video and/or a file)-->
               </ng-template>
 
@@ -229,7 +229,7 @@
                 <!--start of quiz form-->
                 <!--when the form is working fine you should delete the calss.d-none that can show
               and hide the form alon with the showQuiz() from the add quiz button and the component class-->
-                <app-quiz-form [quizContent]="content.get('quiz')" [choices]="content.get('quiz').get('choices')"></app-quiz-form>
+                <app-quiz-form [quizContent]="content" [choices]="content.get('choices')"></app-quiz-form>
                 <!--end of quiz form-->
               </ng-template>
               

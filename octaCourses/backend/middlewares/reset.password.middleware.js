@@ -1,7 +1,7 @@
 const StudentModel = require('../models/student.model');
 const ProviderModel = require('../models/provider.model');
 const jwt = require('jsonwebtoken');
-const EMAIL_SECRET = require('../config.json').EMAIL_SECRET;
+const EMAIL_SECRET = require('../config/config.json').EMAIL_SECRET;
 
 const hasValidFields = (req, res, next) => {
     if (req.body && req.body.email) return next();

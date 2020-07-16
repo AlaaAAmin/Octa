@@ -1,6 +1,6 @@
 const nodemailer = require("nodemailer");
 const fs = require('fs');
-const config = JSON.parse(fs.readFileSync('./backend/config.json'));
+const config = require('./../config/config.json');
 
 const sendMail = (options) => {
     // should contain 

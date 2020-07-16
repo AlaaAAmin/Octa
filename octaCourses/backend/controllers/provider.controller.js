@@ -3,7 +3,7 @@ const mailer = require('../services/mailer.service');
 const Token = require('../models/token.model');
 const crypto = require('crypto');
 const jwt = require('jsonwebtoken');
-const EMAIL_SECRET = require('../config.json').EMAIL_SECRET;
+const EMAIL_SECRET = require('../config/config.json').EMAIL_SECRET;
 
 const register = (req, res) => {
     let salt = crypto.randomBytes(16).toString('base64');

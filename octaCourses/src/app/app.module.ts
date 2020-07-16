@@ -18,6 +18,9 @@ import { CoursesComponent } from './courses/courses.component';
 import { CourseProviderModule } from './course-provider/course-provider.module';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { IntercepterService } from './services/authentication/intercepter.service';
+import { SocketService } from './services/socket.service';
+// import {SocketIoModule, SocketIoConfig} from 'ngx-socket-io'
+// const config: SocketIoConfig = {url: 'http://localhost:3000', options: {}}
 
 @NgModule({
   declarations: [
@@ -39,9 +42,13 @@ import { IntercepterService } from './services/authentication/intercepter.servic
     UserProfileModule,
     FormsModule,
     HttpClientModule,
+    // SocketIoModule.forRoot(config)
   ],
-  providers: [UserService,
-    { provide: HTTP_INTERCEPTORS, useClass: IntercepterService, multi: true }],
+  providers: [
+    UserService,
+    { provide: HTTP_INTERCEPTORS, useClass: IntercepterService, multi: true },
+    SocketService
+  ],  
   bootstrap: [AppComponent]
 })
 export class AppModule { }

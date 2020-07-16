@@ -1,0 +1,5 @@
+2020-07-14 19:53:55:5355 [info] HTTP GET /courses/5f0cffda66c777396ca83aa1 | /courses/5f0cffda66c777396ca83aa1 | [400] [24 ms] [localhost:3000]
+2020-07-14 19:56:18:5618 [info] HTTP GET /courses/5f0cffda66c777396ca83aa1 | /courses/5f0cffda66c777396ca83aa1 | [400] [25 ms] [localhost:3000]
+2020-07-14 19:57:05:575 [info] HTTP GET /courses/5f0cffda66c777396ca83aa1 | /courses/5f0cffda66c777396ca83aa1 | [400] [19 ms] [localhost:3000]
+2020-07-14 19:57:21:5721 [info] HTTP GET /courses/5f0cffda66c777396ca83aa1 | /courses/5f0cffda66c777396ca83aa1 | [200] [24 ms] [localhost:3000]
+2020-07-14 19:58:18:5818 [info] HTTP GET /courses/5f0cffda66c777396ca83aa1 | /courses/5f0cffda66c777396ca83aa1 | [200] [57 ms] [localhost:3000]

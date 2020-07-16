@@ -7,6 +7,7 @@ const EmailVerificationMiddleware = require('../middlewares/email.verification.v
 const StudentController = require('../controllers/student.controller');
 const ProviderController = require('../controllers/provider.controller');
 const PasswordResetMiddleware = require('../middlewares/reset.password.middleware');
+const AdminController = require('../controllers/admin.controller')
 
 // student
 router.post('/student/auth', [
@@ -72,5 +73,17 @@ router.get('/provider/reset/:code', [
     ProviderController.resetPassword
 ])
 
+router.post('/admin/auth', [
+    UserVerificationMiddleware.hasValidFields,
+    UserVerificationMiddleware.isPasswordAndAdminMatch,
+    AuthController.Login
+])
+
+router.post('/admin/auth/refresh', [
+    TokenValidationMiddleware.validJWTRequired,
+    TokenValidationMiddleware.verifyRefreshBodyField,
+    TokenValidationMiddleware.validRefreshTokenNeeded,
+    AuthController.refreshToken
+])
 
 module.exports = router;

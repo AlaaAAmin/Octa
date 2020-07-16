@@ -6,16 +6,35 @@ const chunkSize = 261120;
 // add progress
 const uploadMedia = (file, options = { noCursorTimeout: true }) => {
     return new Promise((resolve, reject) => {
+        options.metadata = {
+            type: file.type,
+            originalname: file.name,
+        }
+        let progress = 0
+        let fileSize = fs.statSync(file.path).size
+        let startTime = Date.now()
         fs.createReadStream(file.path)
             .pipe(gridFS().openUploadStream(crypto.randomBytes(16).toString('base64'), options))
             .on('finish', (result) => {
                 resolve({
                     success: true, info: {
-                        name: result.filename,
-                        originalname: file.name,
                         fileId: result._id
                     }
                 })
+            })
+            .on('drain', (chunk) => {
+                let currentChunk = parseInt(chunk.n)
+                progress = ((chunkSize * currentChunk) / parseInt(fileSize)) * 100
+                let amountOfChunks = fileSize / chunkSize
+                var elapsedTime = (new Date().getTime()) - startTime;
+                var chunksPerTime = currentChunk / elapsedTime;
+                var estimatedTotalTime = amountOfChunks / chunksPerTime;
+                var timeLeftInSeconds = (estimatedTotalTime - elapsedTime) / 1000;
+
+                var withOneDecimalPlace = Math.round(timeLeftInSeconds * 10) / 10;
+
+                // emit progress event 
+                // {progress: progress,estimated: withOneDecimalPlace}
             })
             .on('error', (err) => {
                 reject({ success: false, error: err })

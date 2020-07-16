@@ -1,7 +1,23 @@
 const mongoose = require('../services/mongodb.service').mongoose;
+const EXP_PER_LEVEL = require('../config/config.json').EXP_PER_LEVEL
 const uniqueValidator = require('mongoose-unique-validator');
 var Schema = mongoose.Schema;
 
+// subdocument for strikes
+const strikesSchema = new Schema({
+    strike: { type: String, required: true },
+    createdAt: { type: Date, default: Date.now(), required: true },
+    happenedIn: { type: String, required: true }
+})
+
+// subdocument for metadata
+const metaSchema = new Schema({
+    strikes: [strikesSchema] | null,
+    banned: { type: Boolean, required: true, default: false }
+})
+
+// generating new collection schema for student 
+// collection schema here is like when we create database tables schema in sql database
 const studentSchema = new Schema({
     firstname: { required: true, type: String },
     lastname: { required: true, type: String },
@@ -26,45 +42,47 @@ const studentSchema = new Schema({
     password: { required: true, type: String },
     verified: { required: true, type: Boolean, default: false },
     timestamp: { required: false, type: Number, default: Date.now() },
-    permissionLevel: { required: true, default: 1, type: Number }
+    permissionLevel: { required: true, default: 1, type: Number },
+
+    experience: { required: true, type: Number, default: 0 },
+    level: { required: true, type: Number, default: 1 },
+    meta: metaSchema
+
 })
 
+// apply this plugin enables the database to detect uniqueness of emails and phone numbers
 mongoose.plugin(uniqueValidator);
 
-studentSchema.virtual('id').get((_id) => { return _id.toString('hex') });
-
-studentSchema.set('toJSON', {
-    virtuals: true
-});
-
-studentSchema.findById = (cb) => {
-    return this.model('students').find({ id: this.id }, cb);
-}
-
+// this line means the mongodb realizes this is a model and gives it a name which is 'students'
 const Student = mongoose.model('students', studentSchema)
 
 // methods 
+// createStudent is a function that creates new student using info provided to this function
+// info: firstname, lastname, email, phone, and password
 const createStudent = (studentData) => {
     const student = new Student(studentData);
     return student.save();
 }
 
+// getStudentById is a function that finds student by id
 const getStudentById = (id) => {
     return new Promise((resolve, reject) => {
         Student.findById(id, (err, user) => {
-            if (err) reject(err)
-            if (!user) reject('User not found')
+            if (err) return reject(err)
+            if (!user) return reject('User not found')
             let data = user.toJSON();
             delete data.__v;
+            if(data.meta.banned) return resolve('This student is banned')
             resolve(data)
         })
     })
 }
 
+// getStudentByEmail is a function that finds student by id
 const getStudentByEmail = (email) => {
     return new Promise((resolve, reject) => {
         Student.findOne({ email: email }, (err, user) => {
-            if (err) reject(err)
+            if (err) return reject(err)
             if (!user) return reject({ message: 'User not found!' });
             let data = user.toJSON();
             delete data.__v;
@@ -72,11 +90,11 @@ const getStudentByEmail = (email) => {
         })
     })
 }
-
+// updateStudent is a function that finds student by id
 const updateStudent = (id, userData) => {
     return new Promise((resolve, reject) => {
         Student.findById(id, (err, user) => {
-            if (err) reject(err);
+            if (err) return reject(err);
             for (let i in userData) {
                 user[i] = userData[i];
             }
@@ -88,18 +106,60 @@ const updateStudent = (id, userData) => {
     });
 }
 
+// deleteById is a function that finds student by id
 const deleteById = (id) => {
     return new Promise((resolve, reject) => {
         Student.remove({ _id: id }, (err) => {
-            if (err) reject(err);
+            if (err) return reject(err);
             resolve({ success: true, message: 'User deleted.' });
         })
     })
 }
 
-module.exports.createStudent = createStudent;
-module.exports.getStudentById = getStudentById;
-module.exports.getStudentByEmail = getStudentByEmail;
-module.exports.updateStudent = updateStudent;
-module.exports.deleteById = deleteById;
-module.exports.Student = Student;
+// addExpToStudent is a method that runs when video reaches a certain point and add some points to him
+const addExpToStudentById = (studentId, experience) => {
+    return new Promise((resolve, reject) => {
+        Student.findOne({ studentId: new mongoose.mongo.ObjectId(studentId) }, (err, doc) => {
+            if (err) return reject(err)
+            if (!doc) return reject('Student does not exist.')
+            doc.experience = doc.experience + experience
+            doc.level = 1 + parseInt(doc.experience / EXP_PER_LEVEL)
+            resolve(doc.save())
+        })
+    })
+}
+
+// addStrikeToStudent is a method that adds a strikes to student if violates terms
+const addStrikeToStudent = (studentId, strikeData) => {
+    return new Promise((resolve, reject) => {
+        Student.findOne({ studentId: studentId }, (err, doc) => {
+            if (err) return reject(err)
+            if (!doc) return reject('Student does not exist.')
+            doc.meta.strikes.push(strikeData)
+            if (doc.meta.strikes.length >= 3) _EventEmitter.emit('student-ready-to-be-banned', { studentId: studentId, strikes: doc.meta.strikes })
+            resolve(doc.save())
+        })
+    })
+}
+
+// getBanReadyStudents is a method that fetches every student that have 3 strikes or more
+const getBanReadyStudents = () => {
+    return new Promise((resolve, reject) => {
+        Provider.find({ "meta.strikes.2": { "$exists": true } }, (err, docs) => {
+            if(err) return reject(err)
+            resolve(docs)
+        })
+    })
+}
+
+module.exports = {
+    createStudent,
+    getStudentById,
+    getStudentByEmail,
+    updateStudent,
+    deleteById,
+    Student,
+    addExpToStudentById,
+    addStrikeToStudent,
+    getBanReadyStudents
+}

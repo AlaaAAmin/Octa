@@ -3,7 +3,7 @@ const router = express.Router();
 const StudentController = require('../controllers/student.controller');
 const PermissionMiddleware = require('../middlewares/auth.permission.middleware');
 const TokenValidationMiddleware = require('../middlewares/token.validation.middleware')
-const config = require('../config.json');
+const config = require('../config/config.json');
 
 // permission levels
 const FREE = config.permissionLevels.NORMAL_USER;

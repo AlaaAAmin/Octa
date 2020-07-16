@@ -2,8 +2,7 @@ const EnrollmentModel = require('../models/enrollment.model')
 const CourseModel = require('../models/course.model')
 const enroll = async (req, res) => {
     try {
-        let providerId = await CourseModel.getOwnerIdByCourseId(req.params.id)
-        await EnrollmentModel.enrollStudentToCourse(req.jwt._id, req.params.id, providerId)
+        await EnrollmentModel.enrollStudentToCourse(req.jwt._id, req.params.id)
         res.status(200).send({ success: true, message: 'student enrolled to this course.' })
     } catch (err) {
         res.status(400).send({ success: false, error: err })

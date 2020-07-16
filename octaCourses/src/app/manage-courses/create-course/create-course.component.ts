@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ChangeDetectorRef } from '@angular/core';
 import { FormBuilder, Validators, FormArray, FormGroup, FormControl } from '@angular/forms';
 import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 import { objectToFormData } from 'object-to-formdata';
@@ -11,25 +11,14 @@ import { CourseService } from 'src/app/services/course.service';
 })
 export class CreateCourseComponent implements OnInit {
 
-  // >>>>>>>>>>>> delete this quiz form section after done <<<<<<<<<<<<<
-  // start of quiz form section
-  // showQuizForm is just for testing to hide and show the quiz form
-  showQuizForm: boolean = true;
   isChecked: boolean = true // true online false offline
   //  and should be deleted after the form is working fine
-  // test function for showing the quiz form
-  showQuiz() {
-    this.showQuizForm = !this.showQuizForm;
-  }
-  // the function above should also be deleted
-  // end of quiz form section
-
 
   private newModule: boolean
   private newContent: boolean
-  private newLecture: boolean
-  constructor(private fb: FormBuilder, private service: CourseService) {
-    this.newModule, this.newContent, this.newLecture = false
+  private file: File
+  constructor(private fb: FormBuilder, private service: CourseService, private cd: ChangeDetectorRef) {
+    this.newModule, this.newContent = false
   }
 
   // fb.group is a formBuilder function used to build a formGroup
@@ -45,10 +34,10 @@ export class CreateCourseComponent implements OnInit {
     price: [null, Validators.required],
     type: [this.isChecked],
     addressList: this.fb.array(['']),
-    startOfEnrollmentDate: [],
+    startOfEnrollmentDate: [null],
     hours: [null, Validators.required],
 
-    thumbnail: [null, Validators.required],
+    thumbnail: [this.file, Validators.required],
     courseObjectives: this.fb.array(['']),
     modules: this.fb.array([])
 
@@ -88,11 +77,9 @@ export class CreateCourseComponent implements OnInit {
   addNewLecture(moduleIndex) {
     this.newContentStateSetter = !this.isNewContent
     this.moduleContentRef(moduleIndex).push(this.fb.group({
-      lecture: this.fb.group({
-        name: '',
-        video: null,
-        file: null
-      })
+      name: '',
+      video: null,
+      file: null
     }))
   }
 
@@ -100,11 +87,9 @@ export class CreateCourseComponent implements OnInit {
   addNewQuiz(moduleIndex) {
     this.newContentStateSetter = !this.isNewContent
     this.moduleContentRef(moduleIndex).push(this.fb.group({
-      quiz: this.fb.group({
-        question: null,
-        choices: this.fb.array([null, null, null, null]),
-        correctAnswer: null
-      })
+      question: null,
+      choices: this.fb.array([null, null, null, null]),
+      correctAnswer: null
     }))
   }
   // getter for video
@@ -187,6 +172,16 @@ export class CreateCourseComponent implements OnInit {
 
 
   }
+
+  // readThumbnailFile is a function to read file and save its data to form object
+  readThumbnailFile(event) {
+    
+    let file = event.target.files
+
+    if (file && file[0]) {
+      this.createCourseForm.get('thumbnail').setValue(file[0] as File)
+    }
+  }
   ngOnInit(): void {
     if (this.isChecked) {
       // offline features
@@ -245,10 +240,9 @@ export class CreateCourseComponent implements OnInit {
       for (let m in form.modules) {
         form.modules[m].duration = 0
         for (let l in form.modules[m].content) {
-          if (form.modules[m].content[l].quiz) continue
-          if (form.modules[m].content[l].lecture.videoFile as File) {
-            form.modules[m].duration = form.modules[m].duration + form.modules[m].content[l].lecture.duration
-          }
+          if (form.modules[m].content[l].video as File) {
+            form.modules[m].duration = form.modules[m].duration + form.modules[m].content[l].duration
+          } else continue
         }
         form.duration = form.duration + form.modules[m].duration
       }
@@ -262,6 +256,7 @@ export class CreateCourseComponent implements OnInit {
       indices: true,
       nullsAsUndefineds: true
     }
+    console.log(this.createCourseForm.value)
     let data = objectToFormData(this.createCourseForm.value, options)
     this.service.createCourse(data)
       .then(res => {

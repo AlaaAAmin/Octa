@@ -1,9 +1,4 @@
 const formidable = require('formidable')
-const mongoose = require('../services/mongodb.service').mongoose
-const crypto = require('crypto')
-const fs = require('fs')
-const serv = require('../services/media.service')
-
 // steps
 // ui sends form
 // backend reshape form
@@ -21,65 +16,44 @@ const fetchFormData = (req, res, next) => {
     })
 }
 
-const reshapeFormDataFields = (req, res, next) => {
-
-    let data = req.fields
-    let converted = {}
-    for (let key in data) {
-
-        if (!converted.modules) {
-            converted.modules = []
+// unflatten data
+const unflatten = function (data) {
+    "use strict";
+    if (Object(data) !== data || Array.isArray(data)) return data;
+    var regex = /\.?([^.\[\]]+)|\[(\d+)\]/g,
+        resultholder = {};
+    for (var p in data) {
+        var cur = resultholder,
+            prop = "",
+            m;
+        while (m = regex.exec(p)) {
+            cur = cur[prop] || (cur[prop] = (m[2] ? [] : {}));
+            prop = m[2] || m[1];
         }
-
-        if (!(key.includes('[') || key.includes(']'))) {
-            converted[key] = data[key]
-            continue
-        }
-
-        let modulesArrayIndex = key.slice(key.indexOf('[') + 1, key.indexOf(']'))
-        let modulesArrayKey = key.slice(key.indexOf('][') + 2, key.indexOf(']', key.indexOf('][') + 1))
-
-        if (!converted.modules[modulesArrayIndex]) {
-            converted.modules.push({})
-            converted.modules[modulesArrayIndex][modulesArrayKey] = data[key]
-            continue
-        }
-        let fileArrayIndex = key.slice(key.indexOf(']['), key.lastIndexOf('][')).slice(key.slice(key.indexOf(']['), key.lastIndexOf('][')).lastIndexOf('[') + 1)
-        let fileArrayKey = key.slice(key.lastIndexOf('[') + 1, key.lastIndexOf(']'))
-
-        if (modulesArrayKey == 'files') {
-            if (!converted.modules[modulesArrayIndex][modulesArrayKey]) {
-                converted.modules[modulesArrayIndex][modulesArrayKey] = []
-                converted.modules[modulesArrayIndex][modulesArrayKey].push({})
-                converted.modules[modulesArrayIndex][modulesArrayKey][fileArrayIndex][fileArrayKey] = data[key]
-                continue
-            } else {
-                if (!converted.modules[modulesArrayIndex][modulesArrayKey][fileArrayIndex]) {
-                    converted.modules[modulesArrayIndex][modulesArrayKey].push({})
-                    converted.modules[modulesArrayIndex][modulesArrayKey][fileArrayIndex][fileArrayKey] = data[key]
-                    continue
-                } else {
-                    converted.modules[modulesArrayIndex][modulesArrayKey][fileArrayIndex][fileArrayKey] = data[key]
-                    continue
-                }
-            }
-        } else {
-            converted.modules[modulesArrayIndex][modulesArrayKey] = data[key]
-        }
+        cur[prop] = data[p];
     }
+    return resultholder[""] || resultholder;
+};
+
+
+const reshapeFormDataFields = (req, res, next) => {
+    req.body.converted = unflatten(req.fields)
     req.fields = undefined
-    req.body.converted = converted;
     return next()
 }
 
 const reshapeFormDataFiles = (req, res, next) => {
     let data = req.files
     for (let key in data) {
-        let modulesArrayIndex = key.slice(key.indexOf('[') + 1, key.indexOf(']'))
-        let modulesArrayKey = key.slice(key.indexOf('][') + 2, key.indexOf(']', key.indexOf('][') + 1))
-        let fileArrayIndex = key.slice(key.indexOf(']['), key.lastIndexOf('][')).slice(key.slice(key.indexOf(']['), key.lastIndexOf('][')).lastIndexOf('[') + 1)
-        let fileArrayKey = key.slice(key.lastIndexOf('[') + 1, key.lastIndexOf(']'))
-        req.body.converted.modules[modulesArrayIndex][modulesArrayKey][fileArrayIndex][fileArrayKey] = data[key]
+        if (key == 'thumbnail') {
+            req.body.converted.thumbnail = data[key]
+        } else {
+            let moduleArrayIndex = key.slice(key.indexOf('[') + 1, key.indexOf(']'))
+            let moduleArrayKey = key.slice(key.indexOf('][') + 2, key.indexOf(']', key.indexOf('][') + 1))
+            let fileArrayIndex = key.slice(key.indexOf(']['), key.lastIndexOf('][')).slice(key.slice(key.indexOf(']['), key.lastIndexOf('][')).lastIndexOf('[') + 1)
+            let fileArrayKey = key.slice(key.lastIndexOf('[') + 1, key.lastIndexOf(']'))
+            req.body.converted.modules[moduleArrayIndex][moduleArrayKey][fileArrayIndex][fileArrayKey] = data[key]
+        }
     }
     req.files = undefined;
     next()
@@ -89,3 +63,4 @@ const reshapeFormDataFiles = (req, res, next) => {
 module.exports.fetchFormData = fetchFormData;
 module.exports.reshapeFormDataFields = reshapeFormDataFields;
 module.exports.reshapeFormDataFiles = reshapeFormDataFiles;
+

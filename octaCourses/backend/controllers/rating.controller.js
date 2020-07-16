@@ -1,5 +1,7 @@
 const RatingModel = require('../models/rating.model')
 
+// rateCourse is a method that rates course using info provided
+// info provided : studentId, courseId, providerId, rate, message
 const rateCourse = (req, res) => {
     req.body.courseId = req.params.id
     req.body.studentId = req.jwt._id
@@ -13,15 +15,7 @@ const rateCourse = (req, res) => {
         })
 }
 
-const getRatingsOfCourse = (req, res) => {
-    RatingModel.getRatingsOfCourse(req.params.id)
-        .then(result => {
-            res.status(200).send(result)
-        })
-        .catch(err => {
-            res.status(400).send({ success: false, error: err })
-        })
+module.exports = {
+    rateCourse
 }
 
-module.exports.rateCourse = rateCourse
-module.exports.getRatingsOfCourse = getRatingsOfCourse

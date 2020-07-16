@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken');
-const EMAIL_SECRET = require('../config.json').EMAIL_SECRET;
+const EMAIL_SECRET = require('../config/config.json').EMAIL_SECRET;
 
 const hasValidFields = (req, res, next) => {
     if (req.params && req.params.code) return next();

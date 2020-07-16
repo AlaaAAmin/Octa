@@ -1,12 +1,14 @@
 const jwt = require('jsonwebtoken');
-const SECRET = require('../config.json').JWT_SECRET;
+const SECRET = require('../config/config.json').JWT_SECRET;
 const crypto = require('crypto');
 
+// verifyRefreshBodyField is a function that validates if there is a body and refreshToken or not
 const verifyRefreshBodyField = (req, res, next) => {
     if (req.body && req.body.refreshToken) return next();
     res.status(400).send({ error: 'Refresh token required' });
 }
 
+// validRefreshTokenNeeded is a function that validates if there is a valid refreshToken or not
 const validRefreshTokenNeeded = (req, res, next) => {
     let b = new Buffer.from(req.body.refreshToken, 'base64');
     let refreshToken = b.toString();
@@ -16,6 +18,7 @@ const validRefreshTokenNeeded = (req, res, next) => {
     return next();
 }
 
+// validRefreshTokenNeeded is a function that validates if there is a valid jwt or not
 const validJWTRequired = (req, res, next) => {
     if (!req.headers['authorization']) return res.status(401).send();
     else {

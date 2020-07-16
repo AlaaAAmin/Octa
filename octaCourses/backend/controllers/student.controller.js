@@ -2,8 +2,9 @@ const StudentModel = require('../models/student.model');
 const mailer = require('../services/mailer.service');
 const Token = require('../models/token.model');
 const crypto = require('crypto');
-const EMAIL_SECRET = require('../config.json').EMAIL_SECRET;
+const EMAIL_SECRET = require('../config/config.json').EMAIL_SECRET;
 const jwt = require('jsonwebtoken');
+const _EventEmitter = require('../services/event.service')
 
 const register = (req, res) => {
     let salt = crypto.randomBytes(16).toString('base64');
@@ -37,6 +38,7 @@ const register = (req, res) => {
             return mailer.sendMail(options);
         })
         .then(() => {
+            _EventEmitter.emit('new-student', { id: userId })
             res.status(201).send({ success: true, id: userId });
         })
         .catch(err => {
@@ -147,8 +149,8 @@ const resendVerificationEmail = (req, res) => {
                 }
                 return mailer.sendMail(options);
             })
-            .then(()=> {
-                res.status(200).send({message: 'Email has been sent.'});
+            .then(() => {
+                res.status(200).send({ message: 'Email has been sent.' });
             })
             .catch(err => {
                 res.status(400).send({ success: false, error: err });
