@@ -1,0 +1,63 @@
+.courseHead{
+    background-color: #29303B;
+    color: white;
+}
+
+.courseName{
+    margin-bottom: 1%;
+}
+.provider{
+    margin-top: 0;
+}
+
+.courseObjectives{
+    background-color: #F9F9F9;
+    border: 1px solid #DEDFE0;
+    margin-top: 3%;
+    margin-left: 8%;
+    padding-top: 1%;
+    padding-left: 2%;
+    padding-bottom: 2%;
+}
+
+.courseContent{
+    margin-top: 3%;
+    margin-left: 7%;
+}
+
+.lecInfo{
+    background-color: #F9F9F9;
+    border: 1px solid #DEDFE0;
+    margin-top: 1%;
+    padding: 1% 0% 1% 0%;
+    font-size: large;
+    color: #003845;
+}
+
+.lecInfo > span{
+    margin-left: 2%;
+}
+
+.modulePanel{
+    margin-bottom: 1%;
+}
+
+.commonCSS{
+    margin-left: 7%;
+    margin-top: 2%;
+}
+
+.question{
+    margin-left: 8%;
+}
+
+.goToCourseBtn{
+    color: white;
+    background-color: #f47f2f;
+    margin: 0% 8% 2% 12%;
+}
+
+.price{
+    margin-top: 8%;
+    margin-bottom: -1%;
+}

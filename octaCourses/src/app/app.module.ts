@@ -14,13 +14,13 @@ import { StudentRegistrationComponent } from './registeration/student-registrati
 import { CourseProviderRegisterationComponent } from './registeration/course-provider-registeration/course-provider-registeration.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { UserService } from './services/user.service';
-import { CoursesComponent } from './courses/courses.component';
-import { CourseProviderModule } from './course-provider/course-provider.module';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { IntercepterService } from './services/authentication/intercepter.service';
 import { SocketService } from './services/socket.service';
 // import {SocketIoModule, SocketIoConfig} from 'ngx-socket-io'
 // const config: SocketIoConfig = {url: 'http://localhost:3000', options: {}}
+import { CategorySearchResultComponent } from './category-search-result/category-search-result.component';
+import { ContactUsFormComponent } from './contact-us-form/contact-us-form.component';
 
 @NgModule({
   declarations: [
@@ -29,11 +29,12 @@ import { SocketService } from './services/socket.service';
     HomepageComponent,
     LoginComponent,
     StudentRegistrationComponent,
-    CoursesComponent,
     CategoriesComponent,
     LoginComponent,
     CourseProviderRegisterationComponent,
-    ForgotPasswordComponent
+    ForgotPasswordComponent,
+    CategorySearchResultComponent,
+    ContactUsFormComponent
   ],
   imports: [
     BrowserModule,

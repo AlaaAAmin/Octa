@@ -1,1 +1,33 @@
-<p>inquiries-review works!</p>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-sm-10 sideModules">
+            <h2 class="contents  text-center"><b>Inquiries</b></h2>
+        
+            <mat-accordion>
+                <!-- each mat expansion panel represents an inquiry -->
+                <mat-expansion-panel class="modulePanel" *ngFor="let inquiry of inquiries">
+                    <mat-expansion-panel-header>
+                
+                        <!-- mat-pane-title represents the person name-->
+                        <mat-panel-title>
+                            <b>{{inquiry.personName}}</b>
+                        </mat-panel-title>
+                
+                    </mat-expansion-panel-header>
+                
+                    <!-- the p tag below represents the person email -->
+                    <p>{{inquiry.email}}</p>
+                
+                    <div>
+                        {{inquiry.message}}
+                    </div>
+
+                    <hr>
+                    <!-- this button should be pressed after the admin reply to the inquiry by email -->
+                    <!-- the endInquiry() should remove the inquiry from the database so it is not displayed any more-->
+                    <button class="btn btn-sm btn-primary repliedBtn" (click)="endInquiry(inquiry.email)">Replied</button>
+                </mat-expansion-panel>
+            </mat-accordion>
+            <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    </div>
+</div>

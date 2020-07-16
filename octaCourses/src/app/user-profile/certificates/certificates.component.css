@@ -1,0 +1,19 @@
+.courseCard{
+    box-shadow: 0px 0px 8px #a6a6a6;
+}
+
+.courseCardDiv{
+    margin-top: 3%;
+}
+
+.cert{
+    margin-top: 2%;
+    margin-bottom: 0;
+}
+
+.certCanvas{
+    width: 800px;
+    height: 620px;
+    box-shadow: 0px 0px 8px #a6a6a6;
+    padding: 2%;
+}

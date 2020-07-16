@@ -1,0 +1,35 @@
+.providerName{
+    margin-top: 17%;
+    color: #006880;
+}
+
+.name-bio{
+    margin-left: 3%;
+}
+
+#courseProvider{
+    background-color: #e6e6e6;
+    padding-bottom: 3%;
+}
+
+.totalNoRated{
+    color: #006880;
+}
+
+.totalCourses{
+    color: #006880;
+}
+
+.commonCSS{
+    margin-left: 7%;
+    margin-top: 2%;
+}
+
+.starIcon{
+    margin-top: -2%;
+}
+
+.rate{
+    margin-top: 5%;
+    color: #006880;
+}

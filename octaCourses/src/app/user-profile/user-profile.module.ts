@@ -12,10 +12,11 @@ import { CourseCardComponent } from './components/course-card/course-card.compon
 import { FormsModule } from '@angular/forms';
 import { WishlistComponent } from './wishlist/wishlist.component';
 import { FinishedCoursesComponent } from './finished-courses/finished-courses.component';
+import { CertificateCanvasComponent } from './certificate-canvas/certificate-canvas.component';
 
 
 @NgModule({
-  declarations: [ProfileComponent, InformationComponent, CoursesComponent, CertificatesComponent, CourseCardComponent, WishlistComponent, FinishedCoursesComponent],
+  declarations: [ProfileComponent, InformationComponent, CoursesComponent, CertificatesComponent, CourseCardComponent, WishlistComponent, FinishedCoursesComponent, CertificateCanvasComponent],
   imports: [
     CommonModule,
     UserProfileRoutingModule,

@@ -1,27 +1,11 @@
-<div class="container card-container">
-    <div class="col-sm-6 col-md-4 col-lg-3 p-3" *ngFor="let item of categories">
-        <mat-card>
-            <img mat-card-image src="../../assets/img/homeCourse.jpg" alt="c">
-            <div class="w-100 devider">
-                <mat-icon class="banner-icon">bookmark</mat-icon>
-            </div>
-            <mat-card-header>
-                <mat-card-subtitle>
-                    Place X
-                </mat-card-subtitle>
-                <mat-card-title>
-                    Course ABC
-                </mat-card-title>
-            </mat-card-header>
-            <mat-card-content>
-                lorem ipsum lorem ipsumlorem ipsumlorem ipsumlorem ipsum<br>
-                lorem ipsum
-                lorem ipsum
-                lorem ipsum
-            </mat-card-content>
-            <mat-card-actions>
-                <button mat-raised-button>learn more</button>
-            </mat-card-actions>
-        </mat-card>
+<div class="container">
+    <div class="row justify-content-md-center">
+        <div class="col-sm-3" *ngFor="let category of categories">
+            <a [routerLink]="category.path">
+                <img class="rounded w-100 mt-4 img-thumbnail img-fluid" 
+                src="assets/img/categories/{{category.name}}.jpg" alt="{{category.name}}">
+            </a>
+        </div>
     </div>
+    <br><br>
 </div>

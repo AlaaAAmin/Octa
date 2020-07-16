@@ -1,0 +1,14 @@
+<!--baseChart is a directive form the ng2-charts library the enables me to turn this canvas into a chart-->
+<div class="container">
+    <div class="row text-center justify-content-around text-capitalize">
+            <div class="col-sm-11 chartDiv">
+                    <canvas baseChart 
+                    [chartType]='barCharType'
+                    [labels]='barCharLabels'
+                    [datasets]='barCharData'
+                    [options]='barCharOptions'
+                    [legend]='barCharLegend'></canvas>
+                    <h3 class="mt-2">Category performance</h3>
+            </div>
+    </div>
+</div>

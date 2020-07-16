@@ -1,0 +1,11 @@
+.topBar{
+    border-top: 1px solid #E0E0E0;
+    border-bottom: 1px solid #E0E0E0;
+}
+
+.publishBtn{
+    color: white;
+    background-color: #f47f2f;
+    margin-left: 2%;
+    margin-right: 1%;
+}

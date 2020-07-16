@@ -1,0 +1,117 @@
+<div class="container_fluid">
+    <div class="row courseHead justify-content-around">
+        <div class="ml-5 mt-5 col-sm-7">
+            <!--course name header-->
+            <h1 class="courseName">PHP OOP: Object Oriented Programming for beginners + Project</h1>
+
+            <!-- course provider name header-->
+            <!-- the course provider anchor link navigateس to the courseProvider section 
+                pageScroll and pageScrollDuration are directives from ng2-page-scroll that make it possible
+                to scroll down the the course provider section -->
+            <h3 class="provider text-capitalize">Created by <a pageScroll pageScrollDuration="500" 
+                href="#courseProvider">course provider name</a></h3>
+
+
+            <!-- number of hours -->
+            <p>number of hours</p>
+
+            <!-- address in case of an offline video should be visible otherwise it will be hidden-->
+            <p>Address</p>
+
+            <!-- Start of enrollment date in case of an offline course should be visible otherwise it will be hidden-->
+            <p>Start of enrollment date: </p>
+            
+            <!-- course type -->
+            <p class="mb-4">Type: online/offline</p>
+        </div>
+
+        
+        <div class="col-sm-3 text-center mt-5 mb-3">
+            <!-- course thumbnail -->
+            <img class="w-100 img-thumbnail img-fluid" src="assets/img/courseThumbnail.jpg" alt="course thumbnail">
+        
+            <!-- price goes into the following b tag in the h2 tag -->
+            <h2 class="price"><b>500</b> EGP</h2>
+            <!-- end of price -->
+
+        </div>
+    </div>
+
+    <!-- start of course objectives section -->
+    <div class="row">
+        <div class="col-sm-6 courseObjectives">
+            <h2><b>What you will learn</b></h2>
+
+            <!-- the following div will be created as many times as the course objectives -->
+            <div>
+                <!-- this svg is just the icon to the left of the course objective -->
+                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-dash-square" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" d="M14 1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+                    <path fill-rule="evenodd" d="M3.5 8a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.5-.5z"/>
+                  </svg>
+
+                  <!-- course objective -->
+                    Course objective
+            </div>
+
+        </div>
+    </div>
+    <!-- end of course objectives section -->
+
+    <!--start of course contents section. aka modules and lectures-->
+    <!-- this section sould be hidden in case of an offline course as it doesn't have modules -->
+    <div class="row">
+        <div class="col-sm-8 courseContent">
+            <h2><b>Course contents</b></h2>
+
+<!-- each mat expansion panel represents a module -->
+<mat-expansion-panel class="modulePanel" *ngFor="let module of modules">
+    <mat-expansion-panel-header>
+
+        <!-- mat-pane-title represents the module name-->
+        <mat-panel-title>
+            <b>{{module.moduleName}}</b>
+        </mat-panel-title>
+
+    </mat-expansion-panel-header>
+
+    <!-- the p tag below represents the module decription -->
+    <p>{{module.description}}</p>
+
+    <div *ngFor="let lec of module.lectures">
+        <a href="">
+            <div class="lecInfo">
+                <span>{{lec.lecName}}</span>
+                <span style="float: right; margin-right: 15%;">{{lec.duration}}</span>
+            </div>
+        </a>
+    </div>
+</mat-expansion-panel>
+
+        </div>
+    </div>
+    <!-- end of course contents section -->
+
+    <!-- start of course requirments section -->
+    <div class="row">
+        <div class="col-sm-6 commonCSS">
+            <h2><b>Course requirments</b></h2>
+            <p>previous knowledge with HTML, CSS, JavaScript, TypeScript and bootstrap</p>
+        </div>
+    </div>
+    <!-- end of course requirments section -->
+
+    <!-- start of course description section -->
+    <div class="row">
+        <div class="col-sm-6 commonCSS">
+            <h2><b>Description</b></h2>
+            <!-- course decription goes in the p tag below -->
+            <p><b>this course is pretty fucking good that will teach you bla bla bla to make you fucking great</b></p>
+        </div>
+    </div> <br>
+    <!-- end of course description section -->
+
+
+    <!-- start of course provider info -->
+    <app-course-provider-card-preview id="courseProvider"></app-course-provider-card-preview>
+    <!-- end of course provider info -->

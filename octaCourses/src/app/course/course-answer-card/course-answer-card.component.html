@@ -1,0 +1,23 @@
+<hr>
+<div class="row studentReview">
+
+    <!-- course provider profile photo-->
+    <div class="col-sm-2 StuProfile">
+        <img src="{{answer.providerProfilePhotoSrc}}" class="img-thumbnail  w-100" alt="course provider profile">
+    </div>
+
+    <div class="col-sm-2 stu">
+        <!-- course provider name -->
+        <h3 class="text-capitalize"><b>{{answer.courseProviderName}}</b></h3>
+
+        <!-- answer date -->
+        <small style="color: grey;">{{answer.date}}</small>
+
+    </div>
+
+    <div class="col-sm-6 review">
+        <!-- start of answer body -->
+        {{answer.answer}}
+        <!-- end of answer body -->
+    </div>
+</div>

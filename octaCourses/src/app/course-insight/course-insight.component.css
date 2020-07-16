@@ -1,0 +1,64 @@
+.sideModules{
+    background-color: #EDF1F7;
+    color: black;
+    height: 100%;
+}
+
+mat-expansion-panel{
+    background-color: #EDF1F7;
+    color: black;
+}
+
+mat-panel-title{
+    color: black;
+}
+.contents{
+    margin-left: 4%;
+    margin-top: 5%;
+}
+
+.lecInfo{
+    background-color: #EDF1F7;
+    border: 1px solid #DEDFE0;
+    padding: 1% 0% 1% 0%;
+    color: #003845;
+}
+
+.lecInfo > span{
+    margin-left: 2%;
+}
+
+.lecName{
+    margin-top: 5%;
+}
+
+.lecSection{
+    color: white;
+}
+
+.lecVideo{
+    border-radius: 1%;
+}
+
+.lecFileLink{
+    background-color: #f47f2f;
+    color: white;
+    float: right;
+    margin-right: 18%;
+    margin-bottom: 2%;
+}
+
+.fileDiv{
+    border: 1px solid #EDF1F7;
+    margin-top: 1%;
+    margin-left: 12.5%;
+    padding-top: 1%;
+    padding-bottom: 5%;
+}
+
+.fileNameDiv{
+    float: left;
+    margin-left: 5%;
+    margin-top: 1%;
+    font-size: large;
+}

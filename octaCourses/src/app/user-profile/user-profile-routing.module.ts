@@ -6,6 +6,7 @@ import { CoursesComponent } from './courses/courses.component';
 import { ProfileComponent } from './profile/profile.component';
 import { WishlistComponent } from './wishlist/wishlist.component';
 import { FinishedCoursesComponent } from './finished-courses/finished-courses.component';
+import { CertificateCanvasComponent } from './certificate-canvas/certificate-canvas.component';
 
 
 const userProfileRoutes: Routes = [
@@ -15,6 +16,7 @@ const userProfileRoutes: Routes = [
       { path: 'overview', component: InformationComponent },
       { path: 'enrolledInCourses', component: CoursesComponent },
       { path: 'certificates', component: CertificatesComponent },
+      { path: 'certificates/:id', component: CertificateCanvasComponent },
       { path: 'wishlist', component: WishlistComponent },
       { path: 'finishedCourses', component: FinishedCoursesComponent }
     ]

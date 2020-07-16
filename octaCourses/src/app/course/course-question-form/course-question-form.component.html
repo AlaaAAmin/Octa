@@ -1,0 +1,28 @@
+<div class="row commonCSS">
+    <div class="col-sm-12">
+
+        <!--courseQuestionForm represents the form as a model in the component class-->
+        <form [formGroup]="courseQuestionForm">
+
+            <!-- start of question input section -->
+            <div class="form-group">
+                <label>Question</label>
+
+                <!--formControlName links the input fields to the formControl values in the component class-->
+                <textarea [class.is-invalid]="courseQuestion.invalid && courseQuestion.touched" 
+                formControlName="question" type="text" class="form-control form-control-sm" rows=1></textarea>
+
+                <!-- start of error messages -->
+                <div *ngIf="courseQuestion.invalid && courseQuestion.touched">
+                    <small *ngIf="courseQuestion.errors?.required" class="text-danger">Your question is required</small>
+                    <small *ngIf="courseQuestion.errors?.minlength" class="text-danger">Your question must be longer than 8 characters</small>
+                </div>
+                <!-- end of error messages -->
+            </div>
+            <!-- end of question input section -->
+            <button [disabled]="courseQuestionForm.invalid"
+            class="btn btn-primary submitButton btn-sm" type="submit">Submit</button>
+
+        </form>
+    </div>
+</div>
