@@ -1,6 +1,7 @@
 const mongoose = require('../services/mongodb.service').mongoose;
 const _EventEmitter = require('../services/event.service')
-const RatingModel = require('../models/rating.model')
+const RatingModel = require('../models/rating.model');
+const _Error = require('../classes/error.class');
 var Schema = mongoose.Schema;
 
 // subdocument is some information encapsulated with id that is saved either for a field or in array
@@ -84,7 +85,7 @@ const getCourseById = (id) => {
     return new Promise((resolve, reject) => {
         Course.findById(id, (err, course) => {
             if (err) return reject(err)
-            if (!course) return reject('Course not found')
+            if (!course) return reject(new _Error('Course not found',400))
             Course.aggregate([
                 { $match: { "_id": new mongoose.mongo.ObjectId(id) } },
                 { $lookup: { from: "providers", localField: "ownerId", foreignField: "_id", as: "provider" } },// searches in providers collection to get provider id
@@ -121,7 +122,7 @@ const getFullCourseById = (courseId) => {
     return new Promise((resolve, reject) => {
         Course.findById(courseId, (err, course) => {
             if (err) return reject(err)
-            if (!course) return reject('Course not found')
+            if (!course) return reject(new _Error('Course not found',400))
             Course.aggregate([
                 { $match: { "_id": new mongoose.mongo.ObjectId(id) } },
                 { $lookup: { from: "providers", localField: "ownerId", foreignField: "_id", as: "provider" } },// searches iin providers collection to get provider id
@@ -159,12 +160,8 @@ const getFullCourseById = (courseId) => {
 const updateCourseById = (id, courseData) => {
     return new Promise((resolve, reject) => {
         Course.updateOne({ _id: id }, courseData)
-            .then(result => {
-                resolve(result)
-            })
-            .catch(err => {
-                reject(err)
-            })
+            .then(result => resolve(result))
+            .catch(err => reject(err))
     })
 }
 
@@ -183,7 +180,7 @@ const isOwnerOfCourse = (ownerId, courseId) => {
     return new Promise((resolve, reject) => {
         Course.findOne({ _id: courseId }, (err, doc) => {
             if (err) return reject(err)
-            if (!doc) return reject('Course does not exist.')
+            if (!doc) return reject(new _Error('Course does not exist.',400))
             doc.toJSON().ownerId == ownerId ? resolve(true) : resolve(false)
         })
     })

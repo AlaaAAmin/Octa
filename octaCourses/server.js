@@ -1,5 +1,15 @@
+const { logger } = require('./backend/middlewares/logger.middleware')
+
+// handle uncought exception
+process.on('uncaughtException', err => {
+  logger.error(err.name, err.message)
+  logger.error('UNCAUGHT EXCEPTION! Shutting down...')
+  // console stack when development mode
+  process.exit(1);
+
+});
+
 const app = require("./backend/app");
-const debug = require("debug")("node-angular");
 const http = require("http");
 const { createIOListners } = require('./backend/services/socket.service')
 const normalizePort = (val) => {
@@ -25,11 +35,11 @@ const onError = error => {
   const bind = typeof addr === "string" ? "pipe " + addr : "port " + port;
   switch (error.code) {
     case "EACCES":
-      console.error(bind + " requires elevated privileges");
+      logger.error(bind + " requires elevated privileges");
       process.exit(1);
       break;
     case "EADDRINUSE":
-      console.error(bind + " is already in use");
+      logger.error(bind + " is already in use");
       process.exit(1);
       break;
     default:
@@ -40,7 +50,7 @@ const onError = error => {
 const onListening = () => {
   const addr = server.address();
   const bind = typeof addr === "string" ? "pipe " + addr : "port " + port;
-  debug("Listening on " + bind);
+  logger.debug("Listening on " + bind)
 };
 
 const port = normalizePort(process.env.PORT || "3000");
@@ -54,3 +64,13 @@ server.on("error", onError);
 server.on("listening", onListening);
 
 server.listen(port);
+
+
+// unhandled rejection error handling
+process.on('unhandledRejection', err => {
+  logger.error(err.name, err.message);
+  logger.error('UNHANDLED REJECTION! Shutting down...');
+  console.log(err.stack)
+  process.exit(1);
+});
+

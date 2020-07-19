@@ -1,0 +1,110 @@
+2020-07-19 05:55:45:5545 [[31m[1merror[22m[39m] : uncaughtException: logger.emerg is not a function
+TypeError: logger.emerg is not a function
+    at process.<anonymous> (G:\Git\Octa\octaCourses\server.js:71:10)
+    at process.emit (events.js:311:20)
+    at processPromiseRejections (internal/process/promises.js:209:33)
+    at processTicksAndRejections (internal/process/task_queues.js:98:32) 
+2020-07-19 05:56:13:5613 [[31m[1merror[22m[39m] : TypeError 
+2020-07-19 05:56:34:5634 [[31m[1merror[22m[39m] : TypeError 
+2020-07-19 05:57:26:5726 [[31m[1merror[22m[39m] : TypeError 
+2020-07-19 05:57:53:5753 [[31m[1merror[22m[39m] : TypeError 
+2020-07-19 05:58:45:5845 [[31m[1merror[22m[39m] : TypeError 
+2020-07-19 05:59:12:5912 [[31m[1merror[22m[39m] : TypeError 
+2020-07-19 05:59:28:5928 [[31m[1merror[22m[39m] : TypeError 
+2020-07-19 05:59:38:5938 [[31m[1merror[22m[39m] : TypeError 
+2020-07-19 05:59:45:5945 [[31m[1merror[22m[39m] : TypeError 
+2020-07-19 05:59:52:5952 [[31m[1merror[22m[39m] : TypeError 
+2020-07-19 06:07:27:727 [[32minfo[39m] : ::1 - - [19/Jul/2020:04:07:27 +0000] "GET /test HTTP/1.1" 500 1733 "-" "PostmanRuntime/7.26.1"
+ 
+2020-07-19 06:07:43:743 [[32minfo[39m] : ::1 - - [19/Jul/2020:04:07:43 +0000] "GET /test HTTP/1.1" 500 1733 "-" "PostmanRuntime/7.26.1"
+ 
+2020-07-19 06:07:45:745 [[32minfo[39m] : ::1 - - [19/Jul/2020:04:07:45 +0000] "GET /test HTTP/1.1" 500 1733 "-" "PostmanRuntime/7.26.1"
+ 
+2020-07-19 06:08:00:80 [[32minfo[39m] : ::1 - - [19/Jul/2020:04:08:00 +0000] "GET /test HTTP/1.1" 500 1733
+ 
+2020-07-19 06:10:57:1057 [[32minfo[39m] : ::1 - - [19/Jul/2020:04:10:57 +0000] "GET /test HTTP/1.1" 500 1733
+ 
+2020-07-19 06:18:08:188 [[31m[1merror[22m[39m] : uncaughtException: colors[Colorizer.allColors[lookup]] is not a function
+TypeError: colors[Colorizer.allColors[lookup]] is not a function
+    at Colorizer.colorize (G:\Git\Octa\octaCourses\node_modules\logform\colorize.js:73:49)
+    at Colorizer.transform (G:\Git\Octa\octaCourses\node_modules\logform\colorize.js:98:25)
+    at Format.transform (G:\Git\Octa\octaCourses\node_modules\logform\combine.js:20:24)
+    at DerivedLogger._transform (G:\Git\Octa\octaCourses\node_modules\winston\lib\winston\logger.js:305:29)
+    at DerivedLogger.Transform._read (G:\Git\Octa\octaCourses\node_modules\winston\node_modules\readable-stream\lib\_stream_transform.js:177:10)
+    at DerivedLogger.Transform._write (G:\Git\Octa\octaCourses\node_modules\winston\node_modules\readable-stream\lib\_stream_transform.js:164:83)
+    at doWrite (G:\Git\Octa\octaCourses\node_modules\winston\node_modules\readable-stream\lib\_stream_writable.js:409:139)
+    at writeOrBuffer (G:\Git\Octa\octaCourses\node_modules\winston\node_modules\readable-stream\lib\_stream_writable.js:398:5)
+    at DerivedLogger.Writable.write (G:\Git\Octa\octaCourses\node_modules\winston\node_modules\readable-stream\lib\_stream_writable.js:307:11)
+    at DerivedLogger.log (G:\Git\Octa\octaCourses\node_modules\winston\lib\winston\logger.js:223:12)
+    at Object.write (G:\Git\Octa\octaCourses\backend\middlewares\logger.middleware.js:39:50)
+    at Array.logRequest (G:\Git\Octa\octaCourses\node_modules\morgan\index.js:130:14)
+    at listener (G:\Git\Octa\octaCourses\node_modules\on-finished\index.js:169:15)
+    at onFinish (G:\Git\Octa\octaCourses\node_modules\on-finished\index.js:100:5)
+    at callback (G:\Git\Octa\octaCourses\node_modules\ee-first\index.js:55:10)
+    at ServerResponse.onevent (G:\Git\Octa\octaCourses\node_modules\ee-first\index.js:93:5) 
+2020-07-19 06:18:54:1854 [[32minfo[39m] : ::1 - - [19/Jul/2020:04:18:54 +0000] "GET /test HTTP/1.1" 500 1733
+ 
+2020-07-19 06:35:33:3533 [[31m[1merror[22m[39m] : uncaughtException: expressWinston is not defined
+ReferenceError: expressWinston is not defined
+    at Object.<anonymous> (G:\Git\Octa\octaCourses\backend\middlewares\logger.middleware.js:38:21)
+    at Module._compile (internal/modules/cjs/loader.js:1158:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1178:10)
+    at Module.load (internal/modules/cjs/loader.js:1002:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:901:14)
+    at Module.require (internal/modules/cjs/loader.js:1044:19)
+    at require (internal/modules/cjs/helpers.js:77:18)
+    at Object.<anonymous> (G:\Git\Octa\octaCourses\server.js:1:20)
+    at Module._compile (internal/modules/cjs/loader.js:1158:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1178:10)
+    at Module.load (internal/modules/cjs/loader.js:1002:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:901:14)
+    at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:74:12)
+    at internal/main/run_main_module.js:18:47 
+2020-07-19 06:36:13:3613 [[31m[1merror[22m[39m] : uncaughtException: winston.transports.DailyRotateFile is not a constructor
+TypeError: winston.transports.DailyRotateFile is not a constructor
+    at Object.<anonymous> (G:\Git\Octa\octaCourses\backend\middlewares\logger.middleware.js:39:9)
+    at Module._compile (internal/modules/cjs/loader.js:1158:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1178:10)
+    at Module.load (internal/modules/cjs/loader.js:1002:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:901:14)
+    at Module.require (internal/modules/cjs/loader.js:1044:19)
+    at require (internal/modules/cjs/helpers.js:77:18)
+    at Object.<anonymous> (G:\Git\Octa\octaCourses\server.js:1:20)
+    at Module._compile (internal/modules/cjs/loader.js:1158:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1178:10)
+    at Module.load (internal/modules/cjs/loader.js:1002:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:901:14)
+    at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:74:12)
+    at internal/main/run_main_module.js:18:47 
+2020-07-19 06:36:35:3635 [[31m[1merror[22m[39m] : uncaughtException: winston.transports.DailyRotateFile is not a constructor
+TypeError: winston.transports.DailyRotateFile is not a constructor
+    at Object.<anonymous> (G:\Git\Octa\octaCourses\backend\middlewares\logger.middleware.js:39:9)
+    at Module._compile (internal/modules/cjs/loader.js:1158:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1178:10)
+    at Module.load (internal/modules/cjs/loader.js:1002:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:901:14)
+    at Module.require (internal/modules/cjs/loader.js:1044:19)
+    at require (internal/modules/cjs/helpers.js:77:18)
+    at Object.<anonymous> (G:\Git\Octa\octaCourses\server.js:1:20)
+    at Module._compile (internal/modules/cjs/loader.js:1158:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1178:10)
+    at Module.load (internal/modules/cjs/loader.js:1002:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:901:14)
+    at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:74:12)
+    at internal/main/run_main_module.js:18:47 
+2020-07-19 06:36:41:3641 [[31m[1merror[22m[39m] : uncaughtException: winston.transports.DailyRotateFile is not a constructor
+TypeError: winston.transports.DailyRotateFile is not a constructor
+    at Object.<anonymous> (G:\Git\Octa\octaCourses\backend\middlewares\logger.middleware.js:39:9)
+    at Module._compile (internal/modules/cjs/loader.js:1158:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1178:10)
+    at Module.load (internal/modules/cjs/loader.js:1002:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:901:14)
+    at Module.require (internal/modules/cjs/loader.js:1044:19)
+    at require (internal/modules/cjs/helpers.js:77:18)
+    at Object.<anonymous> (G:\Git\Octa\octaCourses\server.js:1:20)
+    at Module._compile (internal/modules/cjs/loader.js:1158:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1178:10)
+    at Module.load (internal/modules/cjs/loader.js:1002:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:901:14)
+    at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:74:12)
+    at internal/main/run_main_module.js:18:47 

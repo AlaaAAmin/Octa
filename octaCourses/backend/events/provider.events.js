@@ -2,6 +2,7 @@
 let _EventEmitter = require('../services/event.service')
 const { addStrikeToProvider } = require('../models/provider.model')
 
+// event listner for striking provider 
 _EventEmitter.on('strike-provider', async (data) => {
     try {
         let strikeData = {
@@ -12,6 +13,11 @@ _EventEmitter.on('strike-provider', async (data) => {
     } catch (err) {
         console.log(err)
     }
+})
+
+// event listner for getting new notification for provider
+_EventEmitter.on('new-notification', () => {
+
 })
 
 

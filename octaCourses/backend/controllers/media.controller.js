@@ -1,11 +1,11 @@
 const MediaService = require('../services/media.service');
 const gridFS = require('../services/mongodb.service').gridFS
 
-const sendModule = (req, res) => {
+const sendModule = (req, res, next) => {
     res.status(200).send(req.module)
 }
 
-const sendMediaFile = (req, res) => {
+const sendMediaFile = (req, res, next) => {
 
     const range = req.headers['range']
     if (range && typeof range == 'string') {

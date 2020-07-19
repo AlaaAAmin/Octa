@@ -6,10 +6,7 @@ const AuthPermissionMiddleware = require('../middlewares/auth.permission.middlew
 
 // handle expired token also and dont forget
 
-
 // admin jobs 
-// review courses, assign labels 
-// eula violations for users (providers and students)
 // get contact us messages
 
 // this route for get raw courses that will be reviewed
@@ -53,7 +50,12 @@ router.post('admin/ban/provider',[
     AuthPermissionMiddleware.onlyAdminsAreAllowed,
     AdminController.banProviderById
 ])
-// answer inquiries
+
+// get inquiries from database
+
+// answer inquy by id
+
+
 
 
 module.exports = router

@@ -13,10 +13,37 @@
         "NORMAL_PROVIDER": 10,
         "ADMIN": 999999
     },
+    "ENVIRONMENT": "production",
     "EXP_PER_LEVEL": 1000,
     "EXP_PER_VIDEO": 50,
-    "REDIS_INFO": {
-        "HOST": "localhost",
-        "PORT": 6379
+    "HTTP_RESPONSES": {
+        "MESSAGES": {
+            "OK": "Ok",
+            "CREATED": "Created",
+            "ACCEPTED": "Accepted",
+            "NO_CONTENT": "No Content",
+            "NOT_MODEFIED": "Not Modified",
+            "BAD_REQUEST": "Bad Request",
+            "UNAUTHORIZED": "Unauthorized",
+            "PAYMENT_REQUIRED": "Payment Required",
+            "FORBIDDEN": "Forbidden",
+            "NOT_FOUND": "Not Found",
+            "INTERNAL_SERVER_ERROR": "Server Error",
+            "SERVICE_UNAVAILABLE": "Service Unavailable"
+        },
+        "STATUS_CODES": {
+            "OK": 200,
+            "CREATED": 201,
+            "ACCEPTED": 202,
+            "NO_CONTENT": 204,
+            "NOT_MODEFIED": 304,
+            "BAD_REQUEST": 400,
+            "PAYMENT_REQUIRED": 402,
+            "UNAUTHORIZED": 401,
+            "FORBIDDEN": 403,
+            "NOT_FOUND": 404,
+            "INTERNAL_SERVER_ERROR": 500,
+            "SERVICE_UNAVAILABLE": 503
+        }
     }
 }

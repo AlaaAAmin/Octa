@@ -1,5 +1,6 @@
 const { mongoose } = require('../services/mongodb.service');
-const Schema = new mongoose.Schema
+const _Error = require('../classes/error.class');
+const Schema = mongoose.Schema
 
 const contentSchema = new Schema({
     studentId: { type: mongoose.Types.ObjectId, required: true },
@@ -21,7 +22,7 @@ const getNotifications = (providerId) => {
     return new Promise((resolve, reject) => {
         Notification.findOne({ providerId: providerId }, (err, doc) => {
             if (err) return reject(err)
-            if (!doc) return reject('Course Provider does not exist.')
+            if (!doc) return reject(new _Error('Course Provider does not exist.',400))
             resolve(doc.toJSON())
         })
     })
@@ -34,7 +35,7 @@ const addNotification = (providerId, notificationData) => {
     return new Promise((resolve, reject) => {
         Notification.findOne({ providerId: providerId }, (err, doc) => {
             if (err) return reject(err)
-            if (!doc) return reject('Course Provider does not exist.')
+            if (!doc) return reject(new _Error('Course Provider does not exist.',400))
 
             doc.content.push({
                 studentId: notificationData.studentId,

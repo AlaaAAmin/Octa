@@ -17,7 +17,7 @@ const uploadMedia = (file, options = { noCursorTimeout: true }) => {
             .pipe(gridFS().openUploadStream(crypto.randomBytes(16).toString('base64'), options))
             .on('finish', (result) => {
                 resolve({
-                    success: true, info: {
+                    status: 'success', info: {
                         fileId: result._id
                     }
                 })

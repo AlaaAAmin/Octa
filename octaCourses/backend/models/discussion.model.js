@@ -1,6 +1,7 @@
 const { mongoose } = require('../services/mongodb.service');
 const Filter = require('bad-word-ar');
-const _EventEmitter = require('../services/event.service')
+const _EventEmitter = require('../services/event.service');
+const _Error = require('../classes/error.class');
 const Schema = mongoose.Schema
 
 // subdocument of reply 
@@ -64,7 +65,7 @@ const addQuestionToCourse = (courseId, question, writerId) => {
     return new Promise((resolve, reject) => {
         Discussion.findOne({ courseId: new mongoose.mongo.ObjectId(courseId) }, (err, doc) => {
             if (err) return reject(err)
-            if (!doc) return reject('Course does not exist.')
+            if (!doc) return reject(new _Error('Course does not exist.',400))
             doc.questions.push({
                 by: new mongoose.mongo.ObjectId(writerId),
                 question: question
@@ -79,7 +80,7 @@ const addReplyToCourseQuestion = (courseId, reply, writerId, questionId) => {
     return new Promise((resolve, reject) => {
         Discussion.findOne({ courseId: courseId }, (err, doc) => {
             if (err) return reject(err)
-            if (!doc) return reject('Course does not exist.')
+            if (!doc) return reject(new _Error('Course does not exist.',400))
             doc.questions.forEach(e => {
                 if (e._id == new mongoose.mongo.ObjectId(questionId)) {
                     e.reply = {
@@ -98,7 +99,7 @@ const getDiscussionOfCourse = (courseId) => {
     return new Promise((resolve, reject) => {
         Discussion.findOne({ courseId: courseId }, (err, doc) => {
             if (err) return reject(err)
-            if (!doc) return reject('Course does not exist.')
+            if (!doc) return reject(new _Error('Course does not exist.',400))
             resolve(doc.toJSON())
         })
     })

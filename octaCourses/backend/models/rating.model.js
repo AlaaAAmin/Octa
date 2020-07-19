@@ -1,3 +1,4 @@
+const _Error = require('../classes/error.class');
 const mongoose = require('../services/mongodb.service').mongoose;
 var Schema = mongoose.Schema;
 
@@ -32,10 +33,10 @@ const addRatingToCourse = (ratingData) => {
     return new Promise((resolve, reject) => {
         Rating.findOne({ providerId: ratingData.providerId }, (err, doc) => {
             if (err) return reject(err)
-            if (!doc) return reject('Course provider does not exists.')
+            if (!doc) return reject(new _Error('Course provider does not exist.', 400))
             let exists = false
             doc.toJSON().courses.forEach(c => { c.ratings.forEach(r => r.studentId == ratingData.studentId ? exists = true : exists = false) })
-            if (exists) return reject('Student already rated this course.')
+            if (exists) return reject(new _Error('Student already rated this course.',400))
             doc.courses.find(c => c.courseId == ratingData.courseId).ratings.push({
                 studentId: ratingData.studentId,
                 rate: ratingData.rate,
@@ -53,7 +54,7 @@ const getRatingsOfCourse = (courseId) => {
     return new Promise((resolve, reject) => {
         Rating.findOne({ 'courses.courseId': courseId }, (err, doc) => {
             if (err) return reject(err)
-            if (!doc) return reject('Course does not exist')
+            if (!doc) return reject(new _Error('Course does not exist',400))
             if (doc.courses.find(c => courseId == c.courseId).ratings.length == 0) return resolve('Course has no ratings.')
             Rating.aggregate([
                 { $unwind: "$courses" },

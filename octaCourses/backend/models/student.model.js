@@ -1,6 +1,7 @@
 const mongoose = require('../services/mongodb.service').mongoose;
 const EXP_PER_LEVEL = require('../config/config.json').EXP_PER_LEVEL
 const uniqueValidator = require('mongoose-unique-validator');
+const _Error = require('../classes/error.class');
 var Schema = mongoose.Schema;
 
 // subdocument for strikes
@@ -69,7 +70,7 @@ const getStudentById = (id) => {
     return new Promise((resolve, reject) => {
         Student.findById(id, (err, user) => {
             if (err) return reject(err)
-            if (!user) return reject('User not found')
+            if (!user) return reject(new _Error('User does not exist.', 400));
             let data = user.toJSON();
             delete data.__v;
             if(data.meta.banned) return resolve('This student is banned')
@@ -83,7 +84,7 @@ const getStudentByEmail = (email) => {
     return new Promise((resolve, reject) => {
         Student.findOne({ email: email }, (err, user) => {
             if (err) return reject(err)
-            if (!user) return reject({ message: 'User not found!' });
+            if (!user) return reject(new _Error('User does not exist.', 400));
             let data = user.toJSON();
             delete data.__v;
             resolve(data);
@@ -95,6 +96,7 @@ const updateStudent = (id, userData) => {
     return new Promise((resolve, reject) => {
         Student.findById(id, (err, user) => {
             if (err) return reject(err);
+            if (!user) return reject(new _Error('User does not exist.', 400));
             for (let i in userData) {
                 user[i] = userData[i];
             }
@@ -111,7 +113,7 @@ const deleteById = (id) => {
     return new Promise((resolve, reject) => {
         Student.remove({ _id: id }, (err) => {
             if (err) return reject(err);
-            resolve({ success: true, message: 'User deleted.' });
+            resolve({ status: 'success', message: 'User deleted.' });
         })
     })
 }
@@ -121,7 +123,7 @@ const addExpToStudentById = (studentId, experience) => {
     return new Promise((resolve, reject) => {
         Student.findOne({ studentId: new mongoose.mongo.ObjectId(studentId) }, (err, doc) => {
             if (err) return reject(err)
-            if (!doc) return reject('Student does not exist.')
+            if (!doc) return reject(new _Error('User does not exist.', 400));
             doc.experience = doc.experience + experience
             doc.level = 1 + parseInt(doc.experience / EXP_PER_LEVEL)
             resolve(doc.save())
@@ -134,7 +136,7 @@ const addStrikeToStudent = (studentId, strikeData) => {
     return new Promise((resolve, reject) => {
         Student.findOne({ studentId: studentId }, (err, doc) => {
             if (err) return reject(err)
-            if (!doc) return reject('Student does not exist.')
+            if (!doc) return reject(new _Error('User does not exist.', 400));
             doc.meta.strikes.push(strikeData)
             if (doc.meta.strikes.length >= 3) _EventEmitter.emit('student-ready-to-be-banned', { studentId: studentId, strikes: doc.meta.strikes })
             resolve(doc.save())

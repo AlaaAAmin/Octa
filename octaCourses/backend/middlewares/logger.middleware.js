@@ -1,41 +1,67 @@
 var MongoDB = require('winston-mongodb').MongoDB;
 const dbURL = require('../services/mongodb.service').dbURL
 var express_winston = require('express-winston')
-const { winston, format, errorFormat, transport, errorTransport} = require('../config/logger.config')
+require('winston-daily-rotate-file')
+const { winston, customPrintf } = require('../config/logger.config')
 
-
-const logger = express_winston.logger({
-    format: format,
+const logger = winston.createLogger({
+    format: winston.format.combine(
+        winston.format.colorize(),
+        winston.format.timestamp({ format: 'YYYY-MM-DD HH:mm:ss:ms' }),
+        customPrintf
+    ),
     transports: [
-        transport,
-        new winston.transports.Console(),
+        new (winston.transports.DailyRotateFile)({
+            level: 'info',
+            filename: './logs/all-logs.log',
+            handleExceptions: true,
+            json: true,
+            colorize: false
+        }),
+        new winston.transports.Console({
+            level: 'debug',
+            handleExceptions: true,
+            colorize: true,
+        }),
         new MongoDB({
             db: dbURL,
+            level: 'info',
             collection: `logs`,
             decolorize: true,
             options: { useUnifiedTopology: true },
-            metaKey: 'meta'
         })
-    ]
+    ],
+    exitOnError: false
 })
+
 const errorLogger = express_winston.errorLogger({
-    format: errorFormat,
     transports: [
-        new winston.transports.Console(),
-        errorTransport,
+        new (winston.transports.DailyRotateFile)({
+            filename:'./logs/Exception-%DATE%.log',
+            handleExceptions:true,
+            level:'error',
+            datePattern: 'YYYY-MM-DD',
+            maxFiles: '7d'
+        }),
+        new winston.transports.Console({
+            colorize: true
+        }),
         new MongoDB({
             db: dbURL,
-            collection: 'exceptions',
+            level: 'error',
+            collection: `exceptions`,
             decolorize: true,
-            handleExceptions: true,
             options: { useUnifiedTopology: true },
-            metaKey: 'error'
         })
     ]
 })
 
-express_winston.requestWhitelist.push('body');
-express_winston.responseWhitelist.push('body');
+const stream = {
+    write: function (message, encoding) { logger.info(message); }
+}
 
-module.exports.logger = logger;
-module.exports.ErrorLogger = errorLogger
+module.exports = {
+    logger,
+    errorLogger,
+    stream
+}

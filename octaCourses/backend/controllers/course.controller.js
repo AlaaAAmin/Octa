@@ -7,7 +7,7 @@ const { getRatingsOfCourse } = require('../models/rating.model')
 // operations done within this function:
 // upload media, whether it is video or image or file 
 // after successful uploading, data submitted to database
-const addCourse = async (req, res) => {
+const addCourse = async (req, res, next) => {
     let errors = []
     let data = req.body.converted
     data.ownerId = req.jwt._id
@@ -43,12 +43,9 @@ const addCourse = async (req, res) => {
     CourseModel.createCourse(data)
         .then(doc => {
             _EventEmitter.emit('new-course', { id: doc._id })
-            return res.status(201).send({ success: true, message: 'course added successfully.' })
+            return res.status(201).send({ status: 'success', message: 'course added successfully.' })
         })
-        .catch(err => {
-            console.log(err)
-            return res.status(500).send({ success: false, error: err })
-        })
+        .catch(err => next(err))
 
 }
 
@@ -57,7 +54,7 @@ const addCourse = async (req, res) => {
 // checks if there is new file to be uploaded
 // if there is a file, then deletes old file and uploads new file else add new content or file 
 // then create course in database
-const editCourse = async (req, res) => {
+const editCourse = async (req, res, next) => {
     let errors = []
     let data = req.body.converted
     // check if thumbnail is in request
@@ -106,16 +103,14 @@ const editCourse = async (req, res) => {
     }
     try {
         let result = await CourseModel.updateCourseById(req.params.id, req.body.converted)
-        if (result.nModified == 1 && result.ok == 1 && result.n == 1) return res.status(204).send({ success: true, message: 'course updated successfully.' })
-        res.status(400).send({ success: false, message: 'course could not be updated.' })
-    } catch (err) {
-        res.status(500).send({ success: false, error: err })
-    }
+        if (result.nModified == 1 && result.ok == 1 && result.n == 1) return res.status(204).send({ status: 'success', message: 'course updated successfully.' })
+        res.status(400).send({ status: 'fail', message: 'course could not be updated.' })
+    } catch (err) { next(err) }
 }
 
 // getCourseById is a functon that gets course from model 
 // model gets course and reshapes it from database
-const getCourseById = (req, res) => {
+const getCourseById = (req, res, next) => {
     let courseData
     CourseModel.getCourseById(req.params.id)
         .then(course => {
@@ -126,40 +121,37 @@ const getCourseById = (req, res) => {
         .then(ratings => {
             delete ratings[0]._id
             let data = Object.assign(courseData, ratings[0])
-            res.status(200).send(data)
+            res.status(200).send({ status: 'success', data: { data } })
         })
-        .catch(err => {
-            res.status(400).send({ success: false, error: err })
-        })
+        .catch(err => next(err))
 }
 
 // searchForCourse is a method that searches for course by labels or ownername or coursename
-const searchForCourse = (req, res) => {
+const searchForCourse = (req, res, next) => {
     // query keys are
     // name,ownerName
     CourseModel.filterCourses(req.query)
         .then(result => {
             result.forEach(e => { delete e.reviewed; delete e.__v })
-            res.status(200).send(result)
+            res.status(200).send({ status: 'success', data: { result } })
         })
-        .catch(err => {
-            res.status(400).send({ success: false, error: err })
-        })
+        .catch(err => next(err))
 }
 
 // getFullCourseInfo is a method that fetch full info of course for enrolled students
-const getFullCourseInfo = (req, res) => {
+const getFullCourseInfo = (req, res, next) => {
     let courseData
     CourseModel.getFullCourseById(req.params.id)
         .then(course => {
-          courseData = course[0]  
-          return getRatingsOfCourse(req.params.id)
+            courseData = course[0]
+            return getRatingsOfCourse(req.params.id)
         })
         .then(rating => {
             delete rating[0]._id
             let data = Object.assign(courseData, rating[0])
-            res.status(200).send(data)
+            res.status(200).send({ status: 'success', data: { data } })
         })
+        .catch(err => next(err))
 }
 module.exports.createCourse = addCourse;
 module.exports.updateCourse = editCourse;

@@ -1,6 +1,7 @@
 const mongoose = require('../services/mongodb.service').mongoose;
 const uniqueValidator = require('mongoose-unique-validator');
 const _EventEmitter = require('../services/event.service');
+const _Error = require('../classes/error.class');
 const Schema = mongoose.Schema;
 
 // subdocument for strikes
@@ -70,9 +71,7 @@ const getProviderById = (id) => {
                 if (data.meta.banned) return resolve('This provider is banned.')
                 resolve(data);
             })
-            .catch(err => {
-                reject(err);
-            });
+            .catch(err => reject(err));
     })
 }
 
@@ -86,9 +85,7 @@ const getProviderByEmail = (email) => {
                 delete data.__v;
                 resolve(data);
             })
-            .catch(err => {
-                reject(err)
-            })
+            .catch(err => reject(err))
     })
 }
 
@@ -113,7 +110,7 @@ const deleteById = (id) => {
     return new Promise((resolve, reject) => {
         Provider.remove({ _id: id }, (err) => {
             if (err) return reject(err);
-            resolve({ success: true, message: 'Course provider deleted.' });
+            resolve({ status: 'success', message: 'Course provider deleted.' });
         })
     })
 }
@@ -124,7 +121,7 @@ const addStrikeToProvider = (providerId, strikeData) => {
     return new Promise((resolve, reject) => {
         Provider.findOne({ _id: providerId }, (err, doc) => {
             if (err) return reject(err)
-            if (!doc) return reject('Provider does not exist.')
+            if (!doc) return reject(new _Error('Provider does not exist.',400))
             doc.meta.strikes.push(strikeData)
             if (doc.meta.strikes.length >= 3) _EventEmitter.emit('provider-ready-to-be-banned', { providerId: providerId, strikes: doc.meta.strikes })
             resolve(doc.save())
@@ -136,7 +133,7 @@ const addStrikeToProvider = (providerId, strikeData) => {
 const getBanReadyProviders = () => {
     return new Promise((resolve, reject) => {
         Provider.find({ "meta.strikes.2": { "$exists": true } }, (err, docs) => {
-            if(err) return reject(err)
+            if (err) return reject(err)
             resolve(docs)
         })
     })

@@ -22,7 +22,7 @@ const onlyOwnerOfCourseCanEdit = async (req, res, next) => {
 
 const ownerIsAuthorized = async (req, res, next) => {
     try {
-        let owner = CourseModel.isOwnerOfCourse(req.jwt._id, req.params.id)
+        let owner = await CourseModel.isOwnerOfCourse(req.jwt._id, req.params.id)
         // req.jwt.permissionLevel == 10 ? owner ? next() : res.status(403).send() : next()
         if (req.jwt.permissionLevel == 10) {
             if (owner) return next()
@@ -34,7 +34,17 @@ const ownerIsAuthorized = async (req, res, next) => {
 
     }
 }
+// this middleware handles authorization for both student enrolled and owner of course
+const EnrolledStudentsAndOwnerIsAuthorized = (req, res, next) => {
+    try {
+        
+    } catch (err) {
+        res.status(404).send({ success: false, error: err })
 
+    }
+}
+
+module.exports.EnrolledStudentsAndOwnerIsAuthorized = EnrolledStudentsAndOwnerIsAuthorized
 module.exports.onlyEnrolledStudentsAuthorized = onlyEnrolledStudentsAuthorized
 module.exports.onlyOwnerOfCourseCanEdit = onlyOwnerOfCourseCanEdit
 module.exports.ownerIsAuthorized = ownerIsAuthorized

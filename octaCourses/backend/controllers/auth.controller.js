@@ -2,7 +2,7 @@ const SECRET = require('../config/config.json').JWT_SECRET;
 const jwt = require('jsonwebtoken');
 const crypto = require('crypto');
 
-const Login = (req, res) => {
+const Login = (req, res, next) => {
     try {
         let refreshId = req.body.id + SECRET;
         let salt = crypto.randomBytes(16).toString('base64');
@@ -12,20 +12,16 @@ const Login = (req, res) => {
         let token = jwt.sign(req.body, SECRET, { expiresIn: Math.floor(Date.now() / 1000) + (60 * 60 * 24) });
         let b = Buffer.from(hash)
         let refreshToken = b.toString('base64');
-        res.status(201).send({ accessToken: token, refreshToken: refreshToken });
-    } catch (err) {
-        res.status(500).send({ success: false, error: err });
-    }
+        res.status(201).send({ status: 'success', accessToken: token, refreshToken: refreshToken });
+    } catch (err) { next(err) }
 }
 
-const refreshToken = (req, res) => {
+const refreshToken = (req, res, next) => {
     try {
         req.body = req.jwt;
         let token = jwt.sign(req.body, SECRET, { expiresIn: Math.floor(Date.now() / 1000) + (60 * 60 * 24) });
-        res.status(201).send({ token: token });
-    } catch (err) {
-        res.status(500).send({ errors: err });
-    }
+        res.status(201).send({ status: 'success',token: token });
+    } catch (err) { next(err) }
 }
 
 

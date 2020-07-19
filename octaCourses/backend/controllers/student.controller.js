@@ -4,9 +4,10 @@ const Token = require('../models/token.model');
 const crypto = require('crypto');
 const EMAIL_SECRET = require('../config/config.json').EMAIL_SECRET;
 const jwt = require('jsonwebtoken');
-const _EventEmitter = require('../services/event.service')
+const _EventEmitter = require('../services/event.service');
+const _Error = require('../classes/error.class');
 
-const register = (req, res) => {
+const register = (req, res, next) => {
     let salt = crypto.randomBytes(16).toString('base64');
     let hash = crypto.createHmac('sha512', salt).update(req.body.password).digest('base64');
     req.body.password = salt + '$' + hash;
@@ -38,15 +39,12 @@ const register = (req, res) => {
             return mailer.sendMail(options);
         })
         .then(() => {
-            _EventEmitter.emit('new-student', { id: userId })
-            res.status(201).send({ success: true, id: userId });
+            res.status(201).send({ status: 'success', id: userId });
         })
-        .catch(err => {
-            res.status(400).send({ success: false, error: err });
-        });
+        .catch(err => next(err));
 }
 
-const updateStudentAccount = (req, res) => {
+const updateStudentAccount = (req, res, next) => {
     if (req.body.password) {
         let salt = crypto.randomBytes(16).toString('base64');
         let hash = crypto.createHmac('sha512', salt).update(req.body.password).digest('base64');
@@ -55,14 +53,12 @@ const updateStudentAccount = (req, res) => {
 
     StudentModel.updateStudent(req.params.id, req.body)
         .then(result => {
-            res.status(204).send({ success: true, message: 'user updated.' })
+            res.status(204).send({ status: 'success', message: 'user updated.' })
         })
-        .catch(err => {
-            res.status(400).send({ success: false, error: err });
-        });
+        .catch(err => next(err));
 }
 
-const getStudentById = (req, res) => {
+const getStudentById = (req, res, next) => {
     StudentModel.getStudentById(req.params.id)
         .then(result => {
             let user = result;
@@ -71,12 +67,10 @@ const getStudentById = (req, res) => {
             delete user.permissionLevel;
             res.status(200).send(user)
         })
-        .catch(error => {
-            res.status(400).send({ success: false, error: error });
-        })
+        .catch(error => next(err))
 }
 
-const updateById = (req, res) => {
+const updateById = (req, res, next) => {
     if (req.body.password) {
         let salt = crypto.randomBytes(16).toString('base64');
         let hash = crypto.createHmac('sha512', salt).update(req.body.password).digest('base64');
@@ -87,46 +81,40 @@ const updateById = (req, res) => {
         .then((result) => {
             res.status(204).send();
         })
-        .catch(error => {
-            res.status(400).send({ success: false, error: error });
-        })
+        .catch(error => next(error))
 }
 
-const removeById = (req, res) => {
+const removeById = (req, res, next) => {
     StudentModel.deleteById(req.params.userId)
         .then((result) => {
             res.status(204).send();
         })
-        .catch(error => {
-            res.status(400).send({ success: false, error: error });
-        })
+        .catch(error => next(error))
 }
 
 const verifyEmailToken = (req, res, next) => {
     Token.Token.findOne({ token: req.jwt.token }, (err, token) => {
-        if (err) return res.status(500).send({ success: false, error: err })
-        if (!token) return res.status(400).send({ success: false, message: 'Unable to find token, token my have expired.' });
+        if (err) return next(err)
+        if (!token) return next(new _Error('Unable to find token, token my have expired.',400))
         StudentModel.Student.findOne({ _id: token._userId }, (err, user) => {
-            if (err) return res.status(500).send({ success: false, error: err })
-            if (!user) return res.status(400).send({ message: 'unable to find a user for this token.' });
-            if (user.verified) return res.status(400).send({ type: 'already-verified', message: 'This user has already been verified.' });
+            if (err) return next(err)
+            if (!user) return next(new _Error('Unable to find a user for this token.', 400))
+            if (user.verified) return next(new _Error('This user has already been verified.', 400))
             user.verified = true;
             user.save((err) => {
-                if (err) return res.status(500).send({ success: false, error: err })
-                res.status(200).send({ message: "The account has been verified. Please log in." });
+                if (err) return next(err)
+                res.status(200).send({ status: 'success', message: "The account has been verified. Please log in." });
             });
-        }).catch(err => {
-            res.status(500).send({ success: false, error: err })
-        })
+        }).catch(err => next(err))
     })
 }
 
-const resendVerificationEmail = (req, res) => {
+const resendVerificationEmail = (req, res, next) => {
     let userId = req.jwt._id;
     StudentModel.Student.findOne({ _id: userId }, (err, user) => {
-        if (err) return res.status(500).send({ success: false, error: err });
-        if (!user) return res.status(400).send({ message: 'unable to find a user for this token.' });
-        if (user.verified) return res.status(400).send({ type: 'already-verified', message: 'This user has already been verified.' });
+        if (err) return next(err)
+        if (!user) return next(new _Error('Unable to find a user for this token.', 400))
+        if (user.verified) return next(new _Error('This user has already been verified.', 400))
         Token.generateToken(userId, 'email-verification')
             .then(token => {
                 let data = {
@@ -150,15 +138,13 @@ const resendVerificationEmail = (req, res) => {
                 return mailer.sendMail(options);
             })
             .then(() => {
-                res.status(200).send({ message: 'Email has been sent.' });
+                res.status(200).send({ status: 'success', message: 'Email has been sent.' });
             })
-            .catch(err => {
-                res.status(400).send({ success: false, error: err });
-            })
+            .catch(err => next(err))
     })
 }
 
-const SendPasswordReset = (req, res) => {
+const SendPasswordReset = (req, res, next) => {
     Token.generateToken(req.body.user._id, 'password-reset')
         .then(token => {
             let data = {
@@ -183,29 +169,26 @@ const SendPasswordReset = (req, res) => {
             return mailer.sendMail(options);
         })
         .then(() => {
-            res.status(200).send({ message: 'Email has been sent.' });
+            res.status(200).send({ status: 'success', message: 'Email has been sent.' });
         })
-        .catch(err => {
-            console.log(err)
-            res.status(400).send({ success: false, error: err })
-        })
+        .catch(err => next(err))
 }
 
-const resetPassword = (req, res) => {
+const resetPassword = (req, res, next) => {
     Token.Token.findOne({ token: req.jwt.token }, (err, token) => {
-        if (err) return res.status(500).send({ success: false, error: err })
-        if (!token) return res.status(400).send({ success: false, message: 'Unable to find token, token my have expired.' });
+        if (err) return next(err)
+        if (!token) return next(new _Error('Unable to find token, token my have expired.',400))
         StudentModel.Student.findOne({ _id: token._userId }, (err, user) => {
-            if (err) return res.status(500).send({ success: false, error: err })
-            if (!user) return res.status(400).send({ message: 'Unable to find a user for this token.' });
+            if (err) return next(err)
+            if (!user) return next(new _Error('Unable to find a user for this token.',400));
 
             let salt = crypto.randomBytes(16).toString('base64');
             let hash = crypto.createHmac('sha512', salt).update(req.body.password).digest('base64');
             req.body.password = salt + '$' + hash;
             user.password = req.body.password;
             user.save((err) => {
-                if (err) return res.status(500).send({ success: false, error: err })
-                res.status(200).send({ message: "Password has been reset." });
+                if (err) return next(err)
+                res.status(200).send({ status: 'success', message: "Password has been reset." });
             });
         });
     })

@@ -1,5 +1,6 @@
 const { mongoose } = require('../services/mongodb.service');
 const { ADMIN } = require('../config/config.json').permissionLevels
+const _Error = require('../classes/error.class')
 
 const Schema = mongoose.Schema
 
@@ -31,7 +32,7 @@ const getAdminByEmail = (email) => {
     return new Promise((resolve, reject) => {
         Admin.findOne({ email: email }, (err, doc) => {
             if(err) return reject(err)
-            if(!doc) return reject('Admin does not exist.')
+            if(!doc) return reject(new _Error('Admin does not exist.', 400))
             resolve(doc)
         })
     })
@@ -42,7 +43,7 @@ const removeAdmin = (adminId) => {
     return new Promise((resolve, reject) => {
         Admin.findById(adminId, (err, doc) => {
             if (err) return reject(err)
-            if (!doc) return reject('Admin does not exist')
+            if (!doc) return reject(new _Error('Admin does not exist',400))
             resolve(doc.remove())
         })
     })

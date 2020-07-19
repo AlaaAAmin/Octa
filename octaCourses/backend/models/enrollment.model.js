@@ -1,5 +1,6 @@
 const mongoose = require('../services/mongodb.service').mongoose
 const uniqueValidator = require('mongoose-unique-validator');
+const _Error = require('../classes/error.class');
 
 var Schema = mongoose.Schema;
 
@@ -26,10 +27,10 @@ const enrollStudentToCourse = (studentId, courseId) => {
     return new Promise((resolve, reject) => {
         Enrollment.findOne({ courseId: courseId }, (err, doc) => {
             if (err) return reject(err)
-            if (!doc) return reject('Course does not exist')
+            if (!doc) return reject(new _Error('Course does not exist.',400))
             let exists = false
             doc.toJSON().students.forEach(e => e.studentId == studentId ? exists = true : exists = false)
-            if (exists) return reject('this student already enrolled to this course.')
+            if (exists) return reject(new _Error('This student already enrolled to this course.',400))
             else {
                 doc.toJSON().students.push({ studentId: new mongoose.mongo.ObjectId(studentId) })
                 resolve(doc.save())
@@ -44,7 +45,7 @@ const getEnrollmentsOfCourse = (courseId) => {
     return new Promise((resolve, reject) => {
         Enrollment.findOne({ courseId: courseId }, (err, doc) => {
             if (err) return reject(err)
-            doc ? resolve(doc.toJSON().students) : reject('Course has no enrollments.')
+            doc ? resolve(doc.toJSON().students) : reject(new _Error('Course has no enrollments.',400))
         })
     })
 }
@@ -54,7 +55,7 @@ const isStudentEnrolledOrNot = (studentId, courseId) => {
     return new Promise((resolve, reject) => {
         Enrollment.findOne({ courseId: courseId }, (err, doc) => {
             if (err) return reject(err)
-            if (!doc) return reject('Course has no enrollments.')
+            if (!doc) return reject(new _Error('Course has no enrollments.',400))
             let enrolled = false
             doc.toJSON().students.forEach(e => e.studentId == studentId ? enrolled = true : enrolled = false)
             resolve(enrolled)
@@ -68,7 +69,7 @@ const getStudents = (courseId) => {
     return new Promise((resolve, reject) => {
         Enrollment.findOne({ courseId: courseId }, (err, doc) => {
             if (err) return reject(err)
-            if (!doc) return reject('Course has no enrollments.')
+            if (!doc) return reject(new _Error('Course has no enrollments.',400))
             resolve(doc.toJSON().students)
         })
     })
