@@ -11,8 +11,16 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatDialogModule } from '@angular/material/dialog';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
+  imports: [
+    ToastrModule.forRoot({
+      timeOut: 1500,
+      positionClass: 'toast-top-right',
+      preventDuplicates: true,
+    }),
+  ],
   exports: [
     MatIconModule,
     MatGridListModule,
@@ -25,7 +33,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatSelectModule,
     MatFormFieldModule,
     MatExpansionModule,
-    MatDialogModule
+    MatDialogModule,
+    ToastrModule
   ]
 })
 export class MaterialModule { }

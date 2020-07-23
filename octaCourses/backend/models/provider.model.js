@@ -39,8 +39,8 @@ const providerSchema = new Schema({
             message: props => `${props.value} is not a valid phone number!`
         }
     },
-    stripe_id: { required: true, type: String, default: null },
-    bank_id: { required: true, type: String, default: null },
+    stripe_id: { type: String, default: null },
+    bank_id: {  type: String, default: null },
     password: { required: true, type: String },
     verified: { required: true, type: Boolean, default: false },
     timestamp: { required: false, type: Number, default: Date.now() },

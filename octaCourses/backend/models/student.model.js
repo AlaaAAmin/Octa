@@ -47,9 +47,9 @@ const studentSchema = new Schema({
 
     experience: { required: true, type: Number, default: 0 },
     level: { required: true, type: Number, default: 1 },
-    points: {required: true, type: Number, default: 0},
+    points: { required: true, type: Number, default: 0 },
     interests: { required: true, type: Array },
-    wishlist: { required: true, type: Array, default: null },
+    date_of_birth: { type: Date, required: true, default: null },
     meta: metaSchema
 
 })
@@ -76,7 +76,9 @@ const getStudentById = (id) => {
             if (!user) return reject(new _Error('User does not exist.', 400));
             let data = user.toJSON();
             delete data.__v;
-            if (data.meta.banned) return resolve('This student is banned')
+            if(user.meta != undefined) {
+                if (user.meta.banned) return resolve('This student is banned')
+            }
             resolve(data)
         })
     })
@@ -97,16 +99,9 @@ const getStudentByEmail = (email) => {
 // updateStudent is a function that finds student by id
 const updateStudent = (id, userData) => {
     return new Promise((resolve, reject) => {
-        Student.findById(id, (err, user) => {
+        Student.updateOne({_id: id},userData ,(err, raw) => {
             if (err) return reject(err);
-            if (!user) return reject(new _Error('User does not exist.', 400));
-            for (let i in userData) {
-                user[i] = userData[i];
-            }
-            user.save((err, updatedUser) => {
-                if (err) reject(err);
-                resolve(updatedUser);
-            })
+            resolve(raw)
         })
     });
 }

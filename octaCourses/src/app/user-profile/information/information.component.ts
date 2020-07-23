@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from 'src/app/services/user.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-information',
@@ -7,15 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InformationComponent implements OnInit {
 
-  user = {
-    name: 'Alaa A Amin',
-    email: 'alaaamin@gmail.com'
-  }
+  user;
 
   /* selectedValue represents the choosen category name or id or whatever that suits the purpose best
   as the interests of the student */
   // it supports two way binding so it should containe the previously selected categories ( if it was choosen before )
-  selectedValue: string[] = ['art'];
+  selectedValue: string[] = [];
 
   // start of the categories array
   // note that i don't know if we need an id or not but i put it anyway
@@ -38,9 +37,15 @@ export class InformationComponent implements OnInit {
   ]
   // end of the categories array
 
-  constructor() { }
+  constructor(private UService: UserService, private toastService: ToastrService) { }
 
   ngOnInit(): void {
+    this.UService.getStudentInfo().then((user: any) => {
+      this.user = user.data.user
+      console.log(user)
+    }).catch(err => {
+      this.toastService.error(err.message)
+    })
   }
 
   // the below functions used to display and hide the editing forms for the input fields
@@ -59,8 +64,15 @@ export class InformationComponent implements OnInit {
     this.editName = false;
   }
   // submitName should submit the name to the database then hides the input fields
-  submitName() {
+  submitName(val: string) {
     this.editName = true;
+    this.UService.updateStudentInfo({ firstname: val.split(' ')[0], lastname: val.split(' ')[1] })
+    .then(() => {
+      this.toastService.success('Updated user name')
+    })
+    .catch(err => {
+      this.toastService.error(err.message)
+    })
   }
 
   //email section
@@ -68,8 +80,15 @@ export class InformationComponent implements OnInit {
     this.editEmail = false;
   }
   // submitEmail should submit the name to the database then hides the input fields
-  submitEmail() {
+  submitEmail(val) {
     this.editEmail = true;
+    this.UService.updateStudentInfo({ email: val })
+    .then(() => {
+      this.toastService.success('Updated user email')
+    })
+    .catch(err => {
+      this.toastService.error(err.message)
+    })
   }
 
   // start of interests section
@@ -85,6 +104,14 @@ export class InformationComponent implements OnInit {
     // this function should submit the interests to the DB
     // then hides the interests drop down
     this.editInterests = !this.editInterests;
+
+    this.UService.updateStudentInfo({ interests: this.selectedValue })
+      .then(() => {
+        this.toastService.success('Updated user interests')
+      })
+      .catch(err => {
+        this.toastService.error(err.message)
+      })
   }
   // end of interests section
 
@@ -93,17 +120,15 @@ export class InformationComponent implements OnInit {
     this.editPhone = false;
   }
   // submitPhone should submit the name to the database then hides the input fields
-  submitPhone() {
+  submitPhone(val) {
     this.editPhone = true;
-  }
-
-  //facebook account section
-  facebookAccountEdit() {
-    this.editFacebookAccount = false;
-  }
-  // submitFacebookAccount should submit the name to the database then hides the input fields
-  submitFacebookAccount() {
-    this.editFacebookAccount = true;
+    this.UService.updateStudentInfo({ phone: val })
+    .then(() => {
+      this.toastService.success('Updated user phone')
+    })
+    .catch(err => {
+      this.toastService.error(err.message)
+    })
   }
 
   //birthdate section
@@ -111,8 +136,15 @@ export class InformationComponent implements OnInit {
     this.editBirthdate = false;
   }
   // submitBirthdate should submit the name to the database then hides the input fields
-  submitBirthdate() {
+  submitBirthdate(val) {
     this.editBirthdate = true;
+    this.UService.updateStudentInfo({ date_of_birth: val })
+    .then(() => {
+      this.toastService.success('Updated user date of birth')
+    })
+    .catch(err => {
+      this.toastService.error(err.message)
+    })
   }
 
   //password section
@@ -120,7 +152,14 @@ export class InformationComponent implements OnInit {
     this.changePassword = false;
   }
   // submitPassword should submit the name to the database then hides the input fields
-  submitPassword() {
+  submitPassword(val) {
     this.changePassword = true;
+    this.UService.updateStudentInfo({ password: val })
+    .then(() => {
+      this.toastService.success('Updated user password')
+    })
+    .catch(err => {
+      this.toastService.error(err.message)
+    })
   }
 }
