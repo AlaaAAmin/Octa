@@ -17,13 +17,8 @@ const createIOListners = (io) => {
     // once the connection established this event runs only once
     io.on('connection', (socket) => {
 
-        addHandlers(socket)
-        // authentication before getting notifications
-        // authenticateSocket(io)
-        socket.on('notification', () => {
-            console.log('io.sockets')
-
-        })
+        addHandlers(socket)       
+        
     })
 
 }

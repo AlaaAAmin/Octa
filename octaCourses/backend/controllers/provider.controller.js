@@ -4,6 +4,7 @@ const Token = require('../models/token.model');
 const crypto = require('crypto');
 const jwt = require('jsonwebtoken');
 const _Error = require('../classes/error.class');
+const stripe = require('../services/payment.service');
 const EMAIL_SECRET = require('../config/config.json').EMAIL_SECRET;
 
 const register = (req, res, next) => {
@@ -38,7 +39,7 @@ const register = (req, res, next) => {
             return mailer.sendMail(options);
         })
         .then(() => {
-            res.status(201).send({ status: 'success', data: { id: userId } });
+            res.status(201).json({ status: 'success', data: { id: userId } });
         })
         .catch(err => next(err))
 }
@@ -64,7 +65,7 @@ const getProviderById = (req, res, next) => {
             delete user.timestamp;
             delete user.password;
             delete user.permissionLevel;
-            res.status(200).send(user)
+            res.status(200).json({ status: 'success', data: { user } })
         })
         .catch(err => next(err))
 }
@@ -102,7 +103,7 @@ const verifyEmail = (req, res, next) => {
             user.verified = true;
             user.save((err) => {
                 if (err) return next(err)
-                res.status(200).send({ status: 'success', message: "The account has been verified. Please log in." });
+                res.status(200).json({ status: 'success', message: "The account has been verified. Please log in." });
             });
         }).catch(err => next(err))
     })
@@ -113,7 +114,7 @@ const resendVerificationEmail = (req, res, next) => {
     ProviderModel.Provider.findOne({ _id: userId }, (err, user) => {
         if (err) return next(err)
         if (!user) return next(new _Error('Unable to find a user for this token.', 400))
-        if (user.verified) return next(new _Error('This user has already been verified.',400)) 
+        if (user.verified) return next(new _Error('This user has already been verified.', 400))
         Token.generateToken(userId, 'email-verification')
             .then(token => {
                 let data = {
@@ -137,7 +138,7 @@ const resendVerificationEmail = (req, res, next) => {
                 return mailer.sendMail(options);
             })
             .then(() => {
-                res.status(200).send({ status: 'success', message: 'Email has been sent.' });
+                res.status(200).json({ status: 'success', message: 'Email has been sent.' });
             })
             .catch(err => next(err))
     })
@@ -168,7 +169,7 @@ const SendPasswordReset = (req, res, next) => {
             return mailer.sendMail(options);
         })
         .then(() => {
-            res.status(200).send({ status: 'success', message: 'Email has been sent.' });
+            res.status(200).json({ status: 'success', message: 'Email has been sent.' });
         })
         .catch(err => next(err))
 }
@@ -187,11 +188,58 @@ const resetPassword = (req, res, next) => {
             user.password = req.body.password;
             user.save((err) => {
                 if (err) return next(err)
-                res.status(200).send({ status: 'success', message: "Password has been reset." });
+                res.status(200).json({ status: 'success', message: "Password has been reset." });
             });
         });
     })
 }
+
+const generateStripeForProvider = (req, res, next) => {
+    // request must contain {firstname, lastname}
+    stripe.accounts.create({
+        type: 'custom',
+        country: 'US',
+        email: req.jwt.email,
+        business_type: 'individual',
+        individual: {
+            first_name: req.body.firstname,
+            last_name: req.body.lastname
+        },
+        requested_capabilities: ['transfers'],
+
+    }, async function (err, account) {
+        if (err) return next(err)
+        try {
+            const { id } = account
+
+
+            await stripe.account.update(id, {
+                tos_acceptance: {
+                    date: Math.floor(Date.now() / 1000),
+                    ip: req.connections.remoteAddress
+                }
+            })
+
+            let bank = await stripe.accounts.createExternalAccount(id, {
+                external_account: {
+                    object: 'bank_account',
+                    country: 'US',
+                    currency: 'usd',
+                    routing_number: '110000000',
+                    account_number: '000123456789'
+                }
+            })
+
+            await ProviderModel.bindStripeAccountToProvider(req.jwt._id, id, bank.id)
+
+
+            res.status(200).json({ status: 'success', message: 'Created stripe account.' })
+
+        } catch (err) { next(err) }
+
+    })
+}
+
 
 
 module.exports.providerRegister = register;
@@ -203,3 +251,4 @@ module.exports.verifyEmail = verifyEmail;
 module.exports.resendVerificationEmail = resendVerificationEmail;
 module.exports.SendPasswordReset = SendPasswordReset;
 module.exports.resetPassword = resetPassword;
+module.exports.generateStripeForProvider = generateStripeForProvider

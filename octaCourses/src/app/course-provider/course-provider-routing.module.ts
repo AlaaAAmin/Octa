@@ -7,6 +7,7 @@ import { StatisticsComponent } from './statistics/statistics.component';
 import { StatisticsInfoComponent } from './statistics-info/statistics-info.component';
 
 const routes: Routes = [
+  { path: '', redirectTo: 'profile' },
   {
     path: 'profile', component: ProfileComponent, children: [
       { path: 'overview', component: InformationComponent },

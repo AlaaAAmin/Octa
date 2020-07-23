@@ -9,6 +9,26 @@
             "date": 1595133430098,
             "name": "logs\\Exception-2020-07-19.log",
             "hash": "15b73b0dce87c08541d1c9c7b9d2a46e"
+        },
+        {
+            "date": 1595206570009,
+            "name": "logs\\Exception-2020-07-20.log",
+            "hash": "d23b40194b73f92752492be77dc2be19"
+        },
+        {
+            "date": 1595282940772,
+            "name": "logs\\Exception-2020-07-21.log",
+            "hash": "8276b07e4372544899fab471d2afeab9"
+        },
+        {
+            "date": 1595369192168,
+            "name": "logs\\Exception-2020-07-22.log",
+            "hash": "aabbd00db38e8d9f1bed94933a6c64ca"
+        },
+        {
+            "date": 1595458907826,
+            "name": "logs\\Exception-2020-07-23.log",
+            "hash": "c004ff4efc6dac96bd54dbd073819392"
         }
     ]
 }

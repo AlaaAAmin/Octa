@@ -8,8 +8,6 @@ const sendMail = (options) => {
 
     let transporter = nodemailer.createTransport({
         service: "Gmail",
-        port: 587,
-        secure: false,
         auth: {
             user: config.mailer.auth.email,
             pass: config.mailer.auth.password

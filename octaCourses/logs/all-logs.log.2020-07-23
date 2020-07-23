@@ -1,0 +1,472 @@
+2020-07-23 04:43:00:430 [[31m[1merror[22m[39m] : Error 
+2020-07-23 05:15:27:1527 [[31m[1merror[22m[39m] : ReferenceError 
+2020-07-23 07:04:18:418 [[31m[1merror[22m[39m] : ReferenceError 
+2020-07-23 09:22:58:2258 [[31m[1merror[22m[39m] : TypeError 
+2020-07-23 09:24:37:2437 [[31m[1merror[22m[39m] : TypeError 
+2020-07-23 09:47:21:4721 [[32minfo[39m] : ::1 - - [23/Jul/2020:07:47:21 +0000] "OPTIONS /courses/1/checkout HTTP/1.1" 200 4 "http://localhost:4200/course/1" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 09:47:21:4721 [[32minfo[39m] : ::1 - - [23/Jul/2020:07:47:21 +0000] "POST /courses/1/checkout HTTP/1.1" 401 - "http://localhost:4200/course/1" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 09:49:58:4958 [[32minfo[39m] : ::1 - - [23/Jul/2020:07:49:58 +0000] "OPTIONS /courses/1/checkout HTTP/1.1" 200 4 "http://localhost:4200/course/1" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 09:49:58:4958 [[32minfo[39m] : ::1 - - [23/Jul/2020:07:49:58 +0000] "POST /courses/1/checkout HTTP/1.1" 401 - "http://localhost:4200/course/1" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 09:53:42:5342 [[32minfo[39m] : ::1 - - [23/Jul/2020:07:53:42 +0000] "OPTIONS /test/payment HTTP/1.1" 200 4 "http://localhost:4200/course/1" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 09:54:04:544 [[32minfo[39m] : ::1 - - [23/Jul/2020:07:54:04 +0000] "OPTIONS /test/payment HTTP/1.1" 200 4 "http://localhost:4200/course/1" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 09:55:35:5535 [[32minfo[39m] : ::ffff:127.0.0.1 - - [23/Jul/2020:07:55:35 +0000] "OPTIONS /test/payment HTTP/1.1" 200 4 "http://localhost:4200/course/1" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 09:57:04:574 [[32minfo[39m] : ::ffff:127.0.0.1 - - [23/Jul/2020:07:57:04 +0000] "OPTIONS /test/payment HTTP/1.1" 200 4 "http://localhost:4200/course/1" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 09:58:59:5859 [[32minfo[39m] : ::ffff:127.0.0.1 - - [23/Jul/2020:07:58:59 +0000] "POST /test/payment HTTP/1.1" - - "http://localhost:4200/course/1" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 09:59:04:594 [[32minfo[39m] : ::ffff:127.0.0.1 - - [23/Jul/2020:07:59:04 +0000] "POST /test/payment HTTP/1.1" - - "http://localhost:4200/course/1" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 09:59:26:5926 [[32minfo[39m] : ::1 - - [23/Jul/2020:07:59:26 +0000] "OPTIONS /test/payment HTTP/1.1" 200 4 "http://localhost:4200/course/1" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 10:01:34:134 [[32minfo[39m] : ::1 - - [23/Jul/2020:08:01:34 +0000] "OPTIONS /test/payment HTTP/1.1" 200 4 "http://localhost:4200/course/1" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 10:12:24:1224 [[32minfo[39m] : ::1 - - [23/Jul/2020:08:12:24 +0000] "OPTIONS /test/payment HTTP/1.1" 200 4 "http://localhost:4200/course/1" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 10:13:36:1336 [[32minfo[39m] : ::1 - - [23/Jul/2020:08:13:36 +0000] "OPTIONS /test/payment HTTP/1.1" 200 4 "http://localhost:4200/course/1" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 10:15:36:1536 [[32minfo[39m] : ::1 - - [23/Jul/2020:08:15:36 +0000] "POST /test/payment HTTP/1.1" - - "http://localhost:4200/course/1" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 10:16:12:1612 [[32minfo[39m] : ::1 - - [23/Jul/2020:08:16:12 +0000] "OPTIONS /test/payment HTTP/1.1" 200 4 "http://localhost:4200/course/1" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 10:18:12:1812 [[32minfo[39m] : ::1 - - [23/Jul/2020:08:18:12 +0000] "POST /test/payment HTTP/1.1" - - "http://localhost:4200/course/1" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 10:20:12:2012 [[32minfo[39m] : ::1 - - [23/Jul/2020:08:20:12 +0000] "POST /test/payment HTTP/1.1" - - "http://localhost:4200/course/1" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 10:37:30:3730 [[32minfo[39m] : ::1 - - [23/Jul/2020:08:37:30 +0000] "OPTIONS /test/payment HTTP/1.1" 200 4 "http://localhost:4200/course/1" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 10:39:30:3930 [[32minfo[39m] : ::1 - - [23/Jul/2020:08:39:30 +0000] "POST /test/payment HTTP/1.1" - - "http://localhost:4200/course/1" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 10:41:30:4130 [[32minfo[39m] : ::1 - - [23/Jul/2020:08:41:30 +0000] "POST /test/payment HTTP/1.1" - - "http://localhost:4200/course/1" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 11:44:58:4458 [[31m[1merror[22m[39m] : {"name":"JsonWebTokenError","message":"jwt must be provided"} 
+2020-07-23 11:44:58:4458 [[32minfo[39m] : Socket eXJglUd3NbX2CGSMAAAA is a guest. 
+2020-07-23 11:45:02:452 [[31m[1merror[22m[39m] : uncaughtException: Cannot read property '_id' of undefined
+TypeError: Cannot read property '_id' of undefined
+    at Socket.<anonymous> (G:\Git\Octa\octaCourses\backend\config\socket.config.js:116:37)
+    at Socket.emit (events.js:311:20)
+    at Socket.emit (G:\Git\Octa\octaCourses\node_modules\socket.io\lib\socket.js:142:10)
+    at Socket.onclose (G:\Git\Octa\octaCourses\node_modules\socket.io\lib\socket.js:454:8)
+    at Socket.ondisconnect (G:\Git\Octa\octaCourses\node_modules\socket.io\lib\socket.js:418:8)
+    at Socket.onpacket (G:\Git\Octa\octaCourses\node_modules\socket.io\lib\socket.js:340:12)
+    at G:\Git\Octa\octaCourses\node_modules\socket.io\lib\client.js:214:16
+    at processTicksAndRejections (internal/process/task_queues.js:79:11) 
+2020-07-23 12:06:16:616 [[32minfo[39m] : ::1 - - [23/Jul/2020:10:06:16 +0000] "OPTIONS /student/register HTTP/1.1" 200 26 "http://localhost:4200/register" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 12:06:16:616 [[32minfo[39m] : ::1 - - [23/Jul/2020:10:06:16 +0000] "POST /student/register HTTP/1.1" 500 1864 "http://localhost:4200/register" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 12:07:20:720 [[32minfo[39m] : ::1 - - [23/Jul/2020:10:07:20 +0000] "OPTIONS /student/register HTTP/1.1" 200 26 "http://localhost:4200/register" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 12:07:20:720 [[32minfo[39m] : ::1 - - [23/Jul/2020:10:07:20 +0000] "POST /student/register HTTP/1.1" 400 109 "http://localhost:4200/register" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 12:08:19:819 [[32minfo[39m] : ::1 - - [23/Jul/2020:10:08:19 +0000] "OPTIONS /student/register HTTP/1.1" 200 26 "http://localhost:4200/register" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 12:08:21:821 [[31m[1merror[22m[39m] : {"code":"EAUTH","response":"535-5.7.8 Username and Password not accepted. Learn more at\n535 5.7.8  https://support.google.com/mail/?p=BadCredentials w4sm2171400qtc.5 - gsmtp","responseCode":535,"command":"AUTH PLAIN","statusCode":500,"status":"error"} 
+2020-07-23 12:08:22:822 [[32minfo[39m] : ::1 - - [23/Jul/2020:10:08:22 +0000] "POST /student/register HTTP/1.1" 500 52 "http://localhost:4200/register" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 12:13:40:1340 [[32minfo[39m] : ::1 - - [23/Jul/2020:10:13:40 +0000] "OPTIONS /student/register HTTP/1.1" 200 26 "http://localhost:4200/register" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 12:13:40:1340 [[32minfo[39m] : ::1 - - [23/Jul/2020:10:13:40 +0000] "POST /student/register HTTP/1.1" 500 1868 "http://localhost:4200/register" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 12:14:51:1451 [[32minfo[39m] : ::1 - - [23/Jul/2020:10:14:51 +0000] "OPTIONS /student/register HTTP/1.1" 200 26 "http://localhost:4200/register" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 12:14:51:1451 [[32minfo[39m] : ::1 - - [23/Jul/2020:10:14:51 +0000] "POST /student/register HTTP/1.1" 500 1885 "http://localhost:4200/register" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 12:16:08:168 [[32minfo[39m] : ::1 - - [23/Jul/2020:10:16:08 +0000] "OPTIONS /student/register HTTP/1.1" 200 26 "http://localhost:4200/register" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 12:16:08:168 [[32minfo[39m] : ::1 - - [23/Jul/2020:10:16:08 +0000] "POST /student/register HTTP/1.1" 400 83 "http://localhost:4200/register" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 12:20:05:205 [[32minfo[39m] : ::1 - - [23/Jul/2020:10:20:05 +0000] "OPTIONS /student/register HTTP/1.1" 200 26 "http://localhost:4200/register" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 12:20:05:205 [[32minfo[39m] : ::1 - - [23/Jul/2020:10:20:05 +0000] "POST /student/register HTTP/1.1" 400 83 "http://localhost:4200/register" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 12:24:18:2418 [[32minfo[39m] : ::1 - - [23/Jul/2020:10:24:18 +0000] "OPTIONS /student/register HTTP/1.1" 200 26 "http://localhost:4200/register" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 12:24:18:2418 [[32minfo[39m] : ::1 - - [23/Jul/2020:10:24:18 +0000] "POST /student/register HTTP/1.1" 400 83 "http://localhost:4200/register" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 12:26:23:2623 [[32minfo[39m] : ::1 - - [23/Jul/2020:10:26:23 +0000] "OPTIONS /student/register HTTP/1.1" 200 26 "http://localhost:4200/register" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 12:26:23:2623 [[32minfo[39m] : ::1 - - [23/Jul/2020:10:26:23 +0000] "POST /student/register HTTP/1.1" 400 176 "http://localhost:4200/register" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 12:27:14:2714 [[32minfo[39m] : ::1 - - [23/Jul/2020:10:27:14 +0000] "OPTIONS /student/register HTTP/1.1" 200 26 "http://localhost:4200/register" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 12:27:19:2719 [[31m[1merror[22m[39m] : {"code":"EAUTH","response":"534-5.7.14 <https://accounts.google.com/signin/continue?sarp=1&scc=1&plt=AKgnsbu\n534-5.7.14 iV-4lMBr2_wqyMfISlybhIhWg6FGEcuxjjtilUoO70Jt-38ZpCgP6KzybJULpjMkTEXsV\n534-5.7.14 7Kzw7Ngg82qbNmIjuwokxE3Lr9E9mmuG1ysU40gK97yiRDqVzvu0LhWZy6B4VHTX>\n534-5.7.14 Please log in via your web browser and then try again.\n534-5.7.14  Learn more at\n534 5.7.14  https://support.google.com/mail/answer/78754 b131sm2204190qkc.121 - gsmtp","responseCode":534,"command":"AUTH PLAIN","statusCode":500,"status":"error"} 
+2020-07-23 12:27:19:2719 [[32minfo[39m] : ::1 - - [23/Jul/2020:10:27:19 +0000] "POST /student/register HTTP/1.1" 500 52 "http://localhost:4200/register" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 12:31:46:3146 [[32minfo[39m] : ::1 - - [23/Jul/2020:10:31:46 +0000] "OPTIONS /student/register HTTP/1.1" 200 26 "http://localhost:4200/register" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 12:31:51:3151 [[31m[1merror[22m[39m] : {"code":"EAUTH","response":"534-5.7.14 <https://accounts.google.com/signin/continue?sarp=1&scc=1&plt=AKgnsbv\n534-5.7.14 kqXtsuaHEcpnY5nLUwOrpN9nl3XTsKcuuj9dJHT_88aC2diYrd0WprwvocCuJWCol10pR\n534-5.7.14 sHvw7Lf3F5e5Km5ZjUxzXtyecAr7rCytpHSyABE5G4HrJ4T7Gfkujd1hqUFmDaiG>\n534-5.7.14 Please log in via your web browser and then try again.\n534-5.7.14  Learn more at\n534 5.7.14  https://support.google.com/mail/answer/78754 u22sm2305569qtb.23 - gsmtp","responseCode":534,"command":"AUTH PLAIN","statusCode":500,"status":"error"} 
+2020-07-23 12:31:51:3151 [[32minfo[39m] : ::1 - - [23/Jul/2020:10:31:51 +0000] "POST /student/register HTTP/1.1" 500 52 "http://localhost:4200/register" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 12:35:17:3517 [[32minfo[39m] : ::1 - - [23/Jul/2020:10:35:17 +0000] "OPTIONS /student/register HTTP/1.1" 200 26 "http://localhost:4200/register" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 12:35:24:3524 [[31m[1merror[22m[39m] : {"code":"EAUTH","response":"534-5.7.14 <https://accounts.google.com/signin/continue?sarp=1&scc=1&plt=AKgnsbt\n534-5.7.14 Jmr3Y5C2NReY7XeU5OpTbGPO7cg9f70rnkcxIAI1Tc7PmX8Iy-Fm-qJIwzjABnMAZ5NPa\n534-5.7.14 nKi5gK-x32_MTsPoE9ShNKt4BcH9zdyX3owiGQvdaXtMu73JRxelwzz_lmwI3lg0>\n534-5.7.14 Please log in via your web browser and then try again.\n534-5.7.14  Learn more at\n534 5.7.14  https://support.google.com/mail/answer/78754 139sm2345613qkl.13 - gsmtp","responseCode":534,"command":"AUTH PLAIN","statusCode":500,"status":"error"} 
+2020-07-23 12:35:24:3524 [[32minfo[39m] : ::1 - - [23/Jul/2020:10:35:24 +0000] "POST /student/register HTTP/1.1" 500 52 "http://localhost:4200/register" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 12:40:27:4027 [[32minfo[39m] : ::1 - - [23/Jul/2020:10:40:27 +0000] "OPTIONS /student/register HTTP/1.1" 200 26 "http://localhost:4200/register" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 12:40:29:4029 [[31m[1merror[22m[39m] : {"code":"EAUTH","response":"534-5.7.14 <https://accounts.google.com/signin/continue?sarp=1&scc=1&plt=AKgnsbu\n534-5.7.14 nOLxAzfRgul0qtp6YmT7Av2MV7mdo8orXWVFtHZYTpr2dI1o78-CqzQktUBFG0gY-mh-4\n534-5.7.14 xwDGQoXfHXqRoyj8fx0AytDynOdRmSsdtvkA_xI6KgrdRHStY1Fpt8yBngZIynIf>\n534-5.7.14 Please log in via your web browser and then try again.\n534-5.7.14  Learn more at\n534 5.7.14  https://support.google.com/mail/answer/78754 s52sm2209421qtj.52 - gsmtp","responseCode":534,"command":"AUTH PLAIN","statusCode":500,"status":"error"} 
+2020-07-23 12:40:29:4029 [[32minfo[39m] : ::1 - - [23/Jul/2020:10:40:29 +0000] "POST /student/register HTTP/1.1" 500 52 "http://localhost:4200/register" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 12:48:43:4843 [[32minfo[39m] : ::1 - - [23/Jul/2020:10:48:43 +0000] "OPTIONS /student/register HTTP/1.1" 200 26 "http://localhost:4200/register" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 12:48:46:4846 [[31m[1merror[22m[39m] : {"code":"EAUTH","response":"534-5.7.14 <https://accounts.google.com/signin/continue?sarp=1&scc=1&plt=AKgnsbv\n534-5.7.14 J5zrKQnCqcriiHGVFY01qj6_NrzMy9CwUy8zQY0OfRtK2hbhXTBDTlmczlyFYnkK8skHG\n534-5.7.14 d-FgDQPcTiHouqGau_G45IyjP6KoOkeXm2zCo1W_zwheYitk-ns5t-2jkKNoWZwJ>\n534-5.7.14 Please log in via your web browser and then try again.\n534-5.7.14  Learn more at\n534 5.7.14  https://support.google.com/mail/answer/78754 u22sm2336453qtb.23 - gsmtp","responseCode":534,"command":"AUTH PLAIN","statusCode":500,"status":"error"} 
+2020-07-23 12:48:46:4846 [[32minfo[39m] : ::1 - - [23/Jul/2020:10:48:46 +0000] "POST /student/register HTTP/1.1" 500 52 "http://localhost:4200/register" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 12:50:41:5041 [[32minfo[39m] : ::1 - - [23/Jul/2020:10:50:41 +0000] "OPTIONS /student/register HTTP/1.1" 200 26 "http://localhost:4200/register" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 12:50:44:5044 [[31m[1merror[22m[39m] : {"code":"EAUTH","response":"534-5.7.14 <https://accounts.google.com/signin/continue?sarp=1&scc=1&plt=AKgnsbu\n534-5.7.14 yB7CpevifURPRYjRz_m8c1YODxAS3qA6vjj3YQoPxz9l5Nsb2TUcyVLuETRz1MEQWp7LL\n534-5.7.14 1WeXRIWq0mH8-_tN8HQLIvqdOTrr4RXmn-AaJ7iqrlbzwVNPqRsssKCuM8iwKdKs>\n534-5.7.14 Please log in via your web browser and then try again.\n534-5.7.14  Learn more at\n534 5.7.14  https://support.google.com/mail/answer/78754 22sm2383054qkg.24 - gsmtp","responseCode":534,"command":"AUTH PLAIN","statusCode":500,"status":"error"} 
+2020-07-23 12:50:44:5044 [[32minfo[39m] : ::1 - - [23/Jul/2020:10:50:44 +0000] "POST /student/register HTTP/1.1" 500 52 "http://localhost:4200/register" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 12:51:26:5126 [[32minfo[39m] : ::1 - - [23/Jul/2020:10:51:26 +0000] "OPTIONS /student/register HTTP/1.1" 200 26 "http://localhost:4200/register" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 12:51:29:5129 [[31m[1merror[22m[39m] : {"code":"EAUTH","response":"534-5.7.14 <https://accounts.google.com/signin/continue?sarp=1&scc=1&plt=AKgnsbv\n534-5.7.14 b5WWAEWfmGnmGN6rpPBPt8CZD2rm8d3ppiUtzfkzgQbEjWMulADMbeqWwXxrmvlpFVJJM\n534-5.7.14 Xo1JEnKbwp9P5ckKF_-2wXq_v8JbDB5HeK5tCM_NHjQSj5pmH04c53sZ5L6tqeB9>\n534-5.7.14 Please log in via your web browser and then try again.\n534-5.7.14  Learn more at\n534 5.7.14  https://support.google.com/mail/answer/78754 f130sm2187785qke.99 - gsmtp","responseCode":534,"command":"AUTH PLAIN","statusCode":500,"status":"error"} 
+2020-07-23 12:51:29:5129 [[32minfo[39m] : ::1 - - [23/Jul/2020:10:51:29 +0000] "POST /student/register HTTP/1.1" 500 52 "http://localhost:4200/register" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 12:57:20:5720 [[32minfo[39m] : ::1 - - [23/Jul/2020:10:57:20 +0000] "OPTIONS /student/register HTTP/1.1" 200 26 "http://localhost:4200/register" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 12:57:22:5722 [[31m[1merror[22m[39m] : {"errno":"ECONNREFUSED","code":"ESOCKET","syscall":"connect","address":"127.0.0.1","port":587,"command":"CONN","statusCode":500,"status":"error"} 
+2020-07-23 12:57:22:5722 [[32minfo[39m] : ::1 - - [23/Jul/2020:10:57:22 +0000] "POST /student/register HTTP/1.1" 500 52 "http://localhost:4200/register" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 13:00:45:045 [[32minfo[39m] : ::1 - - [23/Jul/2020:11:00:45 +0000] "OPTIONS /student/register HTTP/1.1" 200 26 "http://localhost:4200/register" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 13:00:48:048 [[31m[1merror[22m[39m] : {"errno":"ECONNREFUSED","code":"ESOCKET","syscall":"connect","address":"127.0.0.1","port":2525,"command":"CONN","statusCode":500,"status":"error"} 
+2020-07-23 13:00:48:048 [[32minfo[39m] : ::1 - - [23/Jul/2020:11:00:48 +0000] "POST /student/register HTTP/1.1" 500 52 "http://localhost:4200/register" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 13:02:27:227 [[32minfo[39m] : ::1 - - [23/Jul/2020:11:02:27 +0000] "OPTIONS /student/register HTTP/1.1" 200 26 "http://localhost:4200/register" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 13:02:29:229 [[31m[1merror[22m[39m] : {"errno":"ECONNREFUSED","code":"ESOCKET","syscall":"connect","address":"127.0.0.1","port":465,"command":"CONN","statusCode":500,"status":"error"} 
+2020-07-23 13:02:29:229 [[32minfo[39m] : ::1 - - [23/Jul/2020:11:02:29 +0000] "POST /student/register HTTP/1.1" 500 52 "http://localhost:4200/register" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 13:09:37:937 [[32minfo[39m] : ::1 - - [23/Jul/2020:11:09:37 +0000] "OPTIONS /student/register HTTP/1.1" 200 26 "http://localhost:4200/register" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 13:09:45:945 [[31m[1merror[22m[39m] : {"code":"EAUTH","response":"534-5.7.14 <https://accounts.google.com/signin/continue?sarp=1&scc=1&plt=AKgnsbu\n534-5.7.14 Wkkq-fmEUt7_ySPjyawcaUg61ibugVb2N4ipQYqNu5XQ1OChy5pEQ7c7EDS1wFYnqnUNq\n534-5.7.14 Dr-SEFw6pUQXcr8iraHqygjV5jcRInH_z7z8ieyRu6yWBuVcQFq5WsZfZl7tpFj4>\n534-5.7.14 Please log in via your web browser and then try again.\n534-5.7.14  Learn more at\n534 5.7.14  https://support.google.com/mail/answer/78754 z24sm2155783qtn.7 - gsmtp","responseCode":534,"command":"AUTH PLAIN","statusCode":500,"status":"error"} 
+2020-07-23 13:09:45:945 [[32minfo[39m] : ::1 - - [23/Jul/2020:11:09:45 +0000] "POST /student/register HTTP/1.1" 500 52 "http://localhost:4200/register" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 13:17:07:177 [[32minfo[39m] : ::1 - - [23/Jul/2020:11:17:07 +0000] "OPTIONS /student/register HTTP/1.1" 200 26 "http://localhost:4200/register" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 13:17:21:1721 [[32minfo[39m] : ::1 - - [23/Jul/2020:11:17:21 +0000] "POST /student/register HTTP/1.1" 201 52 "http://localhost:4200/register" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 13:22:02:222 [[32minfo[39m] : ::1 - - [23/Jul/2020:11:22:02 +0000] "OPTIONS /student/auth HTTP/1.1" 200 21 "http://localhost:4200/login" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 13:22:02:222 [[32minfo[39m] : ::1 - - [23/Jul/2020:11:22:02 +0000] "POST /student/auth HTTP/1.1" 201 514 "http://localhost:4200/login" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 13:29:16:2916 [[32minfo[39m] : ::1 - - [23/Jul/2020:11:29:16 +0000] "OPTIONS /student/auth HTTP/1.1" 200 21 "http://localhost:4200/login" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 13:29:16:2916 [[32minfo[39m] : ::1 - - [23/Jul/2020:11:29:16 +0000] "POST /student/auth HTTP/1.1" 201 514 "http://localhost:4200/login" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 13:30:54:3054 [[32minfo[39m] : ::1 - - [23/Jul/2020:11:30:54 +0000] "OPTIONS /student/auth HTTP/1.1" 200 21 "http://localhost:4200/login" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 13:30:54:3054 [[32minfo[39m] : ::1 - - [23/Jul/2020:11:30:54 +0000] "POST /student/auth HTTP/1.1" 201 514 "http://localhost:4200/login" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 13:31:38:3138 [[32minfo[39m] : ::1 - - [23/Jul/2020:11:31:38 +0000] "OPTIONS /student/auth HTTP/1.1" 200 21 "http://localhost:4200/login" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 13:31:38:3138 [[32minfo[39m] : ::1 - - [23/Jul/2020:11:31:38 +0000] "POST /student/auth HTTP/1.1" 201 514 "http://localhost:4200/login" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 13:31:51:3151 [[32minfo[39m] : ::1 - - [23/Jul/2020:11:31:51 +0000] "OPTIONS /student/auth HTTP/1.1" 200 21 "http://localhost:4200/login" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 13:31:51:3151 [[32minfo[39m] : ::1 - - [23/Jul/2020:11:31:51 +0000] "POST /student/auth HTTP/1.1" 201 514 "http://localhost:4200/login" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 13:32:52:3252 [[32minfo[39m] : ::1 - - [23/Jul/2020:11:32:52 +0000] "OPTIONS /student/auth HTTP/1.1" 200 21 "http://localhost:4200/login" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 13:32:52:3252 [[32minfo[39m] : ::1 - - [23/Jul/2020:11:32:52 +0000] "POST /student/auth HTTP/1.1" 201 590 "http://localhost:4200/login" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 13:34:46:3446 [[32minfo[39m] : ::1 - - [23/Jul/2020:11:34:46 +0000] "OPTIONS /student/auth HTTP/1.1" 200 21 "http://localhost:4200/login" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 13:34:46:3446 [[32minfo[39m] : ::1 - - [23/Jul/2020:11:34:46 +0000] "POST /student/auth HTTP/1.1" 201 590 "http://localhost:4200/login" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 13:35:16:3516 [[32minfo[39m] : ::1 - - [23/Jul/2020:11:35:16 +0000] "OPTIONS /student/auth HTTP/1.1" 200 21 "http://localhost:4200/login" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 13:35:16:3516 [[32minfo[39m] : ::1 - - [23/Jul/2020:11:35:16 +0000] "POST /student/auth HTTP/1.1" 201 590 "http://localhost:4200/login" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 13:36:01:361 [[32minfo[39m] : ::1 - - [23/Jul/2020:11:36:01 +0000] "OPTIONS /student/auth HTTP/1.1" 200 21 "http://localhost:4200/login" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 13:36:01:361 [[32minfo[39m] : ::1 - - [23/Jul/2020:11:36:01 +0000] "POST /student/auth HTTP/1.1" 201 590 "http://localhost:4200/login" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 13:36:35:3635 [[32minfo[39m] : ::1 - - [23/Jul/2020:11:36:35 +0000] "OPTIONS /student/auth HTTP/1.1" 200 21 "http://localhost:4200/login" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 13:36:35:3635 [[32minfo[39m] : ::1 - - [23/Jul/2020:11:36:35 +0000] "POST /student/auth HTTP/1.1" 201 590 "http://localhost:4200/login" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 21:46:34:4634 [[32minfo[39m] : ::1 - - [23/Jul/2020:19:46:34 +0000] "OPTIONS /student/auth HTTP/1.1" 200 21 "http://localhost:4200/login" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 21:46:34:4634 [[32minfo[39m] : ::1 - - [23/Jul/2020:19:46:34 +0000] "POST /student/auth HTTP/1.1" 201 590 "http://localhost:4200/login" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 21:48:10:4810 [[32minfo[39m] : ::1 - - [23/Jul/2020:19:48:10 +0000] "OPTIONS /student/auth HTTP/1.1" 200 21 "http://localhost:4200/login" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 21:48:10:4810 [[32minfo[39m] : ::1 - - [23/Jul/2020:19:48:10 +0000] "POST /student/auth HTTP/1.1" 201 590 "http://localhost:4200/login" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 21:48:14:4814 [[32minfo[39m] : ::1 - - [23/Jul/2020:19:48:14 +0000] "POST /student/auth HTTP/1.1" 201 590 "http://localhost:4200/login" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 21:48:18:4818 [[32minfo[39m] : ::1 - - [23/Jul/2020:19:48:18 +0000] "OPTIONS /student/auth HTTP/1.1" 200 21 "http://localhost:4200/login" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 21:48:18:4818 [[32minfo[39m] : ::1 - - [23/Jul/2020:19:48:18 +0000] "POST /student/auth HTTP/1.1" 201 590 "http://localhost:4200/login" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 21:48:39:4839 [[32minfo[39m] : ::1 - - [23/Jul/2020:19:48:39 +0000] "OPTIONS /student/auth HTTP/1.1" 200 21 "http://localhost:4200/login" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 21:48:39:4839 [[32minfo[39m] : ::1 - - [23/Jul/2020:19:48:39 +0000] "POST /student/auth HTTP/1.1" 201 590 "http://localhost:4200/login" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 21:50:57:5057 [[32minfo[39m] : ::1 - - [23/Jul/2020:19:50:57 +0000] "OPTIONS /student/auth HTTP/1.1" 200 21 "http://localhost:4200/login" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 21:50:57:5057 [[32minfo[39m] : ::1 - - [23/Jul/2020:19:50:57 +0000] "POST /student/auth HTTP/1.1" 201 590 "http://localhost:4200/login" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 21:51:04:514 [[32minfo[39m] : ::1 - - [23/Jul/2020:19:51:04 +0000] "OPTIONS /student/auth HTTP/1.1" 200 21 "http://localhost:4200/login" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 21:51:04:514 [[32minfo[39m] : ::1 - - [23/Jul/2020:19:51:04 +0000] "POST /student/auth HTTP/1.1" 201 590 "http://localhost:4200/login" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 21:53:07:537 [[32minfo[39m] : ::1 - - [23/Jul/2020:19:53:07 +0000] "OPTIONS /student/auth HTTP/1.1" 200 21 "http://localhost:4200/login" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 21:53:07:537 [[32minfo[39m] : ::1 - - [23/Jul/2020:19:53:07 +0000] "POST /student/auth HTTP/1.1" 201 590 "http://localhost:4200/login" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 22:00:38:038 [[32minfo[39m] : ::1 - - [23/Jul/2020:20:00:38 +0000] "OPTIONS /student/5f1971b3f64dfd3734938c7a HTTP/1.1" 200 21 "http://localhost:4200/user/profile/overview" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 22:00:38:038 [[32minfo[39m] : ::1 - - [23/Jul/2020:20:00:38 +0000] "GET /student/5f1971b3f64dfd3734938c7a HTTP/1.1" 403 - "http://localhost:4200/user/profile/overview" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 22:00:49:049 [[32minfo[39m] : ::1 - - [23/Jul/2020:20:00:49 +0000] "OPTIONS /student/5f1971b3f64dfd3734938c7a HTTP/1.1" 200 21 "http://localhost:4200/user/profile/overview" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 22:00:49:049 [[32minfo[39m] : ::1 - - [23/Jul/2020:20:00:49 +0000] "GET /student/5f1971b3f64dfd3734938c7a HTTP/1.1" 403 - "http://localhost:4200/user/profile/overview" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 22:03:04:34 [[32minfo[39m] : ::1 - - [23/Jul/2020:20:03:04 +0000] "GET /student/5f1971b3f64dfd3734938c7a HTTP/1.1" 401 - "http://localhost:4200/user/profile/overview" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 22:03:18:318 [[32minfo[39m] : ::1 - - [23/Jul/2020:20:03:18 +0000] "OPTIONS /student/5f1971b3f64dfd3734938c7a HTTP/1.1" 200 21 "http://localhost:4200/user/profile/overview" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 22:03:18:318 [[32minfo[39m] : ::1 - - [23/Jul/2020:20:03:18 +0000] "GET /student/5f1971b3f64dfd3734938c7a HTTP/1.1" 403 - "http://localhost:4200/user/profile/overview" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 22:03:24:324 [[32minfo[39m] : ::1 - - [23/Jul/2020:20:03:24 +0000] "OPTIONS /student/5f1971b3f64dfd3734938c7a HTTP/1.1" 200 21 "http://localhost:4200/user/profile/overview" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 22:03:24:324 [[32minfo[39m] : ::1 - - [23/Jul/2020:20:03:24 +0000] "GET /student/5f1971b3f64dfd3734938c7a HTTP/1.1" 403 - "http://localhost:4200/user/profile/overview" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 22:03:45:345 [[32minfo[39m] : ::1 - - [23/Jul/2020:20:03:45 +0000] "OPTIONS /student/5f1971b3f64dfd3734938c7a HTTP/1.1" 200 21 "http://localhost:4200/user/profile/overview" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 22:03:45:345 [[32minfo[39m] : ::1 - - [23/Jul/2020:20:03:45 +0000] "GET /student/5f1971b3f64dfd3734938c7a HTTP/1.1" 403 - "http://localhost:4200/user/profile/overview" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 22:04:24:424 [[32minfo[39m] : ::1 - - [23/Jul/2020:20:04:24 +0000] "OPTIONS /student/5f1971b3f64dfd3734938c7a HTTP/1.1" 200 21 "http://localhost:4200/user/profile/overview" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 22:04:24:424 [[32minfo[39m] : ::1 - - [23/Jul/2020:20:04:24 +0000] "GET /student/5f1971b3f64dfd3734938c7a HTTP/1.1" 403 - "http://localhost:4200/user/profile/overview" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 22:05:07:57 [[32minfo[39m] : ::1 - - [23/Jul/2020:20:05:07 +0000] "OPTIONS /student/5f1971b3f64dfd3734938c7a HTTP/1.1" 200 21 "http://localhost:4200/user/profile/overview" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 22:05:07:57 [[32minfo[39m] : ::1 - - [23/Jul/2020:20:05:07 +0000] "GET /student/5f1971b3f64dfd3734938c7a HTTP/1.1" 403 - "http://localhost:4200/user/profile/overview" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 22:05:14:514 [[32minfo[39m] : ::1 - - [23/Jul/2020:20:05:14 +0000] "OPTIONS /student/5f1971b3f64dfd3734938c7a HTTP/1.1" 200 21 "http://localhost:4200/user/profile/overview" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 22:05:14:514 [[32minfo[39m] : ::1 - - [23/Jul/2020:20:05:14 +0000] "GET /student/5f1971b3f64dfd3734938c7a HTTP/1.1" 403 - "http://localhost:4200/user/profile/overview" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 22:06:12:612 [[32minfo[39m] : ::1 - - [23/Jul/2020:20:06:12 +0000] "OPTIONS /student/5f1971b3f64dfd3734938c7a HTTP/1.1" 200 21 "http://localhost:4200/user/profile/overview" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 22:06:12:612 [[32minfo[39m] : ::1 - - [23/Jul/2020:20:06:12 +0000] "GET /student/5f1971b3f64dfd3734938c7a HTTP/1.1" 403 - "http://localhost:4200/user/profile/overview" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 22:06:54:654 [[32minfo[39m] : ::1 - - [23/Jul/2020:20:06:54 +0000] "OPTIONS /student/5f1971b3f64dfd3734938c7a HTTP/1.1" 200 21 "http://localhost:4200/user/profile/overview" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 22:06:54:654 [[32minfo[39m] : ::1 - - [23/Jul/2020:20:06:54 +0000] "GET /student/5f1971b3f64dfd3734938c7a HTTP/1.1" 403 - "http://localhost:4200/user/profile/overview" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 22:07:06:76 [[32minfo[39m] : ::1 - - [23/Jul/2020:20:07:06 +0000] "OPTIONS /student/5f1971b3f64dfd3734938c7a HTTP/1.1" 200 21 "http://localhost:4200/user/profile/overview" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 22:07:06:76 [[32minfo[39m] : ::1 - - [23/Jul/2020:20:07:06 +0000] "GET /student/5f1971b3f64dfd3734938c7a HTTP/1.1" 403 - "http://localhost:4200/user/profile/overview" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 22:07:18:718 [[32minfo[39m] : ::1 - - [23/Jul/2020:20:07:18 +0000] "OPTIONS /student/5f1971b3f64dfd3734938c7a HTTP/1.1" 200 21 "http://localhost:4200/user/profile/overview" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 22:07:18:718 [[32minfo[39m] : ::1 - - [23/Jul/2020:20:07:18 +0000] "GET /student/5f1971b3f64dfd3734938c7a HTTP/1.1" 403 - "http://localhost:4200/user/profile/overview" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 22:08:53:853 [[32minfo[39m] : ::1 - - [23/Jul/2020:20:08:53 +0000] "OPTIONS /student/5f1971b3f64dfd3734938c7a HTTP/1.1" 200 21 "http://localhost:4200/user/profile/overview" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 22:08:53:853 [[32minfo[39m] : ::1 - - [23/Jul/2020:20:08:53 +0000] "GET /student/5f1971b3f64dfd3734938c7a HTTP/1.1" 403 - "http://localhost:4200/user/profile/overview" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 22:09:41:941 [[32minfo[39m] : ::1 - - [23/Jul/2020:20:09:41 +0000] "OPTIONS /student/5f1971b3f64dfd3734938c7a HTTP/1.1" 200 21 "http://localhost:4200/user/profile/overview" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 22:09:41:941 [[32minfo[39m] : ::1 - - [23/Jul/2020:20:09:41 +0000] "GET /student/5f1971b3f64dfd3734938c7a HTTP/1.1" 403 - "http://localhost:4200/user/profile/overview" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 22:10:08:108 [[32minfo[39m] : ::1 - - [23/Jul/2020:20:10:08 +0000] "OPTIONS /student/5f1971b3f64dfd3734938c7a HTTP/1.1" 200 21 "http://localhost:4200/user/profile/overview" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 22:10:08:108 [[32minfo[39m] : ::1 - - [23/Jul/2020:20:10:08 +0000] "GET /student/5f1971b3f64dfd3734938c7a HTTP/1.1" 403 - "http://localhost:4200/user/profile/overview" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 22:10:48:1048 [[32minfo[39m] : ::1 - - [23/Jul/2020:20:10:48 +0000] "OPTIONS /student/5f1971b3f64dfd3734938c7a HTTP/1.1" 200 21 "http://localhost:4200/user/profile/overview" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 22:10:48:1048 [[31m[1merror[22m[39m] : uncaughtException: Cannot read property 'banned' of undefined
+TypeError: Cannot read property 'banned' of undefined
+    at G:\Git\Octa\octaCourses\backend\models\student.model.js:80:27
+    at G:\Git\Octa\octaCourses\node_modules\mongoose\lib\model.js:4837:16
+    at G:\Git\Octa\octaCourses\node_modules\mongoose\lib\query.js:4391:12
+    at G:\Git\Octa\octaCourses\node_modules\mongoose\lib\query.js:2869:28
+    at processTicksAndRejections (internal/process/task_queues.js:79:11) 
+2020-07-23 22:13:19:1319 [[32minfo[39m] : ::1 - - [23/Jul/2020:20:13:19 +0000] "OPTIONS /student/5f1971b3f64dfd3734938c7a HTTP/1.1" 200 21 "http://localhost:4200/user/profile/overview" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 22:13:19:1319 [[31m[1merror[22m[39m] : uncaughtException: Cannot read property 'banned' of undefined
+TypeError: Cannot read property 'banned' of undefined
+    at G:\Git\Octa\octaCourses\backend\models\student.model.js:80:27
+    at G:\Git\Octa\octaCourses\node_modules\mongoose\lib\model.js:4837:16
+    at G:\Git\Octa\octaCourses\node_modules\mongoose\lib\query.js:4391:12
+    at G:\Git\Octa\octaCourses\node_modules\mongoose\lib\query.js:2869:28
+    at processTicksAndRejections (internal/process/task_queues.js:79:11) 
+2020-07-23 22:14:18:1418 [[32minfo[39m] : ::1 - - [23/Jul/2020:20:14:18 +0000] "OPTIONS /student/5f1971b3f64dfd3734938c7a HTTP/1.1" 200 21 "http://localhost:4200/user/profile/overview" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 22:14:19:1419 [[32minfo[39m] : ::1 - - [23/Jul/2020:20:14:19 +0000] "GET /student/5f1971b3f64dfd3734938c7a HTTP/1.1" 200 272 "http://localhost:4200/user/profile/overview" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 22:16:09:169 [[32minfo[39m] : ::1 - - [23/Jul/2020:20:16:09 +0000] "OPTIONS /student/5f1971b3f64dfd3734938c7a HTTP/1.1" 200 21 "http://localhost:4200/user/profile/overview" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 22:16:09:169 [[31m[1merror[22m[39m] : uncaughtException: Cannot read property 'banned' of undefined
+TypeError: Cannot read property 'banned' of undefined
+    at G:\Git\Octa\octaCourses\backend\models\student.model.js:80:27
+    at G:\Git\Octa\octaCourses\node_modules\mongoose\lib\model.js:4837:16
+    at G:\Git\Octa\octaCourses\node_modules\mongoose\lib\query.js:4391:12
+    at G:\Git\Octa\octaCourses\node_modules\mongoose\lib\query.js:2869:28
+    at processTicksAndRejections (internal/process/task_queues.js:79:11) 
+2020-07-23 22:17:02:172 [[32minfo[39m] : ::1 - - [23/Jul/2020:20:17:02 +0000] "OPTIONS /student/5f1971b3f64dfd3734938c7a HTTP/1.1" 200 21 "http://localhost:4200/user/profile/overview" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 22:17:02:172 [[32minfo[39m] : ::1 - - [23/Jul/2020:20:17:02 +0000] "GET /student/5f1971b3f64dfd3734938c7a HTTP/1.1" 200 272 "http://localhost:4200/user/profile/overview" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 22:17:52:1752 [[32minfo[39m] : ::1 - - [23/Jul/2020:20:17:52 +0000] "OPTIONS /student/5f1971b3f64dfd3734938c7a HTTP/1.1" 200 21 "http://localhost:4200/user/profile/overview" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 22:17:52:1752 [[32minfo[39m] : ::1 - - [23/Jul/2020:20:17:52 +0000] "GET /student/5f1971b3f64dfd3734938c7a HTTP/1.1" 304 - "http://localhost:4200/user/profile/overview" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 22:18:14:1814 [[32minfo[39m] : ::1 - - [23/Jul/2020:20:18:14 +0000] "OPTIONS /student/5f1971b3f64dfd3734938c7a HTTP/1.1" 200 21 "http://localhost:4200/user/profile/overview" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 22:18:14:1814 [[32minfo[39m] : ::1 - - [23/Jul/2020:20:18:14 +0000] "GET /student/5f1971b3f64dfd3734938c7a HTTP/1.1" 304 - "http://localhost:4200/user/profile/overview" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 22:19:31:1931 [[32minfo[39m] : ::1 - - [23/Jul/2020:20:19:31 +0000] "OPTIONS /student/5f1971b3f64dfd3734938c7a HTTP/1.1" 200 21 "http://localhost:4200/user/profile/overview" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 22:19:31:1931 [[32minfo[39m] : ::1 - - [23/Jul/2020:20:19:31 +0000] "GET /student/5f1971b3f64dfd3734938c7a HTTP/1.1" 304 - "http://localhost:4200/user/profile/overview" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 22:19:51:1951 [[32minfo[39m] : ::1 - - [23/Jul/2020:20:19:51 +0000] "OPTIONS /student/5f1971b3f64dfd3734938c7a HTTP/1.1" 200 21 "http://localhost:4200/user/profile/overview" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 22:19:51:1951 [[32minfo[39m] : ::1 - - [23/Jul/2020:20:19:51 +0000] "GET /student/5f1971b3f64dfd3734938c7a HTTP/1.1" 304 - "http://localhost:4200/user/profile/overview" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 22:20:05:205 [[32minfo[39m] : ::1 - - [23/Jul/2020:20:20:05 +0000] "OPTIONS /student/5f1971b3f64dfd3734938c7a HTTP/1.1" 200 21 "http://localhost:4200/user/profile/overview" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 22:20:05:205 [[32minfo[39m] : ::1 - - [23/Jul/2020:20:20:05 +0000] "GET /student/5f1971b3f64dfd3734938c7a HTTP/1.1" 304 - "http://localhost:4200/user/profile/overview" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 22:20:32:2032 [[32minfo[39m] : ::1 - - [23/Jul/2020:20:20:32 +0000] "OPTIONS /student/5f1971b3f64dfd3734938c7a HTTP/1.1" 200 21 "http://localhost:4200/user/profile/overview" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 22:20:32:2032 [[32minfo[39m] : ::1 - - [23/Jul/2020:20:20:32 +0000] "GET /student/5f1971b3f64dfd3734938c7a HTTP/1.1" 304 - "http://localhost:4200/user/profile/overview" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 22:22:10:2210 [[32minfo[39m] : ::1 - - [23/Jul/2020:20:22:10 +0000] "OPTIONS /student/5f1971b3f64dfd3734938c7a HTTP/1.1" 200 21 "http://localhost:4200/user/profile/overview" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 22:22:10:2210 [[32minfo[39m] : ::1 - - [23/Jul/2020:20:22:10 +0000] "GET /student/5f1971b3f64dfd3734938c7a HTTP/1.1" 304 - "http://localhost:4200/user/profile/overview" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 22:24:30:2430 [[32minfo[39m] : ::1 - - [23/Jul/2020:20:24:30 +0000] "OPTIONS /student/5f1971b3f64dfd3734938c7a HTTP/1.1" 200 21 "http://localhost:4200/user/profile/overview" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 22:24:30:2430 [[32minfo[39m] : ::1 - - [23/Jul/2020:20:24:30 +0000] "GET /student/5f1971b3f64dfd3734938c7a HTTP/1.1" 304 - "http://localhost:4200/user/profile/overview" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 22:24:55:2455 [[32minfo[39m] : ::1 - - [23/Jul/2020:20:24:55 +0000] "OPTIONS /student/5f1971b3f64dfd3734938c7a HTTP/1.1" 200 21 "http://localhost:4200/user/profile/overview" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 22:24:55:2455 [[32minfo[39m] : ::1 - - [23/Jul/2020:20:24:55 +0000] "GET /student/5f1971b3f64dfd3734938c7a HTTP/1.1" 304 - "http://localhost:4200/user/profile/overview" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 22:25:30:2530 [[32minfo[39m] : ::1 - - [23/Jul/2020:20:25:30 +0000] "OPTIONS /student/5f1971b3f64dfd3734938c7a HTTP/1.1" 200 21 "http://localhost:4200/user/profile/overview" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 22:25:30:2530 [[32minfo[39m] : ::1 - - [23/Jul/2020:20:25:30 +0000] "GET /student/5f1971b3f64dfd3734938c7a HTTP/1.1" 304 - "http://localhost:4200/user/profile/overview" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 22:28:40:2840 [[32minfo[39m] : ::1 - - [23/Jul/2020:20:28:40 +0000] "OPTIONS /student/5f1971b3f64dfd3734938c7a HTTP/1.1" 200 21 "http://localhost:4200/user/profile/overview" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 22:28:40:2840 [[32minfo[39m] : ::1 - - [23/Jul/2020:20:28:40 +0000] "GET /student/5f1971b3f64dfd3734938c7a HTTP/1.1" 304 - "http://localhost:4200/user/profile/overview" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 22:29:59:2959 [[32minfo[39m] : ::1 - - [23/Jul/2020:20:29:59 +0000] "OPTIONS /student/5f1971b3f64dfd3734938c7a HTTP/1.1" 200 21 "http://localhost:4200/user/profile/overview" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 22:29:59:2959 [[32minfo[39m] : ::1 - - [23/Jul/2020:20:29:59 +0000] "GET /student/5f1971b3f64dfd3734938c7a HTTP/1.1" 304 - "http://localhost:4200/user/profile/overview" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 22:31:53:3153 [[32minfo[39m] : ::1 - - [23/Jul/2020:20:31:53 +0000] "OPTIONS /student/5f1971b3f64dfd3734938c7a HTTP/1.1" 200 21 "http://localhost:4200/user/profile/overview" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 22:31:53:3153 [[32minfo[39m] : ::1 - - [23/Jul/2020:20:31:53 +0000] "GET /student/5f1971b3f64dfd3734938c7a HTTP/1.1" 304 - "http://localhost:4200/user/profile/overview" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 22:31:58:3158 [[32minfo[39m] : ::1 - - [23/Jul/2020:20:31:58 +0000] "GET /student/5f1971b3f64dfd3734938c7a HTTP/1.1" 304 - "http://localhost:4200/user/profile/overview" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 22:33:30:3330 [[32minfo[39m] : ::1 - - [23/Jul/2020:20:33:30 +0000] "OPTIONS /student/5f1971b3f64dfd3734938c7a HTTP/1.1" 200 21 "http://localhost:4200/user/profile/overview" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 22:33:31:3331 [[32minfo[39m] : ::1 - - [23/Jul/2020:20:33:31 +0000] "GET /student/5f1971b3f64dfd3734938c7a HTTP/1.1" 304 - "http://localhost:4200/user/profile/overview" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 22:34:02:342 [[32minfo[39m] : ::1 - - [23/Jul/2020:20:34:02 +0000] "OPTIONS /student/5f1971b3f64dfd3734938c7a HTTP/1.1" 200 21 "http://localhost:4200/user/profile/overview" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 22:34:02:342 [[32minfo[39m] : ::1 - - [23/Jul/2020:20:34:02 +0000] "GET /student/5f1971b3f64dfd3734938c7a HTTP/1.1" 304 - "http://localhost:4200/user/profile/overview" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 22:39:11:3911 [[32minfo[39m] : ::1 - - [23/Jul/2020:20:39:11 +0000] "OPTIONS /student/5f1971b3f64dfd3734938c7a HTTP/1.1" 200 21 "http://localhost:4200/user/profile/overview" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 22:39:11:3911 [[32minfo[39m] : ::1 - - [23/Jul/2020:20:39:11 +0000] "GET /student/5f1971b3f64dfd3734938c7a HTTP/1.1" 304 - "http://localhost:4200/user/profile/overview" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 22:40:07:407 [[32minfo[39m] : ::1 - - [23/Jul/2020:20:40:07 +0000] "OPTIONS /student/5f1971b3f64dfd3734938c7a HTTP/1.1" 200 21 "http://localhost:4200/user/profile/overview" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 22:40:07:407 [[32minfo[39m] : ::1 - - [23/Jul/2020:20:40:07 +0000] "GET /student/5f1971b3f64dfd3734938c7a HTTP/1.1" 304 - "http://localhost:4200/user/profile/overview" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 22:40:13:4013 [[32minfo[39m] : ::1 - - [23/Jul/2020:20:40:13 +0000] "OPTIONS /student/5f1971b3f64dfd3734938c7a HTTP/1.1" 200 21 "http://localhost:4200/user/profile/overview" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 22:40:13:4013 [[32minfo[39m] : ::1 - - [23/Jul/2020:20:40:13 +0000] "PATCH /student/5f1971b3f64dfd3734938c7a HTTP/1.1" 400 83 "http://localhost:4200/user/profile/overview" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 22:41:14:4114 [[32minfo[39m] : ::1 - - [23/Jul/2020:20:41:14 +0000] "OPTIONS /student/5f1971b3f64dfd3734938c7a HTTP/1.1" 200 21 "http://localhost:4200/user/profile/overview" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 22:41:14:4114 [[32minfo[39m] : ::1 - - [23/Jul/2020:20:41:14 +0000] "GET /student/5f1971b3f64dfd3734938c7a HTTP/1.1" 304 - "http://localhost:4200/user/profile/overview" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 22:41:27:4127 [[32minfo[39m] : ::1 - - [23/Jul/2020:20:41:27 +0000] "OPTIONS /student/5f1971b3f64dfd3734938c7a HTTP/1.1" 200 21 "http://localhost:4200/user/profile/overview" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 22:41:27:4127 [[32minfo[39m] : ::1 - - [23/Jul/2020:20:41:27 +0000] "PATCH /student/5f1971b3f64dfd3734938c7a HTTP/1.1" 400 83 "http://localhost:4200/user/profile/overview" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 22:42:52:4252 [[32minfo[39m] : ::1 - - [23/Jul/2020:20:42:52 +0000] "OPTIONS /student/5f1971b3f64dfd3734938c7a HTTP/1.1" 200 21 "http://localhost:4200/user/profile/overview" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 22:42:52:4252 [[32minfo[39m] : ::1 - - [23/Jul/2020:20:42:52 +0000] "PATCH /student/5f1971b3f64dfd3734938c7a HTTP/1.1" 204 - "http://localhost:4200/user/profile/overview" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 22:43:08:438 [[32minfo[39m] : ::1 - - [23/Jul/2020:20:43:08 +0000] "OPTIONS /student/5f1971b3f64dfd3734938c7a HTTP/1.1" 200 21 "http://localhost:4200/user/profile/overview" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 22:43:08:438 [[32minfo[39m] : ::1 - - [23/Jul/2020:20:43:08 +0000] "GET /student/5f1971b3f64dfd3734938c7a HTTP/1.1" 200 293 "http://localhost:4200/user/profile/overview" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 22:44:22:4422 [[32minfo[39m] : ::1 - - [23/Jul/2020:20:44:22 +0000] "OPTIONS /student/5f1971b3f64dfd3734938c7a HTTP/1.1" 200 21 "http://localhost:4200/user/profile/overview" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 22:44:22:4422 [[32minfo[39m] : ::1 - - [23/Jul/2020:20:44:22 +0000] "GET /student/5f1971b3f64dfd3734938c7a HTTP/1.1" 304 - "http://localhost:4200/user/profile/overview" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 22:45:07:457 [[32minfo[39m] : ::1 - - [23/Jul/2020:20:45:07 +0000] "OPTIONS /student/5f1971b3f64dfd3734938c7a HTTP/1.1" 200 21 "http://localhost:4200/user/profile/overview" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 22:45:07:457 [[32minfo[39m] : ::1 - - [23/Jul/2020:20:45:07 +0000] "GET /student/5f1971b3f64dfd3734938c7a HTTP/1.1" 304 - "http://localhost:4200/user/profile/overview" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 22:45:44:4544 [[32minfo[39m] : ::1 - - [23/Jul/2020:20:45:44 +0000] "OPTIONS /student/5f1971b3f64dfd3734938c7a HTTP/1.1" 200 21 "http://localhost:4200/user/profile/overview" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 22:45:44:4544 [[32minfo[39m] : ::1 - - [23/Jul/2020:20:45:44 +0000] "GET /student/5f1971b3f64dfd3734938c7a HTTP/1.1" 304 - "http://localhost:4200/user/profile/overview" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 22:45:57:4557 [[32minfo[39m] : ::1 - - [23/Jul/2020:20:45:57 +0000] "OPTIONS /student/5f1971b3f64dfd3734938c7a HTTP/1.1" 200 21 "http://localhost:4200/user/profile/overview" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 22:45:57:4557 [[32minfo[39m] : ::1 - - [23/Jul/2020:20:45:57 +0000] "GET /student/5f1971b3f64dfd3734938c7a HTTP/1.1" 304 - "http://localhost:4200/user/profile/overview" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 22:51:04:514 [[32minfo[39m] : ::1 - - [23/Jul/2020:20:51:04 +0000] "OPTIONS /student/5f1971b3f64dfd3734938c7a HTTP/1.1" 200 21 "http://localhost:4200/user/profile/overview" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 22:51:04:514 [[32minfo[39m] : ::1 - - [23/Jul/2020:20:51:04 +0000] "GET /student/5f1971b3f64dfd3734938c7a HTTP/1.1" 304 - "http://localhost:4200/user/profile/overview" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 22:51:37:5137 [[32minfo[39m] : ::1 - - [23/Jul/2020:20:51:37 +0000] "OPTIONS /student/5f1971b3f64dfd3734938c7a HTTP/1.1" 200 21 "http://localhost:4200/user/profile/overview" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 22:51:37:5137 [[32minfo[39m] : ::1 - - [23/Jul/2020:20:51:37 +0000] "GET /student/5f1971b3f64dfd3734938c7a HTTP/1.1" 304 - "http://localhost:4200/user/profile/overview" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 22:54:05:545 [[32minfo[39m] : ::1 - - [23/Jul/2020:20:54:05 +0000] "OPTIONS /student/5f1971b3f64dfd3734938c7a HTTP/1.1" 200 21 "http://localhost:4200/user/profile/overview" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 22:54:05:545 [[32minfo[39m] : ::1 - - [23/Jul/2020:20:54:05 +0000] "GET /student/5f1971b3f64dfd3734938c7a HTTP/1.1" 304 - "http://localhost:4200/user/profile/overview" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 22:54:20:5420 [[32minfo[39m] : ::1 - - [23/Jul/2020:20:54:20 +0000] "OPTIONS /student/5f1971b3f64dfd3734938c7a HTTP/1.1" 200 21 "http://localhost:4200/user/profile/overview" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 22:54:20:5420 [[32minfo[39m] : ::1 - - [23/Jul/2020:20:54:20 +0000] "PATCH /student/5f1971b3f64dfd3734938c7a HTTP/1.1" 204 - "http://localhost:4200/user/profile/overview" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 22:54:24:5424 [[32minfo[39m] : ::1 - - [23/Jul/2020:20:54:24 +0000] "GET /student/5f1971b3f64dfd3734938c7a HTTP/1.1" 200 315 "http://localhost:4200/user/profile/overview" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 22:54:52:5452 [[32minfo[39m] : ::1 - - [23/Jul/2020:20:54:52 +0000] "OPTIONS /student/5f1971b3f64dfd3734938c7a HTTP/1.1" 200 21 "http://localhost:4200/user/profile/overview" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 22:54:52:5452 [[32minfo[39m] : ::1 - - [23/Jul/2020:20:54:52 +0000] "GET /student/5f1971b3f64dfd3734938c7a HTTP/1.1" 304 - "http://localhost:4200/user/profile/overview" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 22:59:02:592 [[32minfo[39m] : ::1 - - [23/Jul/2020:20:59:02 +0000] "OPTIONS /student/5f1971b3f64dfd3734938c7a HTTP/1.1" 200 21 "http://localhost:4200/user/profile/overview" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 22:59:02:592 [[32minfo[39m] : ::1 - - [23/Jul/2020:20:59:02 +0000] "GET /student/5f1971b3f64dfd3734938c7a HTTP/1.1" 304 - "http://localhost:4200/user/profile/overview" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 22:59:07:597 [[32minfo[39m] : Socket gbjhlTpJ2toFG-ueAAAA is connected by user 5f1971b3f64dfd3734938c7a 
+2020-07-23 22:59:08:598 [[32minfo[39m] : Socket gbjhlTpJ2toFG-ueAAAA is disconnected by user 5f1971b3f64dfd3734938c7a 
+2020-07-23 23:17:20:1720 [[32minfo[39m] : ::1 - - [23/Jul/2020:21:17:20 +0000] "OPTIONS /provider/register HTTP/1.1" 200 26 "http://localhost:4200/courseproviderregisteration" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 23:17:20:1720 [[32minfo[39m] : ::1 - - [23/Jul/2020:21:17:20 +0000] "POST /provider/register HTTP/1.1" 400 108 "http://localhost:4200/courseproviderregisteration" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 23:18:46:1846 [[32minfo[39m] : ::1 - - [23/Jul/2020:21:18:46 +0000] "OPTIONS /provider/register HTTP/1.1" 200 26 "http://localhost:4200/courseproviderregisteration" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 23:18:46:1846 [[32minfo[39m] : ::1 - - [23/Jul/2020:21:18:46 +0000] "POST /provider/register HTTP/1.1" 400 108 "http://localhost:4200/courseproviderregisteration" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 23:20:03:203 [[32minfo[39m] : ::1 - - [23/Jul/2020:21:20:03 +0000] "OPTIONS /provider/register HTTP/1.1" 200 26 "http://localhost:4200/courseproviderregisteration" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 23:20:03:203 [[32minfo[39m] : ::1 - - [23/Jul/2020:21:20:03 +0000] "POST /provider/register HTTP/1.1" 400 83 "http://localhost:4200/courseproviderregisteration" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 23:20:50:2050 [[32minfo[39m] : ::1 - - [23/Jul/2020:21:20:50 +0000] "OPTIONS /provider/register HTTP/1.1" 200 26 "http://localhost:4200/courseproviderregisteration" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-23 23:20:53:2053 [[32minfo[39m] : ::1 - - [23/Jul/2020:21:20:53 +0000] "POST /provider/register HTTP/1.1" 201 61 "http://localhost:4200/courseproviderregisteration" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 

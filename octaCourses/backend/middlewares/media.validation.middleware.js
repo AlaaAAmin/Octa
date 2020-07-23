@@ -15,7 +15,7 @@ const checkModuleExistsOrNot = (req, res, next) => {
             res.status(404).send('Module does not exist.')
         })
         .catch(error => {
-            res.status(400).send({ success: false, error: error })
+            next(error)
         })
 }
 
@@ -36,7 +36,7 @@ const retrieveMediaFile = async (req, res, next) => {
         req.file = await MediaService.getMediaById(req.media.fileId)
         if (req.file && req.file._id) return next()
     } catch (error) {
-        return res.status(404).send(error)
+        next(error)
     }
 }
 

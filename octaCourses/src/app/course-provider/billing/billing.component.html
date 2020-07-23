@@ -24,6 +24,7 @@
         </div>
       </form>
       <!-- end of money threshold update form -->
+      
 
       <span class="card-text earnings"><b>Earnings: </b>{{earnings}} EGP</span>
       <br>
@@ -32,7 +33,8 @@
       <a class="btn btn-primary btn-sm actionButton"
       [class.inactiveLink]="earnings < moneyThreshold && paymentHolds == 0" 
       [routerLink]='destination'>{{action}}</a>
-      <br>
+      <br><br>
+      <button class="btn btn-primary btn-sm" (click)="connectToStripe()">Connect with stripe</button> <br>
       <small class="text-info" [class.d-none]="earnings >= moneyThreshold || paymentHolds > 0">Your earnings should exceed or equal to the money threshold in order to be able
         to get paid
         or you can edit the threshold

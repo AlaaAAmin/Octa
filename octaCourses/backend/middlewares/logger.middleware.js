@@ -4,6 +4,7 @@ var express_winston = require('express-winston')
 require('winston-daily-rotate-file')
 const { winston, customPrintf } = require('../config/logger.config')
 
+
 const logger = winston.createLogger({
     format: winston.format.combine(
         winston.format.colorize(),
@@ -37,9 +38,9 @@ const logger = winston.createLogger({
 const errorLogger = express_winston.errorLogger({
     transports: [
         new (winston.transports.DailyRotateFile)({
-            filename:'./logs/Exception-%DATE%.log',
-            handleExceptions:true,
-            level:'error',
+            filename: './logs/Exception-%DATE%.log',
+            handleExceptions: true,
+            level: 'error',
             datePattern: 'YYYY-MM-DD',
             maxFiles: '7d'
         }),

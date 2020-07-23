@@ -2,6 +2,9 @@ const CourseModel = require('../models/course.model')
 const MediaService = require('../services/media.service')
 const _EventEmitter = require('../services/event.service')
 const { getRatingsOfCourse } = require('../models/rating.model')
+const stripe = require('../services/payment.service')
+const { createOrder, getUnPaidOrdersByProvider } = require('../models/order.model')
+const { mongoose } = require('../services/mongodb.service')
 
 // addCourse is a function that used when new course added
 // operations done within this function:
@@ -38,12 +41,12 @@ const addCourse = async (req, res, next) => {
         errors.push(err)
     }
     if (errors.length) {
-        return res.status(400).send({ success: false, errors: errors })
+        return res.status(400).json({ success: false, errors: errors })
     }
     CourseModel.createCourse(data)
         .then(doc => {
             _EventEmitter.emit('new-course', { id: doc._id })
-            return res.status(201).send({ status: 'success', message: 'course added successfully.' })
+            return res.status(201).json({ status: 'success', message: 'course added successfully.' })
         })
         .catch(err => next(err))
 
@@ -99,12 +102,12 @@ const editCourse = async (req, res, next) => {
     }
 
     if (errors.length) {
-        return res.status(400).send({ success: false, errors: errors })
+        return res.status(400).json({ success: false, errors: errors })
     }
     try {
         let result = await CourseModel.updateCourseById(req.params.id, req.body.converted)
-        if (result.nModified == 1 && result.ok == 1 && result.n == 1) return res.status(204).send({ status: 'success', message: 'course updated successfully.' })
-        res.status(400).send({ status: 'fail', message: 'course could not be updated.' })
+        if (result.nModified == 1 && result.ok == 1 && result.n == 1) return res.status(204).json({ status: 'success', message: 'course updated successfully.' })
+        res.status(400).json({ status: 'fail', message: 'course could not be updated.' })
     } catch (err) { next(err) }
 }
 
@@ -114,14 +117,14 @@ const getCourseById = (req, res, next) => {
     let courseData
     CourseModel.getCourseById(req.params.id)
         .then(course => {
-            if (!course) return res.status(404).send('Course not found.')
+            if (!course) return res.status(404).json('Course not found.')
             courseData = course[0]
             return getRatingsOfCourse(req.params.id)
         })
         .then(ratings => {
             delete ratings[0]._id
             let data = Object.assign(courseData, ratings[0])
-            res.status(200).send({ status: 'success', data: { data } })
+            res.status(200).json({ status: 'success', data: { data } })
         })
         .catch(err => next(err))
 }
@@ -132,8 +135,8 @@ const searchForCourse = (req, res, next) => {
     // name,ownerName
     CourseModel.filterCourses(req.query)
         .then(result => {
-            result.forEach(e => { delete e.reviewed; delete e.__v })
-            res.status(200).send({ status: 'success', data: { result } })
+            result.forEach(e => { e.reviewed = undefined; e.__v = undefined })
+            res.status(200).json({ status: 'success', data: result })
         })
         .catch(err => next(err))
 }
@@ -149,12 +152,52 @@ const getFullCourseInfo = (req, res, next) => {
         .then(rating => {
             delete rating[0]._id
             let data = Object.assign(courseData, rating[0])
-            res.status(200).send({ status: 'success', data: { data } })
+            res.status(200).json({ status: 'success', data: { data } })
         })
         .catch(err => next(err))
 }
+
+const checkout = async (req, res, next) => {
+    let data = req.body
+
+    // get provider account on stripe
+    let providerStripeAccount = await CourseModel.Course.findById(req.params._id).select('ownerId -_id').populate('ownerId', 'stripe_id bank_id -_id')
+    // `source` is obtained with Stripe.js; see https://stripe.com/docs/payments/accept-a-payment-charges#web-create-token
+    stripe.paymentIntents.create(
+        {
+            amount: data.amount * 100, // in cents,
+            application_fee_amount: data.amount * 100 * 0.15,
+            payment_method_types: ['card'],
+            payment_method_data: { type: 'card', card: { token: req.body.token } }, // payment token indecates creditcard and operation
+            currency: 'usd',
+            source: data.token,
+            description: `Payment for course ${req.body.courseName}`,
+            transfer_data: {
+                destination: providerStripeAccount.ownerId.stripe_id// "acct_1H7yUgKGT9ErQ4Kp", // connected_account ID
+            }
+        },
+        async function (err, charge) {
+            if (err) return next(err)
+            try {
+                await createOrder({
+                    student: req.jwt._id,
+                    provider: req.body.providerId,
+                    course: req.params.id,
+                    charge: charge.id,
+                    amount: (data.amount * 100) - ((0.029 * (data.amount * 100)) + 30)
+                })
+                res.status(200).json('success')
+            }
+
+            catch (e) { next(e) }
+        }
+    );
+}
+
+
 module.exports.createCourse = addCourse;
 module.exports.updateCourse = editCourse;
 module.exports.getCourseById = getCourseById
 module.exports.searchForCourse = searchForCourse
 module.exports.getFullCourseInfo = getFullCourseInfo
+module.exports.checkout = checkout

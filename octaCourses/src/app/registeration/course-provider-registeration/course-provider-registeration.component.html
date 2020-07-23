@@ -59,7 +59,7 @@
         </div>
 
         <button [disabled]="courseProviderRegisteration.form.invalid || password.value != confirmPassword.value" 
-        class="btn btn-primary registerButton btn-sm btn-block" type="submit">Register</button>
+        class="btn btn-primary registerButton btn-sm btn-block" type="submit" (click)="register(courseProviderRegisteration.value)">Register</button>
     </form>
 
     <div class="col-sm-3 haveAccountDiv">

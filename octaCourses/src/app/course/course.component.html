@@ -5,14 +5,14 @@
             <h1 class="courseName">PHP OOP: Object Oriented Programming for beginners + Project</h1>
 
             <!-- course provider name header-->
-            <!-- the course provider anchor link navigateس to the courseProvider section 
+            <!-- the course provider anchor link navigateس to the courseProvider section
                 pageScroll and pageScrollDuration are directives from ng2-page-scroll that make it possible
                 to scroll down the the course provider section -->
-            <h3 class="provider text-capitalize">Created by <a pageScroll pageScrollDuration="500" 
+            <h3 class="provider text-capitalize">Created by <a pageScroll pageScrollDuration="500"
                 href="#courseProvider">course provider name</a></h3>
 
             <!-- start of course rate this might be golden stars or as it is right now make your choice ahmed :) -->
-            <p>Rate: 4.3/5 
+            <p>Rate: 4.3/5
                 <svg style="color: gold;" width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-star-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                     <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
                   </svg> &nbsp;
@@ -34,33 +34,44 @@
 
             <!-- Start of enrollment date in case of an offline course should be visible otherwise it will be hidden-->
             <p>Start of enrollment date: </p>
-            
+
             <!-- course type -->
             <p class="mb-4">Type: online/offline</p>
         </div>
 
-        
+
         <div class="col-sm-3 text-center mt-5 mb-3">
             <!-- course thumbnail -->
             <img class="w-100 img-thumbnail img-fluid" src="assets/img/courseThumbnail.jpg" alt="course thumbnail">
-        
+
             <!-- price goes into the following b tag in the h2 tag -->
             <h2 class="price"><b>500</b> EGP</h2>
             <!-- end of price -->
 
             <!--enroll button -->
             <!-- this button is shown to the logged in student -->
-            <!-- if the student is already enrolled in then it should say go to course
-            so the student can go and see the course videos -->
+            <!-- if the student is already enrolled in then it should be hidden -->
             <button class="btn btn-sm btn-block enrollBtn w-75">Enroll Now</button>
             <!-- end of enroll button -->
 
             <!--go to course button link -->
-            <!-- this button is shown to the logged in student -->
-            <!-- if the student is already enrolled in that course it should redirect him to 
-            the course-insights page so the student can go and see the course videos in case of online course-->
+            <!-- this button is shown to the logged in student who has already  enrolled in this course-->
+            <!-- in case of online course it should redirect him to the course-insights page
+                 so the student can go and see the course videos-->
+            <!-- in case of an offline course this should be hidden as there is no videos for offline courses -->
             <a class="btn btn-sm btn-block enrollBtn w-75">Go to course</a>
             <!-- end of enroll button -->
+
+            <!-- add to wishlist button -->
+            <!-- this button should be displayed for the logged in student and be hidden if the student is not logged in
+                 when clicked it should put the course in his/her wishlist -->
+            <button class="btn btn-sm btn-danger">
+                Wishlist
+                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-heart" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" d="M8 2.748l-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
+                </svg>
+            </button>
+            <!-- end of add to wishlist -->
         </div>
     </div>
 

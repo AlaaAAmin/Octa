@@ -1,0 +1,17 @@
+{"_id":{"$oid":"5f154ccf5ec6464020fe2583"},"courseId":{"$oid":"5f0cffda66c777396ca83a82"},"students":[{"studentId":{"$oid":"5f0cff5713a6cd428893598e"}},{"studentId":{"$oid":"5f0cff5713a6cd428893598f"}}]}
+{"_id":{"$oid":"5f154d3e5ec6464020fe2585"},"courseId":{"$oid":"5f0cffda66c777396ca83aa5"},"students":[{"studentId":"5f0cff5713a6cd428893598e", "progress": {
+    "modules":[{
+        "moduleId":{"$oid":"5f1674506ec6d53f00445e0f"},
+        "content": [{"lectureId": {"$oid":"5f16749c3f0b1e1e7cf54aec"}, "completed": false}, {"lectureId": {"$oid":"5f1674c2bed79e13dc34522f"}, "completed": false}, {"quizId": {"$oid": "5f1674ca48a82625b497a027", "completed": false}}],
+        "completed": false
+    },{
+        "moduleId":{"$oid":"5f16752849614b2ad4e40482"},
+        "content": [{"lectureId": {"$oid":"5f16752849614b2ad4e40483"}, "completed": false}, {"lectureId": {"$oid":"5f16752849614b2ad4e40484"}, "completed": false}, {"quizId": {"$oid": "5f16752849614b2ad4e40485", "completed": false}}],
+        "completed": false
+    },{
+        "moduleId":{"$oid":"5f16752849614b2ad4e40486"},
+        "content": [{"lectureId": {"$oid":"5f16752849614b2ad4e40487"}, "completed": false}, {"lectureId": {"$oid":"5f16752849614b2ad4e40488"}, "completed": false}, {"quizId": {"$oid": "5f16752849614b2ad4e40489", "completed": false}}],
+        "completed": false
+    }]
+}}]}
+{"_id":{"$oid":"5f1551ad5ec6464020fe2591"},"courseId":{"$oid":"5f0cffda66c777396ca83ab2"},"students":[{"studentId":{"$oid":"5f0cff5713a6cd428893598f"}}]}

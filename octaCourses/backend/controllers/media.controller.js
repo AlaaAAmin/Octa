@@ -2,7 +2,7 @@ const MediaService = require('../services/media.service');
 const gridFS = require('../services/mongodb.service').gridFS
 
 const sendModule = (req, res, next) => {
-    res.status(200).send(req.module)
+    res.status(200).json(req.module)
 }
 
 const sendMediaFile = (req, res, next) => {
@@ -27,7 +27,7 @@ const sendMediaFile = (req, res, next) => {
         downloadStream.pipe(res)
 
         downloadStream.on('error', () => {
-            res.status(404).send('Error happened while processing video file.\nplease try again.')
+            res.status(400).json({success: false, message: 'Error happened while processing video file.\nplease try again.'})
         })
         downloadStream.on('end', () => {
             res.end()
@@ -38,7 +38,7 @@ const sendMediaFile = (req, res, next) => {
         let downloadStream = gridFS().openDownloadStream(req.file._id)
         downloadStream.pipe(res)
         downloadStream.on('error', () => {
-            res.status(404).send('Error happened while processing video file.\nplease try again.')
+            res.status(404).json('Error happened while processing video file.\nplease try again.')
         })
         downloadStream.on('end', () => {
             res.end()

@@ -1,0 +1,118 @@
+2020-07-22 00:10:43:1043 [[31m[1merror[22m[39m] : {"name":"JsonWebTokenError","message":"jwt must be provided"} 
+2020-07-22 00:10:43:1043 [[32minfo[39m] : Socket 8ISwGTCkqwzDvZlJAAAA is a guest. 
+2020-07-22 00:10:52:1052 [[31m[1merror[22m[39m] : uncaughtException: Cannot read property '_id' of undefined
+TypeError: Cannot read property '_id' of undefined
+    at Socket.<anonymous> (G:\Git\Octa\octaCourses\backend\config\socket.config.js:116:37)
+    at Socket.emit (events.js:311:20)
+    at Socket.emit (G:\Git\Octa\octaCourses\node_modules\socket.io\lib\socket.js:142:10)
+    at Socket.onclose (G:\Git\Octa\octaCourses\node_modules\socket.io\lib\socket.js:454:8)
+    at Socket.ondisconnect (G:\Git\Octa\octaCourses\node_modules\socket.io\lib\socket.js:418:8)
+    at Socket.onpacket (G:\Git\Octa\octaCourses\node_modules\socket.io\lib\socket.js:340:12)
+    at G:\Git\Octa\octaCourses\node_modules\socket.io\lib\client.js:214:16
+    at processTicksAndRejections (internal/process/task_queues.js:79:11) 
+2020-07-22 09:25:50:2550 [[32minfo[39m] : ::1 - - [22/Jul/2020:07:25:50 +0000] "OPTIONS /courses/1/checkout HTTP/1.1" 200 4 "http://localhost:4200/course/1" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-22 09:25:53:2553 [[32minfo[39m] : ::1 - - [22/Jul/2020:07:25:53 +0000] "POST /courses/1/checkout HTTP/1.1" 200 7 "http://localhost:4200/course/1" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-22 09:28:59:2859 [[32minfo[39m] : ::1 - - [22/Jul/2020:07:28:59 +0000] "OPTIONS /courses/1/checkout HTTP/1.1" 200 4 "http://localhost:4200/course/1" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-22 09:29:00:290 [[32minfo[39m] : ::1 - - [22/Jul/2020:07:29:00 +0000] "POST /courses/1/checkout HTTP/1.1" 200 7 "http://localhost:4200/course/1" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-22 09:49:12:4912 [[32minfo[39m] : ::1 - - [22/Jul/2020:07:49:12 +0000] "OPTIONS /courses/1/checkout HTTP/1.1" 200 4 "http://localhost:4200/course/1" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-22 09:49:26:4926 [[32minfo[39m] : ::1 - - [22/Jul/2020:07:49:26 +0000] "POST /courses/1/checkout HTTP/1.1" 200 7 "http://localhost:4200/course/1" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-22 09:49:26:4926 [[31m[1merror[22m[39m] : {"type":"StripeCardError","raw":{"charge":"ch_1H7chcLWG3oeq10NDV7YYQRy","code":"card_declined","decline_code":"test_mode_live_card","doc_url":"https://stripe.com/docs/error-codes/card-declined","message":"Your card was declined. Your request was in test mode, but used a non test (live) card. For a list of valid test cards, visit: https://stripe.com/docs/testing.","type":"card_error","headers":{"server":"nginx","date":"Wed, 22 Jul 2020 07:49:24 GMT","content-type":"application/json","content-length":"409","connection":"keep-alive","access-control-allow-credentials":"true","access-control-allow-methods":"GET, POST, HEAD, OPTIONS, DELETE","access-control-allow-origin":"*","access-control-expose-headers":"Request-Id, Stripe-Manage-Version, X-Stripe-External-Auth-Required, X-Stripe-Privileged-Session-Required","access-control-max-age":"300","cache-control":"no-cache, no-store","request-id":"req_9u1gq5AdljsO2i","stripe-version":"2020-03-02","strict-transport-security":"max-age=31556926; includeSubDomains; preload"},"statusCode":402,"requestId":"req_9u1gq5AdljsO2i"},"rawType":"card_error","code":"card_declined","doc_url":"https://stripe.com/docs/error-codes/card-declined","headers":{"server":"nginx","date":"Wed, 22 Jul 2020 07:49:24 GMT","content-type":"application/json","content-length":"409","connection":"keep-alive","access-control-allow-credentials":"true","access-control-allow-methods":"GET, POST, HEAD, OPTIONS, DELETE","access-control-allow-origin":"*","access-control-expose-headers":"Request-Id, Stripe-Manage-Version, X-Stripe-External-Auth-Required, X-Stripe-Privileged-Session-Required","access-control-max-age":"300","cache-control":"no-cache, no-store","request-id":"req_9u1gq5AdljsO2i","stripe-version":"2020-03-02","strict-transport-security":"max-age=31556926; includeSubDomains; preload"},"requestId":"req_9u1gq5AdljsO2i","statusCode":402,"charge":"ch_1H7chcLWG3oeq10NDV7YYQRy","decline_code":"test_mode_live_card","status":"error"} 
+2020-07-22 09:51:35:5135 [[32minfo[39m] : ::1 - - [22/Jul/2020:07:51:35 +0000] "OPTIONS /courses/1/checkout HTTP/1.1" 200 4 "http://localhost:4200/course/1" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-22 09:51:49:5149 [[32minfo[39m] : ::1 - - [22/Jul/2020:07:51:49 +0000] "POST /courses/1/checkout HTTP/1.1" 200 7 "http://localhost:4200/course/1" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-22 09:51:49:5149 [[31m[1merror[22m[39m] : {"type":"StripeCardError","raw":{"charge":"ch_1H7cjvLWG3oeq10NWAFKAVJf","code":"card_declined","decline_code":"test_mode_live_card","doc_url":"https://stripe.com/docs/error-codes/card-declined","message":"Your card was declined. Your request was in test mode, but used a non test (live) card. For a list of valid test cards, visit: https://stripe.com/docs/testing.","type":"card_error","headers":{"server":"nginx","date":"Wed, 22 Jul 2020 07:51:48 GMT","content-type":"application/json","content-length":"409","connection":"keep-alive","access-control-allow-credentials":"true","access-control-allow-methods":"GET, POST, HEAD, OPTIONS, DELETE","access-control-allow-origin":"*","access-control-expose-headers":"Request-Id, Stripe-Manage-Version, X-Stripe-External-Auth-Required, X-Stripe-Privileged-Session-Required","access-control-max-age":"300","cache-control":"no-cache, no-store","request-id":"req_wjXRMQTzAwJVQP","stripe-version":"2020-03-02","strict-transport-security":"max-age=31556926; includeSubDomains; preload"},"statusCode":402,"requestId":"req_wjXRMQTzAwJVQP"},"rawType":"card_error","code":"card_declined","doc_url":"https://stripe.com/docs/error-codes/card-declined","headers":{"server":"nginx","date":"Wed, 22 Jul 2020 07:51:48 GMT","content-type":"application/json","content-length":"409","connection":"keep-alive","access-control-allow-credentials":"true","access-control-allow-methods":"GET, POST, HEAD, OPTIONS, DELETE","access-control-allow-origin":"*","access-control-expose-headers":"Request-Id, Stripe-Manage-Version, X-Stripe-External-Auth-Required, X-Stripe-Privileged-Session-Required","access-control-max-age":"300","cache-control":"no-cache, no-store","request-id":"req_wjXRMQTzAwJVQP","stripe-version":"2020-03-02","strict-transport-security":"max-age=31556926; includeSubDomains; preload"},"requestId":"req_wjXRMQTzAwJVQP","statusCode":402,"charge":"ch_1H7cjvLWG3oeq10NWAFKAVJf","decline_code":"test_mode_live_card","status":"error"} 
+2020-07-22 09:54:55:5455 [[32minfo[39m] : ::1 - - [22/Jul/2020:07:54:55 +0000] "OPTIONS /courses/1/checkout HTTP/1.1" 200 4 "http://localhost:4200/course/1" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-22 09:54:58:5458 [[32minfo[39m] : ::1 - - [22/Jul/2020:07:54:58 +0000] "POST /courses/1/checkout HTTP/1.1" 200 7 "http://localhost:4200/course/1" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-22 09:56:17:5617 [[32minfo[39m] : ::1 - - [22/Jul/2020:07:56:17 +0000] "OPTIONS /courses/1/checkout HTTP/1.1" 200 4 "http://localhost:4200/course/1" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-22 09:56:19:5619 [[32minfo[39m] : ::1 - - [22/Jul/2020:07:56:19 +0000] "POST /courses/1/checkout HTTP/1.1" 200 7 "http://localhost:4200/course/1" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-22 09:56:19:5619 [[31m[1merror[22m[39m] : undefined 
+2020-07-22 09:56:59:5659 [[32minfo[39m] : ::1 - - [22/Jul/2020:07:56:59 +0000] "OPTIONS /courses/1/checkout HTTP/1.1" 200 4 "http://localhost:4200/course/1" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-22 09:57:01:571 [[32minfo[39m] : ::1 - - [22/Jul/2020:07:57:01 +0000] "POST /courses/1/checkout HTTP/1.1" 200 7 "http://localhost:4200/course/1" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-22 09:57:01:571 [[31m[1merror[22m[39m] : undefined 
+2020-07-22 09:58:10:5810 [[32minfo[39m] : ::1 - - [22/Jul/2020:07:58:10 +0000] "OPTIONS /courses/1/checkout HTTP/1.1" 200 4 "http://localhost:4200/course/1" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-22 09:58:11:5811 [[32minfo[39m] : ::1 - - [22/Jul/2020:07:58:11 +0000] "POST /courses/1/checkout HTTP/1.1" 200 7 "http://localhost:4200/course/1" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-22 09:58:11:5811 [[31m[1merror[22m[39m] : undefined 
+2020-07-22 09:58:46:5846 [[32minfo[39m] : ::1 - - [22/Jul/2020:07:58:46 +0000] "OPTIONS /courses/1/checkout HTTP/1.1" 200 4 "http://localhost:4200/course/1" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-22 09:58:47:5847 [[31m[1merror[22m[39m] : undefined 
+2020-07-22 09:58:47:5847 [[32minfo[39m] : ::1 - - [22/Jul/2020:07:58:47 +0000] "POST /courses/1/checkout HTTP/1.1" 500 52 "http://localhost:4200/course/1" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-22 09:59:11:5911 [[32minfo[39m] : ::1 - - [22/Jul/2020:07:59:11 +0000] "OPTIONS /courses/1/checkout HTTP/1.1" 200 4 "http://localhost:4200/course/1" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-22 09:59:13:5913 [[31m[1merror[22m[39m] : [object Object] 
+2020-07-22 09:59:13:5913 [[32minfo[39m] : ::1 - - [22/Jul/2020:07:59:13 +0000] "POST /courses/1/checkout HTTP/1.1" 500 52 "http://localhost:4200/course/1" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-22 09:59:34:5934 [[32minfo[39m] : ::1 - - [22/Jul/2020:07:59:34 +0000] "OPTIONS /courses/1/checkout HTTP/1.1" 200 4 "http://localhost:4200/course/1" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-22 09:59:35:5935 [[31m[1merror[22m[39m] : {"type":"StripeCardError","raw":{"charge":"ch_1H7crTLWG3oeq10NpjzP7mWk","code":"card_declined","decline_code":"test_mode_live_card","doc_url":"https://stripe.com/docs/error-codes/card-declined","message":"Your card was declined. Your request was in test mode, but used a non test (live) card. For a list of valid test cards, visit: https://stripe.com/docs/testing.","type":"card_error","headers":{"server":"nginx","date":"Wed, 22 Jul 2020 07:59:35 GMT","content-type":"application/json","content-length":"409","connection":"keep-alive","access-control-allow-credentials":"true","access-control-allow-methods":"GET, POST, HEAD, OPTIONS, DELETE","access-control-allow-origin":"*","access-control-expose-headers":"Request-Id, Stripe-Manage-Version, X-Stripe-External-Auth-Required, X-Stripe-Privileged-Session-Required","access-control-max-age":"300","cache-control":"no-cache, no-store","request-id":"req_GprKDF0yw4N9s5","stripe-version":"2020-03-02","strict-transport-security":"max-age=31556926; includeSubDomains; preload"},"statusCode":402,"requestId":"req_GprKDF0yw4N9s5"},"rawType":"card_error","code":"card_declined","doc_url":"https://stripe.com/docs/error-codes/card-declined","headers":{"server":"nginx","date":"Wed, 22 Jul 2020 07:59:35 GMT","content-type":"application/json","content-length":"409","connection":"keep-alive","access-control-allow-credentials":"true","access-control-allow-methods":"GET, POST, HEAD, OPTIONS, DELETE","access-control-allow-origin":"*","access-control-expose-headers":"Request-Id, Stripe-Manage-Version, X-Stripe-External-Auth-Required, X-Stripe-Privileged-Session-Required","access-control-max-age":"300","cache-control":"no-cache, no-store","request-id":"req_GprKDF0yw4N9s5","stripe-version":"2020-03-02","strict-transport-security":"max-age=31556926; includeSubDomains; preload"},"requestId":"req_GprKDF0yw4N9s5","statusCode":402,"charge":"ch_1H7crTLWG3oeq10NpjzP7mWk","decline_code":"test_mode_live_card","status":"error"} 
+2020-07-22 09:59:35:5935 [[32minfo[39m] : ::1 - - [22/Jul/2020:07:59:35 +0000] "POST /courses/1/checkout HTTP/1.1" 500 52 "http://localhost:4200/course/1" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-22 10:00:27:027 [[32minfo[39m] : ::1 - - [22/Jul/2020:08:00:27 +0000] "OPTIONS /courses/1/checkout HTTP/1.1" 200 4 "http://localhost:4200/course/1" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-22 10:00:28:028 [[31m[1merror[22m[39m] : Your card was declined. Your request was in test mode, but used a non test (live) card. For a list of valid test cards, visit: https://stripe.com/docs/testing. 
+2020-07-22 10:00:28:028 [[32minfo[39m] : ::1 - - [22/Jul/2020:08:00:28 +0000] "POST /courses/1/checkout HTTP/1.1" 500 52 "http://localhost:4200/course/1" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-22 10:02:49:249 [[32minfo[39m] : ::1 - - [22/Jul/2020:08:02:49 +0000] "OPTIONS /courses/1/checkout HTTP/1.1" 200 4 "http://localhost:4200/course/1" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-22 10:02:50:250 [[31m[1merror[22m[39m] : {"type":"StripeCardError","raw":{"charge":"ch_1H7cucLWG3oeq10NpTDh2ZYS","code":"card_declined","decline_code":"test_mode_live_card","doc_url":"https://stripe.com/docs/error-codes/card-declined","message":"Your card was declined. Your request was in test mode, but used a non test (live) card. For a list of valid test cards, visit: https://stripe.com/docs/testing.","type":"card_error","headers":{"server":"nginx","date":"Wed, 22 Jul 2020 08:02:51 GMT","content-type":"application/json","content-length":"409","connection":"keep-alive","access-control-allow-credentials":"true","access-control-allow-methods":"GET, POST, HEAD, OPTIONS, DELETE","access-control-allow-origin":"*","access-control-expose-headers":"Request-Id, Stripe-Manage-Version, X-Stripe-External-Auth-Required, X-Stripe-Privileged-Session-Required","access-control-max-age":"300","cache-control":"no-cache, no-store","request-id":"req_fx1n3IhkdMkmrD","stripe-version":"2020-03-02","strict-transport-security":"max-age=31556926; includeSubDomains; preload"},"statusCode":402,"requestId":"req_fx1n3IhkdMkmrD"},"rawType":"card_error","code":"card_declined","doc_url":"https://stripe.com/docs/error-codes/card-declined","headers":{"server":"nginx","date":"Wed, 22 Jul 2020 08:02:51 GMT","content-type":"application/json","content-length":"409","connection":"keep-alive","access-control-allow-credentials":"true","access-control-allow-methods":"GET, POST, HEAD, OPTIONS, DELETE","access-control-allow-origin":"*","access-control-expose-headers":"Request-Id, Stripe-Manage-Version, X-Stripe-External-Auth-Required, X-Stripe-Privileged-Session-Required","access-control-max-age":"300","cache-control":"no-cache, no-store","request-id":"req_fx1n3IhkdMkmrD","stripe-version":"2020-03-02","strict-transport-security":"max-age=31556926; includeSubDomains; preload"},"requestId":"req_fx1n3IhkdMkmrD","statusCode":402,"charge":"ch_1H7cucLWG3oeq10NpTDh2ZYS","decline_code":"test_mode_live_card","status":"error"} 
+2020-07-22 10:02:50:250 [[32minfo[39m] : ::1 - - [22/Jul/2020:08:02:50 +0000] "POST /courses/1/checkout HTTP/1.1" 400 189 "http://localhost:4200/course/1" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-22 10:05:21:521 [[32minfo[39m] : ::1 - - [22/Jul/2020:08:05:21 +0000] "OPTIONS /courses/1/checkout HTTP/1.1" 200 4 "http://localhost:4200/course/1" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-22 10:05:23:523 [[32minfo[39m] : ::1 - - [22/Jul/2020:08:05:23 +0000] "POST /courses/1/checkout HTTP/1.1" 200 7 "http://localhost:4200/course/1" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-22 10:15:46:1546 [[32minfo[39m] : ::1 - - [22/Jul/2020:08:15:46 +0000] "OPTIONS /courses/1/checkout HTTP/1.1" 200 4 "http://localhost:4200/course/1" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-22 10:15:48:1548 [[32minfo[39m] : ::1 - - [22/Jul/2020:08:15:48 +0000] "POST /courses/1/checkout HTTP/1.1" 200 9 "http://localhost:4200/course/1" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-22 10:16:07:167 [[32minfo[39m] : ::1 - - [22/Jul/2020:08:16:07 +0000] "OPTIONS /courses/1/checkout HTTP/1.1" 200 4 "http://localhost:4200/course/1" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-22 10:16:09:169 [[32minfo[39m] : ::1 - - [22/Jul/2020:08:16:09 +0000] "POST /courses/1/checkout HTTP/1.1" 200 9 "http://localhost:4200/course/1" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-22 10:16:54:1654 [[32minfo[39m] : ::1 - - [22/Jul/2020:08:16:54 +0000] "OPTIONS /courses/1/checkout HTTP/1.1" 200 4 "http://localhost:4200/course/1" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-22 10:16:56:1656 [[32minfo[39m] : ::1 - - [22/Jul/2020:08:16:56 +0000] "POST /courses/1/checkout HTTP/1.1" 200 9 "http://localhost:4200/course/1" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-22 10:17:40:1740 [[32minfo[39m] : ::1 - - [22/Jul/2020:08:17:40 +0000] "OPTIONS /courses/1/checkout HTTP/1.1" 200 4 "http://localhost:4200/course/1" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-22 10:17:42:1742 [[32minfo[39m] : ::1 - - [22/Jul/2020:08:17:42 +0000] "POST /courses/1/checkout HTTP/1.1" 200 9 "http://localhost:4200/course/1" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-22 10:22:46:2246 [[32minfo[39m] : ::1 - - [22/Jul/2020:08:22:46 +0000] "OPTIONS /courses/1/checkout HTTP/1.1" 200 4 "http://localhost:4200/course/1" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-22 10:22:47:2247 [[32minfo[39m] : ::1 - - [22/Jul/2020:08:22:47 +0000] "POST /courses/1/checkout HTTP/1.1" 200 9 "http://localhost:4200/course/1" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-22 10:24:55:2455 [[32minfo[39m] : ::1 - - [22/Jul/2020:08:24:55 +0000] "OPTIONS /courses/1/checkout HTTP/1.1" 200 4 "http://localhost:4200/course/1" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-22 10:24:56:2456 [[32minfo[39m] : ::1 - - [22/Jul/2020:08:24:56 +0000] "POST /courses/1/checkout HTTP/1.1" 200 9 "http://localhost:4200/course/1" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-22 10:26:33:2633 [[32minfo[39m] : ::1 - - [22/Jul/2020:08:26:33 +0000] "OPTIONS /courses/1/checkout HTTP/1.1" 200 4 "http://localhost:4200/course/1" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-22 10:26:35:2635 [[32minfo[39m] : ::1 - - [22/Jul/2020:08:26:35 +0000] "POST /courses/1/checkout HTTP/1.1" 200 9 "http://localhost:4200/course/1" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-22 10:28:30:2830 [[32minfo[39m] : ::1 - - [22/Jul/2020:08:28:30 +0000] "OPTIONS /courses/1/checkout HTTP/1.1" 200 4
+ 
+2020-07-22 10:28:31:2831 [[32minfo[39m] : ::1 - - [22/Jul/2020:08:28:31 +0000] "POST /courses/1/checkout HTTP/1.1" 200 9
+ 
+2020-07-22 10:34:15:3415 [[32minfo[39m] : ::1 - - [22/Jul/2020:08:34:15 +0000] "OPTIONS /courses/1/checkout HTTP/1.1" - - "http://localhost:4200/course/1" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-22 10:34:15:3415 [[32minfo[39m] : ::1 - - [22/Jul/2020:08:34:15 +0000] "POST /courses/1/checkout HTTP/1.1" - - "http://localhost:4200/course/1" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-22 10:35:14:3514 [[32minfo[39m] : ::1 - - [22/Jul/2020:08:35:14 +0000] "OPTIONS /courses/1/checkout HTTP/1.1" 200 4 "http://localhost:4200/course/1" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 
+2020-07-22 10:35:15:3515 [[32minfo[39m] : ::1 - - [22/Jul/2020:08:35:15 +0000] "POST /courses/1/checkout HTTP/1.1" 200 9 "http://localhost:4200/course/1" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+ 

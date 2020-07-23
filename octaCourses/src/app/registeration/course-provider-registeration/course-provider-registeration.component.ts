@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/services/authentication/auth.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-course-provider-registeration',
@@ -13,9 +15,21 @@ export class CourseProviderRegisterationComponent implements OnInit {
   showLogin_hideRegisterationForm(){
     this.hiddenLoginForm = !this.hiddenLoginForm;
   }
-  constructor() { }
+  constructor(private auth: AuthService, private toastService: ToastrService) { }
 
   ngOnInit(): void {
+  }
+
+  register(val: any) {
+    this.auth.registerForProvider({ name: val.name, email: val.email, password: val.password, phone: val.phone })
+      .then(() => {
+        this.toastService.success('Provide registered')
+      })
+      .catch((err)=>{
+        console.log(err)
+        this.toastService.error(err.error.message)
+
+      })
   }
 
 }

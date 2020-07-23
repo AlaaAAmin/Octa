@@ -1,4 +1,3 @@
-const { mongoose } = require("../services/mongodb.service")
 const { STATUS_CODES, MESSAGES } = require('../config/config.json').HTTP_RESPONSES
 const { ENVIRONMENT } = require('../config/config.json')
 const _Error = require('../classes/error.class')
@@ -12,15 +11,15 @@ const handleMongoCastError = (error) => {
 }
 
 const handleMongoDuplicateFieldError = (error) => {
-    const value = err.errmsg.match(/(["'])(?:(?=(\\?))\2.)*?\1/)[0];
+    const value = error.errmsg.match(/(["'])(?:(?=(\\?))\2.)*?\1/);
     const message = `Duplicate field value: ${value}. Please use anothe value!`;
     return new _Error(message, 400);
 }
 
 const handleMongoValidationError = (error) => {
-    const errors = Object.values(err.errors).map(el => el.message);
+    const errors = Object.values(error.errors).map(el => el.message);
     const message = `Invalid input data. ${errors.join('. ')}`;
-    return new AppError(message, 400);
+    return new _Error(message, 400);
 
 }
 
@@ -47,6 +46,9 @@ const handleErrorsInProdMode = (err, res) => {
         // 1) Log error to console
         logger.error(JSON.stringify(err))
 
+        // handling payment error
+        if(err.type == 'StripeCardError') return res.status(400).json({status:'fail', message: err.raw.message})
+        
         // 2) Send generic message
         res.status(500).json({
             status: 'error',
@@ -59,7 +61,7 @@ const handleErrorsInProdMode = (err, res) => {
 // handle rest of endpoints 
 // when trying to send to unexisting route this will be executed
 const handleRoutes = (req, res, next) => {
-    res.status(STATUS_CODES.NOT_FOUND).send({ message: MESSAGES.NOT_FOUND })
+    res.status(STATUS_CODES.NOT_FOUND).json({ message: MESSAGES.NOT_FOUND })
 }
 
 // handling database error if occured
@@ -69,12 +71,11 @@ const handleRoutes = (req, res, next) => {
 // handling error for payment required which is routes for course content
 // if nothing specified then returned error 500 
 const handler = (err, req, res, next) => {
-
     err.statusCode = err.statusCode || 500;
     err.status = err.status || 'error';
 
     // for development and production environment
-    if (ENVIRONMENT == 'development') handleErrorsInDevMode(err, res)
+    if (ENVIRONMENT == 'development') return handleErrorsInDevMode(err, res)
     else if (ENVIRONMENT == 'production') {
         let error = { ...err }
 
@@ -83,6 +84,5 @@ const handler = (err, req, res, next) => {
         if (error.name === 'ValidationError') error = handleMongoValidationError(error);
         handleErrorsInProdMode(error, res)
     }
-
 }
 module.exports = { handler, handleRoutes }

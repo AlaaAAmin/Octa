@@ -39,6 +39,8 @@ const providerSchema = new Schema({
             message: props => `${props.value} is not a valid phone number!`
         }
     },
+    stripe_id: { type: String, default: null },
+    bank_id: {  type: String, default: null },
     password: { required: true, type: String },
     verified: { required: true, type: Boolean, default: false },
     timestamp: { required: false, type: Number, default: Date.now() },
@@ -121,7 +123,7 @@ const addStrikeToProvider = (providerId, strikeData) => {
     return new Promise((resolve, reject) => {
         Provider.findOne({ _id: providerId }, (err, doc) => {
             if (err) return reject(err)
-            if (!doc) return reject(new _Error('Provider does not exist.',400))
+            if (!doc) return reject(new _Error('Provider does not exist.', 400))
             doc.meta.strikes.push(strikeData)
             if (doc.meta.strikes.length >= 3) _EventEmitter.emit('provider-ready-to-be-banned', { providerId: providerId, strikes: doc.meta.strikes })
             resolve(doc.save())
@@ -139,6 +141,18 @@ const getBanReadyProviders = () => {
     })
 }
 
+const bindStripeAccountToProvider = (providerId, stripeId, bankId) => {
+    return new Promise((resolve, reject) => {
+        Provider.findOne({ _id: new mongoose.mongo.ObjectID(providerId) }, (err, doc) => {
+            if (err) return reject(err)
+            if (doc.stripeId) return resolve(null)
+            doc.stripe_id = stripeId
+            doc.bank_id = bankId
+            resolve(doc.save())
+        })
+    })
+}
+
 module.exports = {
     createProvider,
     getProviderById,
@@ -147,5 +161,6 @@ module.exports = {
     deleteById,
     Provider,
     addStrikeToProvider,
-    getBanReadyProviders
+    getBanReadyProviders,
+    bindStripeAccountToProvider
 }

@@ -104,3 +104,14 @@
 .editIcon{
   font-size: 100%;
 }
+
+.xp{
+  font-size: large;
+  font-weight: 300;
+  color: #262626;
+}
+
+.level-xp{
+  margin-left: -2%;
+  font-weight: 300;
+}

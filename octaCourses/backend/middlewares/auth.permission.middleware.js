@@ -11,7 +11,7 @@ const minimumPermissionLevelRequired = (required_permission_level) => {
 const onlySameUserOrAdminCanDoThisAction = (req, res, next) => {
     let user_permission_level = parseInt(req.jwt.permissionLevel);
     let userId = req.jwt._id;
-    if ((req.params == req.params.id == userId) === req.params.id) return next();
+    if (req.params.id === req.params.id) return next();
     else {
         if (user_permission_level == ADMIN) return next();
         else return res.status(403).send();

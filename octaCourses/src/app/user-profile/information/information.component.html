@@ -1,23 +1,45 @@
 <div class="container">
 
     <div class="row imageRow">
-    <!--profile image-->
-    <div class="col-sm-3">
-        <div class="newImageContainer">
-            <img src="../../../assets/img/profile.jpg" alt="Avatar" class="image img-thumbnail" style="width:100%">
-            <div class="middle">
-            <button class="text btn"><mat-icon>edit</mat-icon></button>
+        <!--profile image-->
+        <div class="col-sm-3">
+            <div class="newImageContainer">
+                <img src="../../../assets/img/profile.jpg" alt="Avatar" class="image img-thumbnail" style="width:100%">
+                <div class="middle">
+                    <button class="text btn">
+                        <mat-icon>edit</mat-icon>
+                    </button>
+                </div>
             </div>
         </div>
-    </div>
 
-    <!--user name-->
-    <div class="col-sm-4 nameDiv">
-        <div class="col-sm-4" class="infoFields">
-            <div>Alaa Ahmed Amin</div>
-            <small class="joiningDate">Member since: registration date</small>
+        <!--user name-->
+        <div class="col-sm-4 nameDiv">
+            <div class="col-sm-4" class="infoFields">
+                <div>Alaa Ahmed Amin</div>
+                <small class="joiningDate">Member since: registration date</small>
+
+                <br>
+                <!-- start of student level and xp-->
+                <span class="w-25 level-xp">
+                    <!-- the svg below is used to draw the octagon shape containing the level -->
+                    <svg class="octagon" xmlns="http://www.w3.org/2000/svg" width="20%" height="50px">
+                        <!-- 25,5  75,5  100,30  100,70 75,95  25,95  0,70  0,30 -->
+                        <polygon points="13,5  33,5  46,17  46,33 33,45  13,45  0,33  0,17" fill="#ffffff"
+                            stroke="#f2690d" stroke-width="1.5" transform="translate(10)"></polygon>
+
+                        <!-- student level goes into the text tag below-->
+                        <text class="level" x="33" y="33" fill="#4d4d4d" font-size="22" text-anchor="middle">
+                            {{user?.level}}
+                        </text>
+                    </svg>
+
+                    <!-- student's xp goes in the span below -->
+                    <span class="xp">{{user?.points}} points</span>
+                </span>
+                <!-- end of student level and xp-->
+            </div>
         </div>
-    </div>
     </div>
     <!--end of user name-->
     <!--end of profile image & name-->
@@ -26,22 +48,25 @@
     <div class="row" style="margin-top: 3%;">
         <!--displaying personal info column-->
         <div class="col-sm-4" class="infoFields">
-            <div>student name</div>
+            <div>student name: {{user?.firstname}} {{user?.lastname}} </div>
         </div>
 
         <!--edit info buttons column-->
         <div class="col-sm-2">
-            <button class="btn btn-link" (click)="nameEdit()"><mat-icon class="editIcon">edit</mat-icon></button>
+            <button class="btn btn-link" (click)="nameEdit()">
+                <mat-icon class="editIcon">edit</mat-icon>
+            </button>
         </div>
 
         <!--editing forms column-->
         <div class="col-sm-4">
             <form class="form-inline" #nameForm="ngForm">
                 <span [class.d-none]="editName">
-                    <input placeholder="new name" type="text" name="newName" id="newName" class="form-control form-control form-control-sm" 
-                    ngModel #newName="ngModel" required [class.is-invalid]="newName.invalid && newName.touched">
-                    <button type="submit" class="btn btn-primary btn-sm" (click)="submitName()"
-                    [disabled]="nameForm.invalid">Submit</button>
+                    <input placeholder="new name" type="text" name="newName" id="newName"
+                        class="form-control form-control form-control-sm" ngModel #newName="ngModel" required
+                        [class.is-invalid]="newName.invalid && newName.touched">
+                    <button type="submit" class="btn btn-primary btn-sm" (click)="submitName(newName.value)"
+                        [disabled]="nameForm.invalid">Submit</button>
                 </span>
             </form>
             <small class="text-danger" [class.d-none]="newName.valid || newName.untouched">
@@ -49,29 +74,31 @@
             </small>
         </div>
     </div>
-<hr>
+    <hr>
     <!--email section-->
     <div class="row" style="margin-top: 3%;">
         <!--displaying personal info column-->
         <div class="col-sm-4" class="infoFields">
             <label for="email">Email: &nbsp;</label>
-            <span id="email">chars@chars.com</span>
+            <span id="email">{{user?.email}}</span>
         </div>
 
         <!--edit info buttons column-->
         <div class="col-sm-2">
-            <button class="btn btn-link" (click)="emailEdit()"><mat-icon class="editIcon">edit</mat-icon></button>
+            <button class="btn btn-link" (click)="emailEdit()">
+                <mat-icon class="editIcon">edit</mat-icon>
+            </button>
         </div>
 
         <!--editing forms column-->
         <div class="col-sm-4">
             <form class="form-inline" #emailForm="ngForm">
                 <span [class.d-none]="editEmail">
-                    <input placeholder="new email" type="email" name="newEmail" class="form-control  form-control-sm" 
-                    ngModel #newEmail="ngModel" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
-                    [class.is-invalid]="newEmail.invalid && newEmail.touched">
-                    <button type="submit" class="btn btn-primary btn-sm" (click)="submitEmail()"
-                    [disabled]="nameForm.invalid">Submit</button>
+                    <input placeholder="new email" type="email" name="newEmail" class="form-control  form-control-sm"
+                        ngModel #newEmail="ngModel" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+                        [class.is-invalid]="newEmail.invalid && newEmail.touched">
+                    <button type="submit" class="btn btn-primary btn-sm" (click)="submitEmail(newEmail.value)"
+                        [disabled]="nameForm.invalid">Submit</button>
                 </span>
             </form>
             <small class="text-danger" [class.d-none]="newEmail.valid || newEmail.untouched">
@@ -79,20 +106,27 @@
             </small>
         </div>
     </div>
-<hr>
+    <hr>
 
     <!--start of interests section-->
     <div class="row" style="margin-top: 3%;">
         <!--displaying interests-->
         <div class="col-sm-4" class="infoFields">
-            Interests: 
-            <span>intrest 1</span>
-            <span>intrest 2</span>
+            Interests:
+            <ng-container *ngIf="user?.interests.length > 0; then thenTemplate; else elseTemplate"></ng-container>
+            <ng-template #thenTemplate>
+                <span *ngFor="let interest of user?.interests" class="mr-2">{{interest}}</span>
+            </ng-template>
+            <ng-template #elseTemplate>
+                <span>There is no interests</span>
+            </ng-template>
         </div>
 
         <!--edit interests button -->
         <div class="col-sm-2">
-            <button class="btn btn-link" (click)="interestEdit()"><mat-icon class="editIcon">edit</mat-icon></button>
+            <button class="btn btn-link" (click)="interestEdit()">
+                <mat-icon class="editIcon">edit</mat-icon>
+            </button>
         </div>
 
         <!-- editing interests form -->
@@ -101,7 +135,8 @@
             <mat-form-field>
                 <mat-label>Select your interests</mat-label>
                 <mat-select [(value)]="selectedValue" multiple>
-                    <mat-option *ngFor="let category of categories" value="{{category.name}}">{{category.name}}</mat-option>
+                    <mat-option *ngFor="let category of categories" value="{{category.name}}">{{category.name}}
+                    </mat-option>
                 </mat-select>
             </mat-form-field>
             <!-- end of the dropdown menu for categories -->
@@ -110,29 +145,31 @@
             <button type="submit" class="btn btn-primary btn-sm ml-1" (click)="submitInterests()">Save</button>
         </div>
     </div>
-<hr>
+    <hr>
     <!--phone section-->
     <div class="row" style="margin-top: 3%;">
         <!--displaying personal info column-->
         <div class="col-sm-4" class="infoFields">
             <label for="phone">Phone: &nbsp;</label>
-            <span id="phone">01066569848</span>
+            <span id="phone">{{user?.phone}}</span>
         </div>
 
         <!--edit info buttons column-->
         <div class="col-sm-2">
-            <button class="btn btn-link" (click)="phoneEdit()"><mat-icon class="editIcon">edit</mat-icon></button>
+            <button class="btn btn-link" (click)="phoneEdit()">
+                <mat-icon class="editIcon">edit</mat-icon>
+            </button>
         </div>
 
         <!--editing forms column-->
         <div class="col-sm-6">
             <form class="form-inline" #phoneForm="ngForm">
                 <span [class.d-none]="editPhone">
-                    <input placeholder="new phone number" type="tel" name="newPhone" class="form-control form-control-sm" 
-                    ngModel #newPhone="ngModel" required pattern="[0]{1}[1]{1}(0|1|2|5)\d{8}"
-                    [class.is-invalid]="newPhone.invalid && newPhone.touched">
-                    <button type="submit" class="btn btn-primary btn-sm" (click)="submitPhone()"
-                    [disabled]="phoneForm.invalid">Submit</button>
+                    <input placeholder="new phone number" type="tel" name="newPhone"
+                        class="form-control form-control-sm" ngModel #newPhone="ngModel" required
+                        pattern="[0]{1}[1]{1}(0|1|2|5)\d{8}" [class.is-invalid]="newPhone.invalid && newPhone.touched">
+                    <button type="submit" class="btn btn-primary btn-sm" (click)="submitPhone(newPhone.value)"
+                        [disabled]="phoneForm.invalid">Submit</button>
                 </span>
             </form>
             <small class="text-danger" [class.d-none]="newPhone.valid || newPhone.untouched">
@@ -140,60 +177,38 @@
             </small>
         </div>
     </div>
-<hr>
-    <!--facebook account section-->
-    <div class="row" style="margin-top: 3%;">
-        <!--displaying personal info column-->
-        <div class="col-sm-4" class="facebookAccountInfoFields">
-            <label>Facebook: &nbsp;</label>
-            <!--facebookAccountLink is a template reference variable that holds a reference to the a element
-            so i can use the text of the anchor as the href attribute-->
-            <a target="_blank" #facebookAccountLink href="{{facebookAccountLink.textContent}}">https://www.facebook.com/alaa.amin.7169</a>
-        </div>
-
-        <!--edit info buttons column-->
-        <div class="col-sm-2">
-            <button class="btn btn-link" (click)="facebookAccountEdit()"><mat-icon class="editIcon">edit</mat-icon></button>
-        </div>
-
-        <!--editing forms column-->
-        <div class="col-sm-4">
-            <form class="form-inline" #facebookAccountForm="ngForm">
-                <span [class.d-none]="editFacebookAccount">
-                    <input placeholder="facebook account" type="url" name="newFacebookAccount" class="form-control form-control-sm" 
-                    ngModel #newFacebookAccount="ngModel" required pattern="http://www\.facebook\.com\/(.+)|https://www\.facebook\.com\/(.+)"
-                    [class.is-invalid]="newFacebookAccount.invalid && newFacebookAccount.touched">
-                    <button type="submit" class="btn btn-primary btn-sm" (click)="submitFacebookAccount()"
-                    [disabled]="facebookAccountForm.invalid">Submit</button>
-                </span>
-            </form>
-            <small class="text-danger" [class.d-none]="newFacebookAccount.valid || newFacebookAccount.untouched">
-                Enter a valid facebook account
-            </small>
-        </div>
-    </div>
-<hr>
+    <hr>
     <!--birthdate section-->
     <div class="row" style="margin-top: 3%;">
         <!--displaying personal info column-->
         <div class="col-sm-4" class="infoFields">
             <label for="birthdate">Birthdate: &nbsp;</label>
-            <span id="birthdate">6/1/1998</span>
+            <ng-container *ngIf="user?.date_of_birth; then DOB; else NODOB"></ng-container>
+            <ng-template #DOB>
+                    <span>{{user?.date_of_birth | date}}</span>
+            </ng-template>
+            <ng-template #NODOB>
+                <span>Please provide your birthdate</span>
+            </ng-template>
+            
         </div>
 
         <!--edit info buttons column-->
         <div class="col-sm-2">
-            <button class="btn btn-link" (click)="birthdateEdit()"><mat-icon class="editIcon">edit</mat-icon></button>
+            <button class="btn btn-link" (click)="birthdateEdit()">
+                <mat-icon class="editIcon">edit</mat-icon>
+            </button>
         </div>
 
         <!--editing forms column-->
         <div class="col-sm-6">
             <form class="form-inline" #birthdateForm="ngForm">
                 <span [class.d-none]="editBirthdate">
-                    <input placeholder="birthdate" type="date" name="newBirthdate" class="form-control form-control-sm" 
-                    ngModel #newBirthdate="ngModel" required [class.is-invalid]="newBirthdate.invalid && newBirthdate.touched">
-                    <button type="submit" class="btn btn-primary btn-sm" (click)="submitBirthdate()"
-                    [disabled]="birthdateForm.invalid">Submit</button>
+                    <input placeholder="birthdate" type="date" name="newBirthdate" class="form-control form-control-sm"
+                        ngModel #newBirthdate="ngModel" required
+                        [class.is-invalid]="newBirthdate.invalid && newBirthdate.touched">
+                    <button type="submit" class="btn btn-primary btn-sm" (click)="submitBirthdate(newBirthdate.value)"
+                        [disabled]="birthdateForm.invalid">Submit</button>
                 </span>
             </form>
             <small class="text-danger" [class.d-none]="newBirthdate.valid || newBirthdate.untouched">
@@ -201,7 +216,7 @@
             </small>
         </div>
     </div>
-<hr>
+    <hr>
     <!--password section-->
     <div class="row" style="margin-top: 3%; margin-bottom: 3%;">
         <!--displaying personal info column-->
@@ -211,7 +226,9 @@
 
         <!--edit info buttons column-->
         <div class="col-sm-2">
-            <button class="btn btn-link" (click)="passwordEdit()"><mat-icon class="editIcon">edit</mat-icon></button>
+            <button class="btn btn-link" (click)="passwordEdit()">
+                <mat-icon class="editIcon">edit</mat-icon>
+            </button>
         </div>
 
         <!--editing forms column-->
@@ -220,36 +237,37 @@
                 <!--current password-->
                 <div class="formgroup">
                     <label for="currentPass">Current</label>
-                    <input id="currentPass" type="password" name="currentPassword" 
-                    class="form-control form-control-sm" ngModel #currentPassword="ngModel" required>
+                    <input id="currentPass" type="password" name="currentPassword" class="form-control form-control-sm"
+                        ngModel #currentPassword="ngModel" required>
                 </div>
-                    <!--end of current password-->
+                <!--end of current password-->
 
-                    <!--new password-->
+                <!--new password-->
                 <div class="formgroup">
                     <label for="newPass">New</label>
-                    <input id="newPass" type="password" name="newPassword" 
-                    class="form-control  form-control-sm" ngModel #newPassword="ngModel" required
-                    [class.is-invalid]="newPassword.invalid && newPassword.touched" 
-                    pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}">
+                    <input id="newPass" type="password" name="newPassword" class="form-control  form-control-sm" ngModel
+                        #newPassword="ngModel" required [class.is-invalid]="newPassword.invalid && newPassword.touched"
+                        pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}">
                     <small class="text-danger" [class.d-none]="newPassword.valid || newPassword.untouched">
-                        Password must contain 8 or more characters that are of at least one number, and one uppercase and lowercase letter
+                        Password must contain 8 or more characters that are of at least one number, and one uppercase
+                        and lowercase letter
                     </small>
                 </div>
-                    <!--end of new password-->
+                <!--end of new password-->
 
-                    <!--confirm password-->
+                <!--confirm password-->
                 <div class="formgroup">
                     <label for="confirmPass">Confirm new password</label>
-                    <input id="confirmPass" type="password" name="confirmPassword" 
-                    class="form-control form-control-sm" ngModel #confirmPassword="ngModel" required
-                    [class.is-invalid]="confirmPassword.touched && newPassword.value != confirmPassword.value">
-                    <small class="text-danger" [class.d-none]="newPassword.value == confirmPassword.value || confirmPassword.untouched">
+                    <input id="confirmPass" type="password" name="confirmPassword" class="form-control form-control-sm"
+                        ngModel #confirmPassword="ngModel" required
+                        [class.is-invalid]="confirmPassword.touched && newPassword.value != confirmPassword.value">
+                    <small class="text-danger"
+                        [class.d-none]="newPassword.value == confirmPassword.value || confirmPassword.untouched">
                         Password doesn't match
                     </small>
                 </div>
-                    <!--end of confirm password-->
-                    <button type="submit" class="btn btn-primary btn-sm" (click)="submitPassword()"
+                <!--end of confirm password-->
+                <button type="submit" class="btn btn-primary btn-sm" (click)="submitPassword(newPassword.value)"
                     [disabled]="passwordForm.invalid" style="margin-top: 1%;">Submit</button>
             </form>
         </div>
