@@ -45,3 +45,26 @@ input{
     text-align: center;
     font-size: 140%;
 }
+
+/*end of registeration*/
+.loginH1{
+    text-align: center;
+    margin-top: 5%;
+    font-size: 210%;
+    margin-bottom: 10%;
+}
+
+
+.donotHaveAcc{
+    position: absolute;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    margin-left: 8%;
+    text-align: center;
+    font-size: 140%;
+}
+
+.login_registerBtn{
+    margin-top: -4%;
+}

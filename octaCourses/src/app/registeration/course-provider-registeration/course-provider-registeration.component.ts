@@ -7,6 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CourseProviderRegisterationComponent implements OnInit {
 
+  // hiddenLoginForm is just a variable used to show and hide the loginForm
+  hiddenLoginForm: boolean = true;
+
+  showLogin_hideRegisterationForm(){
+    this.hiddenLoginForm = !this.hiddenLoginForm;
+  }
   constructor() { }
 
   ngOnInit(): void {
