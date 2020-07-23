@@ -40,4 +40,13 @@ router.post('/provider/:id/confirmation/resend', [
     ProviderController.resendVerificationEmail
 ])
 
+router.post('/provider/:id/stripe/generate', [
+    TokenValidationMiddleware.validJWTRequired,
+    PermissionMiddleware.minimumPermissionLevelRequired(FREE),
+    PermissionMiddleware.onlySameUserOrAdminCanDoThisAction,
+    // create middleware that dont let user enter unless dont have stripe id
+    ProviderController.generateStripeForProvider
+
+])
+
 module.exports = router;

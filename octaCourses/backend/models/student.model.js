@@ -14,7 +14,7 @@ const strikesSchema = new Schema({
 // subdocument for metadata
 const metaSchema = new Schema({
     strikes: [strikesSchema] | null,
-    banned: { type: Boolean, required: true, default: false }
+    banned: { type: Boolean, required: true, default: false },
 })
 
 // generating new collection schema for student 
@@ -47,6 +47,9 @@ const studentSchema = new Schema({
 
     experience: { required: true, type: Number, default: 0 },
     level: { required: true, type: Number, default: 1 },
+    points: {required: true, type: Number, default: 0},
+    interests: { required: true, type: Array },
+    wishlist: { required: true, type: Array, default: null },
     meta: metaSchema
 
 })
@@ -73,7 +76,7 @@ const getStudentById = (id) => {
             if (!user) return reject(new _Error('User does not exist.', 400));
             let data = user.toJSON();
             delete data.__v;
-            if(data.meta.banned) return resolve('This student is banned')
+            if (data.meta.banned) return resolve('This student is banned')
             resolve(data)
         })
     })
@@ -125,6 +128,7 @@ const addExpToStudentById = (studentId, experience) => {
             if (err) return reject(err)
             if (!doc) return reject(new _Error('User does not exist.', 400));
             doc.experience = doc.experience + experience
+            doc.points = doc.points + experience
             doc.level = 1 + parseInt(doc.experience / EXP_PER_LEVEL)
             resolve(doc.save())
         })
@@ -147,10 +151,16 @@ const addStrikeToStudent = (studentId, strikeData) => {
 // getBanReadyStudents is a method that fetches every student that have 3 strikes or more
 const getBanReadyStudents = () => {
     return new Promise((resolve, reject) => {
-        Provider.find({ "meta.strikes.2": { "$exists": true } }, (err, docs) => {
-            if(err) return reject(err)
+        Student.find({ "meta.strikes.2": { "$exists": true } }, (err, docs) => {
+            if (err) return reject(err)
             resolve(docs)
         })
+    })
+}
+
+const getStudentInterests = (studentId) => {
+    return new Promise((resolve, reject) => {
+        Student.find({ _id: studentId }).select('interests -_id').then(resolve).catch(reject)
     })
 }
 
@@ -163,5 +173,6 @@ module.exports = {
     Student,
     addExpToStudentById,
     addStrikeToStudent,
-    getBanReadyStudents
+    getBanReadyStudents,
+    getStudentInterests
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from '../../services/user.service';
+import { AuthService } from 'src/app/services/authentication/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-student-registration',
@@ -8,14 +9,26 @@ import { UserService } from '../../services/user.service';
 })
 export class StudentRegistrationComponent implements OnInit {
 
-  constructor(private user: UserService) { }
+  constructor(private auth: AuthService, private router: Router) { }
 
   ngOnInit(): void {
   }
 
   register(data) {
-    this.user.registerUser(data)
-    .subscribe(res => console.log(res))
+    if (data.name) {
+      data.firstname = data.name.split(' ')[0]
+      data.lastname = data.name.split(' ')[1]  
+      delete data.name
+    }
+    this.auth.registerForStudent(data).then(()=> {
+      // notification success
+
+      // redirect to login page
+      this.router.navigate(['/login'])
+    }).catch(()=> {
+      // notification failure
+
+    })
   }
 
 }

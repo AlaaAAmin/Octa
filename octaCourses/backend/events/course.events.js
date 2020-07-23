@@ -33,8 +33,8 @@ _EventEmitter.on('new-course', async (data) => {
         let discussion = new DiscussionModel.Discussion(discussionData)
         await discussion.save()
     } catch (error) {
-        console.log(error)
-        // handle error 
+        // handle error
+        _EventEmitter('error', err) 
     }
 })
 

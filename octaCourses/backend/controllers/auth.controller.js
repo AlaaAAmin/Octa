@@ -12,7 +12,7 @@ const Login = (req, res, next) => {
         let token = jwt.sign(req.body, SECRET, { expiresIn: Math.floor(Date.now() / 1000) + (60 * 60 * 24) });
         let b = Buffer.from(hash)
         let refreshToken = b.toString('base64');
-        res.status(201).send({ status: 'success', accessToken: token, refreshToken: refreshToken });
+        res.status(201).json({ status: 'success', accessToken: token, refreshToken: refreshToken , id: req.body._id});
     } catch (err) { next(err) }
 }
 
@@ -20,7 +20,7 @@ const refreshToken = (req, res, next) => {
     try {
         req.body = req.jwt;
         let token = jwt.sign(req.body, SECRET, { expiresIn: Math.floor(Date.now() / 1000) + (60 * 60 * 24) });
-        res.status(201).send({ status: 'success',token: token });
+        res.status(201).json({ status: 'success',token: token });
     } catch (err) { next(err) }
 }
 

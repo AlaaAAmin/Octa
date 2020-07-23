@@ -34,7 +34,7 @@
         </div>
 
         <button [disabled]="studentRegisteration.form.invalid" 
-        class="btn btn-primary registerButton btn-sm btn-block" type="submit">Register</button>
+        class="btn btn-primary registerButton btn-sm btn-block" type="submit" (click)="login(email.value, password.value)">Login</button>
 
         <!--forgot password section-->
         <div>
@@ -45,7 +45,7 @@
 
     <div class="col-sm-3 haveAccountDiv">
         <h3 class="vAlign">Don't have an account!<br>
-            <a [routerLink]="['/studentregisteration']">Register</a>
+            <a [routerLink]="['/register']">Register</a>
         </h3>
     </div>
 </div>

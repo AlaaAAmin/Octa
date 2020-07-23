@@ -9,7 +9,7 @@ const formidable = require('formidable')
 const fetchFormData = (req, res, next) => {
     let form = new formidable.IncomingForm()
     form.parse(req, (err, fields, files) => {
-        if (err) return res.status(400).send({ success: false, message: "Video could not be uploaded." })
+        if (err) return res.status(400).json({ success: false, message: "Video could not be uploaded." })
         req.fields = fields
         req.files = files
         return next()

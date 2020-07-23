@@ -404,5 +404,206 @@ let q = 'bitch bitch'
 // .then(console.log)
 // .catch( err => {})
 
+const cm = require('../models/course.model')
+const e = require('../models/enrollment.model')
+const studentModel = require('../models/student.model')
+// cm.getRelatedCourses('5f0cffda66c777396ca83a82')
+// .then(console.log)
+// .catch(console.log)
+
+// let arr = ['5f0cffda66c777396ca83a82','5f0cffda66c777396ca83aa5']
+// cm.getCoursesLabel(arr)
+// .then(console.log)
 
 
+// async function a () {
+//     try {
+//         let execluded = await e.getEnrolledCoursesForStudent("5f0cff5713a6cd428893598f")
+//         execluded.forEach(el => execludeList.push(el.courseId))
+
+//         let lb =  await cm.getCoursesLabel(execludeList)
+
+//         lb.forEach(el => labelsArr.push(...el.metadata.labels))
+
+//         let rec = await cm.getRelatedCourses(execludeList,labelsArr)
+
+//         console.log(rec)
+//     } catch(e) {
+
+//     }
+// }
+// a()
+
+const ab = require('../models/wishlist.model')
+
+// ab.addCourseToStudentWishlist("5f0cff5713a6cd428893598e", "5f0cffda66c777396ca83a82").then(console.log).catch(console.log)
+// ab.removeCourseFromStudentWishlist("5f0cff5713a6cd428893598e", "5f0cffda66c777396ca83a82").then(console.log).catch(console.log)
+
+const exam = require('../models/exam.model')
+const courseModel = require('../models/course.model')
+let data = {
+    examTime: "30",
+    questions: [
+        { question: "q1", options: ["a", "b", "c"], answer: "b" },
+        { question: "q2", options: ["a", "b", "c"], answer: "c" },
+        { question: "q3", options: ["a", "b", "c"], answer: "a" },
+        { question: "q4", options: ["a", "b", "c"], answer: "a" },
+        { question: "q5", options: ["a", "b", "c"], answer: "c" }
+    ]
+}
+
+// exam.addExamToCourse("5f0cffda66c777396ca83a82", data)
+// .then(console.log).catch(console.log)
+
+let questions = [
+    { question: "q1", options: ["a", "b", "c"], answer: "a" },
+    { question: "q2", options: ["a", "b", "c"], answer: "b" },
+    { question: "q3", options: ["a", "b", "c"], answer: "a" },
+    { question: "q4", options: ["a", "b", "c"], answer: "a" },
+    { question: "q5", options: ["a", "b", "c"], answer: "c" }
+]
+
+let score = 0
+const qNo = questions.length
+
+// exam.getCourseExamQuestions("5f0cffda66c777396ca83a82").then( r => console.log(r)).catch(console.log)
+// exam.getCourseExamAnswers("5f0cffda66c777396ca83a82").then(r => {
+//     for (let i = 0; i < r.exam.questions.length; i++) {
+//         questions[i].answer == r.exam.questions[i].answer ? score = score + 1 : score = score
+//     }
+//     console.log((score/qNo) * 100)
+
+// }).catch(console.log)
+
+// e.updateStudentProgressForCourse("5f0cff5713a6cd428893598e","5f0cffda66c777396ca83aa5","5f1674506ec6d53f00445e0f","lecture", "5f16749c3f0b1e1e7cf54aec")
+// .then(console.log)
+// .catch(console.log)
+
+// let users = [{type: 'student'},{type: 'student'},{type: 'student'},{type: 'student'}, {type: 'provider'},{type: 'provider'},{type: 'provider'},{type: 'provider'},{type: 'provider'}, {type: 'admin'},{type: 'admin'},{type: 'guest'},{type: 'guest'},{type: 'guest'},{type: 'guest'},{type: 'guest'},{type: 'guest'},{type: 'guest'},{type: 'guest'},{type: 'guest'}]
+
+
+// function getActivity(users) {
+//     let data = {students: 0, guests: 0, providers: 0 , admins: 0}
+
+//     users.forEach(u => {
+//         if(u.type == 'student') data.students = data.students + 1
+//         if(u.type == 'provider') data.providers = data.providers + 1
+//         if(u.type == 'guest') data.guests = data.guests + 1
+//         if(u.type == 'admin') data.admins = data.admins + 1
+//     })
+
+//     return data
+
+// }
+
+
+
+// console.log(getActivity(users))
+
+
+
+require('../services/payment.service')
+
+// let c = 20
+
+// let fee = (0.029 * c * 100) + 30
+// let netPrice = c * 100 - fee
+
+// let cut = netPrice * 0.15
+
+// console.log(netPrice - cut)
+
+var stripe = require('stripe')('sk_test_51H7VTbLWG3oeq10N3K8I0aLAD9tcbUL80XQKINlxgUnWC9GZ2mCnuinsidkvlF5bynHD1FyuN5MPxxAtoP3aLSXR00cR7TTW1W');
+
+courseModel.Course.findById('5f0cffda66c777396ca83a82').select('ownerId -_id').populate('ownerId', 'stripe_id bank_id -_id').then(e => console.log(e.ownerId.stripe_id)).catch(console.log)
+const createStripeAccountForProvider = (data = { email }) => {
+    stripe.accounts.create({
+        type: 'custom',
+        country: 'US',
+        email: data.email,
+        business_type: 'individual',
+        business_profile: {
+            url: 'testurl.com'
+        },
+        individual: {
+            first_name: 'ahmed',
+            last_name: 'ashraf 2'
+        },
+        requested_capabilities: ['transfers'],
+
+    }, async function (err, account) {
+        if (err) return console.log(err.raw.message)
+        const { id } = account
+
+        try {
+            let acc = await stripe.account.update(id, {
+                tos_acceptance: {
+                    date: Math.floor(Date.now() / 1000),
+                    ip: '192.168.121.128'
+                }
+            })
+            // create bank account for provider to recieve payments
+            let d = await stripe.accounts.createExternalAccount(id, {
+                external_account: {
+                    object: 'bank_account',
+                    country: 'US',
+                    currency: 'usd',
+                    routing_number: '110000000',
+                    account_number: '000123456789'
+                }
+            })
+            console.log(d)
+        } catch (e) { console.log(e.message) }
+
+
+
+    })
+}
+
+//  createStripeAccountForProvider({email: 'testEmail1234@gmaik.caas'})
+// stripe.transfers.create({
+//     amount: 5000,
+//     currency: 'usd',
+//     destination: 'acct_1H7wnRGyUtq7sfvd',
+
+
+// }, async function (err, payout) {
+//     if(err) return console.log(err.message)
+//     console.log(payout.id)
+// })
+
+// stripe.paymentIntents.create({
+//     payment_method_types: ['card'],
+//     amount: 1000,
+//     currency: 'usd',
+//     application_fee_amount: 500,
+//     description: 'test method'
+// }, {
+//     stripeAccount: 'acct_1H7wnRGyUtq7sfvd',
+
+// }, (err, intent) => {
+//     if (err) console.log(err.message)
+//     console.log(intent)
+// })
+
+module.exports = async function t(req, res, next) {
+    // transfer money to provider 
+    stripe.paymentIntents.create({
+        amount: 1000,
+        currency: "usd",
+        confirm: true,
+        application_fee_amount: 150,
+        payment_method_types: ['card'],
+        payment_method_data:{type: 'card', card: {token: req.body.token}} , // payment token indecates creditcard and operation
+        transfer_data: {
+            destination: "acct_1H7yUgKGT9ErQ4Kp", // connected_account ID
+        }
+    }, (err, intent) => {
+        if (err) return next(err)
+        
+    })
+
+
+
+}
+// createStripeAccountForProvider({email: 'testEmail12@donee.com'})

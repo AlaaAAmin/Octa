@@ -41,11 +41,19 @@ router.post('/courses/add', [
 router.patch('/courses/:id', [
     TokenValidationMiddleware.validJWTRequired,
     PermissionMiddleware.minimumPermissionLevelRequired(NORMAL_PROVIDER),
-    CourseAuthorizationMiddleware.onlyOwnerOfCourseCanEdit,
+    CourseAuthorizationMiddleware.onlyOwnerOfCourseAuthorized,
     StorageMiddleware.fetchFormData,
     StorageMiddleware.reshapeFormDataFields,
     StorageMiddleware.reshapeFormDataFiles,
     CourseController.updateCourse
 ])
+
+router.post('/courses/:id/checkout', [
+    TokenValidationMiddleware.validJWTRequired,
+    PermissionMiddleware.minimumPermissionLevelRequired(NORMAL_USER),
+    CourseAuthorizationMiddleware.onlyEnrolledStudentsAuthorized,
+    CourseController.checkout
+])
+
 
 module.exports = router;

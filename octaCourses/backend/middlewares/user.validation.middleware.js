@@ -6,12 +6,12 @@ const crypto = require('crypto');
 // hasValidFields is a function that validates if body has valid fields or not
 const hasValidFields = (req, res, next) => {
     let errors = [];
-    if (!req.body) return res.status(400).send({ error: 'Missing email and password fields' });
+    if (!req.body) return res.status(400).json({ error: 'Missing email and password fields' });
     else {
         if (!req.body.email) errors.push('Missing email field');
         if (!req.body.password) errors.push('Missing password field');
         if (!errors.length) return next();
-        else return res.status(400).send({ errors: errors.join(',') });
+        else return res.status(400).json({ errors: errors.join(',') });
     }
 }
 
@@ -23,9 +23,9 @@ const isPasswordAndStudentMatch = (req, res, next) => {
             let passwordFields = user.password.split('$');
             let salt = passwordFields[0];
             let hash = crypto.createHmac('sha512', salt).update(req.body.password).digest('base64');
-            if (hash !== passwordFields[1]) return res.status(400).send({ error: 'Invalid user credentials.' });
+            if (hash !== passwordFields[1]) return res.status(400).json({ error: 'Invalid user credentials.' });
             req.body = {
-                id: user.id,
+                _id: user._id,
                 email: user.email,
                 firstName: user.firstname,
                 lastName: user.lastname,
@@ -35,7 +35,7 @@ const isPasswordAndStudentMatch = (req, res, next) => {
             return next();
         })
         .catch(err => {
-            res.status(400).send({ success: false, error: err })
+            res.status(400).json({ success: false, error: err })
         })
 }
 
@@ -47,7 +47,7 @@ const isPasswordAndProviderMatch = (req, res, next) => {
             let passwordFields = user.password.split('$');
             let salt = passwordFields[0];
             let hash = crypto.createHmac('sha512', salt).update(req.body.password).digest('base64');
-            if (hash !== passwordFields[1]) return res.status(400).send({ error: 'Invalid Course Provider credentials.' });
+            if (hash !== passwordFields[1]) return res.status(400).json({ error: 'Invalid Course Provider credentials.' });
             req.body = {
                 id: user.id,
                 email: user.email,
@@ -60,7 +60,7 @@ const isPasswordAndProviderMatch = (req, res, next) => {
             return next();
         })
         .catch(err => {
-            res.status(400).send({ success: false, error: err })
+            res.status(400).json({ success: false, error: err })
         })
 }
 
@@ -73,7 +73,7 @@ const isPasswordAndAdminMatch = (req, res, next) => {
             let passwordFields = user.password.split('$');
             let salt = passwordFields[0];
             let hash = crypto.createHmac('sha512', salt).update(req.body.password).digest('base64');
-            if (hash !== passwordFields[1]) return res.status(400).send({ error: 'Invalid Admin credentials.' });
+            if (hash !== passwordFields[1]) return res.status(400).json({ error: 'Invalid Admin credentials.' });
             
             req.body = {
                 id: user._id,
@@ -86,7 +86,7 @@ const isPasswordAndAdminMatch = (req, res, next) => {
         })
         .catch(err => {
             console.log(err)
-            res.status(400).send({ success: false, error: err })
+            res.status(400).json({ success: false, error: err })
         })
 }
 

@@ -1,7 +1,8 @@
 let _EventEmitter = require('../services/event.service')
-const { response } = require('express')
+const { logger } = require('../middlewares/logger.middleware')
 
 _EventEmitter.on('error', (error) => {
     // also log every error even if response sent to user
-    response.send({success: false, error: error})
+    logger.error(JSON.stringify(error))
+    _EventEmitter('handle-error', error)
 })

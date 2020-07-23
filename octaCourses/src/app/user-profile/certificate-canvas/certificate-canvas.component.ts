@@ -10,7 +10,7 @@ export class CertificateCanvasComponent implements OnInit {
   // the certificateData object is just for testing representing the data required for the certificate
   // and should be removed after the work is done
   certificateData: any = {
-    studentName: "ALaa Ahmed",
+    studentName: "Alaa Ahmed",
     courseName: "Angular 9",
     issueDate: "1/1/2020",
     certificateId: 777777777

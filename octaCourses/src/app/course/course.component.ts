@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { PaymentDialogComponent } from './payment-dialog/payment-dialog.component';
 
 @Component({
   selector: 'app-course',
@@ -46,9 +48,20 @@ export class CourseComponent implements OnInit {
       ]
     }
   ]
-  constructor() { }
+  constructor(public dialog: MatDialog) { }
 
   ngOnInit(): void {
+  }
+
+  initPayment() {
+    const dialogRef = this.dialog.open(PaymentDialogComponent, {
+      width: '500px',
+      data: {courseName: 'test course'}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
   }
 
 }
