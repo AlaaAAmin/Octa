@@ -24,3 +24,8 @@
     background-color: #f2f3f5;
     border: 1px solid #E0E0E0;
 }
+
+.quizContents{
+    border: 1px #E0E0E0 solid;
+    padding: 2%;
+}
