@@ -9,7 +9,7 @@ const config = require('../config/config.json');
 const FREE = config.permissionLevels.NORMAL_USER;
 
 // register
-router.post('/student/register', StudentController.studentRegister);
+router.post('/student/register', StudentController.register);
 
 // get by id (personal page or account)
 router.get('/student/:id', [
@@ -17,14 +17,14 @@ router.get('/student/:id', [
     // permission level
     PermissionMiddleware.minimumPermissionLevelRequired(FREE),
     PermissionMiddleware.onlySameUserOrAdminCanDoThisAction,
-    StudentController.getById
+    StudentController.getStudentById
 ])
 
 router.patch('/student/:id', [
     TokenValidationMiddleware.validJWTRequired,
     PermissionMiddleware.minimumPermissionLevelRequired(FREE),
     PermissionMiddleware.onlySameUserOrAdminCanDoThisAction,
-    StudentController.updateAccount
+    StudentController.updateStudentAccount
 ]);
 
 router.delete('/student/:id', [
@@ -38,6 +38,13 @@ router.post('/student/:id/confirmation/resend', [
     PermissionMiddleware.minimumPermissionLevelRequired(FREE),
     PermissionMiddleware.onlySameUserOrAdminCanDoThisAction,
     StudentController.resendVerificationEmail
+])
+
+router.post('/student/:id/recommendations', [
+    TokenValidationMiddleware.validJWTRequired,
+    PermissionMiddleware.minimumPermissionLevelRequired(FREE),
+    PermissionMiddleware.onlySameUserOrAdminCanDoThisAction,
+    StudentController.getRecommendationsForStudent
 ])
 
 

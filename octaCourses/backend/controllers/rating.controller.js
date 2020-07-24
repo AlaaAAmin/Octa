@@ -5,10 +5,10 @@ const RatingModel = require('../models/rating.model')
 const rateCourse = (req, res, next) => {
     req.body.courseId = req.params.id
     req.body.studentId = req.jwt._id
-    if (req.body.rate < 0 || req.body.rate > 5) return res.status(400).send({ success: false, message: 'Invalid rate number.' })
+    if (req.body.rate < 0 || req.body.rate > 5) return res.status(400).json({ success: false, message: 'Invalid rate number.' })
     RatingModel.addRatingToCourse(req.body)
         .then((val) => {
-            res.status(201).send({ status: 'success', message: 'User rated course.' })
+            res.status(201).json({ status: 'success', message: 'User rated course.' })
         })
         .catch(err => next(err))
 }

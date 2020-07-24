@@ -37,7 +37,7 @@ const metadataSchema = new Schema({
 // generating new collection schema for course 
 // collection schema here is like when we create database tables schema in sql database
 const courseSchema = new Schema({
-    courseName: { required: true, type: String },
+    courseName: { required: true, type: String, index: true }, // created here index to enable full and partial text search
     ownerId: { required: true, type: mongoose.Types.ObjectId, ref: 'providers' },
     courseRequirments: { required: true, type: String },
     courseObjectives: { required: true, type: Array },
@@ -56,6 +56,8 @@ const courseSchema = new Schema({
     createdAt: { type: Date, required: true, default: Date.now() },
     metadata: metadataSchema | null
 })
+
+courseSchema.index({ courseName: 'text' }) // create text index for full text search
 
 // here we embed a method to get reviewed courses from db
 courseSchema.findById = (cb) => {
@@ -85,7 +87,7 @@ const getCourseById = (id) => {
     return new Promise((resolve, reject) => {
         Course.findById(id, (err, course) => {
             if (err) return reject(err)
-            if (!course) return reject(new _Error('Course not found',400))
+            if (!course) return reject(new _Error('Course not found', 400))
             Course.aggregate([
                 { $match: { "_id": new mongoose.mongo.ObjectId(id) } },
                 { $lookup: { from: "providers", localField: "ownerId", foreignField: "_id", as: "provider" } },// searches in providers collection to get provider id
@@ -122,7 +124,7 @@ const getFullCourseById = (courseId) => {
     return new Promise((resolve, reject) => {
         Course.findById(courseId, (err, course) => {
             if (err) return reject(err)
-            if (!course) return reject(new _Error('Course not found',400))
+            if (!course) return reject(new _Error('Course not found', 400))
             Course.aggregate([
                 { $match: { "_id": new mongoose.mongo.ObjectId(id) } },
                 { $lookup: { from: "providers", localField: "ownerId", foreignField: "_id", as: "provider" } },// searches iin providers collection to get provider id
@@ -180,7 +182,7 @@ const isOwnerOfCourse = (ownerId, courseId) => {
     return new Promise((resolve, reject) => {
         Course.findOne({ _id: courseId }, (err, doc) => {
             if (err) return reject(err)
-            if (!doc) return reject(new _Error('Course does not exist.',400))
+            if (!doc) return reject(new _Error('Course does not exist.', 400))
             doc.toJSON().ownerId == ownerId ? resolve(true) : resolve(false)
         })
     })
@@ -188,9 +190,10 @@ const isOwnerOfCourse = (ownerId, courseId) => {
 
 // isOwnerOfCourse is a function that filter courses 
 // used in search
-const filterCourses = (filter) => {
+const filterCourses = (filter = { coursename }) => {
     return new Promise((resolve, reject) => {
-        Course.find(filter, (err, res) => {
+        let q = { $or: [{ courseName: { $regex: filter.coursename } }, { $text: { $search: filter.coursename, $caseSensitive: false } }] }
+        Course.find(q, (err, res) => {
             if (err) return reject(err)
             resolve(res)
         })
@@ -217,6 +220,31 @@ const getRawCourses = () => {
     })
 }
 
+const getRelatedCourses = (ids, labels) => {
+    return new Promise((resolve, reject) => {
+        Course.find({ _id: { "$nin": ids }, "metadata.labels": { "$in": labels } }).select('courseName thumbnailId').populate('ownerId', 'name').exec()
+            .then(resolve)
+            .catch(reject)
+    })
+}
+
+const listLatestCourses = () => {
+    return new Promise((resolve, reject) => {
+        Course.find({}).sort('-createdAt').limit(10) // sort desc and limit to first 10 results
+            .then(resolve)
+            .catch(reject)
+    })
+}
+
+const getCoursesLabel = (coursesIds) => {
+    return new Promise((resolve, reject) => {
+        let labels = []
+        Course.find({ _id: { "$in": coursesIds } }).select("metadata.labels")
+            .then(resolve)
+            .catch(reject)
+    })
+}
+
 module.exports = {
     createCourse,
     getCourseById,
@@ -227,5 +255,8 @@ module.exports = {
     getFullCourseById,
     addLabelsToCourseAndReview,
     getRawCourses,
+    getRelatedCourses,
+    listLatestCourses,
+    getCoursesLabel,
     Course
 }

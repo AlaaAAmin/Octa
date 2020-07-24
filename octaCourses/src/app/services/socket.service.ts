@@ -18,7 +18,7 @@ export class SocketService {
 
     let error = null
     socket.on('connect', () => {
-      socket.emit('authentication', { token: this.auth.token })
+      socket.emit('authentication', { token: localStorage.getItem('token') })
     })
 
     socket.on('unauthorized', (reason) => {

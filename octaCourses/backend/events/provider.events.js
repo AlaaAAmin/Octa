@@ -11,13 +11,13 @@ _EventEmitter.on('strike-provider', async (data) => {
         }
         await addStrikeToProvider(data.studentId, strikeData)
     } catch (err) {
-        console.log(err)
+        _EventEmitter('error', err)
     }
 })
 
-// event listner for getting new notification for provider
-_EventEmitter.on('new-notification', () => {
-
+// event listner for getting new notification for provider when student asks a question
+_EventEmitter.on('student-asked', (data) => {
+    _EventEmitter.emit('new-notification', data)
 })
 
 

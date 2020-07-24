@@ -6,6 +6,8 @@ const EMAIL_SECRET = require('../config/config.json').EMAIL_SECRET;
 const jwt = require('jsonwebtoken');
 const _EventEmitter = require('../services/event.service');
 const _Error = require('../classes/error.class');
+const EnrollmentModel = require('../models/enrollment.model');
+const CourseModel = require('../models/course.model');
 
 const register = (req, res, next) => {
     let salt = crypto.randomBytes(16).toString('base64');
@@ -39,7 +41,7 @@ const register = (req, res, next) => {
             return mailer.sendMail(options);
         })
         .then(() => {
-            res.status(201).send({ status: 'success', id: userId });
+            res.status(201).json({ status: 'success', id: userId });
         })
         .catch(err => next(err));
 }
@@ -53,7 +55,7 @@ const updateStudentAccount = (req, res, next) => {
 
     StudentModel.updateStudent(req.params.id, req.body)
         .then(result => {
-            res.status(204).send({ status: 'success', message: 'user updated.' })
+            res.status(204).json({ status: 'success', message: 'user updated.' })
         })
         .catch(err => next(err));
 }
@@ -65,7 +67,7 @@ const getStudentById = (req, res, next) => {
             delete user.timestamp;
             delete user.password;
             delete user.permissionLevel;
-            res.status(200).send(user)
+            res.status(200).json({ status: 'success', data: { user } })
         })
         .catch(error => next(err))
 }
@@ -95,7 +97,7 @@ const removeById = (req, res, next) => {
 const verifyEmailToken = (req, res, next) => {
     Token.Token.findOne({ token: req.jwt.token }, (err, token) => {
         if (err) return next(err)
-        if (!token) return next(new _Error('Unable to find token, token my have expired.',400))
+        if (!token) return next(new _Error('Unable to find token, token my have expired.', 400))
         StudentModel.Student.findOne({ _id: token._userId }, (err, user) => {
             if (err) return next(err)
             if (!user) return next(new _Error('Unable to find a user for this token.', 400))
@@ -103,7 +105,7 @@ const verifyEmailToken = (req, res, next) => {
             user.verified = true;
             user.save((err) => {
                 if (err) return next(err)
-                res.status(200).send({ status: 'success', message: "The account has been verified. Please log in." });
+                res.status(200).json({ status: 'success', message: "The account has been verified. Please log in." });
             });
         }).catch(err => next(err))
     })
@@ -138,7 +140,7 @@ const resendVerificationEmail = (req, res, next) => {
                 return mailer.sendMail(options);
             })
             .then(() => {
-                res.status(200).send({ status: 'success', message: 'Email has been sent.' });
+                res.status(200).json({ status: 'success', message: 'Email has been sent.' });
             })
             .catch(err => next(err))
     })
@@ -169,7 +171,7 @@ const SendPasswordReset = (req, res, next) => {
             return mailer.sendMail(options);
         })
         .then(() => {
-            res.status(200).send({ status: 'success', message: 'Email has been sent.' });
+            res.status(200).json({ status: 'success', message: 'Email has been sent.' });
         })
         .catch(err => next(err))
 }
@@ -177,10 +179,10 @@ const SendPasswordReset = (req, res, next) => {
 const resetPassword = (req, res, next) => {
     Token.Token.findOne({ token: req.jwt.token }, (err, token) => {
         if (err) return next(err)
-        if (!token) return next(new _Error('Unable to find token, token my have expired.',400))
+        if (!token) return next(new _Error('Unable to find token, token my have expired.', 400))
         StudentModel.Student.findOne({ _id: token._userId }, (err, user) => {
             if (err) return next(err)
-            if (!user) return next(new _Error('Unable to find a user for this token.',400));
+            if (!user) return next(new _Error('Unable to find a user for this token.', 400));
 
             let salt = crypto.randomBytes(16).toString('base64');
             let hash = crypto.createHmac('sha512', salt).update(req.body.password).digest('base64');
@@ -188,19 +190,39 @@ const resetPassword = (req, res, next) => {
             user.password = req.body.password;
             user.save((err) => {
                 if (err) return next(err)
-                res.status(200).send({ status: 'success', message: "Password has been reset." });
+                res.status(200).json({ status: 'success', message: "Password has been reset." });
             });
         });
     })
 }
 
 
-module.exports.studentRegister = register;
-module.exports.updateAccount = updateStudentAccount;
-module.exports.getById = getStudentById;
-module.exports.updateById = updateById;
-module.exports.removeById = removeById;
-module.exports.verifyEmailToken = verifyEmailToken;
-module.exports.resendVerificationEmail = resendVerificationEmail;
-module.exports.SendPasswordReset = SendPasswordReset;
-module.exports.resetPassword = resetPassword;
+const getRecommendationsForStudent = async (req, res, next) => {
+    try {
+        let execludeList = []
+        let labelsArr = []
+        let interests = await StudentModel.getStudentInterests(req.jwt._id)
+        if (interests[0]) labelsArr = [...e[0].interests]; else return res.status(200).json({ status: 'success', message: 'update interests to get recommendations' })
+        let execluded = await EnrollmentModel.getEnrolledCoursesForStudent(req.jwt._id)
+        execluded ? execluded.forEach(el => execludeList.push(el.courseId)) : null
+        let courseLabels = await CourseModel.getCoursesLabel(execludeList)
+        courseLabels ? forEach(el => labelsArr.push(...el.metadata.labels)) : null
+        let recommended = await CourseModel.getRelatedCourses(execludeList, labelsArr)
+        res.status(200).json({ status: 'success', data: { recommended } })
+    } catch (err) { next(err) }
+}
+
+
+module.exports = {
+    register,
+    updateStudentAccount,
+    getStudentById,
+    updateById,
+    removeById,
+    verifyEmailToken,
+    resendVerificationEmail,
+    SendPasswordReset,
+    resetPassword,
+    SendPasswordReset,
+    getRecommendationsForStudent
+}

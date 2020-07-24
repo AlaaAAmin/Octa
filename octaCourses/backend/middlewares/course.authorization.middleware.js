@@ -6,17 +6,17 @@ const onlyEnrolledStudentsAuthorized = async (req, res, next) => {
         let result = await EnrollmentModel.isStudentEnrolledOrNot(req.jwt._id, req.params.id)
         result ? next() : res.status(403).send()
     } catch (err) {
-        res.status(404).send({ success: false, error: err })
+        res.status(404).json({ success: false, error: err })
     }
 }
 
-const onlyOwnerOfCourseCanEdit = async (req, res, next) => {
+const onlyOwnerOfCourseAuthorized = async (req, res, next) => {
     try {
         let course = await CourseModel.getCourseById(req.params.id)
         if (course.ownerId == req.jwt._id) return next()
         res.status(403).send()
     } catch (err) {
-        res.status(404).send({ success: false, error: err })
+        res.status(404).json({ success: false, error: err })
     }
 }
 
@@ -30,7 +30,7 @@ const ownerIsAuthorized = async (req, res, next) => {
         }
         next()
     } catch (err) {
-        res.status(404).send({ success: false, error: err })
+        res.status(404).json({ success: false, error: err })
 
     }
 }
@@ -39,12 +39,12 @@ const EnrolledStudentsAndOwnerIsAuthorized = (req, res, next) => {
     try {
         
     } catch (err) {
-        res.status(404).send({ success: false, error: err })
+        res.status(404).json({ success: false, error: err })
 
     }
 }
 
 module.exports.EnrolledStudentsAndOwnerIsAuthorized = EnrolledStudentsAndOwnerIsAuthorized
 module.exports.onlyEnrolledStudentsAuthorized = onlyEnrolledStudentsAuthorized
-module.exports.onlyOwnerOfCourseCanEdit = onlyOwnerOfCourseCanEdit
+module.exports.onlyOwnerOfCourseAuthorized = onlyOwnerOfCourseAuthorized
 module.exports.ownerIsAuthorized = ownerIsAuthorized

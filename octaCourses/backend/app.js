@@ -9,7 +9,10 @@ const MediaRoutes = require('./routes/media.routes')
 const EnrollmentRoutes = require('./routes/enrollment.routes');
 const RatingRoutes = require('./routes/rating.routes')
 const AdminRoutes = require('./routes/admin.routes')
-const DiscussionRoutes = require('./routes/discussion.routes')
+const DiscussionRoutes = require('./routes/discussion.routes');
+const WishlistRoutes = require('./routes/wishlist.routes')
+const ExamRoutes = require('./routes/exam.routes')
+
 const { handleRoutes, handler } = require('./middlewares/error.handler.middleware')
 
 app.use(bodyParser.json());
@@ -32,6 +35,8 @@ app.use(MediaRoutes)
 app.use(EnrollmentRoutes);
 app.use(RatingRoutes)
 app.use(DiscussionRoutes)
+app.use(WishlistRoutes)
+app.use(ExamRoutes)
 
 // admin routes
 app.use(AdminRoutes)
@@ -44,7 +49,6 @@ app.use(handler)
 
 // exception logger
 app.use(errorLogger)
-
 
 
 // importing events

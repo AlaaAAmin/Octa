@@ -1,8 +1,8 @@
 {
     "mailer": {
         "auth": {
-            "email": "SE.Ahmed.A.Youssef.98@gmail.com",
-            "password": "Anam4kla"
+            "email": "se.ahmed.a.youssef.98@gmail.com",
+            "password": "djazerbdyzdhctyo"
         }
     },
     "JWT_SECRET": "WImRfITrFni3903O",
@@ -16,6 +16,29 @@
     "ENVIRONMENT": "production",
     "EXP_PER_LEVEL": 1000,
     "EXP_PER_VIDEO": 50,
+    "PAYMENT": {
+        "BrainTree": {
+            "MerchantId": "USD",
+            "SandBox": {
+                "Email": "sb-49ygd2683716@business.example.com",
+                "Client_Id": "AeSHaOSQPiHuSKFiVRctKwo-9a89H9P6x9Xy5mdOXUTkR5ifqCPRWahz4Fug9sjlOONpeiJH13kA0SYO",
+                "Secret": "EEbh7XRb5N4tJRE5IxOuh_GhxKWMEcZzcy5CZW_JQADbO1m09aXBBuh0HT1u1jo221ubZhMCFzEfj3DI",
+                "Access_Token": "access_token$sandbox$fhpwgvwntdjbczkq$0ec9448945379daefaa4361a7f076aee"
+            },
+            "Production": {
+                "Client_Id": "AcLSQTAGDfaHH6QYwRm1HafUNpRW4IBa7TGtiPUb_hsChYqsz2uVZ6k0lULaTRMVXC3VeCwlVr3TWkRZ",
+                "Secret": "EAca6xmCv8TjlEHl9MDY0c0piI4JeN53pjC9yL9aOCO1KoHSgw675oHBzsJrct65vkBNof8S6ifzpBEB",
+                "Email": "Ahmedashraf1705@gmail.com",
+                "Access_Token": "access_token$production$sdx9hpmy9vwqfykx$82c054572ce0eba746723d9a056200b7"
+            }
+        },
+        "Stripe": {
+            "Test_Env": {
+                "Publishable_Key": "pk_test_51H7VTbLWG3oeq10NlUfsIbUpgfdoU6RFG78ZptpNZ42runXjmGUjeeQQak3BIUxHl2Us3dlLLuFMvlLLHSR0EvdD00HG1zorER",
+                "Secret_Key": "sk_test_51H7VTbLWG3oeq10N3K8I0aLAD9tcbUL80XQKINlxgUnWC9GZ2mCnuinsidkvlF5bynHD1FyuN5MPxxAtoP3aLSXR00cR7TTW1W"
+            }
+        }
+    },
     "HTTP_RESPONSES": {
         "MESSAGES": {
             "OK": "Ok",

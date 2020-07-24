@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-billing',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BillingComponent implements OnInit {
 
-  constructor() { }
+  constructor(private user: UserService) { }
 
   /* the istructor money threshold value is the value that his earnings must exceed in order to
   be able to get paid*/
@@ -57,6 +58,11 @@ export class BillingComponent implements OnInit {
   and then hides the threshold update form by making the thresholdEdit variable true */
   updateThreshold(){
     this.thresholdEdit = true;
+  }
+
+  connectToStripe() {
+    let data = { email: 'testEmail21@gmail.com' }
+    this.user.connectProviderToStripe(data)
   }
   ngOnInit(): void {
     this.actionRequired();

@@ -4,7 +4,9 @@
 
 export const environment = {
   production: false,
-  SOCKET_ENDPOINT: 'http://localhost:3000'
+  SOCKET_ENDPOINT: 'http://localhost:3000',
+  Publishable_Key: "pk_test_51H7VTbLWG3oeq10NlUfsIbUpgfdoU6RFG78ZptpNZ42runXjmGUjeeQQak3BIUxHl2Us3dlLLuFMvlLLHSR0EvdD00HG1zorER",
+
 };
 
 /*

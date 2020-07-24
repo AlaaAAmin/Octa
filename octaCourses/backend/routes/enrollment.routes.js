@@ -6,10 +6,13 @@ const FREE = require('../config/config.json').permissionLevels.NORMAL_USER;
 const PROVIDER = require('../config/config.json').permissionLevels.NORMAL_PROVIDER;
 const EnrollmentController = require('../controllers/enrollment.controller')
 const CourseAuthorizationMiddleware = require('../middlewares/course.authorization.middleware')
+const PaymentMiddleware = require('../middlewares/payment.middleware')
+
 router.post('/courses/:id/enroll', [
     TokenValidationMiddleware.validJWTRequired,
     PermissionMiddleware.minimumPermissionLevelRequired(FREE),
     // here we use payment gateway and modify enrollemnt model and controller
+    PaymentMiddleware.OnlyStudentsWhoBuyCourseAuthorized,
     EnrollmentController.enroll
 ])
 
@@ -26,5 +29,21 @@ router.post('/courses/:id/students', [
     CourseAuthorizationMiddleware.ownerIsAuthorized,
     EnrollmentController.getEnrolledStudentsOfCourse
 ])
+
+router.post('/courses/:id/close',[
+    TokenValidationMiddleware.validJWTRequired,
+    PermissionMiddleware.minimumPermissionLevelRequired(PROVIDER),
+    CourseAuthorizationMiddleware.ownerIsAuthorized,
+    EnrollmentController.closeEnrollmentForCourse
+])
+
+router.post('/courses/:id/unenroll', [
+    TokenValidationMiddleware.validJWTRequired,
+    PermissionMiddleware.minimumPermissionLevelRequired(FREE),
+    CourseAuthorizationMiddleware.onlyEnrolledStudentsAuthorized,
+    EnrollmentController.unenrollStudent
+])
+
+
 
 module.exports = router;

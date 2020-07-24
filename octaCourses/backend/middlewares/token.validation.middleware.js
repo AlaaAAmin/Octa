@@ -5,7 +5,7 @@ const crypto = require('crypto');
 // verifyRefreshBodyField is a function that validates if there is a body and refreshToken or not
 const verifyRefreshBodyField = (req, res, next) => {
     if (req.body && req.body.refreshToken) return next();
-    res.status(400).send({ error: 'Refresh token required' });
+    res.status(400).json({ error: 'Refresh token required' });
 }
 
 // validRefreshTokenNeeded is a function that validates if there is a valid refreshToken or not
@@ -13,7 +13,7 @@ const validRefreshTokenNeeded = (req, res, next) => {
     let b = new Buffer.from(req.body.refreshToken, 'base64');
     let refreshToken = b.toString();
     let hash = crypto.createHmac('sha512', req.jwt.refreshKey).update(req.jwt._id + SECRET).digest('base64'); // req.jwt.userId -->req.jwt._id
-    if (hash !== refreshToken) return res.status(400).send({ error: 'Invalid refresh token.' });
+    if (hash !== refreshToken) return res.status(400).json({ error: 'Invalid refresh token.' });
     req.body = req.jwt;
     return next();
 }

@@ -13,7 +13,7 @@ const createUser = (req, res, next) => {
     req.body.password = salt + '$' + hash;
 
     AdminModel.addAdmin(req.body)
-        .then(doc => res.status(200).send({ status: 'success', data: doc.toJSON() }))
+        .then(doc => res.status(200).json({ status: 'success', data: doc.toJSON() }))
         .catch(err => next(err))
 }
 
@@ -21,7 +21,7 @@ const createUser = (req, res, next) => {
 const reviewAndLabelCourseById = (req, res, next) => {
     addLabelsToCourseAndReview(req.params.id, req.body.labels)
         .then(raw => {
-            res.status(200).send({ status: 'success', message: 'Course reviewed.' })
+            res.status(200).json({ status: 'success', message: 'Course reviewed.' })
         })
         .catch(err => next(err))
 }
@@ -29,7 +29,7 @@ const reviewAndLabelCourseById = (req, res, next) => {
 const getUnReviewedCourses = (req, res, next) => {
     getRawCourses()
         .then(docs => {
-            res.status(200).send({ status: 'success', data: { docs } })
+            res.status(200).json({ status: 'success', data: { docs } })
         })
         .catch(err => next(err))
 }
@@ -38,7 +38,7 @@ const getUnReviewedCourses = (req, res, next) => {
 const getReadyStrikeStudents = (req, res, next) => {
     getBanReadyStudents()
         .then(docs => {
-            res.status(200).send({ status: 'success', data: { docs } })
+            res.status(200).json({ status: 'success', data: { docs } })
         })
         .catch(err => next(err))
 }
@@ -47,7 +47,7 @@ const getReadyStrikeStudents = (req, res, next) => {
 const getReadyStrikeProviders = (req, res, next) => {
     getBanReadyProviders()
         .then(docs => {
-            res.status(200).send({ status: 'success', data: { docs } })
+            res.status(200).json({ status: 'success', data: { docs } })
         })
         .catch(err => next(err))
 }
@@ -55,7 +55,7 @@ const getReadyStrikeProviders = (req, res, next) => {
 const banStudentById = (req, res, next) => {
     Student.updateOne({ _id: req.body.studentId }, { meta: { banned: true } }, (err, raw) => {
         if (err) return next(err)
-        res.status(200).send({ status: 'success', message: 'Student banned.' })
+        res.status(200).json({ status: 'success', message: 'Student banned.' })
     })
 }
 
@@ -64,7 +64,7 @@ const banStudentById = (req, res, next) => {
 const banProviderById = (req, res, next) => {
     Provider.updateOne({ _id: req.body.providerId }, { meta: { banned: true } }, (err, raw) => {
         if (err) return next(err)
-        res.status(200).send({ status: 'success', message: 'Provider banned.' })
+        res.status(200).json({ status: 'success', message: 'Provider banned.' })
     })
 }
 
@@ -72,7 +72,7 @@ const banProviderById = (req, res, next) => {
 const getAllInquiries = (req, res, next) => {
     getInquiries()
         .then(docs => {
-            res.status(200).send({ status: 'success', data: { docs } })
+            res.status(200).json({ status: 'success', data: { docs } })
         })
         .catch(err => next(err))
 }
