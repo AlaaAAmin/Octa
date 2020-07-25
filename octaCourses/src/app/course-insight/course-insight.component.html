@@ -1,5 +1,7 @@
 <div class="container_fluid"  style="background-color: #0d0d0d;">
     <div class="row no-gutters">
+
+        <!-- start of the side bar -->
         <div class="col-sm-3 sideModules">
             <h2 class="contents"><b>Course contents</b></h2>
 
@@ -28,8 +30,12 @@
             </mat-expansion-panel>
             <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
         </div>
+        <!-- end of the side bar -->
 
-        <div class="col-sm-9 text-center lecSection">
+        <!-- start of the lecture section -->
+        <!-- if a quiz is choosen from the side bar this section should be hidden
+             and the quiz section with the data should be displayed -->
+        <div class="col-sm-9 text-center lecSection d-none">
             <!-- lecture name -->
             <h2 class="lecName">Lecture name</h2>
 
@@ -40,6 +46,7 @@
             </video>
             <!-- end of actual lecture video -->
 
+            <!-- start of file section -->
         <div class="fileDiv w-75 text-center">
             <div class="fileNameDiv">
                 File name
@@ -62,6 +69,19 @@
                   </svg>
             </a>
         </div>
+        <!-- end of file section -->
         </div>
+        <!-- end of the lecture section -->
+
+        <!-- start of take quiz section -->
+        <!-- this should be displayed when a quiz from the sidebar is displayed -->
+        <div class="col-sm-9 text-center lecSection">
+            <!-- Quiz -->
+            <h2 class="lecName">Quiz</h2>
+
+            <app-take-quiz></app-take-quiz>
+
+        </div>
+        <!-- end of take quiz section -->
     </div>
 </div>
