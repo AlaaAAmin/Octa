@@ -1,0 +1,43 @@
+<div class="container">
+
+    <!-- #loginForm is a template reference variable that holds a reference to the ngForm directive of this form
+    so we can access its values -->
+    <div class="row justify-content-center formRow">
+    <form class="col-sm-3 registerationForm" #loginForm="ngForm">
+        <h1 class="loginH1">Login</h1>
+
+        <!--email section-->
+            <!--ngModel directive specifies to th engForm directive which form controls to track-->
+            <!--ngModel only works when we specifies a name attribute for the form control-->
+            <!--ngModel can also be used with a property binding to bind the data to the form
+            a certain useful case for this is when you want to edit a pre saved information about something-->
+            <!--it can also be used to transfer the data bidirectional to the model using the 2 way data binding-->
+            <!--#name is a template ref variable that holds a reference to the ngModel of that particular
+            form control-->
+        <div class="formgroup">
+            <input required id="email" name="email" type="email" class="form-control form-control-sm" ngModel #email="ngModel"
+            [class.is-invalid]="email.invalid && email.touched"
+            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" placeholder="E-Mail">
+            <small class="text-danger" [class.d-none]="email.valid || email.untouched">
+                E-Mail must be in the following order: characters@characters.domain
+            </small>
+        </div>
+
+        <!--password section-->
+        <div class="formgroup">
+            <input required id="password" name="password" type="password" class="form-control form-control-sm" 
+            ngModel #password="ngModel" [class.is-invalid]="password.invalid && password.touched" 
+            pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" placeholder="Password">
+            <small class="text-danger" [class.d-none]="password.valid || password.untouched">
+                Password is incorrect
+            </small>
+        </div>
+
+        <button [disabled]="loginForm.form.invalid" 
+        class="btn btn-primary registerButton btn-sm btn-block" type="submit">Login</button>
+
+    </form>
+
+</div>
+<br>
+</div>

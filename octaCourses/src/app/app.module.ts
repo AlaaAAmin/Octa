@@ -21,6 +21,7 @@ import { SocketService } from './services/socket.service';
 // const config: SocketIoConfig = {url: 'http://localhost:3000', options: {}}
 import { CategorySearchResultComponent } from './category-search-result/category-search-result.component';
 import { ContactUsFormComponent } from './contact-us-form/contact-us-form.component';
+import { AdminLoginComponent } from './admin-login/admin-login.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { ContactUsFormComponent } from './contact-us-form/contact-us-form.compon
     CourseProviderRegisterationComponent,
     ForgotPasswordComponent,
     CategorySearchResultComponent,
-    ContactUsFormComponent
+    ContactUsFormComponent,
+    AdminLoginComponent
   ],
   imports: [
     BrowserModule,

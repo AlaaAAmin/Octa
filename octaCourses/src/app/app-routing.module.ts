@@ -8,6 +8,7 @@ import { CourseProviderRegisterationComponent } from './registeration/course-pro
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { CategorySearchResultComponent } from './category-search-result/category-search-result.component';
 import { ContactUsFormComponent } from './contact-us-form/contact-us-form.component';
+import { AdminLoginComponent } from './admin-login/admin-login.component';
 
 
 const routes: Routes = [
@@ -15,6 +16,7 @@ const routes: Routes = [
   { path: 'student', loadChildren: ()=> import('./user-profile/user-profile.module').then(m => m.UserProfileModule)},
   { path: '', component: HomepageComponent, pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
+  { path: 'admin-login', component: AdminLoginComponent },
   { path: 'register', component: StudentRegistrationComponent },
   { path: 'contact-us', component: ContactUsFormComponent },
   { path: 'categories', component: CategoriesComponent },
